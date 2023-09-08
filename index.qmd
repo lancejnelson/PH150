@@ -4,7 +4,7 @@ execute:
   enabled: false
   freeze: auto
 ---
-# Python and Jupyter Notebooks
+# Python and Jupyter Notebooks {-}
 
 
 [Jupyter Notebook](https://lancejnelson.github.io/PH135/jupyter/intro.ipynb)

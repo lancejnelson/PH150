@@ -2,21 +2,22 @@
 jupyter: python3
 ---
 
-# Physics 150 
+# Lab 1 {-}
 
-# Lab 1: Introduction to Error Analysis/ Propagation of Uncertainty Part I
+# Introduction to Error Analysis/ Propagation of Uncertainty Part I
 
 
 
-Name: 
+Name:  
 
 
 ## Skills
-After this lab you should be able to:
-1. take measurements and assign uncertainties.
-2. use Python to perform simple calculations and plotting, including error bars.
-3. propagate uncertainties for simple calcluations.
-4. know the difference between (and be able to calculate) uncertainty and fractional uncertainty.
+After this lab you should be able to:  
+
+   1. take measurements and assign uncertainties.  
+   2. use Python to perform simple calculations and plotting, including error bars.  
+   3. propagate uncertainties for simple calcluations.  
+   4. know the difference between (and be able to calculate) uncertainty and fractional uncertainty.
 
 ## Background Information
 
@@ -57,7 +58,7 @@ width.  Therefore, even if the end of the rod landed on a tick mark,
 you still wouldn't know which part of the tick mark it was.  Every
 instrument is limited to some degree in this way.
 
-![Meter Stick](https://lancejnelson.github.io/PH150/figures/measurement.png){width=160%}
+![](https://lancejnelson.github.io/PH150/figures/measurement.png){width=50%}
 
 So we can never really know the true length of the rod, or the true
 value of any other measurement.  The best we can do is to provide a
@@ -133,8 +134,12 @@ everyday language they tend to be synonymous. They are precision and
 accuracy.  Precision is a measure of the uncertainty in a measurement.
 In other words, high precision means low uncertainty and a larger
 number of significant figures. Accuracy, on the other hand, means a
-measurement agrees well with an accepted standard. One way to express
-precision is as a fractional uncertainty:
+measurement agrees well with an accepted standard. The figure below illustrates this concept.  The blue dots fall in a pretty tight range but are far from the intended target.  Hence they represent high precision but low accuracy. Having all of your measurements offset from the true value is called having a *systematic error*.  There is no way to detect a systematic error by gathering data; it must be discovered by other means. The opposite can be said of the red dots.  They are centered at the target, but have large spread.
+
+![Meter Stick](https://lancejnelson.github.io/PH150/figures/precise-accurate.png){width=50%}
+
+
+One way to express precision is as a fractional uncertainty:
 
 \begin{align}
 \mathrm{fractional ~ uncertainty} &=
