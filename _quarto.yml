@@ -1,0 +1,41 @@
+project:
+  type: book
+  output-dir: docs
+  render:
+    - chapters/basicPlotting.qmd
+execute:
+  enabled: true
+  freeze: auto
+  cache: true
+book:
+  title: "Beginning Physics Lab"
+  author: "Lance Nelson"
+  date: "9/8/2023"
+  sidebar:
+    style: floating
+  chapters:
+    - part: "Measurements and Uncertainty"
+      chapters:
+      - index.qmd
+      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+    - part: "Experimental Design"
+      chapters:
+      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+    - part: "Numerical Modeling"
+      chapters:
+      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+bibliography: references.bib
+
+format:
+  html:
+    toc: true
+    theme: 
+      light: cosmo  # simplex cosmo
+      dark: darkly
+    max-width: 1600px
+    margin: 10px 20px 30px 20px
+  pdf:
+    documentclass: scrreprt
+
+
+
