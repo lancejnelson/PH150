@@ -32,7 +32,8 @@ physical property of an object, we assume that there is a unique
  precise. We have to make do with the goal of getting as close as we 
  can to the “correct" value.
 
- There are several factors that affect your ability to measure something:
+ There are several factors that affect your ability to measure something:   
+ 
 1. Measurement Instrument Choice 
 2. Measurement Calibration 
 3. Repeatability 

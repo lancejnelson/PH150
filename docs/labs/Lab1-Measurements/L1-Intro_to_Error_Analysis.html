@@ -255,7 +255,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="uncertainties-in-measurements" class="level3">
 <h3 class="anchored" data-anchor-id="uncertainties-in-measurements">Uncertainties in Measurements</h3>
 <p>No matter the branch of science you find yourself in, taking measurements will be at the heart of any experiment you do. Measuring involves the use of a measuring device of some sort, such as a ruler, balance, microphone, voltmeter, or any other sensor. When measuring a physical property of an object, we assume that there is a unique “correct” value for this measurement. The problem is that we can never measure this “correct” value because no instrument is perfectly precise. We have to make do with the goal of getting as close as we can to the “correct” value.</p>
-<p>There are several factors that affect your ability to measure something: 1. Measurement Instrument Choice 2. Measurement Calibration 3. Repeatability 4. Quantization Error</p>
+<p>There are several factors that affect your ability to measure something:</p>
+<ol type="1">
+<li>Measurement Instrument Choice</li>
+<li>Measurement Calibration</li>
+<li>Repeatability</li>
+<li>Quantization Error</li>
+</ol>
 </section>
 <section id="analog-measurements" class="level3">
 <h3 class="anchored" data-anchor-id="analog-measurements">Analog Measurements</h3>
@@ -328,7 +334,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[g = 9.6 \pm 0.3 ~\text{m/s}^2\]</span></p>
 <p><span class="math display">\[g = 10.1 \pm 0.2 ~\text{m/s}^2\]</span></p>
 <p>you could use Python to plot these two measurements with their uncertainties like this</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> errorbar,show,xticks,plot</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">3</span>]</span>
@@ -429,7 +435,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>and then insert the second expression into the first to get an expression for the uncertainty on <span class="math inline">\(\delta f\)</span>:</p>
 <p><span class="math display">\[\delta f^2 = \delta b^2 + (2 |x|a \delta x)^2\]</span></p>
 <p>Here is how we could make python perform the calculation.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>0.7333971366183536</code></pre>
 </div>
