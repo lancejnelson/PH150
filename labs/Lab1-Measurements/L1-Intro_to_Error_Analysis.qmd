@@ -58,7 +58,9 @@ width.  Therefore, even if the end of the rod landed on a tick mark,
 you still wouldn't know which part of the tick mark it was.  Every
 instrument is limited to some degree in this way.
 
-![](https://lancejnelson.github.io/PH150/figures/measurement.png){width=50%}
+<div style="text-align: center;">
+<img src="https://lancejnelson.github.io/PH150/figures/measurement.png" alt="drawing" width="500"/>
+</div>
 
 So we can never really know the true length of the rod, or the true
 value of any other measurement.  The best we can do is to provide a
@@ -94,38 +96,7 @@ kg.  This measurement would be reported as $10.55 \pm .005$ kg.  In
 general, the uncertainty of a digital measurement is half of the value of the
 last decimal place shown.
 
-### Significant Figures
 
-At this point, you may be wondering about all of those numbers in your
-Physics textbook that are given to you without any $\pm$ value
-attached to them.  In the absense of an explicitly-stated uncertainty,
-it is generally assumed that the uncertainty is $\pm 1$ on the digit
-that is one beyond the least signficant digit. For example, if your
-homework problem states that a car was traveling with speed $25$ m/s, it is implied that
-the uncertainty on that length is $\pm 0.5$ m/s. After all, if the true
-value were anywhere in the range $(24.5 - 25.5)$, we would have
-rounded the final answer to $25$ m/s. 
-
-The numbers used to communicate the precision of a measurement are
-called significant figures. The rules for tracking and reporting of
-significant figures that you learn in Physics and Chemistry class are
-a quick and dirty way to keep track of these uncertainties as they are
-used to perform calculations.  They ensure that the implied
-uncertainty in a calculated value is not wildly incongruent with the
-uncertainty in the data provided.
-
-However, using significant figures to communicate uncertainty does
-have it's drawbacks.  For example, let's say that you measure the
-length of a rod and determine that lies in the range $(10.5 - 10.6)$
-cm.  In other words, you would report the length of the rod to be
-$10.55 \pm .05$ cm.  You can't communicate this uncertainty using
-significant figures.  If you report the length to be $10.5$ cm, you're
-implying that the actual value is somewhere in the range of $(10.45 -
-10.55)$ which isn't the correct window.  If you report the length to
-be $10.55$ cm, you're implying that the value is somewhere in the
-range $(10.545 - 10.555)$ cm, which is too narrow.  We use significant
-figures because it's easy and it communicates an uncertainty that is
-close, but not perfect.
 
 ### Precision vs. Accuracy
 
@@ -134,9 +105,13 @@ everyday language they tend to be synonymous. They are precision and
 accuracy.  Precision is a measure of the uncertainty in a measurement.
 In other words, high precision means low uncertainty and a larger
 number of significant figures. Accuracy, on the other hand, means a
-measurement agrees well with an accepted standard. The figure below illustrates this concept.  The blue dots fall in a pretty tight range but are far from the intended target.  Hence they represent high precision but low accuracy. Having all of your measurements offset from the true value is called having a *systematic error*.  There is no way to detect a systematic error by gathering data; it must be discovered by other means. The opposite can be said of the red dots.  They are centered at the target, but have large spread.
+measurement agrees well with an accepted standard. The figure below illustrates this concept.  The blue dots fall in a pretty tight range but are far from the intended target.  Hence they represent high precision but low accuracy. 
 
-![Meter Stick](https://lancejnelson.github.io/PH150/figures/precise-accurate.png){width=50%}
+When  all of your measurements are offset from the true value we call it a *systematic error*. An example of a systematic error would involve using a measuring tape that is unusually hot and has therefore thermally expanded so that it is longer than it normally is.  Taking measurements with this device will give readings that are always smaller than they should be.  There is no way to detect a systematic error by gathering data; you must uncover it based on the experimental circumstances. 
+
+<div style="text-align: center;">
+<img src="https://lancejnelson.github.io/PH150/figures/precise-accurate.png" alt="drawing" width="500"/>
+</div>
 
 
 One way to express precision is as a fractional uncertainty:
@@ -184,6 +159,68 @@ resulted in the experimental value of $10 \pm 2$ m/s$^2$. In this case, we
 would have a fractional uncertainty of $20\%$ and a percent error of
 $2.0\%$, showing accuracy but not precision. Your goal in any
 measurement should be to obtain both accuracy and precision.
+
+### Significant Figures
+
+At this point, you may be wondering about all of those numbers in your
+Physics textbook that are given to you without any $\pm$ value
+attached to them.  In the absence of an explicitly-stated uncertainty,
+it is generally assumed that the uncertainty is $\pm 5$ on the digit
+that is one beyond the least significant digit. For example, if your
+homework problem states that a car was traveling with speed $25$ m/s, it is implied that
+the uncertainty on that length is $\pm 0.5$ m/s. After all, if the true
+value were anywhere in the range $(24.5 - 25.5)$, we would have
+rounded the final answer to $25$ m/s. 
+
+The numbers used to communicate the precision of a measurement are
+called significant figures. The rules for tracking and reporting of
+significant figures that you learn in Physics and Chemistry class are
+a quick and dirty way to keep track of these uncertainties as they are
+used to perform calculations.  They ensure that the implied
+uncertainty in a calculated value is not wildly incongruent with the
+uncertainty in the data provided.
+
+However, using significant figures to communicate uncertainty does
+have it's drawbacks.  For example, let's say that you measure the
+length of a rod and determine that lies in the range $(10.5 - 10.6)$
+cm.  In other words, you would report the length of the rod to be
+$10.55 \pm .05$ cm.  You can't communicate this uncertainty using
+significant figures.  If you report the length to be $10.5$ cm, you're
+implying that the actual value is somewhere in the range of $(10.45 -
+10.55)$ which isn't the correct window.  If you report the length to
+be $10.55$ cm, you're implying that the value is somewhere in the
+range $(10.545 - 10.555)$ cm, which is too narrow.  We use significant
+figures because it's easy and it communicates an uncertainty that is
+close, but not perfect.
+
+The number of significant figures that a number has is an indication of its fractional uncertainty.  For example, if you report your mass to be $m = 75$ kg, you are implying an uncertainty of $\pm .5$ and thus a fractional uncertainty of $ {.5 \over 75} = 0.7\%$. But if you report your mass to be $m = 75.1$ kg you are implying an uncertainty of $\pm .05$ and thus a fractional uncertainty of $ {.05 \over 75} = 0.07\%$.  Roughly speaking for each significant figure that is gain the fractional uncertainty decreases by an order of magnitude.   Below you will find a table with approximate correspondence between fractional uncertainties and significant figures.
+
+| Number of significant figures| Fractional Uncertainty|
+|:------------------------------:|:-----------------------:|
+| 1 | $10\%$ --- $50\%$|
+| 2 | $1\%$ --- $10\%$|
+| 3 | $0.1\%$ --- $1\%$|
+
+
+### Displaying Results with Uncertainty
+Often it will be valuable to produce a visual representation of your value with its uncertainty.
+As an example, imagine that you and a friend each performed an experiment to measure the acceleration due to gravity and you'd like to compare your results visually.  If the results of the two experiments were
+$$g = 9.6 \pm 0.3 ~\text{m/s}^2$$ 
+$$g = 10.1 \pm 0.2 ~\text{m/s}^2$$ 
+you could use Python to plot these two measurements with their uncertainties like this
+
+```{python}
+from matplotlib.pyplot import errorbar,show,xticks,plot
+
+x = [2,3]
+y = [9.6,10.1]
+dy = [0.3,0.2]
+errorbar(x,y,yerr = dy,capsize = 10,marker = "o",linewidth = 2,capthick = 2,ls = 'none',xticks = None)
+plot([0,4],[9.8,9.8],ls = 'dashed')
+xticks([],[])
+show()
+
+```
 
 
 ### Combining Uncertainties
@@ -233,6 +270,18 @@ For now our goal is to have a method that you can use without calculus.
 |Multiply by Constant  | $z = Ax$ | $\delta z = A\delta x$|
 |Powers  | $z = x^n$ | ${\delta z\over |z|} = n{\delta x \over |x|}$|
 
+Using these rules on the example from above, we would find the following uncertainty in the area of the plate.
+
+$$\begin{align*}
+ {\delta A\over A} &= \sqrt{{\delta l\over l}^2 + {\delta w \over w}^2}\\
+ &= \delta A = A \sqrt{{\delta l\over l}^2 + {\delta w \over w}^2}\\
+ &= (10.2 ~\text{cm})(18.3 ~\text{cm}) \sqrt{{(0.3 ~\text{cm})\over (10.2 ~\text{cm})}^2 + {(0.5 ~\text{cm}) \over (18.3 ~\text{cm})}^2}\\
+ &= 7.5 ~\text{cm}^2\\
+ &= 8 ~\text{(rounded to 1 sig fig)}
+\end{align*}
+$$
+
+And the final result would be reported as $187 \pm 8$ cm$^2$.
 
 These uncertainty formulas can be used for more complex calculations by applying multiple formulas to different parts of the expression. For example, suppose you wanted to perform the following calculation:
 
@@ -244,16 +293,17 @@ $$b = 5.1 \pm 0.2$$
 $$a = 1.8 \pm 0.1$$
 $$x = 3.92 \pm 0.05$$
 
-We can first apply the rule for addition from the table below:
+We can first apply the rule for addition from the table:
 
 $$\delta f^2 = \delta b^2 + \delta(ax^2)^2$$
 
+and then use the for powers to calculate $\delta(ax^2)$:
 $$\delta(ax^2) = a \delta(x^2) = 2 |x|a \delta x$$
 
-Combining everthing together:
-
+and then insert the second expression into the first to get an expression for the uncertainty on $\delta f$:
 $$\delta f^2 = \delta b^2 + (2 |x|a \delta x)^2$$
 
+Here is how we could make python perform the calculation.
 ```{python}
 #| eval: true
 #| echo: false

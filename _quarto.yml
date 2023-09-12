@@ -18,12 +18,12 @@ book:
       chapters:
       - index.qmd
       - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
-    - part: "Experimental Design"
-      chapters:
-      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
-    - part: "Numerical Modeling"
-      chapters:
-      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+#    - part: "Experimental Design"
+#      chapters:
+#      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+#    - part: "Numerical Modeling"
+#      chapters:
+#      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
 bibliography: references.bib
 
 format:
