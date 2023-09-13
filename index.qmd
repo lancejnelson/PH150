@@ -7,7 +7,7 @@ execute:
 # Python and Jupyter Notebooks {-}
 
 
-[Jupyter Notebook](https://lancejnelson.github.io/PH135/jupyter/intro.ipynb)
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/intro.ipynb)
 
 ## Python
 
@@ -32,9 +32,9 @@ To launch a Jupyter notebook, first open Anaconda-Navigator (green circle icon) 
 
 >**_To Do:_**
 >
->1. On iLearn, find the module entitled "Jupyter Notebooks" and download the file "Intro.ipynb".
+>1. At the top of this page there is a link titled "Jupyter Notebook". Click on that link to download the Jupyter notebook version of this chapter.
 >2. Launch JupyterLab as explained above.
->3. Open "Intro.ipynb" that you downloaded in step 1 and continue reading this book in the jupyter notebook.
+>3. Open the file that you downloaded in step 1 and continue reading this book in the jupyter notebook.
 
 
 
