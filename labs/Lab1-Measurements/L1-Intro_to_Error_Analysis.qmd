@@ -336,24 +336,28 @@ Important: **You cannot directly measure the mass of the block**.  The instructo
 
 
 ### Procedure:
-Carefully follow the steps below to accomplish your task
-#### Calculate Density of Cylinder  (15 points)
+Carefully follow the steps below to accomplish your task  
+
+#### Calculate Density of Cylinder  (15 points)  
+
    1. Using the caliper, measure the dimensions of the metal **cylinder**.  Enter the values and the uncertainties into the code cell provided below.
    2. (5 pts) Assign uncertainties to the measurements made in step one and record those uncertainties in the code cell provided below.
    3.  Using the mechanical balance, measure the mass of the **cylinder**. 
    4. (5 pts) Assign an uncertainty to the mass measurment and record it in the code cell given below.
    5.   Calculate the volume of the cylinder (in units of cm$^3$) in the code cell below.  
    6. (5 pts) Calculate the uncertainty in the volume of the cylinder.
-   7. (5 pts) Calculate the density of the cylinder in units of g/cm$^3$. Note: $ \rho = {m \over V}$
+   7. (5 pts) Calculate the density of the cylinder in units of g/cm$^3$. Note: $\rho = {m \over V}$
    8. (5 pts) Calculate the uncertainty in the density of the cylinder.
    
-#### Calculate the Volume of the Block  (15 points)
+#### Calculate the Volume of the Block  (15 points)  
+
    1. Using the caliper, measure the dimensions of the metal **block**.  Enter the values in the code cell below.
    2. Assign uncertainties to the measurements you made and record them in the code cell below.
    3. Calculate the volume of the block (in units of cm$^3$) in the code cell below.
    4. Calculate the uncertainty in the volume of the block.
    
-#### Calculate the Mass of the Block  (10 points)
+#### Calculate the Mass of the Block  (10 points)  
+
    1. Calculate the mass of the block using $\rho = {m \over V}$ in units of g/cm$^3$.
    2. Calculate the uncertainty in the mass of the block.
    3. Calculate the fractional uncertainty in the mass of the block.
