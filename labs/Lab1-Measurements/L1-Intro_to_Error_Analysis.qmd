@@ -6,7 +6,7 @@ jupyter: python3
 
 # Introduction to Error Analysis/ Propagation of Uncertainty Part I
 
-
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L1-Intro_to_Error_Analysis.ipynb)
 
 Name:  
 
@@ -33,7 +33,7 @@ physical property of an object, we assume that there is a unique
  can to the “correct" value.
 
  There are several factors that affect your ability to measure something:   
- 
+
 1. Measurement Instrument Choice 
 2. Measurement Calibration 
 3. Repeatability 
@@ -104,11 +104,9 @@ last decimal place shown.
 In science, we use two terms that often can cause confusion, since in
 everyday language they tend to be synonymous. They are precision and
 accuracy.  Precision is a measure of the uncertainty in a measurement.
-In other words, high precision means low uncertainty and a larger
-number of significant figures. Accuracy, on the other hand, means a
-measurement agrees well with an accepted standard. The figure below illustrates this concept.  The blue dots fall in a pretty tight range but are far from the intended target.  Hence they represent high precision but low accuracy. 
+In other words, high precision means low uncertainty. Accuracy, on the other hand, means a measurement agrees well with an accepted standard. The figure below illustrates the concept of precision vs. accuracy when throwing darts at a dartboard.   
 
-When  all of your measurements are offset from the true value we call it a *systematic error*. An example of a systematic error would involve using a measuring tape that is unusually hot and has therefore thermally expanded so that it is longer than it normally is.  Taking measurements with this device will give readings that are always smaller than they should be.  There is no way to detect a systematic error by gathering data; you must uncover it based on the experimental circumstances. 
+When  all of your measurements are offset from the true value we call it a *systematic error*. The blue dots in the figure are an example of a systematic error. An example of a systematic error would involve using a measuring tape that is unusually hot and has therefore thermally expanded so that it is longer than it normally is.  Taking measurements with this device will give readings that are always smaller than they should be.  There is no way to detect a systematic error by gathering data; you must uncover it based on the experimental circumstances. 
 
 <div style="text-align: center;">
 <img src="https://lancejnelson.github.io/PH150/figures/precise-accurate.png" alt="drawing" width="500"/>
@@ -125,7 +123,9 @@ One way to express precision is as a fractional uncertainty:
 Thus, fractional uncertainty is a measure of relative uncertainty, and
 describes how large the uncertainty is compared to the
 measurement. High precision is reflected by low fractional
-uncertainty. Accuracy is often expressed as a percentage error. There
+uncertainty. 
+
+Accuracy is often expressed as a percentage error. There
 are slightly different ways of defining and using percentage error,
 depending on which scientific field you are in. In this course we will
 define percentage error as
@@ -152,19 +152,17 @@ be
 $$\mathrm{\% ~error} = \frac{9.86 ~\mathrm{m}/\mathrm{s}^{2}-9.80~
   \mathrm{m}/\mathrm{s}^{2}}{9.80~ \mathrm{m}/\mathrm{s}^{2}} =
 0.0061 = 0.61\%$$ 
-In this case, we would have a high precision result
-that manifests a small inaccuracy. (Note that neither the fractional
-uncertainty nor the percent error carries any units.) On the other
+Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of $g$. Note that neither the fractional
+uncertainty nor the percent error carries any units. On the other
 hand, suppose our measurement of the acceleration due to gravity
 resulted in the experimental value of $10 \pm 2$ m/s$^2$. In this case, we
 would have a fractional uncertainty of $20\%$ and a percent error of
-$2.0\%$, showing accuracy but not precision. Your goal in any
-measurement should be to obtain both accuracy and precision.
+$2.0\%$, and we could conclude that the experiment successfully confirmed the value of $g$. Your goal in any measurement should be to obtain both accuracy and precision.
 
 ### Significant Figures
 
 At this point, you may be wondering about all of those numbers in your
-Physics textbook that are given to you without any $\pm$ value
+physics textbook that are given to you without any $\pm$ value
 attached to them.  In the absence of an explicitly-stated uncertainty,
 it is generally assumed that the uncertainty is $\pm 5$ on the digit
 that is one beyond the least significant digit. For example, if your
@@ -175,7 +173,7 @@ rounded the final answer to $25$ m/s.
 
 The numbers used to communicate the precision of a measurement are
 called significant figures. The rules for tracking and reporting of
-significant figures that you learn in Physics and Chemistry class are
+significant figures that you learn in physics and chemistry class are
 a quick and dirty way to keep track of these uncertainties as they are
 used to perform calculations.  They ensure that the implied
 uncertainty in a calculated value is not wildly incongruent with the
@@ -194,7 +192,7 @@ range $(10.545 - 10.555)$ cm, which is too narrow.  We use significant
 figures because it's easy and it communicates an uncertainty that is
 close, but not perfect.
 
-The number of significant figures that a number has is an indication of its fractional uncertainty.  For example, if you report your mass to be $m = 75$ kg, you are implying an uncertainty of $\pm .5$ and thus a fractional uncertainty of $ {.5 \over 75} = 0.7\%$. But if you report your mass to be $m = 75.1$ kg you are implying an uncertainty of $\pm .05$ and thus a fractional uncertainty of $ {.05 \over 75} = 0.07\%$.  Roughly speaking for each significant figure that is gain the fractional uncertainty decreases by an order of magnitude.   Below you will find a table with approximate correspondence between fractional uncertainties and significant figures.
+The number of significant figures that a number has is an indication of its fractional uncertainty.  For example, if you report your mass to be $m = 75$ kg, you are implying an uncertainty of $\pm .5$ and thus a fractional uncertainty of ${.5 \over 75} = 0.7\%$. But if you report your mass to be $m = 75.1$ kg you are implying an uncertainty of $\pm .05$ and thus a fractional uncertainty of ${.05 \over 75} = 0.07\%$.  Roughly speaking for each significant figure that is gained the fractional uncertainty decreases by an order of magnitude.   Below you will find a table with approximate correspondence between fractional uncertainties and significant figures.
 
 | Number of significant figures| Fractional Uncertainty|
 |:------------------------------:|:-----------------------:|
@@ -223,7 +221,7 @@ show()
 
 ```
 
-
+In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not.
 ### Combining Uncertainties
 
 Often we will need to use measured values, with their associated
@@ -249,7 +247,7 @@ $$A_\mathrm{min} = 9.9 \times 17.8 = 176.22 ~\mathrm{cm}^2$$ .
 Therefore, the actual value of the area must be somewhere between
 $176.22$ cm$^2$ and $197.4$ cm$^2$ (a range of $20$ cm$^2$) and we
 could report the area as:
-$$A = 187 \pm 10 \mathrm{cm}$$
+$$A = 187 \pm 10 ~\mathrm{cm}$$
 
 The high-low method is great at illustrating how measurement errors can affect results, but should never be used in a professional setting.
 
@@ -273,9 +271,10 @@ For now our goal is to have a method that you can use without calculus.
 
 Using these rules on the example from above, we would find the following uncertainty in the area of the plate.
 
-$$\begin{align*}
+$$
+\begin{align*}
  {\delta A\over A} &= \sqrt{{\delta l\over l}^2 + {\delta w \over w}^2}\\
- &= \delta A = A \sqrt{{\delta l\over l}^2 + {\delta w \over w}^2}\\
+ &= \delta A = A \sqrt{({\delta l\over l})^2 + ({\delta w \over w})^2}\\
  &= (10.2 ~\text{cm})(18.3 ~\text{cm}) \sqrt{{(0.3 ~\text{cm})\over (10.2 ~\text{cm})}^2 + {(0.5 ~\text{cm}) \over (18.3 ~\text{cm})}^2}\\
  &= 7.5 ~\text{cm}^2\\
  &= 8 ~\text{(rounded to 1 sig fig)}
@@ -284,7 +283,7 @@ $$
 
 And the final result would be reported as $187 \pm 8$ cm$^2$.
 
-These uncertainty formulas can be used for more complex calculations by applying multiple formulas to different parts of the expression. For example, suppose you wanted to perform the following calculation:
+These uncertainty formulas can be used for more complex calculations by applying multiple formulas to different parts of the expression. For example, suppose you wanted to perform the following calculation with its associated uncertainty:
 
 $$ f = b + a x^2$$
 
@@ -298,7 +297,7 @@ We can first apply the rule for addition from the table:
 
 $$\delta f^2 = \delta b^2 + \delta(ax^2)^2$$
 
-and then use the for powers to calculate $\delta(ax^2)$:
+and then use the rule for powers to calculate $\delta(ax^2)$:
 $$\delta(ax^2) = a \delta(x^2) = 2 |x|a \delta x$$
 
 and then insert the second expression into the first to get an expression for the uncertainty on $\delta f$:
@@ -307,7 +306,7 @@ $$\delta f^2 = \delta b^2 + (2 |x|a \delta x)^2$$
 Here is how we could make python perform the calculation.
 ```{python}
 #| eval: true
-#| echo: false
+#| echo: true
 #| output: true
 from numpy import sqrt
 b = 5.1
@@ -316,10 +315,10 @@ a = 1.8
 da = 0.1
 x = 3.92
 dx = 0.05
+f = b + a * x**2
 df = sqrt(db**2+ (2 * x * a * dx)**2)
-print(df)
+print(f"f = {f:5.1f} +- {df:0.1f}")
 ```
-In this lab you will learn the basics of uncertainty estimation and uncertainty propagation.  Occasionally, you'll be asked to show your mathematical work for a calculation. [Here](https://www.caam.rice.edu/~heinken/latex/symbols.pdf) is a reference you can use for entering math symbols.  [This](https://kapeli.com/cheat_sheets/LaTeX_Math_Symbols.docset/Contents/Resources/Documents/index) is a good one too.
 
 ## Activity I (50 points)
 

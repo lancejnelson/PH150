@@ -196,7 +196,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#precision-vs.-accuracy" id="toc-precision-vs.-accuracy" class="nav-link" data-scroll-target="#precision-vs.-accuracy">Precision vs.&nbsp;Accuracy</a></li>
   <li><a href="#significant-figures" id="toc-significant-figures" class="nav-link" data-scroll-target="#significant-figures">Significant Figures</a></li>
   <li><a href="#displaying-results-with-uncertainty" id="toc-displaying-results-with-uncertainty" class="nav-link" data-scroll-target="#displaying-results-with-uncertainty">Displaying Results with Uncertainty</a></li>
-  <li><a href="#combining-uncertainties" id="toc-combining-uncertainties" class="nav-link" data-scroll-target="#combining-uncertainties">Combining Uncertainties</a></li>
   </ul></li>
   <li><a href="#activity-i-50-points" id="toc-activity-i-50-points" class="nav-link" data-scroll-target="#activity-i-50-points">Activity I (50 points)</a>
   <ul class="collapse">
@@ -236,6 +235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introduction-to-error-analysis-propagation-of-uncertainty-part-i" class="level1">
 <h1>Introduction to Error Analysis/ Propagation of Uncertainty Part I</h1>
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L1-Intro_to_Error_Analysis.ipynb">Jupyter Notebook</a></p>
 <p>Name:</p>
 <section id="skills" class="level2">
 <h2 class="anchored" data-anchor-id="skills">Skills</h2>
@@ -280,8 +280,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="precision-vs.-accuracy" class="level3">
 <h3 class="anchored" data-anchor-id="precision-vs.-accuracy">Precision vs.&nbsp;Accuracy</h3>
-<p>In science, we use two terms that often can cause confusion, since in everyday language they tend to be synonymous. They are precision and accuracy. Precision is a measure of the uncertainty in a measurement. In other words, high precision means low uncertainty and a larger number of significant figures. Accuracy, on the other hand, means a measurement agrees well with an accepted standard. The figure below illustrates this concept. The blue dots fall in a pretty tight range but are far from the intended target. Hence they represent high precision but low accuracy.</p>
-<p>When all of your measurements are offset from the true value we call it a <em>systematic error</em>. An example of a systematic error would involve using a measuring tape that is unusually hot and has therefore thermally expanded so that it is longer than it normally is. Taking measurements with this device will give readings that are always smaller than they should be. There is no way to detect a systematic error by gathering data; you must uncover it based on the experimental circumstances.</p>
+<p>In science, we use two terms that often can cause confusion, since in everyday language they tend to be synonymous. They are precision and accuracy. Precision is a measure of the uncertainty in a measurement. In other words, high precision means low uncertainty. Accuracy, on the other hand, means a measurement agrees well with an accepted standard. The figure below illustrates the concept of precision vs.&nbsp;accuracy when throwing darts at a dartboard.</p>
+<p>When all of your measurements are offset from the true value we call it a <em>systematic error</em>. The blue dots in the figure are an example of a systematic error. An example of a systematic error would involve using a measuring tape that is unusually hot and has therefore thermally expanded so that it is longer than it normally is. Taking measurements with this device will give readings that are always smaller than they should be. There is no way to detect a systematic error by gathering data; you must uncover it based on the experimental circumstances.</p>
 <div style="text-align: center;">
 <p><img src="https://lancejnelson.github.io/PH150/figures/precise-accurate.png" alt="drawing" width="500"></p>
 </div>
@@ -290,21 +290,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \mathrm{fractional ~ uncertainty} &amp;=
 \frac{\mathrm{uncertainty}}{\mathrm{measured ~value}}
 \end{align}\]</span></p>
-<p>Thus, fractional uncertainty is a measure of relative uncertainty, and describes how large the uncertainty is compared to the measurement. High precision is reflected by low fractional uncertainty. Accuracy is often expressed as a percentage error. There are slightly different ways of defining and using percentage error, depending on which scientific field you are in. In this course we will define percentage error as</p>
+<p>Thus, fractional uncertainty is a measure of relative uncertainty, and describes how large the uncertainty is compared to the measurement. High precision is reflected by low fractional uncertainty.</p>
+<p>Accuracy is often expressed as a percentage error. There are slightly different ways of defining and using percentage error, depending on which scientific field you are in. In this course we will define percentage error as</p>
 <p><span class="math display">\[\mathrm{\% ~error}=\frac{(\mathrm{measured~ value}) - (\mathrm{theoretical~value})}{(\mathrm{theoretical ~ value})}\]</span></p>
 <p>The sign of the percentage error then has meaning: a negative percent error means the measured value is less than the theoretical or accepted value, and a positive percent error means the measured value is larger then the theoretical value. Accuracy is reflected by a low percentage error. More specifically, if the percentage error is smaller than the fractional uncertainty, the result is said to be accurate, meaning that the accepted value of the measurement falls within the uncertainty of the result you have obtained. For example, suppose we measure the acceleration due to gravity, and find the value <span class="math inline">\(9.86 \pm .03\)</span> m/s<span class="math inline">\(^2\)</span>. The fractional uncertainty would be</p>
 <p><span class="math display">\[\mathrm{fractional~ uncertainty} = \frac{0.03}{9.86} = 0.0030 = 0.3 \%\]</span></p>
 <p>while the percentage error compared to the accepted value of <span class="math inline">\(9.80\)</span> m/s<span class="math inline">\(^2\)</span> would be</p>
 <p><span class="math display">\[\mathrm{\% ~error} = \frac{9.86 ~\mathrm{m}/\mathrm{s}^{2}-9.80~
   \mathrm{m}/\mathrm{s}^{2}}{9.80~ \mathrm{m}/\mathrm{s}^{2}} =
-0.0061 = 0.61\%\]</span> In this case, we would have a high precision result that manifests a small inaccuracy. (Note that neither the fractional uncertainty nor the percent error carries any units.) On the other hand, suppose our measurement of the acceleration due to gravity resulted in the experimental value of <span class="math inline">\(10 \pm 2\)</span> m/s<span class="math inline">\(^2\)</span>. In this case, we would have a fractional uncertainty of <span class="math inline">\(20\%\)</span> and a percent error of <span class="math inline">\(2.0\%\)</span>, showing accuracy but not precision. Your goal in any measurement should be to obtain both accuracy and precision.</p>
+0.0061 = 0.61\%\]</span> Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of <span class="math inline">\(g\)</span>. Note that neither the fractional uncertainty nor the percent error carries any units. On the other hand, suppose our measurement of the acceleration due to gravity resulted in the experimental value of <span class="math inline">\(10 \pm 2\)</span> m/s<span class="math inline">\(^2\)</span>. In this case, we would have a fractional uncertainty of <span class="math inline">\(20\%\)</span> and a percent error of <span class="math inline">\(2.0\%\)</span>, and we could conclude that the experiment successfully confirmed the value of <span class="math inline">\(g\)</span>. Your goal in any measurement should be to obtain both accuracy and precision.</p>
 </section>
 <section id="significant-figures" class="level3">
 <h3 class="anchored" data-anchor-id="significant-figures">Significant Figures</h3>
-<p>At this point, you may be wondering about all of those numbers in your Physics textbook that are given to you without any <span class="math inline">\(\pm\)</span> value attached to them. In the absence of an explicitly-stated uncertainty, it is generally assumed that the uncertainty is <span class="math inline">\(\pm 5\)</span> on the digit that is one beyond the least significant digit. For example, if your homework problem states that a car was traveling with speed <span class="math inline">\(25\)</span> m/s, it is implied that the uncertainty on that length is <span class="math inline">\(\pm 0.5\)</span> m/s. After all, if the true value were anywhere in the range <span class="math inline">\((24.5 - 25.5)\)</span>, we would have rounded the final answer to <span class="math inline">\(25\)</span> m/s.</p>
-<p>The numbers used to communicate the precision of a measurement are called significant figures. The rules for tracking and reporting of significant figures that you learn in Physics and Chemistry class are a quick and dirty way to keep track of these uncertainties as they are used to perform calculations. They ensure that the implied uncertainty in a calculated value is not wildly incongruent with the uncertainty in the data provided.</p>
+<p>At this point, you may be wondering about all of those numbers in your physics textbook that are given to you without any <span class="math inline">\(\pm\)</span> value attached to them. In the absence of an explicitly-stated uncertainty, it is generally assumed that the uncertainty is <span class="math inline">\(\pm 5\)</span> on the digit that is one beyond the least significant digit. For example, if your homework problem states that a car was traveling with speed <span class="math inline">\(25\)</span> m/s, it is implied that the uncertainty on that length is <span class="math inline">\(\pm 0.5\)</span> m/s. After all, if the true value were anywhere in the range <span class="math inline">\((24.5 - 25.5)\)</span>, we would have rounded the final answer to <span class="math inline">\(25\)</span> m/s.</p>
+<p>The numbers used to communicate the precision of a measurement are called significant figures. The rules for tracking and reporting of significant figures that you learn in physics and chemistry class are a quick and dirty way to keep track of these uncertainties as they are used to perform calculations. They ensure that the implied uncertainty in a calculated value is not wildly incongruent with the uncertainty in the data provided.</p>
 <p>However, using significant figures to communicate uncertainty does have it’s drawbacks. For example, let’s say that you measure the length of a rod and determine that lies in the range <span class="math inline">\((10.5 - 10.6)\)</span> cm. In other words, you would report the length of the rod to be <span class="math inline">\(10.55 \pm .05\)</span> cm. You can’t communicate this uncertainty using significant figures. If you report the length to be <span class="math inline">\(10.5\)</span> cm, you’re implying that the actual value is somewhere in the range of <span class="math inline">\((10.45 - 10.55)\)</span> which isn’t the correct window. If you report the length to be <span class="math inline">\(10.55\)</span> cm, you’re implying that the value is somewhere in the range <span class="math inline">\((10.545 - 10.555)\)</span> cm, which is too narrow. We use significant figures because it’s easy and it communicates an uncertainty that is close, but not perfect.</p>
-<p>The number of significant figures that a number has is an indication of its fractional uncertainty. For example, if you report your mass to be <span class="math inline">\(m = 75\)</span> kg, you are implying an uncertainty of <span class="math inline">\(\pm .5\)</span> and thus a fractional uncertainty of $ {.5 } = 0.7%$. But if you report your mass to be <span class="math inline">\(m = 75.1\)</span> kg you are implying an uncertainty of <span class="math inline">\(\pm .05\)</span> and thus a fractional uncertainty of $ {.05 } = 0.07%$. Roughly speaking for each significant figure that is gain the fractional uncertainty decreases by an order of magnitude. Below you will find a table with approximate correspondence between fractional uncertainties and significant figures.</p>
+<p>The number of significant figures that a number has is an indication of its fractional uncertainty. For example, if you report your mass to be <span class="math inline">\(m = 75\)</span> kg, you are implying an uncertainty of <span class="math inline">\(\pm .5\)</span> and thus a fractional uncertainty of <span class="math inline">\({.5 \over 75} = 0.7\%\)</span>. But if you report your mass to be <span class="math inline">\(m = 75.1\)</span> kg you are implying an uncertainty of <span class="math inline">\(\pm .05\)</span> and thus a fractional uncertainty of <span class="math inline">\({.05 \over 75} = 0.07\%\)</span>. Roughly speaking for each significant figure that is gained the fractional uncertainty decreases by an order of magnitude. Below you will find a table with approximate correspondence between fractional uncertainties and significant figures.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -348,9 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="L1-Intro_to_Error_Analysis_files/figure-html/cell-2-output-1.png" width="579" height="389"></p>
 </div>
 </div>
-</section>
-<section id="combining-uncertainties" class="level3">
-<h3 class="anchored" data-anchor-id="combining-uncertainties">Combining Uncertainties</h3>
+<p>In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not. ### Combining Uncertainties</p>
 <p>Often we will need to use measured values, with their associated uncertainties, to calculate another value. For example, let’s say we measure the dimensions of a square plate to be: <span class="math inline">\(l = 10.2 \pm 0.3\)</span> cm and <span class="math inline">\(w = 18.3 \pm 5\)</span> cm. Next, we calculate the area to be:</p>
 <p><span class="math display">\[A = l\times w = 10.2 \times 18.3 = 186.66 ~\mathrm{cm}^2\]</span>.</p>
 <p>What is the uncertainty in the area? In other words, how does the uncertainty in the measurements propagate through the calculation to the uncertainty in the area?</p>
@@ -359,7 +358,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>and the minimum possible value is</p>
 <p><span class="math display">\[A_\mathrm{min} = 9.9 \times 17.8 = 176.22 ~\mathrm{cm}^2\]</span> .</p>
 <p>Therefore, the actual value of the area must be somewhere between <span class="math inline">\(176.22\)</span> cm<span class="math inline">\(^2\)</span> and <span class="math inline">\(197.4\)</span> cm<span class="math inline">\(^2\)</span> (a range of <span class="math inline">\(20\)</span> cm<span class="math inline">\(^2\)</span>) and we could report the area as:</p>
-<p><span class="math display">\[A = 187 \pm 10 \mathrm{cm}\]</span></p>
+<p><span class="math display">\[A = 187 \pm 10 ~\mathrm{cm}\]</span></p>
 <p>The high-low method is great at illustrating how measurement errors can affect results, but should never be used in a professional setting.</p>
 <section id="the-algebraic-method-no-calculus-yet" class="level4">
 <h4 class="anchored" data-anchor-id="the-algebraic-method-no-calculus-yet">The algebraic method (no Calculus yet!)</h4>
@@ -411,18 +410,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Using these rules on the example from above, we would find the following uncertainty in the area of the plate.</p>
-<p>$$<span class="math display">\[\begin{align*}
-
-
+<p>$$</p>
+<p><span class="math display">\[\begin{align*}
 {\delta A\over A} &amp;= \sqrt{{\delta l\over l}^2 + {\delta w \over w}^2}\\
-&amp;= \delta A = A \sqrt{{\delta l\over l}^2 + {\delta w \over w}^2}\\
+&amp;= \delta A = A \sqrt{({\delta l\over l})^2 + ({\delta w \over w})^2}\\
 &amp;= (10.2 ~\text{cm})(18.3 ~\text{cm}) \sqrt{{(0.3 ~\text{cm})\over (10.2 ~\text{cm})}^2 + {(0.5 ~\text{cm}) \over (18.3 ~\text{cm})}^2}\\
 &amp;= 7.5 ~\text{cm}^2\\
 &amp;= 8 ~\text{(rounded to 1 sig fig)}
 \end{align*}\]</span></p>
 <p>$$</p>
 <p>And the final result would be reported as <span class="math inline">\(187 \pm 8\)</span> cm<span class="math inline">\(^2\)</span>.</p>
-<p>These uncertainty formulas can be used for more complex calculations by applying multiple formulas to different parts of the expression. For example, suppose you wanted to perform the following calculation:</p>
+<p>These uncertainty formulas can be used for more complex calculations by applying multiple formulas to different parts of the expression. For example, suppose you wanted to perform the following calculation with its associated uncertainty:</p>
 <p><span class="math display">\[ f = b + a x^2\]</span></p>
 <p>where</p>
 <p><span class="math display">\[b = 5.1 \pm 0.2\]</span></p>
@@ -430,17 +428,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[x = 3.92 \pm 0.05\]</span></p>
 <p>We can first apply the rule for addition from the table:</p>
 <p><span class="math display">\[\delta f^2 = \delta b^2 + \delta(ax^2)^2\]</span></p>
-<p>and then use the for powers to calculate <span class="math inline">\(\delta(ax^2)\)</span>:</p>
+<p>and then use the rule for powers to calculate <span class="math inline">\(\delta(ax^2)\)</span>:</p>
 <p><span class="math display">\[\delta(ax^2) = a \delta(x^2) = 2 |x|a \delta x\]</span></p>
 <p>and then insert the second expression into the first to get an expression for the uncertainty on <span class="math inline">\(\delta f\)</span>:</p>
 <p><span class="math display">\[\delta f^2 = \delta b^2 + (2 |x|a \delta x)^2\]</span></p>
 <p>Here is how we could make python perform the calculation.</p>
 <div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">5.1</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">1.8</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>da <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">3.92</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> b <span class="op">+</span> a <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> sqrt(db<span class="op">**</span><span class="dv">2</span><span class="op">+</span> (<span class="dv">2</span> <span class="op">*</span> x <span class="op">*</span> a <span class="op">*</span> dx)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"f = </span><span class="sc">{</span>f<span class="sc">:5.1f}</span><span class="ss"> +- </span><span class="sc">{</span>df<span class="sc">:0.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.7333971366183536</code></pre>
+<pre><code>f =  32.8 +- 0.7</code></pre>
 </div>
 </div>
-<p>In this lab you will learn the basics of uncertainty estimation and uncertainty propagation. Occasionally, you’ll be asked to show your mathematical work for a calculation. <a href="https://www.caam.rice.edu/~heinken/latex/symbols.pdf">Here</a> is a reference you can use for entering math symbols. <a href="https://kapeli.com/cheat_sheets/LaTeX_Math_Symbols.docset/Contents/Resources/Documents/index">This</a> is a good one too.</p>
 </section>
 </section>
 </section>
@@ -520,42 +527,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </blockquote>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter values for cylinder diameter, height, and mass. Give estimates of the uncertainties.</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span>              <span class="co"># diameter of cylinder in cm</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>un_d <span class="op">=</span>           <span class="co"># uncertainty of cylinder diameter in cm</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>              <span class="co"># height of cylinder in cm</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>un_h <span class="op">=</span>           <span class="co"># uncertainty of cylinder height in cm</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span>              <span class="co"># mass of cylinder in gm</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>un_m <span class="op">=</span>           <span class="co"># uncertainty of cylinder mass in gm</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print the density and its uncertainty</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span>              <span class="co"># Use equations above to calculate volume of cylinder </span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>un_V <span class="op">=</span>           <span class="co"># Use equation above to calculate uncertainty in volume</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span>            <span class="co"># Use equation above to calculate density of cylinder</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>un_rho <span class="op">=</span>         <span class="co"># Use equation above to calculate uncertainty in density</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The density of the cylinder is: </span><span class="sc">{0:4.2f}</span><span class="st"> +/- </span><span class="sc">{1:4.2f}</span><span class="st"> g/cm^3"</span>.<span class="bu">format</span>(rho,un_rho))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Block dimensions</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span>           <span class="co"># length of the block in cm</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>un_l <span class="op">=</span>        <span class="co"># uncertainty of the length of the block in cm</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span>           <span class="co"># width of the block in cm</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>un_w <span class="op">=</span>        <span class="co"># uncertainty of the width of the block in cm</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>h_b <span class="op">=</span>         <span class="co"># height of the block in cm</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>un_h_b <span class="op">=</span>      <span class="co"># uncertainty of the height of the block in cm</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute volume of block with uncertainty</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>V_b <span class="op">=</span>         <span class="co"># Calculate volume of block</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>un_V_b <span class="op">=</span>      <span class="co"># Calculate uncertainty in volume (can you figure it out from looking at the equation for the cylinder?)</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute predicted mass of block</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>m_b <span class="op">=</span>         <span class="co"># Use previously-calculate density to calculate mass of the block</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>un_m_b <span class="op">=</span>      <span class="co">#Calculate the uncertainty in the mass</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The predicted mass of the block is: </span><span class="sc">{0:3.0f}</span><span class="st"> +/- </span><span class="sc">{1:1.0f}</span><span class="st"> g"</span>.<span class="bu">format</span>(m_b,un_m_b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pylab <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Enter values for cylinder diameter, height, and mass. Give estimates of the uncertainties.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span>              <span class="co"># diameter of cylinder in cm</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>un_d <span class="op">=</span>           <span class="co"># uncertainty of cylinder diameter in cm</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>              <span class="co"># height of cylinder in cm</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>un_h <span class="op">=</span>           <span class="co"># uncertainty of cylinder height in cm</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span>              <span class="co"># mass of cylinder in gm</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>un_m <span class="op">=</span>           <span class="co"># uncertainty of cylinder mass in gm</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and print the density and its uncertainty</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span>              <span class="co"># Use equations above to calculate volume of cylinder </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>un_V <span class="op">=</span>           <span class="co"># Use equation above to calculate uncertainty in volume</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span>            <span class="co"># Use equation above to calculate density of cylinder</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>un_rho <span class="op">=</span>         <span class="co"># Use equation above to calculate uncertainty in density</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The density of the cylinder is: </span><span class="sc">{0:4.2f}</span><span class="st"> +/- </span><span class="sc">{1:4.2f}</span><span class="st"> g/cm^3"</span>.<span class="bu">format</span>(rho,un_rho))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Block dimensions</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span>           <span class="co"># length of the block in cm</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>un_l <span class="op">=</span>        <span class="co"># uncertainty of the length of the block in cm</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span>           <span class="co"># width of the block in cm</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>un_w <span class="op">=</span>        <span class="co"># uncertainty of the width of the block in cm</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>h_b <span class="op">=</span>         <span class="co"># height of the block in cm</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>un_h_b <span class="op">=</span>      <span class="co"># uncertainty of the height of the block in cm</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute volume of block with uncertainty</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>V_b <span class="op">=</span>         <span class="co"># Calculate volume of block</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>un_V_b <span class="op">=</span>      <span class="co"># Calculate uncertainty in volume (can you figure it out from looking at the equation for the cylinder?)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute predicted mass of block</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>m_b <span class="op">=</span>         <span class="co"># Use previously-calculate density to calculate mass of the block</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>un_m_b <span class="op">=</span>      <span class="co">#Calculate the uncertainty in the mass</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The predicted mass of the block is: </span><span class="sc">{0:3.0f}</span><span class="st"> +/- </span><span class="sc">{1:1.0f}</span><span class="st"> g"</span>.<span class="bu">format</span>(m_b,un_m_b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="activity-ii-50-points" class="level2">
@@ -582,28 +589,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Label your axes and put a title on your plot. To learn how, go to <a href="https://www.matplotlib.org">matplotlib.org</a> and click on the “Tutorials” tab. Either the “Usage Guide” or the “Pyplot Tutorial” will show you how to add axes labels and a title.</li>
 <li>Is your answer consistent with those of the other groups? If not, explain why it isn’t. &gt;<strong>Response:</strong></li>
 </ol>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Room dimensions</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span>           <span class="co"># length of the room in m</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>un_lr <span class="op">=</span>        <span class="co"># uncertainty of the length of the room in m</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>wr <span class="op">=</span>           <span class="co"># width of the room in m</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>un_wr <span class="op">=</span>        <span class="co"># uncertainty of the width of the room in m</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>hr <span class="op">=</span>           <span class="co"># height of the room in m</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>un_hr <span class="op">=</span>        <span class="co"># uncertainty of the height of the room in m</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute volume of the room with uncertainty</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>V_r <span class="op">=</span>          <span class="co"># Compute the volume of the room</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>un_V_r <span class="op">=</span>       <span class="co"># Compute the uncertainty in the volume.</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The volume of the room is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> m^3"</span>.<span class="bu">format</span>(V_r,un_V_r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>group_num <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>volume <span class="op">=</span> []  <span class="co"># Line 5</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>un_volume <span class="op">=</span> []  <span class="co"># Line 6</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.errorbar(group_num,volume,yerr <span class="op">=</span> un_volume,fmt <span class="op">=</span> <span class="st">'go'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Room dimensions</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span>           <span class="co"># length of the room in m</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>un_lr <span class="op">=</span>        <span class="co"># uncertainty of the length of the room in m</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>wr <span class="op">=</span>           <span class="co"># width of the room in m</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>un_wr <span class="op">=</span>        <span class="co"># uncertainty of the width of the room in m</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>hr <span class="op">=</span>           <span class="co"># height of the room in m</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>un_hr <span class="op">=</span>        <span class="co"># uncertainty of the height of the room in m</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute volume of the room with uncertainty</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>V_r <span class="op">=</span>          <span class="co"># Compute the volume of the room</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>un_V_r <span class="op">=</span>       <span class="co"># Compute the uncertainty in the volume.</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The volume of the room is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> m^3"</span>.<span class="bu">format</span>(V_r,un_V_r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>group_num <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>volume <span class="op">=</span> []  <span class="co"># Line 5</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>un_volume <span class="op">=</span> []  <span class="co"># Line 6</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ax.errorbar(group_num,volume,yerr <span class="op">=</span> un_volume,fmt <span class="op">=</span> <span class="st">'go'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
