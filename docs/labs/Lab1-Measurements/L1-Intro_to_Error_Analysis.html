@@ -190,12 +190,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a></li>
   <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
   <ul class="collapse">
+  <li><a href="#an-historical-example" id="toc-an-historical-example" class="nav-link" data-scroll-target="#an-historical-example">An Historical Example</a></li>
   <li><a href="#uncertainties-in-measurements" id="toc-uncertainties-in-measurements" class="nav-link" data-scroll-target="#uncertainties-in-measurements">Uncertainties in Measurements</a></li>
   <li><a href="#analog-measurements" id="toc-analog-measurements" class="nav-link" data-scroll-target="#analog-measurements">Analog Measurements</a></li>
   <li><a href="#digital-measurements" id="toc-digital-measurements" class="nav-link" data-scroll-target="#digital-measurements">Digital Measurements</a></li>
   <li><a href="#precision-vs.-accuracy" id="toc-precision-vs.-accuracy" class="nav-link" data-scroll-target="#precision-vs.-accuracy">Precision vs.&nbsp;Accuracy</a></li>
   <li><a href="#significant-figures" id="toc-significant-figures" class="nav-link" data-scroll-target="#significant-figures">Significant Figures</a></li>
   <li><a href="#displaying-results-with-uncertainty" id="toc-displaying-results-with-uncertainty" class="nav-link" data-scroll-target="#displaying-results-with-uncertainty">Displaying Results with Uncertainty</a></li>
+  <li><a href="#combining-uncertainties" id="toc-combining-uncertainties" class="nav-link" data-scroll-target="#combining-uncertainties">Combining Uncertainties</a></li>
   </ul></li>
   <li><a href="#activity-i-50-points" id="toc-activity-i-50-points" class="nav-link" data-scroll-target="#activity-i-50-points">Activity I (50 points)</a>
   <ul class="collapse">
@@ -252,15 +254,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="background-information" class="level2">
 <h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
+<section id="an-historical-example" class="level3">
+<h3 class="anchored" data-anchor-id="an-historical-example">An Historical Example</h3>
+<p>In 1826, J.K.F Sturm and J.D. Collandon designed an experiment to calculate the speed of sound in fresh sea water. The two men sat in boats separated by 16 kilometers. A bell was suspended in the lake from Sturm’s boat which could be struck by a hammer that was operated by Sturm at the surface. At the exact moment that the hammer struck the bell it also ignited some gun powder which produced an above-water flash. An underwater ear-trumped was suspended from Collandon’s boat to receive the sound wave emitted by the bell. By measuring the time difference between the flash and the bell’s tone, the scientists were able to calculate the speed of sound to be <span class="math inline">\(1435\)</span> m/s, which was remarkably close to the modern value of <span class="math inline">\(1438\)</span> m/s.</p>
+<div style="text-align: center;">
+<p><img src="https://lancejnelson.github.io/PH150/figures/speedOfSoundExperiment.png" alt="drawing" width="650"></p>
+</div>
+<p>If this experiment had been repeated many times the results would have been slightly different every time. This is because experiments always involve measurements, and measurements always have some variability (or uncertainty) associated with them. For example, to measure the difference in time between the bell and the flash involves the use of a watch and a human to operate that watch. A simple analog watch may be able to measure to the nearest second or maybe half second but no smaller. Typical reaction times for humans varies between <span class="math inline">\(0.17\)</span> s (audio stimulus) and <span class="math inline">\(0.25\)</span> s (visual stimulus). Another important measurement that would sure have some variation is the distance between the boats (reported to be <span class="math inline">\(16\)</span> km).Variations in the water temperature and pressure could also change the true value of the speed of sound and therefore make the time measurements differ. Although there is only one true value for the speed of sound in fresh water (at a given temperature and pressure) multiple measurements of this quantity will never be identical. This is represented in the figure below, which is an example of what multiple measurements of the speed of sound may have looked like for Sturm and Collandon. Each vertical bar gives the number of times that the measured speed of sound occurred at that value.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img src="L1-Intro_to_Error_Analysis_files/figure-html/cell-2-output-1.png" width="585" height="429"></p>
+</div>
+</div>
+<p>As with the speed of sound experiment, every scientific experiment performed will have measurements, and those measurements will always have variability (or uncertainty) associated with them. In this lab (and several others) we will get practice taking measurements, assigning uncertainty to those measurements, and correctly reporting the uncertainty of calculations.</p>
+</section>
 <section id="uncertainties-in-measurements" class="level3">
 <h3 class="anchored" data-anchor-id="uncertainties-in-measurements">Uncertainties in Measurements</h3>
-<p>No matter the branch of science you find yourself in, taking measurements will be at the heart of any experiment you do. Measuring involves the use of a measuring device of some sort, such as a ruler, balance, microphone, voltmeter, or any other sensor. When measuring a physical property of an object, we assume that there is a unique “correct” value for this measurement. The problem is that we can never measure this “correct” value because no instrument is perfectly precise. We have to make do with the goal of getting as close as we can to the “correct” value.</p>
-<p>There are several factors that affect your ability to measure something:</p>
+<p>No matter the branch of science you find yourself in, taking measurements will be at the heart of any experiment you do. Measuring involves the use of a measuring device of some sort, such as a ruler, balance, microphone, voltmeter, or any other sensor. When measuring a physical property of an object, we assume that there is a unique “correct” value for this measurement. The problem is that we can never measure this “correct” value because no instrument is perfectly precise and no experiment is free from variability. We have to make do with the goal of getting as close as we can to the “correct” value.</p>
+<p>There are several factors that affect your ability to perform experiments with perfect precision:</p>
 <ol type="1">
-<li>Measurement Instrument Choice</li>
-<li>Measurement Calibration</li>
-<li>Repeatability</li>
-<li>Quantization Error</li>
+<li>Limited accuracy of measuring devices.</li>
+<li>Calibration of measuring devices</li>
+<li>Changes in physical conditions of experiment</li>
+<li>Simplification of experiment. (e.g.&nbsp;Neglecting small but not negligible forces)</li>
 </ol>
 </section>
 <section id="analog-measurements" class="level3">
@@ -281,7 +297,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="precision-vs.-accuracy" class="level3">
 <h3 class="anchored" data-anchor-id="precision-vs.-accuracy">Precision vs.&nbsp;Accuracy</h3>
 <p>In science, we use two terms that often can cause confusion, since in everyday language they tend to be synonymous. They are precision and accuracy. Precision is a measure of the uncertainty in a measurement. In other words, high precision means low uncertainty. Accuracy, on the other hand, means a measurement agrees well with an accepted standard. The figure below illustrates the concept of precision vs.&nbsp;accuracy when throwing darts at a dartboard.</p>
-<p>When all of your measurements are offset from the true value we call it a <em>systematic error</em>. The blue dots in the figure are an example of a systematic error. An example of a systematic error would involve using a measuring tape that is unusually hot and has therefore thermally expanded so that it is longer than it normally is. Taking measurements with this device will give readings that are always smaller than they should be. There is no way to detect a systematic error by gathering data; you must uncover it based on the experimental circumstances.</p>
+<p>When all of your measurements are offset from the true value (blue dots in the figure) we call it a <em>systematic error</em>. An example of a systematic error would be using a measuring tape on a hot day. Because the length of the measuring tape has thermally expanded, any measurements taken will be smaller than they should be. There is no way to detect a systematic error by simply gathering data; you must uncover it based on the experimental circumstances.</p>
 <div style="text-align: center;">
 <p><img src="https://lancejnelson.github.io/PH150/figures/precise-accurate.png" alt="drawing" width="500"></p>
 </div>
@@ -290,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \mathrm{fractional ~ uncertainty} &amp;=
 \frac{\mathrm{uncertainty}}{\mathrm{measured ~value}}
 \end{align}\]</span></p>
-<p>Thus, fractional uncertainty is a measure of relative uncertainty, and describes how large the uncertainty is compared to the measurement. High precision is reflected by low fractional uncertainty.</p>
+<p>Tractional uncertainty describes how large the uncertainty is compared to the measurement and is therefore a measure of relative uncertainty. High precision is reflected by low fractional uncertainty.</p>
 <p>Accuracy is often expressed as a percentage error. There are slightly different ways of defining and using percentage error, depending on which scientific field you are in. In this course we will define percentage error as</p>
 <p><span class="math display">\[\mathrm{\% ~error}=\frac{(\mathrm{measured~ value}) - (\mathrm{theoretical~value})}{(\mathrm{theoretical ~ value})}\]</span></p>
 <p>The sign of the percentage error then has meaning: a negative percent error means the measured value is less than the theoretical or accepted value, and a positive percent error means the measured value is larger then the theoretical value. Accuracy is reflected by a low percentage error. More specifically, if the percentage error is smaller than the fractional uncertainty, the result is said to be accurate, meaning that the accepted value of the measurement falls within the uncertainty of the result you have obtained. For example, suppose we measure the acceleration due to gravity, and find the value <span class="math inline">\(9.86 \pm .03\)</span> m/s<span class="math inline">\(^2\)</span>. The fractional uncertainty would be</p>
@@ -298,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>while the percentage error compared to the accepted value of <span class="math inline">\(9.80\)</span> m/s<span class="math inline">\(^2\)</span> would be</p>
 <p><span class="math display">\[\mathrm{\% ~error} = \frac{9.86 ~\mathrm{m}/\mathrm{s}^{2}-9.80~
   \mathrm{m}/\mathrm{s}^{2}}{9.80~ \mathrm{m}/\mathrm{s}^{2}} =
-0.0061 = 0.61\%\]</span> Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of <span class="math inline">\(g\)</span>. Note that neither the fractional uncertainty nor the percent error carries any units. On the other hand, suppose our measurement of the acceleration due to gravity resulted in the experimental value of <span class="math inline">\(10 \pm 2\)</span> m/s<span class="math inline">\(^2\)</span>. In this case, we would have a fractional uncertainty of <span class="math inline">\(20\%\)</span> and a percent error of <span class="math inline">\(2.0\%\)</span>, and we could conclude that the experiment successfully confirmed the value of <span class="math inline">\(g\)</span>. Your goal in any measurement should be to obtain both accuracy and precision.</p>
+0.0061 = 0.61\%\]</span> Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of <span class="math inline">\(g\)</span>. On the other hand, suppose our measurement of the acceleration due to gravity resulted in the experimental value of <span class="math inline">\(10 \pm 2\)</span> m/s<span class="math inline">\(^2\)</span>. In this case, we would have a fractional uncertainty of <span class="math inline">\(20\%\)</span> and a percent error of <span class="math inline">\(2.0\%\)</span>, and we could conclude that the experiment successfully confirmed the value of <span class="math inline">\(g\)</span>. Your goal in any measurement should be to obtain both accuracy and precision. Note that neither the fractional uncertainty nor the percent error carries any units.</p>
 </section>
 <section id="significant-figures" class="level3">
 <h3 class="anchored" data-anchor-id="significant-figures">Significant Figures</h3>
@@ -335,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[g = 9.6 \pm 0.3 ~\text{m/s}^2\]</span></p>
 <p><span class="math display">\[g = 10.1 \pm 0.2 ~\text{m/s}^2\]</span></p>
 <p>you could use Python to plot these two measurements with their uncertainties like this</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> errorbar,show,xticks,plot</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">3</span>]</span>
@@ -346,10 +362,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>xticks([],[])</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="L1-Intro_to_Error_Analysis_files/figure-html/cell-2-output-1.png" width="579" height="389"></p>
+<p><img src="L1-Intro_to_Error_Analysis_files/figure-html/cell-3-output-1.png" width="579" height="389"></p>
 </div>
 </div>
-<p>In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not. ### Combining Uncertainties</p>
+<p>In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not.</p>
+</section>
+<section id="combining-uncertainties" class="level3">
+<h3 class="anchored" data-anchor-id="combining-uncertainties">Combining Uncertainties</h3>
 <p>Often we will need to use measured values, with their associated uncertainties, to calculate another value. For example, let’s say we measure the dimensions of a square plate to be: <span class="math inline">\(l = 10.2 \pm 0.3\)</span> cm and <span class="math inline">\(w = 18.3 \pm 5\)</span> cm. Next, we calculate the area to be:</p>
 <p><span class="math display">\[A = l\times w = 10.2 \times 18.3 = 186.66 ~\mathrm{cm}^2\]</span>.</p>
 <p>What is the uncertainty in the area? In other words, how does the uncertainty in the measurements propagate through the calculation to the uncertainty in the area?</p>
@@ -433,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>and then insert the second expression into the first to get an expression for the uncertainty on <span class="math inline">\(\delta f\)</span>:</p>
 <p><span class="math display">\[\delta f^2 = \delta b^2 + (2 |x|a \delta x)^2\]</span></p>
 <p>Here is how we could make python perform the calculation.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">5.1</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> <span class="fl">0.2</span></span>
