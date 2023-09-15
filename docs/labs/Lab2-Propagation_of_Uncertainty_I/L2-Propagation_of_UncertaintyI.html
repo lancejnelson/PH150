@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Beginning Physics Lab - Lab 2: Propagation of Uncertainty I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Lab 2: Propagation of Uncertainty I</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Beginning Physics Lab</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Measurements and Uncertainty</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Python and Jupyter Notebooks</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">Lab 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" class="sidebar-item-text sidebar-link active">Lab 2: Propagation of Uncertainty I</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
+  <ul class="collapse">
+  <li><a href="#the-slope-of-a-function" id="toc-the-slope-of-a-function" class="nav-link" data-scroll-target="#the-slope-of-a-function">The Slope of a Function</a></li>
+  <li><a href="#the-derivative" id="toc-the-derivative" class="nav-link" data-scroll-target="#the-derivative">The derivative</a></li>
+  <li><a href="#using-the-derivative-to-find-uncertainty." id="toc-using-the-derivative-to-find-uncertainty." class="nav-link" data-scroll-target="#using-the-derivative-to-find-uncertainty.">Using the derivative to find uncertainty.</a></li>
+  <li><a href="#an-example" id="toc-an-example" class="nav-link" data-scroll-target="#an-example">An Example</a></li>
+  </ul></li>
+  <li><a href="#activity-i-the-pendulum-50-pts" id="toc-activity-i-the-pendulum-50-pts" class="nav-link" data-scroll-target="#activity-i-the-pendulum-50-pts">Activity I: The pendulum (50 pts)</a>
+  <ul class="collapse">
+  <li><a href="#equipment-needed" id="toc-equipment-needed" class="nav-link" data-scroll-target="#equipment-needed">Equipment needed:</a></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal:</a></li>
+  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure:</a></li>
+  </ul></li>
+  <li><a href="#activity-ii-50-points" id="toc-activity-ii-50-points" class="nav-link" data-scroll-target="#activity-ii-50-points">Activity II (50 points)</a>
+  <ul class="collapse">
+  <li><a href="#equipment-needed-1" id="toc-equipment-needed-1" class="nav-link" data-scroll-target="#equipment-needed-1">Equipment needed</a></li>
+  <li><a href="#goal-1" id="toc-goal-1" class="nav-link" data-scroll-target="#goal-1">Goal</a></li>
+  <li><a href="#procedure-1" id="toc-procedure-1" class="nav-link" data-scroll-target="#procedure-1">Procedure</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Lab 2: Propagation of Uncertainty I</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Name:</p>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<ol type="1">
+<li>Propagate uncertainty for moderately complex equations.</li>
+<li>Use Python to perform simple calculations, construct summary tables (pandas dataframes), and display plots including error bars.</li>
+<li>Learn the difference between independent and dependent uncertainties and be able to propagate uncertainty for both cases.</li>
+<li>Use graphs to uncover relationships between data.</li>
+</ol>
+</section>
+<section id="background-information" class="level2">
+<h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
+<section id="the-slope-of-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="the-slope-of-a-function">The Slope of a Function</h3>
+<p>This week we will be performing derivatives, which is a calculus concept. Since some of you are not familiar with the derivative, I will give some explanation. I assume that all of you are familiar with the simple linear function</p>
+<p><span class="math display">\[y = m x + b\]</span></p>
+<p>and if you were asked what the slope of this function was you would say <span class="math inline">\(m\)</span>, the number that multiplies the independent variable <span class="math inline">\(x\)</span>. In other words,</p>
+<p><span class="math display">\[m = {\Delta y \over \Delta x}\]</span></p>
+<p>where <span class="math inline">\(\Delta y = y_2 -y_1\)</span> and <span class="math inline">\(\Delta x = x_2 -x_2\)</span>.</p>
+<p>For example consider the function:</p>
+<p><span class="math display">\[y(t) = 5 t + 2\]</span></p>
+<p>which is plotted below.</p>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-2-output-1.png" width="585" height="429"></p>
+</div>
+</div>
+<p>Careful inspection of this graph reveals that indeed the function value (<span class="math inline">\(y\)</span>) does increase by <span class="math inline">\(5\)</span> meters for every <span class="math inline">\(1\)</span> second that elapses. The slope of this function is 5 no matter which two points we choose to use when calculating <span class="math inline">\(\Delta y\)</span> and <span class="math inline">\(\Delta t\)</span>.</p>
+<p><span class="math display">\[{dy \over dt} = {(5 ~\text{m}) - (0 ~\text{m})\over (1 ~\text{s}) - (0 ~\text{s})} ={5 ~\text{m}\over 1 ~\text{s}} = 5 ~\text{meters}/ \text{second} (\text{ using (0,0) and (1,5)})\]</span></p>
+<p><span class="math display">\[{dy \over dt} = {(2.5 ~\text{m}) - (0 ~\text{m})\over (0.5 ~\text{s}) - (0 ~\text{s})} ={2.5 ~\text{m}\over 0.5 ~\text{s}} = 5 ~\text{meters}/ \text{second}(\text{ using (0,0) and (0.5,2.5)})\]</span></p>
+<p><span class="math display">\[{dy \over dt} = {(1 ~\text{m}) - (0 ~\text{m})\over (0.2 ~\text{s}) - (0 ~\text{s})} = {1 ~\text{m}\over 0.2 ~\text{s}} = 5 ~\text{meters}/ \text{second}(\text{ using (0,0) and (0.2,1)})\]</span></p>
+<p>This is great, but not all curves are straight lines. In fact, most of the functions that matter will not be straight lines. So let’s look at an example of a curve that isn’t straight.</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-3-output-1.png" width="589" height="429"></p>
+</div>
+</div>
+<p>If asked to calculate the slope of this curve, you might get stuck since the slope varies continuously (i.e the slope is different at every point). Let’s imagine that we’d like to know the slope of this function at <span class="math inline">\(t = 0.2\)</span> s. We can make a first attempt at this by finding the slope of the line that passes through the points at <span class="math inline">\(t= 0.2\)</span> and <span class="math inline">\(t = 0.45\)</span> (top left plot). Improvements to this can be made by slowly bringing these two points closer together. Eventually, the two points become so close together that the resulting line is tangent to the function at <span class="math inline">\(t= 0.2\)</span>. The slope of this function at <span class="math inline">\(t = 0.2\)</span> is equal to the tangent line at that point.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-4-output-1.png" width="812" height="429"></p>
+</div>
+</div>
+<p>Let’s visualize the tangent line for several different points on this function.</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-5-output-1.png" width="812" height="429"></p>
+</div>
+</div>
+</section>
+<section id="the-derivative" class="level3">
+<h3 class="anchored" data-anchor-id="the-derivative">The derivative</h3>
+<p>What we really need is a new function that gives the slope of the original function. This is called a derivative and it is represented like this:</p>
+<p><span class="math display">\[y(x) = {df(x) \over dx}\]</span></p>
+<p>The value of the function <span class="math inline">\(y(x)\)</span> gives the slope of the function <span class="math inline">\(f(x)\)</span>. For example, if <span class="math inline">\(f(x) = x^2\)</span>, then <span class="math inline">\(y(x) = {df(x) \over dx} = 2x\)</span>. Let’s plot both of those functions next to each other to convince ourselves that the value of <span class="math inline">\(y(x)\)</span> is the slope of <span class="math inline">\(f(x)\)</span>.</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-6-output-1.png" width="546" height="361"></p>
+</div>
+</div>
+<p>To find the function that gives the slope of another function we can follow a set of mathematical rules. One of the most common rules is the chain rule which applies to polynomial functions. Specifically, if <span class="math inline">\(f(x) = a + bx + cx^2 + dx^2 + \dots = \sum_n a_n x^n\)</span>, then</p>
+<p><span class="math display">\[ y(x) = f'(x) = a_n (n - 1) x^{n-1}\]</span></p>
+<p>The derivative of other common functions is given in the table below. Your calculus class will teach you how to find the derivative of more complicated functions than those found in the table.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Function (<span class="math inline">\(f(x)\)</span>)</th>
+<th style="text-align: center;">Derivative (<span class="math inline">\(y(x) = f'(x)\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(f(x) = \sin(a x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(y(x) = a \cos(a x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(f(x) = \cos(a x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(y(x) = -a \sin(a x)\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(f(x) = \tan(a x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(y(x) = a \sec(a x)^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(f(x) = e^{a x}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(y(x) = ae^{a x}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(f(x) = \ln(a x)\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(y(x) = {a \over x}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(f(x) = {a \over x}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(y(x) = -{a \over x^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="using-the-derivative-to-find-uncertainty." class="level3">
+<h3 class="anchored" data-anchor-id="using-the-derivative-to-find-uncertainty.">Using the derivative to find uncertainty.</h3>
+<p>So how does the derivative help us calculate uncertainty. Let’s consider an example where we measure the frequency (<span class="math inline">\(f\)</span>) of a certain light beam to be <span class="math inline">\(f = 4.2 \pm 0.5 \times 10^{15}\)</span> Hz and want to calculate the wavelength <span class="math inline">\(\lambda\)</span> (with its associated uncertainty).</p>
+<p><span class="math display">\[ \lambda = {3 \times 10^8 \over f}\]</span></p>
+<p>A plot of this function is given below</p>
+<div style="text-align: center;">
+<p><img src="https://lancejnelson.github.io/PH150/figures/derivativeUncertainty.png" alt="drawing" width="650"></p>
+</div>
+<p>If <span class="math inline">\({df \over dx}\)</span> is the slope of the tangent line (<span class="math inline">\({\Delta f \over \Delta x}\)</span>), then multiplying this slope by <span class="math inline">\(\Delta x\)</span> will give the change in function value over this distance. In the context of uncertainty, <span class="math inline">\({df \over dx}\)</span> is the derivative of the calculated value and multiplying this by the uncertainty in <span class="math inline">\(x\)</span> (<span class="math inline">\(\delta x\)</span>) produces the uncertainty in the calculated value.</p>
+<p><span class="math display">\[
+\delta f = {df \over dx} \delta x
+\]</span></p>
+<p>This equation can be extended to functions of more than one variable by adding the square of each contribution:</p>
+<p><span class="math display">\[(\delta f)^2 = ({\partial f\over \partial x} \delta x)^2 + ({\partial f\over \partial y}\delta y)^2  + \dots\]</span></p>
+<p>This is the most important formula for uncertainty propagation and the one we will use going forward.</p>
+</section>
+<section id="an-example" class="level3">
+<h3 class="anchored" data-anchor-id="an-example">An Example</h3>
+<p>Imagine measuring the dimensions and mass of a block with their associated uncertainties:</p>
+<p><span class="math display">\[l = 5.2 \pm 0.1 ~\text{cm}\]</span></p>
+<p><span class="math display">\[w = 8.4 \pm 0.3 ~\text{cm}\]</span></p>
+<p><span class="math display">\[h = 10.8 \pm 0.4 ~\text{cm}\]</span></p>
+<p><span class="math display">\[m = 345 \pm 5 ~\text{grams}\]</span></p>
+<p>and proceeding to calculate the density of the block</p>
+<p><span class="math display">\[\rho = {m \over V} = {m \over l \times w \times h}\]</span></p>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>=  0.73 g/cm^3</code></pre>
+</div>
+</div>
+<p>To calculate the uncertainty, we must first take four derivatives with respect to <span class="math inline">\(l\)</span>, <span class="math inline">\(w\)</span>, <span class="math inline">\(h\)</span>, and <span class="math inline">\(m\)</span>:</p>
+<p><span class="math display">\[ {\partial \rho \over l} = -{m \over l^2 w h}\]</span></p>
+<p><span class="math display">\[ {\partial \rho \over h} = -{m \over l w h^2}\]</span></p>
+<p><span class="math display">\[ {\partial \rho \over w} = -{m \over l w^2 h}\]</span></p>
+<p><span class="math display">\[ {\partial \rho \over m} = {1 \over l w h}\]</span></p>
+<p>Now we can calculate the uncertainty as</p>
+<p><span class="math display">\[\delta \rho = \sqrt{({\partial \rho \over \partial l} \delta l)^2 + ({\partial \rho \over \partial w} \delta w)^2 + ({\partial \rho \over \partial h} \delta h)^2 + ({\partial \rho \over \partial m} \delta m)^2}\]</span></p>
+<p><span class="math display">\[ = \sqrt{(-{m \over l^2 w h} \delta l)^2 + (-{m \over l w^2 h} \delta w)^2 + (-{m \over l w h^2} \delta h)^2 + ({1 \over l w h} \delta m)^2}\]</span></p>
+<p><span class="math display">\[ = \sqrt{(-{(345 ~\text{grams}) \over (5.42 ~\text{cm})^2 (8.4 ~\text{cm}) (10.8 ~\text{cm})} (0.1 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm})^2 (10.8 ~\text{cm})} (0.3 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})^2} (0.4 ~\text{cm}))^2 + ({1 \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})} (5 ~\text{grams}))^2}\]</span></p>
+<p>In the code cell below we use python to calculate this uncertainty.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">345</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dm <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> <span class="fl">5.2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dl <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="fl">8.4</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>dw <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="fl">10.8</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>dh <span class="op">=</span> <span class="fl">0.4</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> m<span class="op">/</span>l<span class="op">/</span>w<span class="op">/</span>h</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>drdl <span class="op">=</span> <span class="op">-</span>m<span class="op">/</span>l<span class="op">**</span><span class="dv">2</span><span class="op">/</span>w<span class="op">/</span>h</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>drdw <span class="op">=</span> <span class="op">-</span>m<span class="op">/</span>l<span class="op">/</span>w<span class="op">**</span><span class="dv">2</span><span class="op">/</span>h</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>drdh <span class="op">=</span> <span class="op">-</span>m<span class="op">/</span>l<span class="op">/</span>w<span class="op">/</span>h<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>drdm <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>l<span class="op">/</span>w<span class="op">/</span>h</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>drho <span class="op">=</span> sqrt((drdl <span class="op">*</span> dl)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (drdw <span class="op">*</span> dw)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (drdh <span class="op">*</span> dh)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (drdm <span class="op">*</span> dm)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The density of the block is </span><span class="sc">{</span>rho<span class="sc">:5.2f}</span><span class="ss"> +- </span><span class="sc">{</span>drho<span class="sc">:4.2f}</span><span class="ss"> g/cm^3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The density of the block is  0.73 +- 0.04 g/cm^3</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="activity-i-the-pendulum-50-pts" class="level2">
+<h2 class="anchored" data-anchor-id="activity-i-the-pendulum-50-pts">Activity I: The pendulum (50 pts)</h2>
+<section id="equipment-needed" class="level3">
+<h3 class="anchored" data-anchor-id="equipment-needed">Equipment needed:</h3>
+<ol type="1">
+<li>Pendulum. (We have some pre-made, or you can tie a string to a mass)</li>
+<li>Metal support stand for pendulum to swing from.</li>
+<li>Photogate.</li>
+</ol>
+</section>
+<section id="goal" class="level3">
+<h3 class="anchored" data-anchor-id="goal">Goal:</h3>
+<p>By taking measurements on a simple pendulum, calculate the acceleration due to gravity with its associated uncertainty. Compare to the known value for Rexburg.</p>
+</section>
+<section id="procedure" class="level3">
+<h3 class="anchored" data-anchor-id="procedure">Procedure:</h3>
+<ol type="1">
+<li>Assemble five pendulums of different lengths, with the lengths ranging from <span class="math inline">\(0.25\)</span> m to <span class="math inline">\(2.0\)</span> m.<br>
+</li>
+<li>For each pendulum, perform the following:
+<ol type="1">
+<li>Measure the distance from the support point to the center of the pendulum. This is the length of the pendulum <span class="math inline">\(L\)</span>. Assign an uncertainty to this measurement and record the length with its associated uncertainty in the code cell provided below.</li>
+<li>Release the pendulum from a small initial angle (no bigger than <span class="math inline">\(15^\circ\)</span> from the vertical) and use the photogate to measure the period <span class="math inline">\(T\)</span> of the pendulum with its associated uncertainty. (The period of a pendulum is the time it take to make one full cycle.)</li>
+<li>Calculate the acceleration due to gravity (<span class="math inline">\(g\)</span>) using <span class="math inline">\(g = {4 \pi^2 L \over T^2}\)</span>.</li>
+<li>Using the methods discussed above determine the equation for calculating the uncertainty in <span class="math inline">\(g\)</span>. Insert it into the math equation below <span class="math display">\[ \delta g = \]</span></li>
+<li>Calculate the uncertainty and <strong>fractional uncertainty</strong> in <span class="math inline">\(g\)</span> in the code cell below.</li>
+</ol></li>
+<li>In lines 4,5, and 6 of the cell below record all of your length, period, and g values for the five pendulums.</li>
+<li>In lines 7,8, and 9 record all of the uncertainties for the five pendulums.</li>
+<li>When you execute the cell, you will see a table summarizing your results and two plots to help analyze your results. Analyze the results to answer the following questions:
+<ol type="1">
+<li>Which result has the lowest uncertainty? Can you explain why?</li>
+<li>What function do you think best represents the relationship between <span class="math inline">\(L\)</span> and <span class="math inline">\(T\)</span>?(We will study curve-fitting in a later lab.)</li>
+<li>The accepted value of <span class="math inline">\(g\)</span> for Rexburg is <span class="math inline">\(g = 9.80056\)</span> m/s<span class="math inline">\(^2\)</span>. Do your calculations agree with this value to within your calculated uncertainties? &gt; Response:</li>
+</ol></li>
+</ol>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pendulum Parameters</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span>           <span class="co"># period of the pendulum</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>un_T <span class="op">=</span>        <span class="co"># uncertainty of the period of the pendulum</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span>           <span class="co"># length of the pendulum</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>un_L <span class="op">=</span>        <span class="co"># uncertainty of the length of the pendulum</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute volume of the room with uncertainty</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>          <span class="co"># Compute a value for g</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>       <span class="co"># Compute the uncertainty in g.</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>     <span class="co"># Fractional uncertainty in g</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The acceleration due to gravity is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> m/s^2. That's a fractional uncertainty of </span><span class="sc">{2:6.2f}</span><span class="st">%."</span>.<span class="bu">format</span>(g,un_g, <span class="dv">100</span> <span class="op">*</span> frac_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [,,,,] <span class="co"># Line 4</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>lengths <span class="op">=</span> [,,,,]  <span class="co"># Line 5</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>gvalues <span class="op">=</span> [,,,,]  <span class="co"># Line 6</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>un_length <span class="op">=</span> [,,,,]  <span class="co"># Line 7</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>un_period <span class="op">=</span> [,,,,]  <span class="co"># Line 8</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span> [,,,,]  <span class="co"># Line 9</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> DataFrame(np.transpose([periods,un_period,lengths,un_length,gvalues,un_g]),columns <span class="op">=</span> [<span class="st">"T (s)"</span>,<span class="st">"δT (s)"</span>,<span class="st">"L (m)"</span>,<span class="st">"δL (m) "</span>,<span class="st">"g (m/s^2)"</span>,<span class="st">"δg (m/s^2)"</span>],index <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>display(df)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()            </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ax1.errorbar(lengths,periods,yerr <span class="op">=</span> un_period,xerr <span class="op">=</span> un_length,fmt <span class="op">=</span> <span class="st">'go'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="dv">1</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"L (meters)"</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"T (seconds)"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Period vs Length for five pendulums"</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>ax2.errorbar(lengths,gvalues,yerr <span class="op">=</span> un_g,fmt <span class="op">=</span> <span class="st">'ro'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>ax2.set_aspect(<span class="dv">1</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"L (meters)"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"g (m/s^2)"</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"g vs Length for five pendulums"</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="activity-ii-50-points" class="level2">
+<h2 class="anchored" data-anchor-id="activity-ii-50-points">Activity II (50 points)</h2>
+<section id="equipment-needed-1" class="level3">
+<h3 class="anchored" data-anchor-id="equipment-needed-1">Equipment needed</h3>
+<ol type="1">
+<li>Meter Stick</li>
+<li>Stopwatch (the one on your phone will do fine.)</li>
+<li>Tennis ball.</li>
+</ol>
+</section>
+<section id="goal-1" class="level3">
+<h3 class="anchored" data-anchor-id="goal-1">Goal</h3>
+<p>By measuring the fall time for an object in free fall, calculate the acceleration due to gravity here in Rexburg.</p>
+</section>
+<section id="procedure-1" class="level3">
+<h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
+<ol type="1">
+<li>Find a location in the building that will allow the greatest drop distance for the tennis ball. (the front foyer is a good choice.) Measure the distance from the release point to the ground with its associated uncertainty. Record your values in the code cell provided below.</li>
+<li>Using a stopwatch, measure the fall time with its associated uncertainty. Record the values in the code cell provided below.</li>
+<li>Using the equation below, calculate the acceleration due to gravity. <span class="math display">\[ g = {2 h \over t^2}\]</span></li>
+<li>Using the methods discussed above determine the equation for calculating the uncertainty in <span class="math inline">\(g\)</span>. Insert it into the math equation below <span class="math display">\[ \delta g = \]</span></li>
+<li>Using the equation from step 4, calculate the uncertainty in <span class="math inline">\(g\)</span> in the code cell below.</li>
+<li>Repeat steps 1 - 5 <strong>ten</strong> more times to obtain ten values of <span class="math inline">\(g\)</span> and <span class="math inline">\(\delta g\)</span>.</li>
+<li>Put all of your data in the code cell provided below (the second code cell) and execute the cell to reveal a summary table and plots that summarize your results.<br>
+</li>
+<li>Using your results, answer the following questions:
+<ol type="1">
+<li>Are your ten g values consistent with one another to within their stated uncertainties. Explain.</li>
+<li>What function do you think describes the relationship between the fall distance and the fall time. (We will study curve-fitting in a later lab.)</li>
+<li>Which of your g values agree with the accepted value of g for Rexburg given in the first exercise.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Response:</p>
+</blockquote></li>
+<li>Take a minute to inspect all of the code that I have given to you today. Ask questions about code that you don’t understand. As some point, you’ll have to recreate code like this on your own.</li>
+</ol>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span>            <span class="co"># Time in air in sec</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>un_t <span class="op">=</span>         <span class="co"># Uncertainty of time measurement in sec</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>            <span class="co"># Height in meters</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>un_h <span class="op">=</span>         <span class="co"># Uncertainty of height in meters</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>            <span class="co"># Calculate g using equation above</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>         <span class="co"># Calculate uncertainty in g</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>       <span class="co"># Fractional uncertainty in g</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"g : </span><span class="sc">{0:4.2f}</span><span class="st"> +/- </span><span class="sc">{1:4.2f}</span><span class="st"> m/s^2.  That's a fractional uncertainty of </span><span class="sc">{2:6.2f}</span><span class="st">%."</span>.<span class="bu">format</span>(g,un_g,frac_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>trial <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>fallDistances <span class="op">=</span> [,,,,,,,,,]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>un_distance <span class="op">=</span> [,,,,,,,,,]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>fallTimes <span class="op">=</span> [,,,,,,,,,]</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>un_time <span class="op">=</span> [,,,,,,,,,]</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> [,,,,,,,,,]  </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span> [,,,,,,,,,]  </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> DataFrame(np.transpose([fallDistances,un_distance,fallTimes,un_times,gvalues,un_g]),columns <span class="op">=</span> [<span class="st">"Fall Distance (m)"</span>,<span class="st">"δd (m)"</span>,<span class="st">"Fall Times (s)"</span>,<span class="st">"δt (s) "</span>,<span class="st">"g (m/s^2)"</span>,<span class="st">"δg (m/s^2)"</span>],index <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>)))</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>display(df)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()            </span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>ax1.errorbar(trial,g,yerr <span class="op">=</span> un_g,fmt <span class="op">=</span> <span class="st">'go'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="dv">1</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"trial"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"g (m/s^2)"</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Acceleration due to gravity for 10 experiments"</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>ax2.errorbar(fallTimes,fallDistances,yerr <span class="op">=</span> un_distance,xerr<span class="op">=</span>un_time,fmt <span class="op">=</span> <span class="st">'ro'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>ax2.set_aspect(<span class="dv">1</span>)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Fall Times (sec)"</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Fall Distance (m)"</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Fall Distance vs. Fall Time."</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> array</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, stdev</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>        <span class="co"># Height in meters</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>t_10 <span class="op">=</span> array([ , , , , , , , , , ],<span class="bu">float</span>)    <span class="co"># Enter your ten time measurements</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>       <span class="co"># Calculate g for all time measurements</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>g_avg <span class="op">=</span> mean(g)     <span class="co"># calculate mean</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>g_stdev <span class="op">=</span> stdev(g)  <span class="co"># calculate standard deviation</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The average value for g is: </span><span class="sc">{0:4.1f}</span><span class="st">  m/s^2"</span>.<span class="bu">format</span>(g_avg))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The standard deviation for the g values is: </span><span class="sc">{0:4.2f}</span><span class="st">  m/s^2"</span>.<span class="bu">format</span>(g_stdev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Given a choice, would you prefer to report your value of g and its uncertainty from part (a), or your value just calculated? Give a reason for your answer.</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Response:</strong></p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 1</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

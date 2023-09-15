@@ -88,6 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" rel="next">
 <link href="../../index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -174,6 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link active">Lab 1</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" class="sidebar-item-text sidebar-link">Lab 2: Propagation of Uncertainty I</a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -256,11 +262,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
 <section id="an-historical-example" class="level3">
 <h3 class="anchored" data-anchor-id="an-historical-example">An Historical Example</h3>
-<p>In 1826, J.K.F Sturm and J.D. Collandon designed an experiment to calculate the speed of sound in seawater. The two men sat in boats separated by 16 kilometers. A bell was suspended in the lake from Sturm’s boat which could be struck by a hammer that was operated by Sturm at the surface. At the exact moment that the hammer struck the bell it also ignited some gun powder which produced an above-water flash. An underwater ear-trumped was suspended from Collandon’s boat to receive the sound wave emitted by the bell. By measuring the time difference between the flash and the bell’s tone, the scientists were able to calculate the speed of sound to be <span class="math inline">\(1435\)</span> m/s, which was remarkably close to the modern value of <span class="math inline">\(1438\)</span> m/s.</p>
+<p>In 1826, J.K.F Sturm and J.D. Collandon designed an experiment to calculate the speed of sound in seawater. The two men sat in boats separated by 16 kilometers. A bell was suspended in the lake from Sturm’s boat which could be struck by a hammer that was operated by Sturm at the surface. At the exact moment that the hammer struck the bell it also ignited some gun powder which produced an above-water flash. An underwater ear-trumpet was suspended from Collandon’s boat to receive the sound wave emitted by the bell. By measuring the time difference between the flash and the bell’s tone, the scientists were able to calculate the speed of sound to be <span class="math inline">\(1435\)</span> m/s, which was remarkably close to the modern value of <span class="math inline">\(1438\)</span> m/s.</p>
 <div style="text-align: center;">
 <p><img src="https://lancejnelson.github.io/PH150/figures/speedOfSoundExperiment.png" alt="drawing" width="650"></p>
 </div>
-<p>If this experiment had been repeated many times the results would have been slightly different every time. This is because experiments always involve measurements, and measurements always have some variability (or uncertainty) associated with them. For example, to measure the difference in time between the bell and the flash involves the use of a watch and a human to operate that watch. A simple analog watch may be able to measure to the nearest second or maybe half second but no smaller. Typical reaction times for humans varies between <span class="math inline">\(0.17\)</span> s (audio stimulus) and <span class="math inline">\(0.25\)</span> s (visual stimulus). Another important measurement that would sure have some variation is the distance between the boats (reported to be <span class="math inline">\(16\)</span> km).Variations in the water temperature and pressure could also change the true value of the speed of sound and therefore make the time measurements differ. Although there is only one true value for the speed of sound in fresh water (at a given temperature and pressure) multiple measurements of this quantity will never be identical. This is represented in the figure below, which is an example of what multiple measurements of the speed of sound may have looked like for Sturm and Collandon. Each vertical bar gives the number of times that the measured speed of sound occurred at that value.</p>
+<p>If this experiment had been repeated many times the results would have been slightly different every time. This is because experiments always involve measurements, and measurements always have some variability (or uncertainty) associated with them. For example, to measure the difference in time between the bell and the flash involves the use of a watch and a human to operate that watch. A simple analog watch may be able to measure to the nearest second or maybe half second but no smaller. Typical reaction times for humans varies between <span class="math inline">\(0.17\)</span> s (audio stimulus) and <span class="math inline">\(0.25\)</span> s (visual stimulus). Another important measurement that would surely have some variation is the distance between the boats (reported to be <span class="math inline">\(16\)</span> km). Variations in the water temperature and pressure could also change the true value of the speed of sound and therefore make the time measurements differ. Although there is only one true value for the speed of sound in fresh water (at a given temperature and pressure) multiple measurements of this quantity will never be identical. This is represented in the figure below, which is an example of what multiple measurements of the speed of sound may have looked like for Sturm and Collandon. Each vertical bar gives the number of times that the measured speed of sound occurred at that value.</p>
 <div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <p><img src="L1-Intro_to_Error_Analysis_files/figure-html/cell-2-output-1.png" width="585" height="429"></p>
@@ -857,6 +863,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" class="pagination-link">
+        <span class="nav-page-text">Lab 2: Propagation of Uncertainty I</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
