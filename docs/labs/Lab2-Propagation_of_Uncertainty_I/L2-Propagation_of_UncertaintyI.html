@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.27">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -171,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">Lab 1</a>
+  <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab 1 Measurement and Uncertainty{-}</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -186,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
@@ -232,14 +237,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L2-Propgation_of_UncertaintyI.ipynb">Jupyter Notebook</a></p>
 <p>Name:</p>
 <section id="skills" class="level2">
 <h2 class="anchored" data-anchor-id="skills">Skills</h2>
 <ol type="1">
 <li>Propagate uncertainty for moderately complex equations.</li>
 <li>Use Python to perform simple calculations, construct summary tables (pandas dataframes), and display plots including error bars.</li>
-<li>Learn the difference between independent and dependent uncertainties and be able to propagate uncertainty for both cases.</li>
-<li>Use graphs to uncover relationships between data.</li>
+<li>Understand what a derivative is and how to use it to calculate uncertainties.</li>
 </ol>
 </section>
 <section id="background-information" class="level2">
@@ -252,17 +257,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[m = {\Delta y \over \Delta x}\]</span></p>
 <p>where <span class="math inline">\(\Delta y = y_2 -y_1\)</span> and <span class="math inline">\(\Delta x = x_2 -x_2\)</span>.</p>
 <p>For example consider the function:</p>
-<p><span class="math display">\[y(t) = 5 t + 2\]</span></p>
-<p>which is plotted below.</p>
+<p><span class="math display">\[y(t) = 5 t + 2\]</span> which is plotted below.</p>
 <div class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-2-output-1.png" width="585" height="429"></p>
 </div>
 </div>
 <p>Careful inspection of this graph reveals that indeed the function value (<span class="math inline">\(y\)</span>) does increase by <span class="math inline">\(5\)</span> meters for every <span class="math inline">\(1\)</span> second that elapses. The slope of this function is 5 no matter which two points we choose to use when calculating <span class="math inline">\(\Delta y\)</span> and <span class="math inline">\(\Delta t\)</span>.</p>
-<p><span class="math display">\[{dy \over dt} = {(5 ~\text{m}) - (0 ~\text{m})\over (1 ~\text{s}) - (0 ~\text{s})} ={5 ~\text{m}\over 1 ~\text{s}} = 5 ~\text{meters}/ \text{second} (\text{ using (0,0) and (1,5)})\]</span></p>
-<p><span class="math display">\[{dy \over dt} = {(2.5 ~\text{m}) - (0 ~\text{m})\over (0.5 ~\text{s}) - (0 ~\text{s})} ={2.5 ~\text{m}\over 0.5 ~\text{s}} = 5 ~\text{meters}/ \text{second}(\text{ using (0,0) and (0.5,2.5)})\]</span></p>
-<p><span class="math display">\[{dy \over dt} = {(1 ~\text{m}) - (0 ~\text{m})\over (0.2 ~\text{s}) - (0 ~\text{s})} = {1 ~\text{m}\over 0.2 ~\text{s}} = 5 ~\text{meters}/ \text{second}(\text{ using (0,0) and (0.2,1)})\]</span></p>
+<p><span class="math display">\[{dy \over dt} = {(5 ~\text{m}) - (0 ~\text{m})\over (1 ~\text{s}) - (0 ~\text{s})} ={5 ~\text{m}\over 1 ~\text{s}} = 5 ~\text{meters}/ \text{second} (\text{ using (0,0) and (1,5)})\]</span> <span class="math display">\[{dy \over dt} = {(2.5 ~\text{m}) - (0 ~\text{m})\over (0.5 ~\text{s}) - (0 ~\text{s})} ={2.5 ~\text{m}\over 0.5 ~\text{s}} = 5 ~\text{meters}/ \text{second}(\text{ using (0,0) and (0.5,2.5)})\]</span> <span class="math display">\[{dy \over dt} = {(1 ~\text{m}) - (0 ~\text{m})\over (0.2 ~\text{s}) - (0 ~\text{s})} = {1 ~\text{m}\over 0.2 ~\text{s}} = 5 ~\text{meters}/ \text{second}(\text{ using (0,0) and (0.2,1)})\]</span></p>
 <p>This is great, but not all curves are straight lines. In fact, most of the functions that matter will not be straight lines. So let’s look at an example of a curve that isn’t straight.</p>
 <div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
@@ -292,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-6-output-1.png" width="546" height="361"></p>
 </div>
 </div>
-<p>To find the function that gives the slope of another function we can follow a set of mathematical rules. One of the most common rules is the chain rule which applies to polynomial functions. Specifically, if <span class="math inline">\(f(x) = a + bx + cx^2 + dx^2 + \dots = \sum_n a_n x^n\)</span>, then</p>
+<p>To find the function that gives the slope of another function we can follow a set of mathematical rules. One of the most common rules is the power rule which applies to polynomial functions. Specifically, if <span class="math inline">\(f(x) = a + bx + cx^2 + dx^2 + \dots = \sum_n a_n x^n\)</span>, then</p>
 <p><span class="math display">\[ y(x) = f'(x) = a_n (n - 1) x^{n-1}\]</span></p>
 <p>The derivative of other common functions is given in the table below. Your calculus class will teach you how to find the derivative of more complicated functions than those found in the table.</p>
 <table class="table">
@@ -349,10 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="an-example" class="level3">
 <h3 class="anchored" data-anchor-id="an-example">An Example</h3>
 <p>Imagine measuring the dimensions and mass of a block with their associated uncertainties:</p>
-<p><span class="math display">\[l = 5.2 \pm 0.1 ~\text{cm}\]</span></p>
-<p><span class="math display">\[w = 8.4 \pm 0.3 ~\text{cm}\]</span></p>
-<p><span class="math display">\[h = 10.8 \pm 0.4 ~\text{cm}\]</span></p>
-<p><span class="math display">\[m = 345 \pm 5 ~\text{grams}\]</span></p>
+<p><span class="math display">\[l = 5.2 \pm 0.1 ~\text{cm}\]</span> <span class="math display">\[w = 8.4 \pm 0.3 ~\text{cm}\]</span> <span class="math display">\[h = 10.8 \pm 0.4 ~\text{cm}\]</span> <span class="math display">\[m = 345 \pm 5 ~\text{grams}\]</span></p>
 <p>and proceeding to calculate the density of the block</p>
 <p><span class="math display">\[\rho = {m \over V} = {m \over l \times w \times h}\]</span></p>
 <div class="cell" data-execution_count="6">
@@ -430,6 +429,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The accepted value of <span class="math inline">\(g\)</span> for Rexburg is <span class="math inline">\(g = 9.80056\)</span> m/s<span class="math inline">\(^2\)</span>. Do your calculations agree with this value to within your calculated uncertainties? &gt; Response:</li>
 </ol></li>
 </ol>
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pendulum Parameters</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span>           <span class="co"># period of the pendulum</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>un_T <span class="op">=</span>        <span class="co"># uncertainty of the period of the pendulum</span></span>
@@ -442,6 +442,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>     <span class="co"># Fractional uncertainty in g</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The acceleration due to gravity is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> m/s^2. That's a fractional uncertainty of </span><span class="sc">{2:6.2f}</span><span class="st">%."</span>.<span class="bu">format</span>(g,un_g, <span class="dv">100</span> <span class="op">*</span> frac_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -474,6 +476,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="activity-ii-50-points" class="level2">
@@ -512,6 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote></li>
 <li>Take a minute to inspect all of the code that I have given to you today. Ask questions about code that you don’t understand. As some point, you’ll have to recreate code like this on your own.</li>
 </ol>
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span>            <span class="co"># Time in air in sec</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>un_t <span class="op">=</span>         <span class="co"># Uncertainty of time measurement in sec</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>            <span class="co"># Height in meters</span></span>
@@ -521,6 +525,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>       <span class="co"># Fractional uncertainty in g</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"g : </span><span class="sc">{0:4.2f}</span><span class="st"> +/- </span><span class="sc">{1:4.2f}</span><span class="st"> m/s^2.  That's a fractional uncertainty of </span><span class="sc">{2:6.2f}</span><span class="st">%."</span>.<span class="bu">format</span>(g,un_g,frac_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
@@ -559,6 +565,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> array</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, stdev</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>        <span class="co"># Height in meters</span></span>
@@ -568,6 +576,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>g_stdev <span class="op">=</span> stdev(g)  <span class="co"># calculate standard deviation</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The average value for g is: </span><span class="sc">{0:4.1f}</span><span class="st">  m/s^2"</span>.<span class="bu">format</span>(g_avg))</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The standard deviation for the g values is: </span><span class="sc">{0:4.2f}</span><span class="st">  m/s^2"</span>.<span class="bu">format</span>(g_stdev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ol start="4" type="1">
 <li>Given a choice, would you prefer to report your value of g and its uncertainty from part (a), or your value just calculated? Give a reason for your answer.</li>
 </ol>
@@ -650,6 +659,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           toggle.classList.remove("alternate");
         }
       }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
     }
   }
   const isFileUrl = () => { 
@@ -752,7 +771,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
@@ -783,7 +803,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 1</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab 1 Measurement and Uncertainty{-}</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

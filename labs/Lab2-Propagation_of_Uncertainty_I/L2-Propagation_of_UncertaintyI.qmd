@@ -4,6 +4,7 @@ jupyter: python3
 
 # Lab 2: Propagation of Uncertainty I {-}
 
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L2-Propgation_of_UncertaintyI.ipynb)
 
 
 Name: 
@@ -12,8 +13,7 @@ Name:
 ## Skills
 1. Propagate uncertainty for moderately complex equations.
 2. Use Python to perform simple calculations, construct summary tables (pandas dataframes), and display plots including error bars.
-3. Learn the difference between independent and dependent uncertainties and be able to propagate uncertainty for both cases.
-4. Use graphs to uncover relationships between data.
+3. Understand what a derivative is and how to use it to calculate uncertainties.
 
 ## Background Information
 ### The Slope of a Function
@@ -320,7 +320,7 @@ slopeTwoPoints(0.6,0.60005,axs[0])
 lines(0.6,axs[1])
 plt.show()
 ```
-To find the function that gives the slope of another function we can follow a set of mathematical rules. One of the most common rules is the chain rule which applies to polynomial functions.  Specifically, if $f(x) = a + bx + cx^2 + dx^2 + \dots = \sum_n a_n x^n$, then 
+To find the function that gives the slope of another function we can follow a set of mathematical rules. One of the most common rules is the power rule which applies to polynomial functions.  Specifically, if $f(x) = a + bx + cx^2 + dx^2 + \dots = \sum_n a_n x^n$, then 
 
 $$ y(x) = f'(x) = a_n (n - 1) x^{n-1}$$ 
 
