@@ -4,7 +4,7 @@ jupyter: python3
 
 # Lab 2: Propagation of Uncertainty I {-}
 
-[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L2-Propgation_of_UncertaintyI.ipynb)
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L2-Propagation_of_UncertaintyI.ipynb)
 
 
 Name: 
