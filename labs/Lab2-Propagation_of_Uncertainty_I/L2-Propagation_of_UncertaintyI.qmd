@@ -64,80 +64,9 @@ plt.show()
 The slope of a function ($m$) is the rate at which the function changes with its variables.  The slope is straightforward to calculate for linear functions: Just pick two points, calculate $\Delta y = y_2 -y_1$ and $\Delta t = t_2 - t_1$, and divide them. 
 $$m = {\Delta y \over \Delta t}$$
 
-For non-linear functions, the slope isn't constant but varies continuously across the function's domain. The slope isn't a single number anymore but rather another **function**.(The slope for linear functions is also a function, but since it's a constant we sometimes forget this.)  This sloping function can be evaluated at any point to determine the slope of the original function.  For example, the slope of the function
-
-$$y(t) = 4t - 4.9 t^2$$
-
-is given by the sloping function
-
-$$y'(t) = {dy(t) \over dt} = -9.8 t + 4$$
-
-These functions are plotted below to illustrate their relationship.
-
-```{python}
-#| eval: true
-#| echo: false
-#| output: true
+Generally, the slope of a function isn't constant but varies across the domain.  The figure below illustrates how the tangent line to a non-linear function varies across the domain.  
 
 
-
-from matplotlib import pyplot as plt
-from numpy import arange
-
-
-def f(t):
-    return 4 * t - 4.9 * t**2
-
-def slopeTwoPoints(ta,tb,axes):
-    
-    m = (f(tb) - f(ta)) / (tb - ta) 
-
-#    y2 = arange(-9.8 * ta + 4,0.01)
-#    t2 = [ta for x in y2]
-#    axes.plot(t2,y2,'b--')
-
-    tRange = arange(0,0.9,0.01)
-    y = m * tRange + f(ta) - ta * m
-    axes.plot(tRange,y,'g-.')
-    axes.set_ylim(0,1.5)
-    font = {'family':'serif','color':'darkred','weight':'normal','size':16}
-    axes.text(0.85, 1,f"slope = {m:5.2f}",fontdict = font)
-    axes.set_xlabel("t")
-    axes.set_ylabel("y(t)")
-
-def lines(t,axes):
-
-    t1 = arange(0,t,0.01)
-    y1 = [-9.8 * t + 4 for x in t1]
-    axes.plot(t1,y1,'b--')
-
-    y2 = arange(-6,-9.8 * t + 4,0.01)
-    t2 = [t for x in y2]
-    axes.plot(t2,y2,'b--')
-    font = {'family':'serif','color':'darkred','weight':'normal','size':16}
-    axes.text(0.6, 0.7,f"value = {-9.8 * t + 4:5.2f}",fontdict = font)
-    axes.set_xlabel("t")
-    axes.set_ylabel("y'(t)")
-
-t = arange(0,1,0.01)
-y = f(t)
-y2 = 4 - 9.8 * t
-
-
-fig,axs = plt.subplots(2,1,figsize = (6,4))
-
-axs[0].plot(t,y,lw = 3)
-axs[1].plot(t,y2,lw = 3)
-
-
-slopeTwoPoints(0.6,0.60005,axs[0])
-lines(0.6,axs[1])
-plt.show()
-```
-
-The notation ${dy(t) \over dt}$ is used to indicate the sloping function corresponding to $y(t)$.  ($y'(t)$ is another way to indicate this function.)
-
-<!---
 ```{python}
 #| eval: true
 #| echo: false
@@ -150,54 +79,58 @@ from numpy import arange
 def f(yi,vi,a,t):
     return yi + vi *t + 1/2 * a * t**2
 
-def slopeTwoPoints(yi,vi,a,ta,tb):
+def slopeTwoPoints(yi,vi,a,ta,tb,axes):
     
     m = (f(yi,vi,a,tb) - f(yi,vi,a,ta)) / (tb - ta) 
     t1 = arange(0,tb,0.01)
     y1 = [yi + vi * tb + 1/2 *a * tb**2 for t in t1]
-    plt.plot(t1,y1,'b--')
+    axes.plot(t1,y1,'b--')
 
     y2 = arange(0,yi + vi * tb + 1/2 *a * tb**2,0.01)
     t2 = [tb for t in y2]
-    plt.plot(t2,y2,'b--')
+    axes.plot(t2,y2,'b--')
 
     t3 = arange(0,ta,0.01)
     y3 = [yi + vi * ta + 1/2 *a * ta**2 for t in t3]
-    plt.plot(t3,y3,'r--')
+    axes.plot(t3,y3,'r--')
 
     y4 = arange(0,yi + vi * ta + 1/2 *a * ta**2,0.01)
     t4 = [ta for t in y4]
-    plt.plot(t4,y4,'r--')
-    tRange = arange(0,0.5,0.01)
+    axes.plot(t4,y4,'r--')
+    tRange = arange(0,0.8,0.01)
     y = m * tRange + f(yi,vi,a,ta) - ta * m
-    plt.plot(tRange,y,'g-.')
-    plt.ylim(0,1.1)
-
+    axes.plot(tRange,y,'g-.')
+    axes.set_ylim(0,1.1)
     font = {'family':'serif','color':'darkred','weight':'normal','size':16}
-    plt.text(0.55, 1.0,f"slope = {m:5.2f}",fontdict = font)
-    
+    axes.text(0.45, 0.85,f"slope = {m:5.2f}",fontdict = font)
+    axes.set_xlabel("t (sec)")
+    axes.set_ylabel("y (meters)")
+
 a = -9.8
 vi = 4
 yi = 0
 t = arange(0,0.83,0.01)
 y = f(yi,vi,a,t)
 
-plt.plot(t,y,lw = 3)
 
-tb = 0.28
-ta = 0.15
+fig,axs = plt.subplots(2,2,figsize = (10,5))
 
-#m = 
-#slopeTwoPoints(yi,vi,a,ta,tb)
-#slopeTwoPoints(yi,vi,a,0.1,0.4)
-plt.xlabel("t (sec)")
-plt.ylabel("y (meters)")
+axs[0,0].plot(t,y,lw = 3)
+axs[0,1].plot(t,y,lw = 3)
+axs[1,0].plot(t,y,lw = 3)
+axs[1,1].plot(t,y,lw = 3)
+
+
+slopeTwoPoints(yi,vi,a,0.2,0.22,axs[0,0])
+slopeTwoPoints(yi,vi,a,0.3,0.31,axs[0,1])
+slopeTwoPoints(yi,vi,a,0.45,0.47,axs[1,0])
+slopeTwoPoints(yi,vi,a,0.6,0.62,axs[1,1])
+
 plt.show()
-
 ```
-If asked to calculate the slope of this curve, you might get stuck since the slope varies continuously (i.e the slope is different at every point). Let's imagine that we'd like to know the slope of this function at $t = 0.2$ s.  We can make a first attempt at this by finding the slope of the line that passes through the points at $t= 0.2$ and $t = 0.45$ (top left plot).  Improvements to this can be made by slowly bringing these two points closer together. Eventually, the two points become so close together that the resulting line is tangent to the function at $t= 0.2$.  The slope of this function at $t = 0.2$ is equal to the tangent line at that point.  
 
 
+For those that are interested, the slope of the tangent line of a function can be found by calculating the slope of a function in the limit that the change in $x$ ($\Delta x$) becomes infinitely small.
 
 ```{python}
 #| eval: true
@@ -268,71 +201,81 @@ slopeTwoPoints(yi,vi,a,0.2,0.22,axs[2,1])
 plt.show()
 ```
 
-Let's visualize the tangent line for several different points on this function.
+
+
+To reiterate: The slope isn't a single number but rather another **function**. (The slope for linear functions is also a function, but since it's a constant we sometimes forget this.)  This sloping function can be evaluated at any point to determine the slope of the original function.  For example, the slope of the function
+
+$$y(t) = 4t - 4.9 t^2$$
+
+is given by the sloping function
+
+$$y'(t) = {dy(t) \over dt} = -9.8 t + 4$$
+
+These functions are plotted below to illustrate their relationship.
 
 ```{python}
 #| eval: true
 #| echo: false
 #| output: true
 
+
+
 from matplotlib import pyplot as plt
 from numpy import arange
 
 
-def f(yi,vi,a,t):
-    return yi + vi *t + 1/2 * a * t**2
+def f(t):
+    return 4 * t - 4.9 * t**2
 
-def slopeTwoPoints(yi,vi,a,ta,tb,axes):
+def slopeTwoPoints(ta,tb,axes):
     
-    m = (f(yi,vi,a,tb) - f(yi,vi,a,ta)) / (tb - ta) 
-    t1 = arange(0,tb,0.01)
-    y1 = [yi + vi * tb + 1/2 *a * tb**2 for t in t1]
+    m = (f(tb) - f(ta)) / (tb - ta) 
+
+#    y2 = arange(-9.8 * ta + 4,0.01)
+#    t2 = [ta for x in y2]
+#    axes.plot(t2,y2,'b--')
+
+    tRange = arange(0,0.9,0.01)
+    y = m * tRange + f(ta) - ta * m
+    axes.plot(tRange,y,'g-.')
+    axes.set_ylim(0,1.5)
+    font = {'family':'serif','color':'darkred','weight':'normal','size':16}
+    axes.text(0.6, 1,f"slope = {m:5.2f}",fontdict = font)
+    axes.set_xlabel("t")
+    axes.set_ylabel("y(t)")
+
+def lines(t,axes):
+
+    t1 = arange(0,t,0.01)
+    y1 = [-9.8 * t + 4 for x in t1]
     axes.plot(t1,y1,'b--')
 
-    y2 = arange(0,yi + vi * tb + 1/2 *a * tb**2,0.01)
-    t2 = [tb for t in y2]
+    y2 = arange(-6,-9.8 * t + 4,0.01)
+    t2 = [t for x in y2]
     axes.plot(t2,y2,'b--')
-
-    t3 = arange(0,ta,0.01)
-    y3 = [yi + vi * ta + 1/2 *a * ta**2 for t in t3]
-    axes.plot(t3,y3,'r--')
-
-    y4 = arange(0,yi + vi * ta + 1/2 *a * ta**2,0.01)
-    t4 = [ta for t in y4]
-    axes.plot(t4,y4,'r--')
-    tRange = arange(0,0.8,0.01)
-    y = m * tRange + f(yi,vi,a,ta) - ta * m
-    axes.plot(tRange,y,'g-.')
-    axes.set_ylim(0,1.1)
     font = {'family':'serif','color':'darkred','weight':'normal','size':16}
-    axes.text(0.45, 0.85,f"slope = {m:5.2f}",fontdict = font)
-    axes.set_xlabel("t (sec)")
-    axes.set_ylabel("y (meters)")
+    axes.text(0.6, 0.7,f"value = {-9.8 * t + 4:5.2f}",fontdict = font)
+    axes.set_xlabel("t")
+    axes.set_ylabel("y'(t)")
 
-a = -9.8
-vi = 4
-yi = 0
-t = arange(0,0.83,0.01)
-y = f(yi,vi,a,t)
+t = arange(0,1,0.01)
+y = f(t)
+y2 = 4 - 9.8 * t
 
 
-fig,axs = plt.subplots(2,2,figsize = (10,5))
+fig,axs = plt.subplots(2,1,figsize = (6,4))
 
-axs[0,0].plot(t,y,lw = 3)
-axs[0,1].plot(t,y,lw = 3)
-axs[1,0].plot(t,y,lw = 3)
-axs[1,1].plot(t,y,lw = 3)
+axs[0].plot(t,y,lw = 3)
+axs[1].plot(t,y2,lw = 3)
 
 
-slopeTwoPoints(yi,vi,a,0.2,0.22,axs[0,0])
-slopeTwoPoints(yi,vi,a,0.3,0.31,axs[0,1])
-slopeTwoPoints(yi,vi,a,0.45,0.47,axs[1,0])
-slopeTwoPoints(yi,vi,a,0.6,0.62,axs[1,1])
-
+slopeTwoPoints(0.6,0.60005,axs[0])
+lines(0.6,axs[1])
 plt.show()
 ```
 
---->
+The notation ${dy(t) \over dt}$ is used to indicate the sloping function corresponding to $y(t)$.  ($y'(t)$ is another common way to indicate this function.)
+
 
 ### The derivative
 The sloping function can be found by applying a set of mathematical rules to the function of interest.  Most of the first half of calculus are devoted to the learning and mastery of these rules.  One of the more common rules is the power rule which applies to polynomial functions.  Specifically, if $f(x) = a + bx + cx^2 + dx^2 + \dots = \sum_n a_n x^n$, then 
@@ -393,10 +336,21 @@ $$ = 8.5 \times 10^9 ~ \text{m}$$
 
 ### Partial Derivatives
 
-When the function of interest has more than one independent variable, derivatives are performed on each variable separately.  The product ${\partial f \over \partial x_i} \delta x_i$ is formed and inserted into the equation below 
+When the function of interest has more than one independent variable, derivatives are performed on each variable separately, with all other variables are treated as constants.  Derivatives of functions of many variables are called partial derivatives.
+
+For example, consider the function:
+
+$$y(x,y) = 5 x y^2 + 8 x^2 y$$
+
+The partial derivatives of this function are
+
+$${\partial d \over \partial x} = 5 y^2 + 16 x^2 y$$
+$${\partial d \over \partial y} = 10 xy + 8 x^2$$
+
+The uncertainty in the calculated values is calculated by first forming the product ${\partial f \over \partial x_i} \delta x_i$ for each independent variables and inserted into the equation below 
 $$(\delta f)^2 = ({\partial f\over \partial x} \delta x)^2 + ({\partial f\over \partial y}\delta y)^2  + \dots$$
 
-This is the most important formula for uncertainty propagation and the one we will use going forward.
+**This is the most important formula for uncertainty propagation and the one we will use going forward.**
 
 ### An Example
 
