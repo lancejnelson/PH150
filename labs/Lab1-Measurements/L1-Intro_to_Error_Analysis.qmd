@@ -2,7 +2,7 @@
 jupyter: python3
 ---
 
-# Lab 1 Measurement and Uncertainty{-}
+# Lab 1 Measurement and Uncertainty {-}
 
 # Introduction to Error Analysis/ Propagation of Uncertainty Part I
 
