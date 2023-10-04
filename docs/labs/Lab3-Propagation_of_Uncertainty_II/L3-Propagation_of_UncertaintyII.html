@@ -88,6 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" rel="next">
 <link href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -184,7 +185,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="sidebar-item-text sidebar-link active">Lab 3: Propagation of Uncertainty Part II</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab 4 Statistical Interpretation of Uncertainty</a>
+  </div>
+</li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Experimental Design</span>
   </li>
     </ul>
     </div>
@@ -295,9 +304,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In the cell below, record the best value of “g” from the previous lab with its associated uncertainty.</li>
 <li>You may remember the following kinematic equation: <span class="math display">\[ v_f^2 = v_i^2 - 2 g h\]</span>. Do the algebra needed to solve this equation for <span class="math inline">\(v_i\)</span>. Complete the equation below <span class="math display">\[ v_i = \]</span></li>
 <li>On line 9 of the code cell below, enter the expression you found in step 4 for the initial velocity. To calculate a square root, use <code>sp.sqrt()</code></li>
-<li>To calculate the uncertainty in the initial velocity, you need to take two derivatives of the function that you found in step 4; <span class="math inline">\({\partial v_i \over \partial g}\)</span> and <span class="math inline">\({\partial v_i \over \partial h}\)</span>. Complete the mathematical statements below with the expressions for these derivatives. <span class="math display">\[{\partial v_i \over \partial g} = \]</span> <span class="math display">\[{\partial v_i \over \partial d} = \]</span></li>
+<li>To calculate the uncertainty in the initial velocity, you need to take two derivatives of the function that you found in step 4; <span class="math inline">\({\partial v_i \over \partial g}\)</span> and <span class="math inline">\({\partial v_i \over \partial h}\)</span>. Complete the mathematical statements below with the expressions for these derivatives. <span class="math display">\[{\partial v_i \over \partial g} = \]</span> <span class="math display">\[{\partial v_i \over \partial h} = \]</span></li>
 <li>Now execute the cell below and compare python’s derivatives to your hand-written ones.</li>
-<li>The expression for uncertainty propagation for <span class="math inline">\(v_i\)</span> is <span class="math display">\[ \delta v_i =  \sqrt{({\partial v_i \over \partial g} \delta g)^2 + ({\partial v_i \over \partial d} \delta d)^2}\]</span> This calculation is performed on line 17 in the code cell below. Study the code and ask questions so you can recreate this in activity II.</li>
+<li>The expression for uncertainty propagation for <span class="math inline">\(v_i\)</span> is <span class="math display">\[ \delta v_i =  \sqrt{({\partial v_i \over \partial g} \delta g)^2 + ({\partial v_i \over \partial h} \delta h)^2}\]</span> This calculation is performed on line 17 in the code cell below. Study the code and ask questions so you can recreate this in activity II.</li>
 </ol>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch Parameters</span></span>
@@ -306,16 +315,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>gval <span class="op">=</span>           <span class="co"># acceleration due to gravity (refer to last week's results)</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>        <span class="co"># uncertainty in g (refer to last week's results)</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>g,dy <span class="op">=</span> sp.symbols(<span class="st">"g Δy"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>g,dh <span class="op">=</span> sp.symbols(<span class="st">"g Δh"</span>)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>vi <span class="op">=</span>                   <span class="co"># Line 9. </span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>dvdg <span class="op">=</span> sp.diff(vi,g)  <span class="co"># Take the derivative with respect to g  #Line 11</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>dvdy <span class="op">=</span> sp.diff(vi,dy) <span class="co"># Take the derivative with respect to d (distance to peak)  #Line 12</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>dvdh <span class="op">=</span> sp.diff(vi,dh) <span class="co"># Take the derivative with respect to h (distance to peak)  #Line 12</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>display(dvdg)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>display(dvdy)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>display(dvdh)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>initialV <span class="op">=</span> vi.subs({g:gval,dy:h})</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>Δvi <span class="op">=</span> sp.sqrt((dvdg.subs({g:gval,dy:h}) <span class="op">*</span> un_g)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (dvdy.subs({g:gval,dy:h}) <span class="op">*</span> un_h)<span class="op">**</span><span class="dv">2</span>) <span class="co"># Line 17</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>initialV <span class="op">=</span> vi.subs({g:gval,dh:h})</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>Δvi <span class="op">=</span> sp.sqrt((dvdg.subs({g:gval,dh:h}) <span class="op">*</span> un_g)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (dvdy.subs({g:gval,dh:h}) <span class="op">*</span> un_h)<span class="op">**</span><span class="dv">2</span>) <span class="co"># Line 17</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The initial velocity of the particle is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> m/s."</span>.<span class="bu">format</span>(initialV,Δvi))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -659,6 +668,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="pagination-link">
+        <span class="nav-page-text">Lab 4 Statistical Interpretation of Uncertainty</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

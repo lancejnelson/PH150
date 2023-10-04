@@ -185,7 +185,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="sidebar-item-text sidebar-link">Lab 3: Propagation of Uncertainty Part II</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab 4 Statistical Interpretation of Uncertainty</a>
+  </div>
+</li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Experimental Design</span>
   </li>
     </ul>
     </div>
@@ -256,14 +264,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Mathematical functions describe how one quantity depends on one or more other quantities. For example, the velocity function</p>
 <p><span class="math display">\[v(t) = 5 t + 2\]</span></p>
 <p>gives the relationship between velocity and time.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-2-output-1.png" width="585" height="429"></p>
 </div>
 </div>
 <p>and this function gives the relationship between position and time</p>
 <p><span class="math display">\[y(t) = 5t^2 -3t + 8\]</span></p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-3-output-1.png" width="593" height="429"></p>
 </div>
@@ -271,13 +279,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The slope of a function (<span class="math inline">\(m\)</span>) is the rate at which the function changes with its variables. The slope is straightforward to calculate for linear functions: Just pick two points, calculate <span class="math inline">\(\Delta y = y_2 -y_1\)</span> and <span class="math inline">\(\Delta t = t_2 - t_1\)</span>, and divide them.</p>
 <p><span class="math display">\[m = {\Delta y \over \Delta t}\]</span></p>
 <p>Generally, the slope of a function isn’t constant but varies across the domain. The figure below illustrates how the tangent line to a non-linear function varies across the domain.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-4-output-1.png" width="812" height="429"></p>
 </div>
 </div>
 <p>For those that are interested, the slope of the tangent line of a function can be found by calculating the slope of a function in the limit that the change in <span class="math inline">\(x\)</span> (<span class="math inline">\(\Delta x\)</span>) becomes infinitely small.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-5-output-1.png" width="812" height="429"></p>
 </div>
@@ -287,7 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>is given by the sloping function</p>
 <p><span class="math display">\[y'(t) = {dy(t) \over dt} = -9.8 t + 4\]</span></p>
 <p>These functions are plotted below to illustrate their relationship.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-6-output-1.png" width="526" height="361"></p>
 </div>
@@ -377,7 +385,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[m = 345 \pm 5 ~\text{grams}\]</span></p>
 <p>and proceeding to calculate the density of the block</p>
 <p><span class="math display">\[\rho = {m \over V} = {m \over l \times w \times h}\]</span></p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>=  0.73 g/cm^3</code></pre>
 </div>
@@ -392,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[ = \sqrt{(-{m \over l^2 w h} \delta l)^2 + (-{m \over l w^2 h} \delta w)^2 + (-{m \over l w h^2} \delta h)^2 + ({1 \over l w h} \delta m)^2}\]</span></p>
 <p><span class="math display">\[ = \sqrt{(-{(345 ~\text{grams}) \over (5.42 ~\text{cm})^2 (8.4 ~\text{cm}) (10.8 ~\text{cm})} (0.1 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm})^2 (10.8 ~\text{cm})} (0.3 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})^2} (0.4 ~\text{cm}))^2 + ({1 \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})} (5 ~\text{grams}))^2}\]</span></p>
 <p>In the code cell below we use python to calculate this uncertainty.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">345</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dm <span class="op">=</span> <span class="dv">5</span></span>

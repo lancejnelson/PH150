@@ -185,7 +185,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="sidebar-item-text sidebar-link">Lab 3: Propagation of Uncertainty Part II</a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab 4 Statistical Interpretation of Uncertainty</a>
+  </div>
+</li>
       </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Experimental Design</span>
   </li>
     </ul>
     </div>
@@ -205,9 +213,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#uncertainties-in-measurements" id="toc-uncertainties-in-measurements" class="nav-link" data-scroll-target="#uncertainties-in-measurements">Uncertainties in Measurements</a></li>
   <li><a href="#analog-measurements" id="toc-analog-measurements" class="nav-link" data-scroll-target="#analog-measurements">Analog Measurements</a></li>
   <li><a href="#digital-measurements" id="toc-digital-measurements" class="nav-link" data-scroll-target="#digital-measurements">Digital Measurements</a></li>
+  <li><a href="#other-sources-of-uncertainty" id="toc-other-sources-of-uncertainty" class="nav-link" data-scroll-target="#other-sources-of-uncertainty">Other Sources of Uncertainty</a></li>
   <li><a href="#precision-vs.-accuracy" id="toc-precision-vs.-accuracy" class="nav-link" data-scroll-target="#precision-vs.-accuracy">Precision vs.&nbsp;Accuracy</a></li>
-  <li><a href="#significant-figures" id="toc-significant-figures" class="nav-link" data-scroll-target="#significant-figures">Significant Figures</a></li>
+  <li><a href="#fractional-uncertainty" id="toc-fractional-uncertainty" class="nav-link" data-scroll-target="#fractional-uncertainty">Fractional Uncertainty</a></li>
+  <li><a href="#percent-error" id="toc-percent-error" class="nav-link" data-scroll-target="#percent-error">Percent Error</a></li>
   <li><a href="#displaying-results-with-uncertainty" id="toc-displaying-results-with-uncertainty" class="nav-link" data-scroll-target="#displaying-results-with-uncertainty">Displaying Results with Uncertainty</a></li>
+  <li><a href="#significant-figures" id="toc-significant-figures" class="nav-link" data-scroll-target="#significant-figures">Significant Figures</a></li>
   <li><a href="#combining-uncertainties" id="toc-combining-uncertainties" class="nav-link" data-scroll-target="#combining-uncertainties">Combining Uncertainties</a></li>
   </ul></li>
   <li><a href="#activity-i-50-points" id="toc-activity-i-50-points" class="nav-link" data-scroll-target="#activity-i-50-points">Activity I (50 points)</a>
@@ -281,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="uncertainties-in-measurements" class="level3">
 <h3 class="anchored" data-anchor-id="uncertainties-in-measurements">Uncertainties in Measurements</h3>
-<p>No matter the branch of science you find yourself in, taking measurements will be at the heart of any experiment you do. Measuring involves the use of a measuring device of some sort, such as a ruler, balance, microphone, voltmeter, or any other sensor. When measuring a physical property of an object, we assume that there is a unique “correct” value for this measurement. The problem is that we can never measure this “correct” value because no instrument is perfectly precise and no experiment is free from variability. We have to make do with the goal of getting as close as we can to the “correct” value.</p>
+<p>Measuring involves the use of a measuring device of some sort, such as a ruler, balance, microphone, voltmeter, or any other sensor. When measuring a physical property of an object, we assume that there is a unique “correct” value for this measurement. The problem is that we can never measure this “correct” value because no instrument is perfectly precise and no experiment is free from variability. We have to make do with the goal of getting as close as we can to the “correct” value and doing our best to accurately state the uncertainty.</p>
 <p>There are several factors that affect your ability to perform experiments with perfect precision:</p>
 <ol type="1">
 <li>Limited accuracy of measuring devices.</li>
@@ -303,7 +314,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="digital-measurements" class="level3">
 <h3 class="anchored" data-anchor-id="digital-measurements">Digital Measurements</h3>
-<p>Measurements made from digital devices will carry uncertainty too. This uncertainty arises because the device must round the measurement so that it fits on the digital readout. Uncertainty arises since you can never know what the next digit would have been. For example, suppose that you measure the mass of an object on a digital scale and it reads <span class="math inline">\(10.55\)</span> kg. The actual value of the measurement could have been as low as <span class="math inline">\(10.545\)</span> kg or as high as <span class="math inline">\(10.555\)</span> kg. Anything in that range would have rounded to <span class="math inline">\(10.55\)</span> kg. Hence, the uncertainty on this measurement is <span class="math inline">\(\pm 0.005\)</span> kg. This measurement would be reported as <span class="math inline">\(10.55 \pm .005\)</span> kg. In general, the uncertainty of a digital measurement is half of the value of the last decimal place shown.</p>
+<p>Measurements made from digital devices will carry uncertainty too. This uncertainty arises because the device must round the measurement so that it fits on the digital readout. Uncertainty arises since you can never know what the next digit would have been. For example, suppose that you measure the mass of an object on a digital scale and it reads <span class="math inline">\(10.55\)</span> kg. The actual value of the measurement could have been as low as <span class="math inline">\(10.545\)</span> kg or as high as <span class="math inline">\(10.555\)</span> kg. Anything in that range would have rounded to <span class="math inline">\(10.55\)</span> kg. Hence, the uncertainty on this measurement is <span class="math inline">\(\pm 0.005\)</span> kg. This measurement would be reported as <span class="math inline">\(10.55 \pm .005\)</span> kg. Unless otherwise stated on the device, the uncertainty of a digital measurement is half of the value of the last decimal place shown.</p>
+</section>
+<section id="other-sources-of-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="other-sources-of-uncertainty">Other Sources of Uncertainty</h3>
+<p>Sometimes the biggest source of uncertainty in a measurement is not due to the instrument itself but the experimental setup. For example, if a digital timer is used to time the drop of a tennis ball, the reaction time of the person operating the timer will be bigger than the explicit uncertainty in the timer itself. (For reference, the typical reaction time for auditory stimuli is <span class="math inline">\(0.14 - 0.16\)</span> s and <span class="math inline">\(0.18 - 0.2\)</span> for visual stimuli.) The placement of a meter stick may vary from measurement to measurement due to human variability and this would introduce some variability in the subsequent measurements. Fluctuations in the environmental conditions (temperature, pressure, etc) can cause variability in measurements. All of these factors must be considered when assigning uncertainties to measured values.</p>
 </section>
 <section id="precision-vs.-accuracy" class="level3">
 <h3 class="anchored" data-anchor-id="precision-vs.-accuracy">Precision vs.&nbsp;Accuracy</h3>
@@ -312,20 +327,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div style="text-align: center;">
 <p><img src="https://lancejnelson.github.io/PH150/figures/precise-accurate.png" alt="drawing" width="500"></p>
 </div>
+</section>
+<section id="fractional-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="fractional-uncertainty">Fractional Uncertainty</h3>
 <p>One way to express precision is as a fractional uncertainty:</p>
 <p><span class="math display">\[\begin{align}
 \mathrm{fractional ~ uncertainty} &amp;=
 \frac{\mathrm{uncertainty}}{\mathrm{measured ~value}}
 \end{align}\]</span></p>
-<p>Tractional uncertainty describes how large the uncertainty is compared to the measurement and is therefore a measure of relative uncertainty. High precision is reflected by low fractional uncertainty.</p>
+<p>Fractional uncertainty are dimensionless quantities that describe how large the uncertainty is compared to the measurement. They serve as a rough indication of the quality of the measurement. Fractional uncertainties of <span class="math inline">\(10\%\)</span> or so are usually characteristic of rough measurements. (Think about measuring the length of a 10 cm object and assigning an uncertainty of 1 cm.. It’s not super great, but not terrible either). Fractional uncertainties of <span class="math inline">\(1\%\)</span> of <span class="math inline">\(2\%\)</span> are characteristic of reasonably careful measurements and are about the best we can hope for in any lab that we do. Fractional uncertainties less that <span class="math inline">\(1\%\)</span> will be difficult to achieve in an introductory lab setting.</p>
+</section>
+<section id="percent-error" class="level3">
+<h3 class="anchored" data-anchor-id="percent-error">Percent Error</h3>
 <p>Accuracy is often expressed as a percentage error. There are slightly different ways of defining and using percentage error, depending on which scientific field you are in. In this course we will define percentage error as</p>
 <p><span class="math display">\[\mathrm{\% ~error}=\frac{(\mathrm{measured~ value}) - (\mathrm{theoretical~value})}{(\mathrm{theoretical ~ value})}\]</span></p>
-<p>The sign of the percentage error then has meaning: a negative percent error means the measured value is less than the theoretical or accepted value, and a positive percent error means the measured value is larger then the theoretical value. Accuracy is reflected by a low percentage error. More specifically, if the percentage error is smaller than the fractional uncertainty, the result is said to be accurate, meaning that the accepted value of the measurement falls within the uncertainty of the result you have obtained. For example, suppose we measure the acceleration due to gravity, and find the value <span class="math inline">\(9.86 \pm .03\)</span> m/s<span class="math inline">\(^2\)</span>. The fractional uncertainty would be</p>
+<p>The sign of the percentage error then has meaning: a negative percent error means the measured value is less than the theoretical or accepted value, and a positive percent error means the measured value is larger then the theoretical value. High accuracy is reflected by a low percentage error.</p>
+<section id="judging-the-success-of-an-experiment" class="level4">
+<h4 class="anchored" data-anchor-id="judging-the-success-of-an-experiment">Judging the success of an experiment</h4>
+<p>A comparison of the fractional uncertainty and percent error determines whether the experimental result is consistent with the hypothesis (or known quantity). If the percentage error is smaller than the fractional uncertainty, the experiment is judged to be a success since the true value falls within the uncertainty of the result. For example, suppose an experiment to determine the acceleration due to gravity results in <span class="math inline">\(9.86 \pm .03\)</span> m/s<span class="math inline">\(^2\)</span>. The fractional uncertainty would be</p>
 <p><span class="math display">\[\mathrm{fractional~ uncertainty} = \frac{0.03}{9.86} = 0.0030 = 0.3 \%\]</span></p>
 <p>while the percentage error compared to the accepted value of <span class="math inline">\(9.80\)</span> m/s<span class="math inline">\(^2\)</span> would be</p>
 <p><span class="math display">\[\mathrm{\% ~error} = \frac{9.86 ~\mathrm{m}/\mathrm{s}^{2}-9.80~
   \mathrm{m}/\mathrm{s}^{2}}{9.80~ \mathrm{m}/\mathrm{s}^{2}} =
-0.0061 = 0.61\%\]</span> Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of <span class="math inline">\(g\)</span>. On the other hand, suppose our measurement of the acceleration due to gravity resulted in the experimental value of <span class="math inline">\(10 \pm 2\)</span> m/s<span class="math inline">\(^2\)</span>. In this case, we would have a fractional uncertainty of <span class="math inline">\(20\%\)</span> and a percent error of <span class="math inline">\(2.0\%\)</span>, and we could conclude that the experiment successfully confirmed the value of <span class="math inline">\(g\)</span>. Your goal in any measurement should be to obtain both accuracy and precision. Note that neither the fractional uncertainty nor the percent error carries any units.</p>
+0.0061 = 0.61\%\]</span> Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of <span class="math inline">\(g\)</span>. In this case, the scientists should look for possible systematic errors or underestimated uncertainties in the experiment before proceeding.</p>
+<p>Conversely, suppose the measurement of the acceleration due to gravity resulted in the experimental value of <span class="math inline">\(10 \pm 2\)</span> m/s<span class="math inline">\(^2\)</span>. The fractional uncertainty is <span class="math inline">\(20\%\)</span> and the percent error is <span class="math inline">\(2.0\%\)</span>. We could conclude that the experiment successfully confirmed the value of <span class="math inline">\(g\)</span>. Your goal in any measurement should be to obtain both accuracy and precision.</p>
+</section>
+</section>
+<section id="displaying-results-with-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="displaying-results-with-uncertainty">Displaying Results with Uncertainty</h3>
+<p>Often it will be valuable to produce a visual representation of your value with its uncertainty. As an example, imagine that you and a friend each performed an experiment to measure the acceleration due to gravity and you’d like to compare your results visually. If the results of the two experiments were</p>
+<p><span class="math display">\[g = 9.6 \pm 0.3 ~\text{m/s}^2\]</span></p>
+<p><span class="math display">\[g = 10.1 \pm 0.2 ~\text{m/s}^2\]</span></p>
+<p>you could use Python to plot these two measurements with their uncertainties like this</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> errorbar,show,xticks,plot</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="fl">9.6</span>,<span class="fl">10.1</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dy <span class="op">=</span> [<span class="fl">0.3</span>,<span class="fl">0.2</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>errorbar(x,y,yerr <span class="op">=</span> dy,capsize <span class="op">=</span> <span class="dv">10</span>,marker <span class="op">=</span> <span class="st">"o"</span>,linewidth <span class="op">=</span> <span class="dv">2</span>,capthick <span class="op">=</span> <span class="dv">2</span>,ls <span class="op">=</span> <span class="st">'none'</span>,xticks <span class="op">=</span> <span class="va">None</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plot([<span class="dv">0</span>,<span class="dv">4</span>],[<span class="fl">9.8</span>,<span class="fl">9.8</span>],ls <span class="op">=</span> <span class="st">'dashed'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>xticks([],[])</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="L1-Intro_to_Error_Analysis_files/figure-html/cell-3-output-1.png" width="579" height="389"></p>
+</div>
+</div>
+<p>In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not.</p>
 </section>
 <section id="significant-figures" class="level3">
 <h3 class="anchored" data-anchor-id="significant-figures">Significant Figures</h3>
@@ -355,28 +403,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-</section>
-<section id="displaying-results-with-uncertainty" class="level3">
-<h3 class="anchored" data-anchor-id="displaying-results-with-uncertainty">Displaying Results with Uncertainty</h3>
-<p>Often it will be valuable to produce a visual representation of your value with its uncertainty. As an example, imagine that you and a friend each performed an experiment to measure the acceleration due to gravity and you’d like to compare your results visually. If the results of the two experiments were</p>
-<p><span class="math display">\[g = 9.6 \pm 0.3 ~\text{m/s}^2\]</span></p>
-<p><span class="math display">\[g = 10.1 \pm 0.2 ~\text{m/s}^2\]</span></p>
-<p>you could use Python to plot these two measurements with their uncertainties like this</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> errorbar,show,xticks,plot</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="fl">9.6</span>,<span class="fl">10.1</span>]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dy <span class="op">=</span> [<span class="fl">0.3</span>,<span class="fl">0.2</span>]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>errorbar(x,y,yerr <span class="op">=</span> dy,capsize <span class="op">=</span> <span class="dv">10</span>,marker <span class="op">=</span> <span class="st">"o"</span>,linewidth <span class="op">=</span> <span class="dv">2</span>,capthick <span class="op">=</span> <span class="dv">2</span>,ls <span class="op">=</span> <span class="st">'none'</span>,xticks <span class="op">=</span> <span class="va">None</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plot([<span class="dv">0</span>,<span class="dv">4</span>],[<span class="fl">9.8</span>,<span class="fl">9.8</span>],ls <span class="op">=</span> <span class="st">'dashed'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>xticks([],[])</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="L1-Intro_to_Error_Analysis_files/figure-html/cell-3-output-1.png" width="579" height="389"></p>
-</div>
-</div>
-<p>In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not.</p>
 </section>
 <section id="combining-uncertainties" class="level3">
 <h3 class="anchored" data-anchor-id="combining-uncertainties">Combining Uncertainties</h3>

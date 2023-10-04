@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Beginning Physics Lab - Lab 4 Statistical Interpretation of Uncertainty</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Lab 4 Statistical Interpretation of Uncertainty</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Beginning Physics Lab</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Measurements and Uncertainty</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Python and Jupyter Notebooks</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">Lab 1 Measurement and Uncertainty</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" class="sidebar-item-text sidebar-link">Lab 2: Propagation of Uncertainty I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="sidebar-item-text sidebar-link">Lab 3: Propagation of Uncertainty Part II</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link active">Lab 4 Statistical Interpretation of Uncertainty</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Experimental Design</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
+  <ul class="collapse">
+  <li><a href="#statistical-distributions" id="toc-statistical-distributions" class="nav-link" data-scroll-target="#statistical-distributions">Statistical Distributions</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
+  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">Mean</a></li>
+  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard Deviation</a></li>
+  <li><a href="#standard-deviation-of-the-mean" id="toc-standard-deviation-of-the-mean" class="nav-link" data-scroll-target="#standard-deviation-of-the-mean">Standard Deviation of the Mean</a></li>
+  <li><a href="#comparing-results" id="toc-comparing-results" class="nav-link" data-scroll-target="#comparing-results">Comparing Results</a></li>
+  </ul></li>
+  <li><a href="#useful-plots" id="toc-useful-plots" class="nav-link" data-scroll-target="#useful-plots">Useful Plots</a>
+  <ul class="collapse">
+  <li><a href="#histograms-1" id="toc-histograms-1" class="nav-link" data-scroll-target="#histograms-1">Histograms</a></li>
+  <li><a href="#plotting-functions" id="toc-plotting-functions" class="nav-link" data-scroll-target="#plotting-functions">Plotting functions</a></li>
+  </ul></li>
+  <li><a href="#activity-i-pendulum-period-33-points" id="toc-activity-i-pendulum-period-33-points" class="nav-link" data-scroll-target="#activity-i-pendulum-period-33-points">Activity I Pendulum Period (33 points)</a>
+  <ul class="collapse">
+  <li><a href="#equpiment-needed" id="toc-equpiment-needed" class="nav-link" data-scroll-target="#equpiment-needed">Equpiment needed</a></li>
+  <li><a href="#goal-overview" id="toc-goal-overview" class="nav-link" data-scroll-target="#goal-overview">Goal (Overview)</a></li>
+  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
+  </ul></li>
+  <li><a href="#activity-ii---radioactivity-33-points" id="toc-activity-ii---radioactivity-33-points" class="nav-link" data-scroll-target="#activity-ii---radioactivity-33-points">Activity II - Radioactivity (33 points)</a>
+  <ul class="collapse">
+  <li><a href="#equipment-needed" id="toc-equipment-needed" class="nav-link" data-scroll-target="#equipment-needed">Equipment needed</a></li>
+  <li><a href="#goal-overview-1" id="toc-goal-overview-1" class="nav-link" data-scroll-target="#goal-overview-1">Goal (Overview)</a></li>
+  <li><a href="#procedure-1" id="toc-procedure-1" class="nav-link" data-scroll-target="#procedure-1">Procedure</a></li>
+  </ul></li>
+  <li><a href="#activity-iii---projectile-range-33-points" id="toc-activity-iii---projectile-range-33-points" class="nav-link" data-scroll-target="#activity-iii---projectile-range-33-points">Activity III - Projectile Range (33 points)</a>
+  <ul class="collapse">
+  <li><a href="#goal-overview-2" id="toc-goal-overview-2" class="nav-link" data-scroll-target="#goal-overview-2">Goal (Overview)</a></li>
+  <li><a href="#procedure-2" id="toc-procedure-2" class="nav-link" data-scroll-target="#procedure-2">Procedure</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Lab 4 Statistical Interpretation of Uncertainty</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Name:</p>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<ol type="1">
+<li>Use Python to plot statistical distributions and histograms.</li>
+<li>Use Python to calculate the mean, standard deviation, and standard deviation of the mean for a data set.</li>
+<li>Explain the difference between standard deviation and standard deviation of the mean.</li>
+<li>Use Python to read data from a file.</li>
+</ol>
+</section>
+<section id="background-information" class="level2">
+<h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
+<section id="statistical-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-distributions">Statistical Distributions</h3>
+<p>We’ve learned that all measurements have uncertainties associated with them. This means that when a measurement (or experiment) is repeated, the obtained value is different every time. Statisticians call this a random variable, but the numbers aren’t as random as you might think. You might think that the word random means that the value can be <strong>anything</strong>; any number at all from <span class="math inline">\(-\infty \rightarrow \infty\)</span> but that’s not what we typically mean. Instead, random in this context means a number that is random but subject to some probability rules.</p>
+<p>The rules for deciding what random numbers are allowed are contained in a mathematical function called a probability distribution. The Gaussian (or Normal) distribution and Gamma distributions (pictured below) are two common distributions . (Students will no doubt be familiar with the term “bell curve”.)</p>
+<div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-2-output-1.png" width="664" height="358"></p>
+</div>
+</div>
+<p>The numbers on the horizontal axis are the possible random numbers and the height of the function indicates the probabilities. For example, for the Gaussian distribution numbers near 5 will be more likely to appear than numbers much greater or less than 5. Conversely, numbers greater than 8 and less than 2 will be quite unlikely to occur. Numbers between 6 and 8 (or 2 and 4) are less likely than numbers between 4 and 6 but more likely than numbers greater than 8 (or less than 2). You get the idea. The gamma distribution isn’t symmetric like the Gaussian. Numbers far above the peak location are more likely than numbers far below the peak location. The lower pane in the figure above is 20 random numbers selected (drawn) from this distribution.</p>
+<p>The mathematical expression for the Normal distribution is given by</p>
+<p><span class="math display">\[
+f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
+\]</span></p>
+<p>The shape and location of this function are controlled by two numbers: the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (<span class="math inline">\(\sigma\)</span>). The mean controls where the peak of the distribution is located and the standard deviation controls the width of the peak. One feature of the normal distribution is that 68% of the data lies between <span class="math inline">\(\mu - \sigma\)</span> and <span class="math inline">\(\mu + \sigma\)</span>. For this reason <strong>we often assign the mean to be the expected value and the standard deviation to be the associated uncertainty</strong>.</p>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-3-output-1.png" width="671" height="470"></p>
+</div>
+</div>
+<p>So what does this have to do with uncertainties in scientific experiments? When a scientist performs measurements and gathers data, <strong>they are gathering samples from a statistical distribution, usually a Gaussian.</strong> This idea is crucial to understanding how statistical distributions describe uncertainty. The challenge is figuring out which Gaussian distribution the data came from.</p>
+</section>
+<section id="histograms" class="level3">
+<h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
+<p>When an experiment can be repeated over and over again under identical physical conditions, the data can be visualized using something called a histogram. To construct a histogram, the range of plausible measurement values is first divided into bins. Each measurement is then assigned a bin and the total number of measurements in each bin is updated. The number of measurements in all of the bins can be visualized by plotting a bar for each bin, with the height of the bar indicating how many measurements were in the bin. Below is a histogram for 10 repetitions of an experiment to determine the acceleration due to gravity.</p>
+<div class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-4-output-1.png" width="579" height="429"></p>
+</div>
+</div>
+<p>Ten data points isn’t a lot but you can probably start to form a reasonable guess for the mean(expected value) and standard deviation(uncertainty) of the underlying distribution. As more data is gathered, your estimates for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> will update and your confidence in those values increases with it. (Illustrated in the figure below)</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-5-output-1.png" width="374" height="1142" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">As more measurements are performed the level of confidence in the mean and standard deviation increase</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The location of the distribution’s peak would be the expected value and the spread of the peak (at about half the max height) would be the associated uncertainty.</p>
+</section>
+<section id="mean" class="level3">
+<h3 class="anchored" data-anchor-id="mean">Mean</h3>
+<p>The peak of the distribution is located at the mean (<span class="math inline">\(\mu\)</span>) and can be calculated from a data set using the following expression</p>
+<p><span class="math display">\[
+\begin{align*}
+\mu &amp;= {x_1 + x_2 + \dots\over N}\\
+&amp;= {1\over N}\sum_{i=1}^N \\
+\end{align*}
+\]</span></p>
+<p>The mean should be used as the expected value when reporting results. The uncertainty in the mean will decrease as more measurements are added to the data set.</p>
+</section>
+<section id="standard-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="standard-deviation">Standard Deviation</h3>
+<p>The standard deviation indicates the spread in the distribution and can be calculated using the following expression</p>
+<p><span class="math display">\[
+\sigma = \sqrt{ \sum_{i=1}^N (x_i - \mu)^2 \over N}
+\]</span></p>
+<p>The standard deviation gives the uncertainty in <strong>a single measurement</strong>. If the experiment were repeated again, under identical conditions, the standard deviation would be the uncertainty associated with any single measurement. Just as with the mean, the standard deviation becomes more reliable (smaller uncertainty) as the size of the data set increases.</p>
+<p>Where did this expression for the standard deviation come from? A full derivation won’t be shown here (see me if you’d like more information), but some brief motivation for why this expression is a measure of the spread in the data will be given. First notice the quantity <span class="math inline">\(x_i - \mu\)</span>, which is a measure of how far away each data point is from the mean. Summing up these differences would be some indication to the amount of spread in the data. However, since some of these differences will be positive and some negative, summing them could result in zero even when the spread in the data is not zero. Instead the square of the differences is summed: <span class="math inline">\(\sum_{i=1}^N (x_i - \mu)^2\)</span> and then divided by <span class="math inline">\(N\)</span> to get an average.</p>
+<p><span class="math display">\[
+{1\over N} \sum_{i=1}^N (x_i - \mu)^2
+\]</span></p>
+<p>The final expression is the square root of this expression:</p>
+<p><span class="math display">\[
+\sigma = \sqrt{{1\over N} \sum_{i=1}^N (x_i - \mu)^2}
+\]</span></p>
+</section>
+<section id="standard-deviation-of-the-mean" class="level3">
+<h3 class="anchored" data-anchor-id="standard-deviation-of-the-mean">Standard Deviation of the Mean</h3>
+<p>Notice that the standard deviation was not assigned to be the uncertainty in the mean. The reasoning for this is subtle. The shape of the histogram improves with each data point added and therefore the uncertainty associated with the mean should decrease also. However, the standard deviation does not decrease as <span class="math inline">\(N\)</span> increases. Even though <span class="math inline">\(N\)</span> is on the denominator of the expression, as <span class="math inline">\(N\)</span> increases so too does the numerator. Hence, both the numerator and denominator increase together.</p>
+<p>The uncertainty in the mean is given by</p>
+<p><span class="math display">\[
+\sigma_N = {\sigma \over \sqrt{N}}
+\]</span></p>
+<p>which decreases as more data points are added. This is the quantity that we should assign to be the uncertainty of the mean.</p>
+</section>
+<section id="comparing-results" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-results">Comparing Results</h3>
+<p>In lab #1, the success of an experiment was decided by comparing the fractional uncertainty to the percent error. If the fractional uncertainty was bigger than the percent error then the experiment was judged to be a success. While this criteria isn’t wrong, it doesn’t tell us how good or bad the agreement is and it also doesn’t provide any boundary between acceptable and unacceptable results. We are now in a position to describe a more robust criteria for judging success.</p>
+<p>Recall that every time an experiment is performed the measurements gathered are random draws from a distribution. This distribution is assumed to be <strong>centered at the expected value (<span class="math inline">\(x_e\)</span>)</strong>. If the results of the experiment (usually the mean) are too far away from the expected mean, the probability that the measurements were random draws from the assumed distribution is so small that we lose confidence in that assumption. The figure below illustrates this idea. The red curve is the assumed distribution centered at the expected value and the blue bars indicate the measurements during the experiment. The mean of these results is indicated by the red dashed curve and the expected mean is indicated by the green dashed curve.</p>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-6-output-1.png" width="585" height="434"></p>
+</div>
+</div>
+<p>To determine the probability that these data points came from the assumed distribution we first calculate the quantity</p>
+<p><span class="math display">\[ t = {|x_b - x_e|\over \sigma_n}\]</span></p>
+<p>which measures how many standard deviations of the mean the measured result differs from the expected result. Here <span class="math inline">\(x_b\)</span> is the best result from your experiment(usually the mean of your dataset), <span class="math inline">\(x_e\)</span> is the expected value, and <span class="math inline">\(\sigma_n\)</span> is the standard deviation of the mean.</p>
+<p>For values of <span class="math inline">\(t &lt;1\)</span> the experiment is probably a success and for <span class="math inline">\(t \gg 1\)</span> the experiment probably isn’t a success. But what about intermediate values? It would be nice to make a more probabilistic statement about the success of our experiment. Something like, “The probability that the results of our experiment were drawn from a distribution with the expected result as the mean is 90%”</p>
+<p>We can use Python to answer this question using the code given below.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_1samp</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> [<span class="fl">1.64</span>,<span class="fl">1.57</span>,<span class="fl">1.72</span>,<span class="fl">1.55</span>,<span class="fl">1.68</span>,<span class="fl">1.62</span>,<span class="fl">1.70</span>,<span class="fl">1.59</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>expected_value <span class="op">=</span> <span class="fl">1.67</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> ttest_1samp(results,expected_value)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(P.pvalue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.14392654580468714</code></pre>
+</div>
+</div>
+<p>The result is called a p-value and in this case it is equal to <span class="math inline">\(0.144\)</span> or <span class="math inline">\(14.4\%\)</span>. This means that the probability that <span class="math inline">\(x_b\)</span> was a random draw from the assumed distribution(centered at <span class="math inline">\(x_e\)</span>) is <span class="math inline">\(14.4\%\)</span></p>
+<p>The boundary between acceptable and unacceptable depends on the level below which we judge a discrepancy to be unreasonably probable. This really is a matter of opinion but often a community of people will agree on a certain level. Many scientists regard <span class="math inline">\(5\%\)</span> to be the appropriate boundary and if the p-value is smaller than <span class="math inline">\(5\%\)</span> the discrepancy is deemed significant. In other words, the probability of obtaining the result as a random draw from a distribution centered at the expected value is so small that it probably didn’t. In this case, the scientist ought to look for mistakes in the experimental setup.</p>
+<p>On the other hand, if the p-value is above the boundary, the discrepancy is deemed insignificant and the experiment is deemed a success. Note that p-values do not confirm the hypothesis, but just fail to reject it.</p>
+</section>
+</section>
+<section id="useful-plots" class="level2">
+<h2 class="anchored" data-anchor-id="useful-plots">Useful Plots</h2>
+<section id="histograms-1" class="level3">
+<h3 class="anchored" data-anchor-id="histograms-1">Histograms</h3>
+<p>To plot a histogram in Python you should use the <code>pyplot.hist(data)</code> function and pass your data set into the function. There are several optional arguments to the <code>hist</code> function that can help customize the appearance. A few of the more important ones are given in the table below</p>
+<table class="table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 32%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Optional Argument</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bins</td>
+<td>Specify how many bins should be displayed.</td>
+<td>bins = 20</td>
+</tr>
+<tr class="even">
+<td>color</td>
+<td>Specify what color the bars should be.</td>
+<td>color = “blue”</td>
+</tr>
+<tr class="odd">
+<td>edgecolor</td>
+<td>Specify the color of the edge of the bars.</td>
+<td>edgecolor = “red”</td>
+</tr>
+</tbody>
+</table>
+<p>Some example code for building a histogram is given below.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy.random <span class="im">as</span> rand</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> rand.normal(<span class="dv">5</span>,<span class="fl">.5</span>,<span class="dv">1000</span>) <span class="co"># Dummy data just for this example.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ax.hist(data,bins <span class="op">=</span> <span class="dv">20</span>,color <span class="op">=</span> <span class="st">'blue'</span>,edgecolor <span class="op">=</span> <span class="st">'black'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-8-output-1.png" width="575" height="412"></p>
+</div>
+</div>
+</section>
+<section id="plotting-functions" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-functions">Plotting functions</h3>
+<p>Plotting a function in Python can be accomplished by following these steps: 1. Build a list of x value (horizontal axis). 2. Calculate the function value for every x value. 3. Use <code>pyplot.plot(x,y)</code> to plot the x-y pairs. 4. Use <code>pyplot.show()</code> to display the plot.</p>
+<p>Several options to the <code>pyplot.plot()</code> function will allow you to customize the plot. Some common ones are listed below: 1. <code>linestyle</code>: specify what the line representing the function looks like. 2. <code>color</code>: Specify the color of the line representing the function. 3. <code>linewidth</code>: Specify the thickness of the line representing the function.</p>
+<p>The functions <code>ax.set_xlabel()</code>, <code>ax.set_ylabel()</code>, and <code>ax.set_title()</code> can also be used to specify axes labels and a plot title. An example is given in the code cell below.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>,<span class="dv">2</span> <span class="op">*</span> np.pi,<span class="fl">0.1</span>) <span class="co"># Step 1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)                  <span class="co"># Step 2</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ax.plot(x,y,linewidth <span class="op">=</span> <span class="dv">4</span>,color <span class="op">=</span> <span class="st">'black'</span>,linestyle <span class="op">=</span> <span class="st">"--"</span>)  <span class="co"># Step 3</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"f(x)"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"f vs x"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.show()                     <span class="co"># Step 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-9-output-1.png" width="608" height="449"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="activity-i-pendulum-period-33-points" class="level2">
+<h2 class="anchored" data-anchor-id="activity-i-pendulum-period-33-points">Activity I Pendulum Period (33 points)</h2>
+<section id="equpiment-needed" class="level3">
+<h3 class="anchored" data-anchor-id="equpiment-needed">Equpiment needed</h3>
+<ol type="1">
+<li>1.5-meter-long pendulum.</li>
+<li>Stopwatch (the one on your phone will do)</li>
+</ol>
+</section>
+<section id="goal-overview" class="level3">
+<h3 class="anchored" data-anchor-id="goal-overview">Goal (Overview)</h3>
+<p>Each student will measure the period of a 1.5-meter-long pendulum 10 times. This will result in a set of ~150 data points for the whole class. We will then calculate the acceleration due to gravity for each measurement and calculate the i) mean, ii) standard deviation, and iii) standard deviation of the mean and use these results to report an appropriate uncertainty.</p>
+</section>
+<section id="procedure" class="level3">
+<h3 class="anchored" data-anchor-id="procedure">Procedure</h3>
+<ol type="1">
+<li>A pendulum that is 1.5 meters long will be set up at the front of the class. Each person should measure the period of the pendulum with a stopwatch 10 times. Data should be recorded to the nearest 0.01 s. For the best results try to keep the pendulum’s amplitude consistent for all of the measurements, even by restarting as necessary. The amplitude should be relatively small (less than about <span class="math inline">\(10^\circ\)</span>). The pendulum should be swinging (rather than at rest) when the time measurement begins.</li>
+<li>Record your 10 measurements in the google sheets link provided below.</li>
+<li>Once everyone has collected their measurements someone needs to move all of the data into a single column. Then download the file to your computer and use the <code>np.loadtxt()</code> function to read this data into Python. Do this on line 7 of the code cell below. (Remember: The file must be located in the same directory as this Jupyter notebook.)</li>
+<li>The acceleration due to gravity can be calculated from <span class="math display">\[ g = {4 \pi^2 L \over T^2}\]</span> On line 9 of the code cell below calculate the acceleration due to gravity for each period measurement in the data set. To include <span class="math inline">\(\pi\)</span> in your calculation use <code>np.pi</code>.</li>
+<li>Use equations 4.5, 4.9, and 4.14 from the book to calculate the mean, standard deviation, and standard deviation of the mean. Perform these calculations on lines 10, 11, and 12 of the code cell below. Use <code>np.sum()</code> to perform summations and <code>np.sqrt()</code> to perform square root functions.</li>
+<li>On lines 14,15, and 16 in the code cell below use the functions <code>stats.mean()</code> and <code>stats.stdev()</code> to calculate the mean, standard deviation, and standard deviation of the mean.<br>
+</li>
+<li>Add a formatted print statement (see examples from previous labs) to report an appropriate value for <span class="math inline">\(g\)</span> with its uncertainty.</li>
+<li>Plot a histogram of the g values.<br>
+</li>
+<li>The normal distribution is given by <span class="math display">\[ N(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2\over 2 \sigma^2}\]</span>. Plot this distribution on top of the histogram. Verify that the limiting distribution matches the histogram.</li>
+</ol>
+<p><a href="https://docs.google.com/spreadsheets/d/1A2Xb7dDaDxjSH8YzRn0-Lb2er6qxWySYjmuLK-yiP4w/edit?usp=sharing">Pendulum Data</a></p>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> mt</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.loadtxt(<span class="st">"pendulum_data.txt"</span>,<span class="bu">float</span>)  <span class="co"># Line 7</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">len</span>(T)     <span class="co"># Find the number of data points.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>            <span class="co"># Line 9</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>meanG <span class="op">=</span>        <span class="co"># Line 10</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>stdG <span class="op">=</span>         <span class="co"># Line 11</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>stdMeanG <span class="op">=</span>     <span class="co"># Line 12</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>μ <span class="op">=</span>            <span class="co"># Line 14 </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>σ <span class="op">=</span>            <span class="co"># Line 15</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>σ_μ <span class="op">=</span>          <span class="co"># Line 16</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram and Normal distribution below.</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>plt.plot(x,norm_data)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'g (m/s^2)'</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability'</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="activity-ii---radioactivity-33-points" class="level2">
+<h2 class="anchored" data-anchor-id="activity-ii---radioactivity-33-points">Activity II - Radioactivity (33 points)</h2>
+<section id="equipment-needed" class="level3">
+<h3 class="anchored" data-anchor-id="equipment-needed">Equipment needed</h3>
+<ol type="1">
+<li>Geiger Counter</li>
+<li>Radioactive sample (don’t worry, they aren’t active enough to be dangerous)</li>
+<li>LabQuest mini box with USB cable.</li>
+<li>Logger Pro software. You can download a copy for your personal machine (<a href="https://www.vernier.com/d/yxoaa">windows</a> or <a href="https://www.vernier.com/d/u7caf">mac</a> ) or use one of the lab computers which have Logger Pro installed already.</li>
+</ol>
+</section>
+<section id="goal-overview-1" class="level3">
+<h3 class="anchored" data-anchor-id="goal-overview-1">Goal (Overview)</h3>
+<p>We will use the electronic radiation monitor to measure the number of decays for a radiocative sample. We will calculate the mean and standard deviation of the data and make a histogram of the data. The Poisson distribution will be plotted on top of the histogram to show it as the limiting distribution.</p>
+</section>
+<section id="procedure-1" class="level3">
+<h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
+<ol type="1">
+<li>Using the Vernier Radiation Monitor, measure the decays of a radioactive sample. Below you will find the instructions for setting up the Vernier Radiation Monitor to your laptop. Use 10-second intervals and make 100 measurements.<br>
+</li>
+<li>Copy the data from Logger Pro to an Excel spreadsheet and save the worksheet.(The worksheet should have only one column of data. Don’t include the time data in the Excel worksheet.)</li>
+<li>Use equation 4.5 to calculate the mean of the data and the equation below to calculate the standard deviation of the data. <span class="math display">\[\sigma = \sqrt{\mu}\]</span>. Perform these calcuations on lines 7 and 8 in the code cell below.</li>
+<li>Add a formatted print statement to report the appropriate count number with its associated uncertainty.</li>
+<li>One line 11 of the code cell below, produce a histogram just as we did together in activity I. Choose <code>bins =</code> so that the histogram displays a sufficient amount of detail.</li>
+<li>The limiting distribution for this kind of data is called a Poisson distribution (equation given below). It is only defined for interger values of the argument and it is hard to plot using standard plotting techniques. I have provided the code to plot this function in the code cell below. You may have to modify the numbers on line 14 to plot over the appropriate range. <span class="math display">\[P(x) = e^{-\mu} {\mu^x \over x!} \]</span></li>
+</ol>
+<blockquote class="blockquote">
+<p>Instructions for using the Vernier Radiation Monitor:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Connect the Vernier Radiation Monitor to the DIG 1 port of the LabQuest Mini.</li>
+<li>Connect the USB cord from the LabQuest Mini to your laptop.</li>
+<li>Within the LoggerPro software, do the following:</li>
+<li>Select Experiment -&gt; Data Collection and change the duration to 1000 seconds.</li>
+</ol>
+</blockquote>
+<p><img src="https://github.com/lancejnelson/PH121/raw/gh-pages/files/LoggerProRadiation.png" alt="drawing" width="600px"></p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> poisson,norm</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> arange</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#data = np.loadtxt("radiation_data.txt",float)</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#μ =   # Line 7</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#σ =   # Line 8</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>              <span class="co"># Line 11</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> poisson(μ)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> arange(<span class="dv">0</span>,<span class="dv">40</span>)    <span class="co"># Line 14: May have to modify these numbers.</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>ax.plot(x,dist.pmf(x))</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="activity-iii---projectile-range-33-points" class="level2">
+<h2 class="anchored" data-anchor-id="activity-iii---projectile-range-33-points">Activity III - Projectile Range (33 points)</h2>
+<section id="goal-overview-2" class="level3">
+<h3 class="anchored" data-anchor-id="goal-overview-2">Goal (Overview)</h3>
+<p>This activity is identical in nature to Activity I. Instead of measuring the period of a pendulum, we will measure the range of a projectile. The analysis of the data will be very similar to that performed in Activity I.</p>
+</section>
+<section id="procedure-2" class="level3">
+<h3 class="anchored" data-anchor-id="procedure-2">Procedure</h3>
+<ol type="1">
+<li>Using the projectile launcher, fire a steel ball 40 times (10 launches per student) and measure the range in meters. The projectile should be placed on the table. Use an initial launch angle of <span class="math inline">\(30^\circ\)</span> and use the third spring setting to produce the largest range.</li>
+<li>Again, we will pool our data together as a class to increase the size of the dataset. Therefore, it is very important that every student launches <strong>under the same conditions</strong>. Add your data to the Google sheets document linked below.</li>
+<li>When all the data is collected, have Python read the data set using <code>np.loadtxt()</code>.</li>
+<li>Calculate the mean, standard deviation, and standard deviation of the mean using your preferred calculation method. (Either with <code>stats.mean()</code> and <code>stats.stdev()</code> or brute force calcuation of the equations in the book.)</li>
+<li>Plot a histogram of the data. Choose <code>bins =</code> appropriately so the histogram displays with sufficient detail.</li>
+<li>Plot the normal distribution on top to verify that it is the limiting distribution.</li>
+<li>Add a formatted print statement to report the particle’s range with its associated uncertainty.</li>
+</ol>
+<p>No template code cell will be provided for this activity (hopefully you are feeling more and more comfortable writing simple code on your own), but you can copy/paste from previous activities.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1frC8Yy7TK7fDN_z7E-1BQEOr6knhIZweFHdOTky6TQM/edit?usp=sharing">Projectile Data</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 3: Propagation of Uncertainty Part II</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
