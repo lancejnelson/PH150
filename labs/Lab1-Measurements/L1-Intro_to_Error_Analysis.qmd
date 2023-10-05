@@ -52,15 +52,13 @@ plt.show()
 As with the speed of sound experiment, every scientific experiment performed will have measurements, and those measurements will always have variability (or uncertainty) associated with them.  In this lab (and several others) we will get practice taking measurements, assigning uncertainty to those measurements, and correctly reporting the uncertainty of calculations.
   
 ### Uncertainties in Measurements
- No matter the branch of science you find yourself in, taking
-measurements will be at the heart of any experiment you do. Measuring
-involves the use of a measuring device of some sort, such as a ruler,
+ Measuring involves the use of a measuring device of some sort, such as a ruler,
 balance, microphone, voltmeter, or any other sensor.  When measuring a
 physical property of an object, we assume that there is a unique
 "correct" value for this measurement.  The problem is that we can
  never measure this “correct" value because no instrument is perfectly 
  precise and no experiment is free from variability. We have to make do with the goal of getting as close as we 
- can to the “correct" value.
+ can to the “correct" value and doing our best to accurately state the uncertainty.
 
  There are several factors that affect your ability to perform experiments with perfect precision:   
 
@@ -123,9 +121,11 @@ on a digital scale and it reads $10.55$ kg.  The actual value of the
 measurement could have been as low as $10.545$ kg or as high as
 $10.555$ kg. Anything in that range would have rounded to $10.55$ kg.
 Hence, the uncertainty on this measurement is $\pm 0.005$
-kg.  This measurement would be reported as $10.55 \pm .005$ kg.  In
-general, the uncertainty of a digital measurement is half of the value of the
+kg.  This measurement would be reported as $10.55 \pm .005$ kg.  Unless otherwise stated on the device, the uncertainty of a digital measurement is half of the value of the
 last decimal place shown.
+
+### Other Sources of Uncertainty
+Sometimes the biggest source of uncertainty in a measurement is not due to the instrument itself but the experimental setup.  For example, if a digital timer is used to time the drop of a tennis ball, the reaction time of the person operating the timer will be bigger than the explicit uncertainty in the timer itself. (For reference, the typical reaction time for auditory stimuli is $0.14 - 0.16$ s and $0.18 - 0.2$ for visual stimuli.)  The placement of a meter stick may vary from measurement to measurement due to human variability and this would introduce some variability in the subsequent measurements.   Fluctuations in the environmental conditions (temperature, pressure, etc) can cause variability in measurements.  All of these factors must be considered when assigning uncertainties to measured values. 
 
 
 
@@ -142,7 +142,7 @@ When  all of your measurements are offset from the true value (blue dots in the 
 <img src="https://lancejnelson.github.io/PH150/figures/precise-accurate.png" alt="drawing" width="500"/>
 </div>
 
-
+### Fractional Uncertainty
 One way to express precision is as a fractional uncertainty:
 
 \begin{align}
@@ -150,10 +150,11 @@ One way to express precision is as a fractional uncertainty:
 \frac{\mathrm{uncertainty}}{\mathrm{measured ~value}}
 \end{align}
 
-Tractional uncertainty describes how large the uncertainty is compared to the
-measurement and is therefore a measure of relative uncertainty. High precision is reflected by low fractional
-uncertainty. 
+Fractional uncertainty are dimensionless quantities that describe how large the uncertainty is compared to the
+measurement. They serve as a rough indication of the quality of the measurement. Fractional uncertainties of $10\%$ or so are usually characteristic of rough measurements. (Think about measuring the length of a 10 cm object and assigning an uncertainty of 1 cm.. It's not super great, but not terrible either).  Fractional uncertainties of $1\%$ of $2\%$ are characteristic of reasonably careful measurements and are about the best we can hope for in any lab that we do.  Fractional uncertainties less that $1\%$ will be difficult to achieve in an introductory lab setting.
 
+
+### Percent Error
 Accuracy is often expressed as a percentage error. There
 are slightly different ways of defining and using percentage error,
 depending on which scientific field you are in. In this course we will
@@ -165,28 +166,47 @@ The sign of the percentage error then has
 meaning: a negative percent error means the measured value is less
 than the theoretical or accepted value, and a positive percent error
 means the measured value is larger then the theoretical
-value. Accuracy is reflected by a low percentage error. More
-specifically, if the percentage error is smaller than the fractional
-uncertainty, the result is said to be accurate, meaning that the
-accepted value of the measurement falls within the uncertainty of the
-result you have obtained. For example, suppose we measure the
-acceleration due to gravity, and find
-the value $9.86 \pm .03$ m/s$^2$. The fractional uncertainty would be
+value. High accuracy is reflected by a low percentage error. 
 
+
+#### Judging the success of an experiment
+A comparison of the fractional uncertainty and percent error determines whether the experimental result is consistent with the hypothesis (or known quantity).  If the percentage error is smaller than the fractional uncertainty, the experiment is judged to be a success since the true value falls within the uncertainty of the result.  For example, suppose an experiment to determine the acceleration due to gravity results in  $9.86 \pm .03$ m/s$^2$. The fractional uncertainty would be
 
 $$\mathrm{fractional~ uncertainty} = \frac{0.03}{9.86} = 0.0030 = 0.3 \%$$
- while
-the percentage error compared to the accepted value of $9.80$ m/s$^2$ would
+ while the percentage error compared to the accepted value of $9.80$ m/s$^2$ would
 be
 $$\mathrm{\% ~error} = \frac{9.86 ~\mathrm{m}/\mathrm{s}^{2}-9.80~
   \mathrm{m}/\mathrm{s}^{2}}{9.80~ \mathrm{m}/\mathrm{s}^{2}} =
 0.0061 = 0.61\%$$ 
-Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of $g$.  On the other
-hand, suppose our measurement of the acceleration due to gravity
-resulted in the experimental value of $10 \pm 2$ m/s$^2$. In this case, we
-would have a fractional uncertainty of $20\%$ and a percent error of
-$2.0\%$, and we could conclude that the experiment successfully confirmed the value of $g$. Your goal in any measurement should be to obtain both accuracy and precision. Note that neither the fractional
-uncertainty nor the percent error carries any units.
+Since the percent error is larger than the fractional uncertainty we would claim that our experiment did not successfully confirm the widely accepted value of $g$.  In this case, the scientists should look for possible systematic errors or underestimated uncertainties in the experiment before proceeding.
+
+
+Conversely, suppose the measurement of the acceleration due to gravity
+resulted in the experimental value of $10 \pm 2$ m/s$^2$. The fractional uncertainty is $20\%$ and the percent error is $2.0\%$. We could conclude that the experiment successfully confirmed the value of $g$. Your goal in any measurement should be to obtain both accuracy and precision. 
+
+
+### Displaying Results with Uncertainty
+Often it will be valuable to produce a visual representation of your value with its uncertainty.
+As an example, imagine that you and a friend each performed an experiment to measure the acceleration due to gravity and you'd like to compare your results visually.  If the results of the two experiments were
+$$g = 9.6 \pm 0.3 ~\text{m/s}^2$$ 
+$$g = 10.1 \pm 0.2 ~\text{m/s}^2$$ 
+you could use Python to plot these two measurements with their uncertainties like this
+
+```{python}
+from matplotlib.pyplot import errorbar,show,xticks,plot
+
+x = [2,3]
+y = [9.6,10.1]
+dy = [0.3,0.2]
+errorbar(x,y,yerr = dy,capsize = 10,marker = "o",linewidth = 2,capthick = 2,ls = 'none',xticks = None)
+plot([0,4],[9.8,9.8],ls = 'dashed')
+xticks([],[])
+show()
+
+```
+
+In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not.  
+
 
 ### Significant Figures
 
@@ -230,27 +250,6 @@ The number of significant figures that a number has is an indication of its frac
 | 3 | $0.1\%$ --- $1\%$|
 
 
-### Displaying Results with Uncertainty
-Often it will be valuable to produce a visual representation of your value with its uncertainty.
-As an example, imagine that you and a friend each performed an experiment to measure the acceleration due to gravity and you'd like to compare your results visually.  If the results of the two experiments were
-$$g = 9.6 \pm 0.3 ~\text{m/s}^2$$ 
-$$g = 10.1 \pm 0.2 ~\text{m/s}^2$$ 
-you could use Python to plot these two measurements with their uncertainties like this
-
-```{python}
-from matplotlib.pyplot import errorbar,show,xticks,plot
-
-x = [2,3]
-y = [9.6,10.1]
-dy = [0.3,0.2]
-errorbar(x,y,yerr = dy,capsize = 10,marker = "o",linewidth = 2,capthick = 2,ls = 'none',xticks = None)
-plot([0,4],[9.8,9.8],ls = 'dashed')
-xticks([],[])
-show()
-
-```
-
-In this case, the measurement whose uncertainty window contains the accepted value could claim a successful experiment, while the other measurement could not.  
 
 ### Combining Uncertainties
 

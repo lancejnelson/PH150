@@ -304,6 +304,28 @@ The boundary between acceptable and unacceptable depends on the level below whic
 
 On the other hand, if the p-value is above the boundary, the discrepancy is deemed insignificant and the experiment is deemed a success.  Note that p-values do not confirm the hypothesis, but just fail to reject it.
 
+A p-value for two data sets can be calculated to see if their distributions are statistically the same.  As before the relevant quantity is 
+
+$$ t = {|x_b - x_e|\over \sigma_\text{joint}}$$
+
+but the standard deviation is now given by
+
+$$\sigma_\text{joint} = \sqrt{{N_1 + N_2\over N_1 N_2} \cdot {(N_1 - 1)\sigma_1^2 + (N_2 - 1)\sigma_2^2 \over N_1 + N_2-2}}$$
+
+Fortunately, python can do all of these calculations for us.  For example, if two groups of students measure the time it takes for a ball to fall $3.00$ m, you could use the code below to calculate a p-value.
+
+```{python}
+from scipy.stats import ttest_ind
+dataOne = [0.75,0.74,0.79,0.76,0.77,0.73,0.74,0.78,0.76,0.75]
+dataTwo = [0.81,0.80,0.79,0.76,0.77,0.80]
+
+P = ttest_ind(dataOne,dataTwo)
+
+print(f"The p-value for these two data sets is {P.pvalue:8.4f} = {P.pvalue*100:4.2f} %.")
+```
+
+Since the p-value is less than the $5\%$ boundary we conclude that the results from these two experiments differ significantly.
+
 ## Useful Plots
 
 ### Histograms
@@ -381,7 +403,7 @@ Each student will measure the period of a 1.5-meter-long pendulum 10 times. This
 7. Add a formatted print statement (see examples from previous labs) to report an appropriate value for $g$ with its uncertainty.
 8. Plot a histogram of the g values.  
 9. The normal distribution is given by $$ N(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2\over 2 \sigma^2}$$. Plot this distribution on top of the histogram. Verify that the limiting distribution matches the histogram.  
-
+10. Calculate the p-value for this dataset using $g= 9.8$ as the expected value.  State whether the deviation of your experimental results are significant enough (at the $5\%$ level ) to reject the experiment. Do this on line 17 in the code cell below.
 
 [Pendulum Data](https://docs.google.com/spreadsheets/d/1A2Xb7dDaDxjSH8YzRn0-Lb2er6qxWySYjmuLK-yiP4w/edit?usp=sharing)
 
@@ -405,7 +427,7 @@ stdMeanG =     # Line 12
 μ =            # Line 14 
 σ =            # Line 15
 σ_μ =          # Line 16
-
+p_value =      # Line 17
 
 
 
@@ -432,7 +454,7 @@ We will use the electronic radiation monitor to measure the number of decays for
 ### Procedure
 1. Using the Vernier Radiation Monitor, measure the decays of a radioactive sample.  Below you will find the instructions for setting up the Vernier Radiation Monitor to your laptop.  Use 10-second intervals and make 100 measurements.  
 2. Copy the data from Logger Pro to an Excel spreadsheet and save the worksheet.(The worksheet should have only one column of data.  Don't include the time data in the Excel worksheet.)
-3. Use equation 4.5 to calculate the mean of the data and the equation below to calculate the standard deviation of the data. $$\sigma = \sqrt{\mu}$$. Perform these calcuations on lines 7 and 8 in the code cell below.
+3. Use the equation above for the mean ($\mu$) to calculate the mean of the data and the equation below to calculate the standard deviation of the data. $$\sigma = \sqrt{\mu}$$. Perform these calculations on lines 7 and 8 in the code cell below.
 4. Add a formatted print statement to report the appropriate count number with its associated uncertainty.
 5. One line 11 of the code cell below, produce a histogram just as we did together in activity I. Choose `bins = ` so that the histogram displays a sufficient amount of detail.
 6. The limiting distribution for this kind of data is called a Poisson distribution (equation given below).  It is only defined for interger values of the argument and it is hard to plot using standard plotting techniques.  I have provided the code to plot this function in the code cell below.  You may have to modify the numbers on line 14 to plot over the appropriate range.  $$P(x) = e^{-\mu} {\mu^x \over x!} $$
@@ -480,19 +502,27 @@ plt.show()
 This activity is identical in nature to Activity I.  Instead of measuring the period of a pendulum, we will measure the range of a projectile.  The analysis of the data will be very similar to that performed in Activity I. 
 
 ### Procedure
-1. Using the projectile launcher, fire a steel ball 40 times (10 launches per student) and measure the range in meters.  The projectile should be placed on the table.  Use an initial launch angle of $30^\circ$ and use the third spring setting to produce the largest range.
-2. Again, we will pool our data together as a class to increase the size of the dataset.  Therefore, it is very important that every student launches **under the same conditions**.  Add your data to the Google sheets document linked below.
-3. When all the data is collected, have Python read the data set using `np.loadtxt()`.
-4. Calculate the mean, standard deviation, and standard deviation of the mean using your preferred calculation method. (Either with `stats.mean()` and `stats.stdev()` or brute force calcuation of the equations in the book.)
-5. Plot a histogram of the data.  Choose `bins =` appropriately so the histogram displays with sufficient detail.
-6. Plot the normal distribution on top to verify that it is the limiting distribution.
-7. Add a formatted print statement to report the particle's range with its associated uncertainty.
+1. Use kinematics to predict the range of the steel ball.  Perform the calculations in the code cell below. 
+2. Using the projectile launcher, fire a steel ball 40 times (10 launches per student) and measure the range in meters.  The projectile should be placed on the table.  Use an initial launch angle of $30^\circ$ and use the third spring setting to produce the largest range.
+3. Again, we will pool our data together as a class to increase the size of the dataset.  Therefore, it is very important that every student launches **under the same conditions**.  Add your data to the Google sheets document linked below.
+4. When all the data is collected, have Python read the data set using `np.loadtxt()`.
+5. Calculate the mean, standard deviation, and standard deviation of the mean using your preferred calculation method. (Either with `stats.mean()` and `stats.stdev()` or brute force calcuation of the equations in the book.)
+6. Plot a histogram of the data.  Choose `bins =` appropriately so the histogram displays with sufficient detail.
+7. Plot the normal distribution on top to verify that it is the limiting distribution.
+8. Add a formatted print statement to report the particle's range with its associated uncertainty.
+9. Calculate the p-value for your data set using the predicted range from part 1 as your expected value. State whether the deviation of your experimental results are significant enough (at the $5\%$ level ) to reject the experiment. 
 
 No template code cell will be provided for this activity (hopefully you are feeling more and more comfortable writing simple code on your own), but you can copy/paste from previous activities.
 
 [Projectile Data](https://docs.google.com/spreadsheets/d/1frC8Yy7TK7fDN_z7E-1BQEOr6knhIZweFHdOTky6TQM/edit?usp=sharing)
 
 
+```{python}
+# Put code here
+
+
+
+```
 
 
 

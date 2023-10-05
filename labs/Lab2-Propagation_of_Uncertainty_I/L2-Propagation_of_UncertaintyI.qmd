@@ -486,7 +486,7 @@ un_length = [,,,,]  # Line 7
 un_period = [,,,,]  # Line 8
 un_g = [,,,,]  # Line 9
 
-df = DataFrame(np.transpose([periods,un_period,lengths,un_length,gvalues,un_g]),columns = ["T (s)","δT (s)","L (m)","δL (m) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,4)))
+df = DataFrame(np.transpose([periods,un_period,lengths,un_length,gvalues,un_g]),columns = ["T (s)","δT (s)","L (m)","δL (m) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,6)))
 display(df)
 
 fig = plt.figure()            
@@ -563,11 +563,11 @@ trial = [1,2,3,4,5,6,7,8,9,10]
 fallDistances = [,,,,,,,,,]
 un_distance = [,,,,,,,,,]
 fallTimes = [,,,,,,,,,]
-un_time = [,,,,,,,,,]
+un_times = [,,,,,,,,,]
 g = [,,,,,,,,,]  
 un_g = [,,,,,,,,,]  
 
-df = DataFrame(np.transpose([fallDistances,un_distance,fallTimes,un_times,gvalues,un_g]),columns = ["Fall Distance (m)","δd (m)","Fall Times (s)","δt (s) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,4)))
+df = DataFrame(np.transpose([fallDistances,un_distance,fallTimes,un_times,g,un_g]),columns = ["Fall Distance (m)","δd (m)","Fall Times (s)","δt (s) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,11)))
 display(df)
 
 
@@ -594,22 +594,4 @@ ax2.set_title("Fall Distance vs. Fall Time.")
 plt.show()
 ```
 
-```{python}
-#| eval: false
-#| echo: true
-
-from numpy import array
-from statistics import mean, stdev
-h =        # Height in meters
-t_10 = array([ , , , , , , , , , ],float)    # Enter your ten time measurements
-g =       # Calculate g for all time measurements
-g_avg = mean(g)     # calculate mean
-g_stdev = stdev(g)  # calculate standard deviation
-print("The average value for g is: {0:4.1f}  m/s^2".format(g_avg))
-print("The standard deviation for the g values is: {0:4.2f}  m/s^2".format(g_stdev))
-```
-
-4. Given a choice, would you prefer to report your value of g and its uncertainty from part (a), or your value just calculated? Give a reason for your answer.
-
-> **Response:**
 
