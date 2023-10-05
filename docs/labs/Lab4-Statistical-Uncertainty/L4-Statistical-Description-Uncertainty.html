@@ -257,6 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L4-Statistical-Description-Uncertainty.ipynb">Jupyter Notebook</a></p>
 <p>Name:</p>
 <section id="skills" class="level2">
 <h2 class="anchored" data-anchor-id="skills">Skills</h2>
@@ -273,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="statistical-distributions">Statistical Distributions</h3>
 <p>We’ve learned that all measurements have uncertainties associated with them. This means that when a measurement (or experiment) is repeated, the obtained value is different every time. Statisticians call this a random variable, but the numbers aren’t as random as you might think. You might think that the word random means that the value can be <strong>anything</strong>; any number at all from <span class="math inline">\(-\infty \rightarrow \infty\)</span> but that’s not what we typically mean. Instead, random in this context means a number that is random but subject to some probability rules.</p>
 <p>The rules for deciding what random numbers are allowed are contained in a mathematical function called a probability distribution. The Gaussian (or Normal) distribution and Gamma distributions (pictured below) are two common distributions . (Students will no doubt be familiar with the term “bell curve”.)</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-2-output-1.png" width="664" height="358"></p>
 </div>
@@ -284,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 \]</span></p>
 <p>The shape and location of this function are controlled by two numbers: the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (<span class="math inline">\(\sigma\)</span>). The mean controls where the peak of the distribution is located and the standard deviation controls the width of the peak. One feature of the normal distribution is that 68% of the data lies between <span class="math inline">\(\mu - \sigma\)</span> and <span class="math inline">\(\mu + \sigma\)</span>. For this reason <strong>we often assign the mean to be the expected value and the standard deviation to be the associated uncertainty</strong>.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-3-output-1.png" width="671" height="470"></p>
 </div>
@@ -294,13 +295,13 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <section id="histograms" class="level3">
 <h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
 <p>When an experiment can be repeated over and over again under identical physical conditions, the data can be visualized using something called a histogram. To construct a histogram, the range of plausible measurement values is first divided into bins. Each measurement is then assigned a bin and the total number of measurements in each bin is updated. The number of measurements in all of the bins can be visualized by plotting a bar for each bin, with the height of the bar indicating how many measurements were in the bin. Below is a histogram for 10 repetitions of an experiment to determine the acceleration due to gravity.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-4-output-1.png" width="579" height="429"></p>
 </div>
 </div>
 <p>Ten data points isn’t a lot but you can probably start to form a reasonable guess for the mean(expected value) and standard deviation(uncertainty) of the underlying distribution. As more data is gathered, your estimates for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> will update and your confidence in those values increases with it. (Illustrated in the figure below)</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -352,7 +353,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <h3 class="anchored" data-anchor-id="comparing-results">Comparing Results</h3>
 <p>In lab #1, the success of an experiment was decided by comparing the fractional uncertainty to the percent error. If the fractional uncertainty was bigger than the percent error then the experiment was judged to be a success. While this criteria isn’t wrong, it doesn’t tell us how good or bad the agreement is and it also doesn’t provide any boundary between acceptable and unacceptable results. We are now in a position to describe a more robust criteria for judging success.</p>
 <p>Recall that every time an experiment is performed the measurements gathered are random draws from a distribution. This distribution is assumed to be <strong>centered at the expected value (<span class="math inline">\(x_e\)</span>)</strong>. If the results of the experiment (usually the mean) are too far away from the expected mean, the probability that the measurements were random draws from the assumed distribution is so small that we lose confidence in that assumption. The figure below illustrates this idea. The red curve is the assumed distribution centered at the expected value and the blue bars indicate the measurements during the experiment. The mean of these results is indicated by the red dashed curve and the expected mean is indicated by the green dashed curve.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-6-output-1.png" width="585" height="434"></p>
 </div>
@@ -362,7 +363,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <p>which measures how many standard deviations of the mean the measured result differs from the expected result. Here <span class="math inline">\(x_b\)</span> is the best result from your experiment(usually the mean of your dataset), <span class="math inline">\(x_e\)</span> is the expected value, and <span class="math inline">\(\sigma_n\)</span> is the standard deviation of the mean.</p>
 <p>For values of <span class="math inline">\(t &lt;1\)</span> the experiment is probably a success and for <span class="math inline">\(t \gg 1\)</span> the experiment probably isn’t a success. But what about intermediate values? It would be nice to make a more probabilistic statement about the success of our experiment. Something like, “The probability that the results of our experiment were drawn from a distribution with the expected result as the mean is 90%”</p>
 <p>We can use Python to answer this question using the code given below.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_1samp</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> [<span class="fl">1.64</span>,<span class="fl">1.57</span>,<span class="fl">1.72</span>,<span class="fl">1.55</span>,<span class="fl">1.68</span>,<span class="fl">1.62</span>,<span class="fl">1.70</span>,<span class="fl">1.59</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -382,7 +383,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <p>but the standard deviation is now given by</p>
 <p><span class="math display">\[\sigma_\text{joint} = \sqrt{{N_1 + N_2\over N_1 N_2} \cdot {(N_1 - 1)\sigma_1^2 + (N_2 - 1)\sigma_2^2 \over N_1 + N_2-2}}\]</span></p>
 <p>Fortunately, python can do all of these calculations for us. For example, if two groups of students measure the time it takes for a ball to fall <span class="math inline">\(3.00\)</span> m, you could use the code below to calculate a p-value.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dataOne <span class="op">=</span> [<span class="fl">0.75</span>,<span class="fl">0.74</span>,<span class="fl">0.79</span>,<span class="fl">0.76</span>,<span class="fl">0.77</span>,<span class="fl">0.73</span>,<span class="fl">0.74</span>,<span class="fl">0.78</span>,<span class="fl">0.76</span>,<span class="fl">0.75</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dataTwo <span class="op">=</span> [<span class="fl">0.81</span>,<span class="fl">0.80</span>,<span class="fl">0.79</span>,<span class="fl">0.76</span>,<span class="fl">0.77</span>,<span class="fl">0.80</span>]</span>
@@ -434,7 +435,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 </tbody>
 </table>
 <p>Some example code for building a histogram is given below.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy.random <span class="im">as</span> rand</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -453,7 +454,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <p>Plotting a function in Python can be accomplished by following these steps: 1. Build a list of x value (horizontal axis). 2. Calculate the function value for every x value. 3. Use <code>pyplot.plot(x,y)</code> to plot the x-y pairs. 4. Use <code>pyplot.show()</code> to display the plot.</p>
 <p>Several options to the <code>pyplot.plot()</code> function will allow you to customize the plot. Some common ones are listed below: 1. <code>linestyle</code>: specify what the line representing the function looks like. 2. <code>color</code>: Specify the color of the line representing the function. 3. <code>linewidth</code>: Specify the thickness of the line representing the function.</p>
 <p>The functions <code>ax.set_xlabel()</code>, <code>ax.set_ylabel()</code>, and <code>ax.set_title()</code> can also be used to specify axes labels and a plot title. An example is given in the code cell below.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
