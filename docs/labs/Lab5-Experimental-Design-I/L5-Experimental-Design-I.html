@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Beginning Physics Lab - Lab 6 Experimental Design I</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Lab 6 Experimental Design I</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Beginning Physics Lab</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Python and Jupyter Notebooks</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Measurements and Uncertainty</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">Lab 1 Measurement and Uncertainty</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" class="sidebar-item-text sidebar-link">Lab 2: Propagation of Uncertainty I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="sidebar-item-text sidebar-link">Lab 3: Propagation of Uncertainty Part II</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab 4 Statistical Interpretation of Uncertainty</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Experimental Design</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link active">Lab 6 Experimental Design I</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
+  <ul class="collapse">
+  <li><a href="#designing-an-experiment" id="toc-designing-an-experiment" class="nav-link" data-scroll-target="#designing-an-experiment">Designing an Experiment</a></li>
+  <li><a href="#python-skills" id="toc-python-skills" class="nav-link" data-scroll-target="#python-skills">Python Skills</a></li>
+  </ul></li>
+  <li><a href="#activity-mass-spring-system" id="toc-activity-mass-spring-system" class="nav-link" data-scroll-target="#activity-mass-spring-system">Activity (mass-spring system)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Lab 6 Experimental Design I</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L6-Experimental-Design-I.ipynb">Jupyter Notebook</a></p>
+<p>Name:</p>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<ol type="1">
+<li>Learn how to plan and carry out a high-quality scientific experiment.</li>
+<li>Use Python to fit a curve to some data.</li>
+</ol>
+</section>
+<section id="background-information" class="level2">
+<h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
+<section id="designing-an-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="designing-an-experiment">Designing an Experiment</h3>
+<p>One of the objectives of this course is to learn how to design and carry out a successful experiment. In grade-school an experiment was any science related activity (the proverbial building of a volcano model was considered an experiment), but for a scientist an experiment is used to test a hypothesis. This test must be carried out carefully because the entire foundation of science depends on the integrity of the process. In today’s lab, a hypothesis will be given to you and you will be required to carry out the experiment to test it. The hypothesis for today’s lab involves the relationship between the period of oscillation and the mass of a mass-spring system.</p>
+<p>When conducting an experiment, always follow these steps to ensure success.</p>
+<ol type="1">
+<li>Identify the system to be examined and list all of the inputs. In our case it is a mass-spring system, which involves a mass(<span class="math inline">\(m\)</span>) and a spring, whose stiffness is characterized by a spring constant (<span class="math inline">\(k\)</span>). The forces acting on the mass are (i) gravity and (ii) the tension in the spring. These are the inputs. They are the quantities that could change in the design of your experiment. The first step in designing your experiment is to give a short description of the system in a lab notebook (or jupyter notebook in our case).</li>
+<li>Identify the model to be tested. The word “model” means a mental picture of how something works. Physicists prefer to express a model as a mathematical equation. For example, there is a model for how force depends on acceleration. The greater the net force, the bigger the acceleration of the object. The mass also fits into the model: The larger the mass, the larger the force needed to create the same acceleration. This mental model can be expressed in an equation <span class="math inline">\(F = ma\)</span> It is valuable to use both the word description of the model as well as a mathematical representation. Today, the mental model is that the period of oscillation for a mass-spring system depends directly on the square root of the mass. Think about what this means. If I increase the mass, the period should get longer. But if I double the mass, the period won’t double. This is a mental model that allows us to do predictions of behavior. In physics it is almost required to reduce this model to an algebraic equation that can be used to calculate a prediction and an uncertainty on that prediction. For today’s experiment that equation is <span class="math display">\[T = C\sqrt{m}\]</span> where C is a factor that does not depend on mass. Today, this equation is given to you but for future experiments your group will have to come up with their own mathematical expression of the model. In your lab notebook (jupyter), record your model and the model equation.</li>
+<li>Plan how you will know if the experiment is successful. The success of your experiment is more likely if you anticipate (or plan) what that success will look like. One way to do this is to plan how you will communicate your results. Often these results will take the form of a graph or plot of some kind and you should think of what graph you will make at the end of the experiment to communicate whether your model works (or not). In today’s experiment, a graph of T vs.&nbsp;m or even T vs.<span class="math inline">\(\sqrt{m}\)</span> might be useful along with a curve fit (see section below for how to fit a curve to data in Python). Thinking about how you will communicate your results helps you decide what measurement you will make. In our case today it is hard to plot T vs.&nbsp;m if you don’t measure T and m, and recognizing this in advance helps you plan the experiment. Mock up your graph or figure in your lab notebook. Give axis titles and even units (but of course no data yet).</li>
+<li>Rectify your equation. As mentioned in step 3, fitting your data to a curve is a great way to determine whether the relationship between your data is what you hypothesized. The strongest and most reliable curve fits are straight line fits where the fit equation is something like <span class="math display">\[y = mx + b\]</span> When possible, the equation from step 3 should be reduced to the equation of a straight line, or linearized. In today’s lab we can do this by taking the square root of all of the mass measurements. If the equation can’t be linearized, it should at least be rendered into a form that can be used to predict the outcome of the experiment. Record your new equation in your lab notebook.</li>
+<li>Choose ranges for the pertinent experiment variables. For today’s experiment the variables of interest are <span class="math inline">\(m\)</span> and <span class="math inline">\(k\)</span> and you should think carefully about reasonable values. It should be clear when you see the spring that putting a thousand kilograms of mass on the spring would be a bad idea. What values of <span class="math inline">\(m\)</span> will give you good results in testing your theory and what values will not? Hooke’s law is not valid for all m and k (if you doubt this, think of your Christmas slinky after your brother got to it; it never looked the same again!). Using uncertainty analysis on the equation can be helpful in making this decision. Changes in mass that produce a change in T that is smaller than the uncertainty in T will not be noticeable, which means changes in the mass that are too small will be a waste of time and effort. Changes that are likely to break the equipment are also not desirable. All of these considerations should be considered before the experiment is conducted. If you fail to do this you may find find that you did not get good data, and must repeat all your work! Record your variable ranges in your lab notebook. As you perform the experiment note any deviations from this plan.</li>
+<li>Plan the experimental procedure. The group should talk their way through the experiment. You might find yourselves saying something like “then you take the stopwatch and measure the period..” and you realize that you did not get a stop watch. Determine whether the equipment you need is available. Get in the habit of working through the procedure in advance to see if anything has been forgotten. Record the planned procedure in your lab notebook. As you perform the experiment, note any deviations from the plan and the reason for the deviation. Deviations are fine, just make sure you record them.</li>
+<li>Perform the experiment and report on it in your lab notebook (jupyter). All of the previous steps were just planning. In this step you should actually do what you have planned to do. Then report your results. Specifically, in this step you should..
+<ul>
+<li>Explain the procedure that was actually followed, recording what you really did as you do it. This will probably not be just a restatement of the plan because things will change as you go. Record the equipment used and settings, values, etc. for that equipment. Did you learn how to use any new equipment? What did you learn that you want to recall later (say, when taking the final, or when you are a professional and need to use a similar piece of equipment five years from now).</li>
+<li>Record the data you used. If you have a large set of values, you can place them in a file, and then record the file name and location in your lab notebook. Make sure this is a file location that does not change (emailing the data to yourself is still not a good plan).</li>
+<li>Give a record of the analysis you performed. You planned this above, now record what you actually did</li>
+<li>Give a brief statement of your results and their associated uncertainties.</li>
+<li>Draw conclusions: Do your results support the theory? Why or why not? What else did you learn along the way that you want to record. (This is where we may compare the percent error to our relative uncertainty).</li>
+</ul></li>
+</ol>
+</section>
+<section id="python-skills" class="level3">
+<h3 class="anchored" data-anchor-id="python-skills">Python Skills</h3>
+<section id="curve-fitting" class="level4">
+<h4 class="anchored" data-anchor-id="curve-fitting">Curve Fitting</h4>
+<p>Often in science you will gather data as a way to explore the relationship between two physical quantities and/or to validate your theories. For example, consider the time it takes a car to stop starting from the moment you slam on your brakes, locking them in place (most modern cars are designed to prevent this). The question is: How does the stopping time depend on the car’s initial speed. If you are familiar with Newtonian mechanics at all, you might hypothesize that the acceleration of the car should not depend on the initial velocity and hence the stopping time will increase linearly with the initial speed. Furthermore, the following kinematic equation</p>
+<p><span class="math display">\[
+\begin{align*}
+v_f &amp;= v_i - a \Delta t\\
+0 &amp;= v_i - \mu_k g \Delta t\\
+\Delta t &amp;= {v_i\over \mu_k g}
+\end{align*}
+\]</span></p>
+<p>would suggest that the slope of <span class="math inline">\(\Delta t\)</span> vs.&nbsp;<span class="math inline">\(v_i\)</span> function is <span class="math inline">\({1\over a} = {1\over \mu g}\)</span>. In other words, the theory of kinematics suggest that the acceleration should be independent of initial speed. To prove your idea, you should first measure the stopping time for cars with a variety of initial speeds (shown below).</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Initial Speed (m/s)</th>
+<th>Skid time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12</td>
+<td>3.23</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td>3.43</td>
+</tr>
+<tr class="odd">
+<td>22</td>
+<td>4.67</td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td>5.45</td>
+</tr>
+<tr class="odd">
+<td>29</td>
+<td>6.00</td>
+</tr>
+<tr class="even">
+<td>38</td>
+<td>8.52</td>
+</tr>
+</tbody>
+</table>
+<div class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>Text(0.5, 1.0, 'Skid time vs initial speed')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="L5-Experimental-Design-I_files/figure-html/cell-2-output-2.png" width="576" height="449"></p>
+</div>
+</div>
+<p>We notice that the data <strong>looks</strong> linear which matches our hypothesis that the acceleration is constant.</p>
+<p>The next thing to do is to find the line that passes through the data points as close as possible. When the fit function is a polynomial , we can use the <code>polyfit</code> function from numpy. This function takes three argument: the independent data set, the dependent data set, and the order of the polynomial</p>
+<pre><code>polyfit(x,y,order)</code></pre>
+<p>The <code>polyfit</code> function returns a list of numbers containing the function parameters for the best fit function.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> polyfit</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [<span class="fl">3.23</span>,<span class="fl">3.43</span>,<span class="fl">4.67</span>,<span class="fl">5.45</span>,<span class="dv">6</span>,<span class="fl">8.52</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>vi <span class="op">=</span> [<span class="dv">12</span>,<span class="dv">17</span>,<span class="dv">22</span>,<span class="dv">25</span>,<span class="dv">29</span>,<span class="dv">38</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> polyfit(vi,t,<span class="dv">1</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> params[<span class="dv">0</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>yint <span class="op">=</span> params[<span class="dv">1</span>]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>g<span class="op">=</span><span class="fl">9.8</span> <span class="co">#Acceleration due to gravity</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(slope <span class="op">*</span> g)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(params)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.20971747 0.21840032]
+0.48656326406696415</code></pre>
+</div>
+</div>
+<p>In this case, <span class="math inline">\(0.2097\)</span> is the slope of the best-fit function and <span class="math inline">\(0.2184\)</span> is the y-intercept of the best fit function. Remembering our theory from above, we notice that the slope of this fit function can be used to calculate the coefficient of friction between the rubber tires and the roadway.</p>
+<p><span class="math display">\[
+\begin{align*}
+m &amp;= {1\over \mu g}\\
+\mu &amp;= {1\over m g}
+\end{align*}
+\]</span></p>
+<p>It is often useful to plot the fit function on top of the data to verify that it really matches the data.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> polyfit,linspace</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [<span class="fl">3.23</span>,<span class="fl">3.43</span>,<span class="fl">4.67</span>,<span class="fl">5.45</span>,<span class="dv">6</span>,<span class="fl">8.52</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>vi <span class="op">=</span> [<span class="dv">12</span>,<span class="dv">17</span>,<span class="dv">22</span>,<span class="dv">25</span>,<span class="dv">29</span>,<span class="dv">38</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> polyfit(vi,t,<span class="dv">1</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>vDense <span class="op">=</span> linspace(<span class="dv">8</span>,<span class="dv">40</span>,<span class="dv">100</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>tDense <span class="op">=</span> params[<span class="dv">0</span>] <span class="op">*</span> vDense <span class="op">+</span> params[<span class="dv">1</span>]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.plot(vi,t,<span class="st">'r.'</span>,ms <span class="op">=</span> <span class="dv">16</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.plot(vDense,tDense,<span class="st">'k'</span>,lw <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="L5-Experimental-Design-I_files/figure-html/cell-4-output-1.png" width="558" height="411"></p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="activity-mass-spring-system" class="level2">
+<h2 class="anchored" data-anchor-id="activity-mass-spring-system">Activity (mass-spring system)</h2>
+<p>Follow all of the steps outlined above to perform a high-quality experiment involving a mass-spring system. Since this is your first time, an outline of the steps will be provided below.</p>
+<ol type="1">
+<li>Identify the system being studied. List all relevant variables.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="2" type="1">
+<li>Identify the hypothesis or model that you will test. Provide both a verbal description of this model <strong>and</strong> and mathematical equation. (use <span class="math inline">\(\LaTeX\)</span>)</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="3" type="1">
+<li>How will you know if your experiment is successful?</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Linearize your equation if possible.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Choose reasonable ranges for the pertinent variables in your experiment.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="6" type="1">
+<li>Plan the experimental procedure.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="7" type="1">
+<li>Carry out the experiment and report your results. Include all data collected, plots constructed and give evidence for or against your hypothesis. Data should be placed in a table of some kind. You can either use a markdown table in a text cell or a Pandas dataframe (see activity I from lab 2 for a refresher) to display the data.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform calculations and construct plots here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 4 Statistical Interpretation of Uncertainty</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -14,16 +14,16 @@ book:
   sidebar:
     style: floating
   chapters:
+    - index.qmd
     - part: "Measurements and Uncertainty"
       chapters:
-      - index.qmd
       - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
       - labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.qmd
       - labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.qmd
       - labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.qmd
     - part: "Experimental Design"
-#      chapters:
-#      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+      chapters:
+      - labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.qmd
 #    - part: "Numerical Modeling"
 #      chapters:
 #      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd

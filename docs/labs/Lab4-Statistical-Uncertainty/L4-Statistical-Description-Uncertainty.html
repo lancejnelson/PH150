@@ -88,6 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" rel="next">
 <link href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -156,6 +157,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Python and Jupyter Notebooks</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Measurements and Uncertainty</a>
@@ -164,11 +170,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">Python and Jupyter Notebooks</a>
-  </div>
-</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">Lab 1 Measurement and Uncertainty</a>
@@ -192,7 +193,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Experimental Design</span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Experimental Design</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">Lab 6 Experimental Design I</a>
+  </div>
+</li>
+      </ul>
   </li>
     </ul>
     </div>
@@ -492,7 +505,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <li>Record your 10 measurements in the google sheets link provided below.</li>
 <li>Once everyone has collected their measurements someone needs to move all of the data into a single column. Then download the file to your computer and use the <code>np.loadtxt()</code> function to read this data into Python. Do this on line 7 of the code cell below. (Remember: The file must be located in the same directory as this Jupyter notebook.)</li>
 <li>The acceleration due to gravity can be calculated from <span class="math display">\[ g = {4 \pi^2 L \over T^2}\]</span> On line 9 of the code cell below calculate the acceleration due to gravity for each period measurement in the data set. To include <span class="math inline">\(\pi\)</span> in your calculation use <code>np.pi</code>.</li>
-<li>Use equations 4.5, 4.9, and 4.14 from the book to calculate the mean, standard deviation, and standard deviation of the mean. Perform these calculations on lines 10, 11, and 12 of the code cell below. Use <code>np.sum()</code> to perform summations and <code>np.sqrt()</code> to perform square root functions.</li>
+<li>Use the equations given in the reading above to calculate the mean, standard deviation, and standard deviation of the mean. Perform these calculations on lines 10, 11, and 12 of the code cell below. Use <code>np.sum()</code> to perform summations and <code>np.sqrt()</code> to perform square root functions.</li>
 <li>On lines 14,15, and 16 in the code cell below use the functions <code>stats.mean()</code> and <code>stats.stdev()</code> to calculate the mean, standard deviation, and standard deviation of the mean.<br>
 </li>
 <li>Add a formatted print statement (see examples from previous labs) to report an appropriate value for <span class="math inline">\(g\)</span> with its uncertainty.</li>
@@ -824,6 +837,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="pagination-link">
+        <span class="nav-page-text">Lab 6 Experimental Design I</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
