@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beginning Physics Lab - Lab 6 Experimental Design I</title>
+<title>Beginning Physics Lab - Lab 5 Experimental Design I</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,6 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" rel="next">
 <link href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -130,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Lab 6 Experimental Design I</h1>
+      <h1 class="quarto-secondary-nav-title">Lab 5 Experimental Design I</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -201,7 +202,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link active">Lab 6 Experimental Design I</a>
+  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link active">Lab 5 Experimental Design I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" class="sidebar-item-text sidebar-link">Lab 6 Experimental Design II</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Numerical Modeling</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">Lab 7 Falling Objects with Air Resistance</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab 8 Air Resistance and Buoyancy</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab #9 Projectile Motion with Drag and Uncertainty</a>
   </div>
 </li>
       </ul>
@@ -215,13 +246,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#python-skills" id="toc-python-skills" class="nav-link active" data-scroll-target="#python-skills">Python Skills</a></li>
   <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
   <ul class="collapse">
   <li><a href="#designing-an-experiment" id="toc-designing-an-experiment" class="nav-link" data-scroll-target="#designing-an-experiment">Designing an Experiment</a></li>
-  <li><a href="#python-skills" id="toc-python-skills" class="nav-link" data-scroll-target="#python-skills">Python Skills</a></li>
+  <li><a href="#python-skills-1" id="toc-python-skills-1" class="nav-link" data-scroll-target="#python-skills-1">Python Skills</a></li>
   </ul></li>
-  <li><a href="#activity-mass-spring-system" id="toc-activity-mass-spring-system" class="nav-link" data-scroll-target="#activity-mass-spring-system">Activity (mass-spring system)</a></li>
+  <li><a href="#activity-i--conduct-the-expriment-mass-spring-system" id="toc-activity-i--conduct-the-expriment-mass-spring-system" class="nav-link" data-scroll-target="#activity-i--conduct-the-expriment-mass-spring-system">Activity I- Conduct the expriment (mass-spring system)</a></li>
+  <li><a href="#activtity-ii---interpolation-and-extrapolation-testing-the-law" id="toc-activtity-ii---interpolation-and-extrapolation-testing-the-law" class="nav-link" data-scroll-target="#activtity-ii---interpolation-and-extrapolation-testing-the-law">Activtity II - Interpolation and Extrapolation (Testing the Law)</a></li>
   </ul>
 </nav>
     </div>
@@ -230,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Lab 6 Experimental Design I</h1>
+<h1 class="title d-none d-lg-block">Lab 5 Experimental Design I</h1>
 </div>
 
 
@@ -244,13 +276,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p><a href="https://lancejnelson.github.io/PH150/jupyter/L6-Experimental-Design-I.ipynb">Jupyter Notebook</a></p>
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L5-Experimental-Design-I.ipynb">Jupyter Notebook</a></p>
 <p>Name:</p>
-<section id="skills" class="level2">
-<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<section id="python-skills" class="level2">
+<h2 class="anchored" data-anchor-id="python-skills">Python Skills</h2>
 <ol type="1">
+<li>Learn how to fit a curve to some data.</li>
+<li>Learn how to extract physical meaning from the fit parameters.<br>
+## Experimental Physics Skills</li>
 <li>Learn how to plan and carry out a high-quality scientific experiment.</li>
-<li>Use Python to fit a curve to some data.</li>
+<li>Learn the appropriate way to record your work during a scientific experiment.</li>
 </ol>
 </section>
 <section id="background-information" class="level2">
@@ -260,13 +295,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>One of the objectives of this course is to learn how to design and carry out a successful experiment. In grade-school an experiment was any science related activity (the proverbial building of a volcano model was considered an experiment), but for a scientist an experiment is used to test a hypothesis. This test must be carried out carefully because the entire foundation of science depends on the integrity of the process. In today’s lab, a hypothesis will be given to you and you will be required to carry out the experiment to test it. The hypothesis for today’s lab involves the relationship between the period of oscillation and the mass of a mass-spring system.</p>
 <p>When conducting an experiment, always follow these steps to ensure success.</p>
 <ol type="1">
-<li>Identify the system to be examined and list all of the inputs. In our case it is a mass-spring system, which involves a mass(<span class="math inline">\(m\)</span>) and a spring, whose stiffness is characterized by a spring constant (<span class="math inline">\(k\)</span>). The forces acting on the mass are (i) gravity and (ii) the tension in the spring. These are the inputs. They are the quantities that could change in the design of your experiment. The first step in designing your experiment is to give a short description of the system in a lab notebook (or jupyter notebook in our case).</li>
-<li>Identify the model to be tested. The word “model” means a mental picture of how something works. Physicists prefer to express a model as a mathematical equation. For example, there is a model for how force depends on acceleration. The greater the net force, the bigger the acceleration of the object. The mass also fits into the model: The larger the mass, the larger the force needed to create the same acceleration. This mental model can be expressed in an equation <span class="math inline">\(F = ma\)</span> It is valuable to use both the word description of the model as well as a mathematical representation. Today, the mental model is that the period of oscillation for a mass-spring system depends directly on the square root of the mass. Think about what this means. If I increase the mass, the period should get longer. But if I double the mass, the period won’t double. This is a mental model that allows us to do predictions of behavior. In physics it is almost required to reduce this model to an algebraic equation that can be used to calculate a prediction and an uncertainty on that prediction. For today’s experiment that equation is <span class="math display">\[T = C\sqrt{m}\]</span> where C is a factor that does not depend on mass. Today, this equation is given to you but for future experiments your group will have to come up with their own mathematical expression of the model. In your lab notebook (jupyter), record your model and the model equation.</li>
-<li>Plan how you will know if the experiment is successful. The success of your experiment is more likely if you anticipate (or plan) what that success will look like. One way to do this is to plan how you will communicate your results. Often these results will take the form of a graph or plot of some kind and you should think of what graph you will make at the end of the experiment to communicate whether your model works (or not). In today’s experiment, a graph of T vs.&nbsp;m or even T vs.<span class="math inline">\(\sqrt{m}\)</span> might be useful along with a curve fit (see section below for how to fit a curve to data in Python). Thinking about how you will communicate your results helps you decide what measurement you will make. In our case today it is hard to plot T vs.&nbsp;m if you don’t measure T and m, and recognizing this in advance helps you plan the experiment. Mock up your graph or figure in your lab notebook. Give axis titles and even units (but of course no data yet).</li>
-<li>Rectify your equation. As mentioned in step 3, fitting your data to a curve is a great way to determine whether the relationship between your data is what you hypothesized. The strongest and most reliable curve fits are straight line fits where the fit equation is something like <span class="math display">\[y = mx + b\]</span> When possible, the equation from step 3 should be reduced to the equation of a straight line, or linearized. In today’s lab we can do this by taking the square root of all of the mass measurements. If the equation can’t be linearized, it should at least be rendered into a form that can be used to predict the outcome of the experiment. Record your new equation in your lab notebook.</li>
-<li>Choose ranges for the pertinent experiment variables. For today’s experiment the variables of interest are <span class="math inline">\(m\)</span> and <span class="math inline">\(k\)</span> and you should think carefully about reasonable values. It should be clear when you see the spring that putting a thousand kilograms of mass on the spring would be a bad idea. What values of <span class="math inline">\(m\)</span> will give you good results in testing your theory and what values will not? Hooke’s law is not valid for all m and k (if you doubt this, think of your Christmas slinky after your brother got to it; it never looked the same again!). Using uncertainty analysis on the equation can be helpful in making this decision. Changes in mass that produce a change in T that is smaller than the uncertainty in T will not be noticeable, which means changes in the mass that are too small will be a waste of time and effort. Changes that are likely to break the equipment are also not desirable. All of these considerations should be considered before the experiment is conducted. If you fail to do this you may find find that you did not get good data, and must repeat all your work! Record your variable ranges in your lab notebook. As you perform the experiment note any deviations from this plan.</li>
-<li>Plan the experimental procedure. The group should talk their way through the experiment. You might find yourselves saying something like “then you take the stopwatch and measure the period..” and you realize that you did not get a stop watch. Determine whether the equipment you need is available. Get in the habit of working through the procedure in advance to see if anything has been forgotten. Record the planned procedure in your lab notebook. As you perform the experiment, note any deviations from the plan and the reason for the deviation. Deviations are fine, just make sure you record them.</li>
-<li>Perform the experiment and report on it in your lab notebook (jupyter). All of the previous steps were just planning. In this step you should actually do what you have planned to do. Then report your results. Specifically, in this step you should..
+<li><strong>Identify the system to be examined and list all of the inputs.</strong> In our case it is a mass-spring system, which involves a mass(<span class="math inline">\(m\)</span>) and a spring, whose stiffness is characterized by a spring constant (<span class="math inline">\(k\)</span>). The forces acting on the mass are (i) gravity and (ii) the tension in the spring. These are the inputs. They are the quantities that could change in the design of your experiment. The first step in designing your experiment is to give a short description of the system in a lab notebook (or jupyter notebook in our case).</li>
+<li><strong>Identify the model to be tested.</strong> The word “model” means a mental picture of how something works. Physicists prefer to express a model as a mathematical equation. For example, there is a model for how force depends on acceleration. The greater the net force, the bigger the acceleration of the object. The mass also fits into the model: The larger the mass, the larger the force needed to create the same acceleration. This mental model can be expressed in an equation <span class="math inline">\(F = ma\)</span> It is valuable to use both the word description of the model as well as a mathematical representation. Today, the mental model is that the period of oscillation for a mass-spring system depends directly on the square root of the mass. Think about what this means. If I increase the mass, the period should get longer. But if I double the mass, the period won’t double. This is a mental model that allows us to do predictions of behavior. In physics it is almost required to reduce this model to an algebraic equation that can be used to calculate a prediction and an uncertainty on that prediction. For today’s experiment that equation is <span class="math display">\[T = C\sqrt{m}\]</span> where C is a factor that does not depend on mass. Today, this equation is given to you but for future experiments your group will have to come up with their own mathematical expression of the model. In your lab notebook (jupyter), record your model and the model equation.</li>
+<li><strong>Plan how you will know if the experiment is successful.</strong> The success of your experiment is more likely if you anticipate (or plan) what that success will look like. One way to do this is to plan how you will communicate your results. Often these results will take the form of a graph or plot of some kind and you should think of what graph you will make at the end of the experiment to communicate whether your model works (or not). In today’s experiment, a graph of T vs.&nbsp;m or even T vs.<span class="math inline">\(\sqrt{m}\)</span> might be useful along with a curve fit (see section below for how to fit a curve to data in Python). Thinking about how you will communicate your results helps you decide what measurement you will make. In our case today it is hard to plot T vs.&nbsp;m if you don’t measure T and m, and recognizing this in advance helps you plan the experiment. Mock up your graph or figure in your lab notebook. Give axis titles and even units (but of course no data yet).</li>
+<li><strong>Plan your analysis.</strong> Symbolically layout and solve any needed equations (including the propagation of uncertainty equations). That way you will know exactly what measurements you need to make, and will not have to try to recreate the experiment when you are analyzing your results. If possible, rectify(linearize) your equation. As mentioned in step 3, fitting your data to a curve is a great way to determine whether the relationship between your data is what you hypothesized. The strongest and most reliable curve fits are straight line fits where the fit equation is something like <span class="math display">\[y = mx + b\]</span> When possible, the equation from step 3 should be reduced to the equation of a straight line, or linearized. In today’s lab we can do this by taking the square root of all of the mass measurements. If the equation can’t be linearized, it should at least be rendered into a form that can be used to predict the outcome of the experiment. Record your new equation in your lab notebook.</li>
+<li><strong>Choose ranges for the pertinent experiment variables.</strong> For today’s experiment the variables of interest are <span class="math inline">\(m\)</span> and <span class="math inline">\(k\)</span> and you should think carefully about reasonable values. It should be clear when you see the spring that putting a thousand kilograms of mass on the spring would be a bad idea. What values of <span class="math inline">\(m\)</span> will give you good results in testing your theory and what values will not? Hooke’s law is not valid for all m and k (if you doubt this, think of your Christmas slinky after your brother got to it; it never looked the same again!). Using uncertainty analysis on the equation can be helpful in making this decision. Changes in mass that produce a change in T that is smaller than the uncertainty in T will not be noticeable, which means changes in the mass that are too small will be a waste of time and effort. Changes that are likely to break the equipment are also not desirable. All of these considerations should be considered before the experiment is conducted. If you fail to do this you may find find that you did not get good data, and must repeat all your work! Record your variable ranges in your lab notebook. As you perform the experiment note any deviations from this plan.</li>
+<li><strong>Plan the experimental procedure.</strong> The group should talk their way through the experiment. You might find yourselves saying something like “then you take the stopwatch and measure the period..” and you realize that you did not get a stop watch. Determine whether the equipment you need is available. Get in the habit of working through the procedure in advance to see if anything has been forgotten. Record the planned procedure in your lab notebook. As you perform the experiment, note any deviations from the plan and the reason for the deviation. Deviations are fine, just make sure you record them.</li>
+<li><strong>Perform the experiment and report on it in your lab notebook (jupyter).</strong> All of the previous steps were just planning. In this step you should actually do what you have planned to do. Then report your results. Specifically, in this step you should….
 <ul>
 <li>Explain the procedure that was actually followed, recording what you really did as you do it. This will probably not be just a restatement of the plan because things will change as you go. Record the equipment used and settings, values, etc. for that equipment. Did you learn how to use any new equipment? What did you learn that you want to recall later (say, when taking the final, or when you are a professional and need to use a similar piece of equipment five years from now).</li>
 <li>Record the data you used. If you have a large set of values, you can place them in a file, and then record the file name and location in your lab notebook. Make sure this is a file location that does not change (emailing the data to yourself is still not a good plan).</li>
@@ -276,8 +311,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ol>
 </section>
-<section id="python-skills" class="level3">
-<h3 class="anchored" data-anchor-id="python-skills">Python Skills</h3>
+<section id="python-skills-1" class="level3">
+<h3 class="anchored" data-anchor-id="python-skills-1">Python Skills</h3>
 <section id="curve-fitting" class="level4">
 <h4 class="anchored" data-anchor-id="curve-fitting">Curve Fitting</h4>
 <p>Often in science you will gather data as a way to explore the relationship between two physical quantities and/or to validate your theories. For example, consider the time it takes a car to stop starting from the moment you slam on your brakes, locking them in place (most modern cars are designed to prevent this). The question is: How does the stopping time depend on the car’s initial speed. If you are familiar with Newtonian mechanics at all, you might hypothesize that the acceleration of the car should not depend on the initial velocity and hence the stopping time will increase linearly with the initial speed. Furthermore, the following kinematic equation</p>
@@ -323,7 +358,7 @@ v_f &amp;= v_i - a \Delta t\\
 </tr>
 </tbody>
 </table>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Text(0.5, 1.0, 'Skid time vs initial speed')</code></pre>
 </div>
@@ -335,7 +370,7 @@ v_f &amp;= v_i - a \Delta t\\
 <p>The next thing to do is to find the line that passes through the data points as close as possible. When the fit function is a polynomial , we can use the <code>polyfit</code> function from numpy. This function takes three argument: the independent data set, the dependent data set, and the order of the polynomial</p>
 <pre><code>polyfit(x,y,order)</code></pre>
 <p>The <code>polyfit</code> function returns a list of numbers containing the function parameters for the best fit function.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> polyfit</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -363,7 +398,7 @@ m &amp;= {1\over \mu g}\\
 \end{align*}
 \]</span></p>
 <p>It is often useful to plot the fit function on top of the data to verify that it really matches the data.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> polyfit,linspace</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -383,8 +418,8 @@ m &amp;= {1\over \mu g}\\
 </section>
 </section>
 </section>
-<section id="activity-mass-spring-system" class="level2">
-<h2 class="anchored" data-anchor-id="activity-mass-spring-system">Activity (mass-spring system)</h2>
+<section id="activity-i--conduct-the-expriment-mass-spring-system" class="level2">
+<h2 class="anchored" data-anchor-id="activity-i--conduct-the-expriment-mass-spring-system">Activity I- Conduct the expriment (mass-spring system)</h2>
 <p>Follow all of the steps outlined above to perform a high-quality experiment involving a mass-spring system. Since this is your first time, an outline of the steps will be provided below.</p>
 <ol type="1">
 <li>Identify the system being studied. List all relevant variables.</li>
@@ -405,7 +440,7 @@ m &amp;= {1\over \mu g}\\
 <p>Your response:</p>
 </blockquote>
 <ol start="4" type="1">
-<li>Linearize your equation if possible.</li>
+<li>Plan your analysis.</li>
 </ol>
 <blockquote class="blockquote">
 <p>Your response:</p>
@@ -429,6 +464,13 @@ m &amp;= {1\over \mu g}\\
 <p>Your response:</p>
 </blockquote>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform calculations and construct plots here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="activtity-ii---interpolation-and-extrapolation-testing-the-law" class="level2">
+<h2 class="anchored" data-anchor-id="activtity-ii---interpolation-and-extrapolation-testing-the-law">Activtity II - Interpolation and Extrapolation (Testing the Law)</h2>
+<p>Test the law you developed in activity I. Use the equation for the period to predict periods for masses that you haven’t tried. Then measure the periods to verify that the prediction was correct. Do this in two way:<br>
+1. <strong>By interpolating, predict the period of oscillation for an <span class="math inline">\(80\)</span> g mass.</strong> Record your methods and results. Interpolation means to predict an output value (in this case, a period) for an input value that falls <strong>within the range of the input values</strong> you have used in your measurements. If you measured periods for <span class="math inline">\(20\)</span> g, <span class="math inline">\(30\)</span> g, <span class="math inline">\(40\)</span> g, <span class="math inline">\(50\)</span> g, and <span class="math inline">\(100\)</span> g, then <span class="math inline">\(80\)</span> g is within this range. Using the curve fit equation generated by the data we measured, we can plug in <span class="math inline">\(80\)</span> g and predict the period for our spring with an <span class="math inline">\(80\)</span> g mass. This is interpolation. This will test our model to see if it works for new inputs. If it does not, our model is probably not good.<br>
+2. <strong>By extrapolating, predict the period of oscillation for a <span class="math inline">\(300\)</span> g mass.</strong> Record your methods and results. Extrapolation means to predict an output value (in this case, a period) for an input value that falls <strong>outside the range of the input values</strong> you have previously measured. If you measured periods for <span class="math inline">\(20\)</span> g, <span class="math inline">\(30\)</span> g, <span class="math inline">\(40\)</span> g, <span class="math inline">\(50\)</span> g, and <span class="math inline">\(100\)</span> g, then <span class="math inline">\(300\)</span> g is outside this range. Using the curve fit equation generated by the data we measured, we can input <span class="math inline">\(300\)</span> g and predict the period for our spring with an <span class="math inline">\(300\)</span> g mass. Extrapolation is more risky. The conditions of our experiment might change outside our range (think, in a limiting case, we could break the spring, and get an infinite period!). But if things are done carefully, this is also a test of the validity of our model.</p>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -641,6 +683,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" class="pagination-link">
+        <span class="nav-page-text">Lab 6 Experimental Design II</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

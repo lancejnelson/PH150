@@ -1,0 +1,170 @@
+---
+jupyter: python3
+---
+
+### Physics 150
+
+# Lab #8 Projectile Motion with Drag and Uncertainty
+
+Name: 
+
+## Introduction 
+
+In this lab, you will develop a model for the two-dimensional motion of a projectile with air resistance. The model will make use of Euler's method for the x and y components of the motion. The drag force (due to air resistance) is given by:
+
+$$F_{D} =  \frac{1}{2} \; C \rho A v^{2} \;\;\;\;\;(1) $$
+
+where C is the drag coefficient, $\rho$ is the air density, and A is the cross-sectional area of the ball.
+
+The equations of motion are:
+
+$$ x_{n+1} = x_{n} + v_{x,n} \cdot \Delta t \;\;\;\;\;(2)$$
+
+$$ y_{n+1} = y_{n} + v_{y,n} \cdot \Delta t \;\;\;\;\;(3)$$
+$$ v_n = \sqrt{v_{x,n}^2 + v_{y,n}^2} \;\;\;\;\;(4)$$
+
+$$ v_{x,n+1} = v_{x,n} + a_x \cdot \Delta t  \;\;\;\;\;\;\;\;\;\;(5)$$
+
+$$ v_{y,n+1} = v_{y,n} + a_y\cdot \Delta t  \;\;\;\;\;\;\;(6)$$
+
+with the acceleration components given by $$a_y = -\frac{B}{m}\cdot v_{n} \cdot v_{y,n} \cdot \Delta t - g$$
+$$a_x = -\frac{B}{m}\cdot v_{n} \cdot v_{x,n} \cdot \Delta t $$
+and 
+where $$B = {1 \over 2} C\cdot \rho \cdot A$$
+
+and just as we did last week:
+
+$$ \rho = \rho_0 {P\over P_0}{T_0\over T}$$
+
+
+## Activity I  Model for 2-d Motion with Air Resistance
+
+
+### Goal (Overview)
+Use Euler's method to model the motion of a projectile experiencing non-negligble air drag.
+
+### Procedure
+Use the code template provided below and any codes that you have authored in previous labs to construct your model. Below are some hints/tips:
+
+1. We don't know exact values for the drag coefficient ($C$) or the projectile's exit speed. Make a guess for now and we'll modify these values later.
+2. Previously, we have modeled one-dimensional motion which means we only had to calculate a single component of the position and velocity.  To model two-dimensional motion, you'll have to have two components of the position and velocity.  
+3. To calculate the drag force in two dimensions, you'll need to calculate the **speed** (magnitude of the velocity vector) of the projectile as it changes.  Since you are tracking the components of your velocity, you can do that with the following code `numpy.sqrt(vx**2 + vy**2)` or `numpy.linalg.norm([vx,vy])`
+4. Once you have finished the code, run it and observe the trajectory of the particle.  Then investigate how the following variables affect the shape of the trajectory:
+    1. The drag constant ($C$)
+    2. The initial speed of the particle.
+    3. The cross-sectional area of the particle.
+    4. The air temperature.
+    5. The air pressure.
+
+```{python}
+# Import libaries
+
+from matplotlib import pyplot as plt
+%matplotlib inline
+
+# Constants
+    # Define g
+    # Define dt (smaller is better, but if the value is too small, the computation time will be large.)
+    # Define drag coefficient (Make a guess for now, you'll investigate a better value in activity II)
+    # Define radius of projectile
+    # Calculate cross-sectional area of projectile.
+    # Define air density
+    # define mass of projectile
+
+# Initial Conditions
+
+
+    # Define launch speed (Make a guess for now, we'll modify this later)
+    # Define launch angle (radians!!!)
+
+    # Define initial location (one for x and one for y)
+    
+    # Define initial velocity (one for vx and one for vy)
+
+    # Define time
+
+
+# Loop to calculate the flight time using Euler's equations 
+while y > 0:
+    # Calculate speed (equation 4)
+    # Calculate ax 
+    # Calculate ay
+    # Update vx
+    # Update vy
+    # update x
+    # updata y
+    # update time
+    # Plot y vs x
+
+plt.show()
+```
+
+## Activity II Video of 2-d Motion
+
+The drag coefficient and initial speed of the projectile are unknowns and we'll need to devise a way to determine good values for them.  In preparation for that, complete the following:
+
+1. Using a smart phone, take a video of the projectile's motion. **Make sure that you have a meter stick in the video for your scale. (Having a proper scale is critical.)** Also try to avoid distortion by capturing the video at a location at the mid-point of the trajectory.
+2. Load the video into Logger Pro and determine the trajectory (y vs. x) of the motion (see the instructions in Appendix I for the movie capture procedure).
+3. Copy and paste the x and y data into an Excel file and save the file **in the same folder that this notebook is located in**.  The file should be a .txt. Do not include headings in your columns.
+
+The code block below should plot the trajectory you recorded if you have saved the file as "projectile.txt" in the same folder that this noteobok is located in.
+
+```{python}
+# Import libaries
+from numpy import loadtxt
+from matplotlib import pyplot as plt
+
+# Import video analysis data
+data = loadtxt("projectile.txt")    # Enter the name of your data file.
+xPhone = data[:,0]
+yPhone = data[:,1]
+
+ax = plt.axes()
+ax.plot(xPhone,yPhone,'bo')
+plt.show()
+```
+
+## Activity III  Fit Model to Data
+
+### Goal (Overview)
+Determine values for the initial speed of the particle and the drag constant.
+
+### Procedure
+1. Copy your code from activity I into the code cell below.
+2. Add the code from Activity II into the code cell below to combine the two plots into one.
+3. Adjust the initial speed and drag coefficient until there is a good fit between the model and the experimental data.
+ 
+
+```{python}
+# Code here
+```
+
+# Activity IV  Testing the Model  
+
+Use the model from Activity I with the values of initial velocity and drag coefficient from Activity III to predict the trajectory of the styrofoam ball. The instructor will give you an initial height and an initial angle. Using the third setting on the projectile launcher, you will need to predict the height of the projectile when $x = {1\over 2} R$,  where R is the range of the motion. A hoop with a $10$ cm diameter will be placed at the values of x and y that you specify.
+
+Don't fire your styrofoam ball until the instructor or teaching assistant is there to observe.
+
+The points for this section will be:
+
+   - 25 pts:  Ball goes through the hoop on the first try
+
+   - 20 pts:  Ball goes through the hoop on the second try
+
+   - 15 pts:  Ball goes through the hoop on the third (or more) try
+
+## Appendix I
+
+Logger Pro Movie Capture
+
+Tips
+1. Make sure that there is a meter stick in the field of view when the ball is fired.
+
+Logger Pro Procedure
+1. Use Insert>Movie to input the video clip.
+2. Click on “Enable/Disable Video Analysis” which is located in the bottom right hand corner of the video window.
+3. Click on “Set Scale.”  Then click and drag on the image of the meter stick.
+4. “Set Origin” to a position on the ground directly below where the ball is launched.
+5. Make sure that the video clip is set to the frame just before the ball starts moving.  Click on “Add Point” and then click on the ball.  The video will advance one frame at a time.
+
+

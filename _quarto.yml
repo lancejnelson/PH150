@@ -24,9 +24,12 @@ book:
     - part: "Experimental Design"
       chapters:
       - labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.qmd
-#    - part: "Numerical Modeling"
-#      chapters:
-#      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+      - labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.qmd
+    - part: "Numerical Modeling"
+      chapters:
+      - labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.qmd
+      - labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.qmd
+      - labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.qmd
 bibliography: references.bib
 
 format:

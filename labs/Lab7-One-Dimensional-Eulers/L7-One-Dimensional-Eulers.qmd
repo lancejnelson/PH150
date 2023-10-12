@@ -1,0 +1,152 @@
+---
+jupyter: python3
+---
+
+### Physics 150
+
+# Lab 6 Falling Objects with Air Resistance
+
+
+Name:
+    
+    
+   ## Introduction
+
+The drag force acting on a falling object is given by:
+
+$$F_D =  {1\over 2} \; C \rho A v^2 \;\;\;\;\;(1) $$  
+
+where $C$ is the drag coefficeint and has the following values:
+       0.5 for a sphere and 0.3 for a cone.
+       
+$\rho$ is the air density and has a value of 1.02  kg/m$^3 $ in Rexburg
+
+A is the cross-sectional area
+
+v is the velocity of the object
+
+<img src="https://github.com/lancejnelson/PH121/raw/gh-pages/files/numericalHW/fbd.png" alt="drawing" width="100px"/>
+
+Applying Newton's second law to the free-body diagram shown above gives:
+
+$$ \Sigma F_{y} = -mg + F_{D} = ma_{y} \;\;\;\;\;(2) $$
+
+
+Solving for the acceleration in the y-direction gives:
+
+$$ a_y = {d v_y \over dt} = \frac{ C \rho A v^{2}}{2m} - g \;\;\;\;\;(3)$$
+
+and of course we still have the familiar equation:
+
+$$ {d y \over dt} = v_y \;\;\;\;\;(4)$$
+
+Euler's equations can be used to determine the velocity and height of the object as a function of time. These are given by:
+
+$$ y_{n+1} = y_{n} + v_{n} \cdot \Delta t \;\;\;\;\;(5)$$
+
+$$ v_{n+1} = v_{n} + a_{n} \cdot \Delta t \;\;\;\;\;(6)$$
+
+
+## Activity I: Minimum Fall Time
+
+### Goal (Overview)
+Using kinematics, calculate the time it takes for a particle to fall, starting from rest, through a distance of $5$ meters, neglecting air drag. This number will serve as a point of comparison when we include air drag in our analysis.
+
+
+### Procedure
+1. The kinematic equations are given below.
+$$y_f = y_i + v_i \Delta t + {1\over 2}a \Delta t^2$$  $$v_f = v_i + a \Delta t$$  $$v_f^2 = v_i^2 + 2 a \Delta x$$ 
+Use these equations to calculate the time it takes for a particle to fall through a distance of $6.0$ meters starting from rest. Neglect air resistance.  Show your math and calculations below.
+
+> Include kinematic details here
+
+```{python}
+# Code to perform calculations here
+```
+
+## Activity II: Modeling the motion using Euler's method
+
+### Goal (Overview)
+Write some python code that will accurately predict the fall time for a projectile that is experiencing air resistance.  
+
+### Procedure
+1. Together in class we constructed a model for a particle that is thrown upward and experiences no air resistance.  Use equations 3-6 above to modify that code to include air resistance.
+2. Modify the code to model a particle that is dropped from rest rather than thrown upward initially.
+3. Your value for $\Delta t$ will need to be reasonably small to get accurate results.  Decrease your value of $\Delta t$ until the results stop changing.
+4. As a test of the correctness of your code, increase the initial height of the projectile and verify that the drop time changes as you would expect. 
+5. As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.
+6. As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect. 
+
+
+```{python}
+# Import from libraries
+from numpy import pi
+
+
+# Define constants
+
+# Set initial conditions
+
+# Loop to calculate flight time using Euler's method
+while y > 0:
+    
+```
+
+## Activity III: Predicting times
+
+### Procedure
+1. Make mass and diameter measurements on each of the objects given to you. 
+2. Then use the code you wrote above to  predict the drop times for each of the six objects dropped from a height of 16.92 m.
+3. Fill in the table below with your predictions. 
+4. After the table is filled out, run some tests in the lab room to verify the accuracy of your model.
+
+|Object | Precited fall time (s)|
+|-------|-----------------------|
+|Ping Pong Ball |               |
+|Styrofoam cone |               |
+|Styrofoam sphere (small) |               |
+|Styrofoam sphere (medium) |               |
+|Beach ball |               |
+
+
+
+
+## Activity IV: Comparison of Predicted and Measured Times
+Each group will measure the time of flight for the five objects. Average the time measurements for each object and compare to your predicted values. 
+
+The percent difference is calculated as:
+
+$$ \text{% diff} = {\text{measured} - \text{predicted} \over \text{measured} } \times 100 \text{%}$$
+
+|Object | Precited fall time (s)|  Average measured fall Time (s)| % Error|
+|-------|-----------------------|-----------------|--------|
+|Ping Pong Ball |               | | |
+|Styrofoam cone |               | | |
+|Styrofoam sphere (small) |               | | |
+|Styrofoam sphere (medium) |               | | |
+|Beach ball |               | | |
+
+
+Your score on the lab will be based on your % error for the five different objects.
+
+
+If any of your % differences are greater than 10%, give a possible explanation for the discrepancy.
+> **Response:**
+
+
+Note: Use the cell below to calculate the averages and percent error. I have started the code but it is not complete. You'll have to finish it.
+
+```{python}
+from scipy.stats import mean
+
+
+pingPong = []  
+cone = []
+smallBall = []
+mediumBall = []
+beachBall = []
+
+
+mean_pingpong = mean(pingPong)
+```
+

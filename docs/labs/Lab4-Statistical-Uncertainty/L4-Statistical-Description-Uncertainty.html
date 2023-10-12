@@ -202,7 +202,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">Lab 6 Experimental Design I</a>
+  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">Lab 5 Experimental Design I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" class="sidebar-item-text sidebar-link">Lab 6 Experimental Design II</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Numerical Modeling</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">Lab 7 Falling Objects with Air Resistance</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab 8 Air Resistance and Buoyancy</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab #9 Projectile Motion with Drag and Uncertainty</a>
   </div>
 </li>
       </ul>
@@ -233,13 +263,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#activity-i-pendulum-period-33-points" id="toc-activity-i-pendulum-period-33-points" class="nav-link" data-scroll-target="#activity-i-pendulum-period-33-points">Activity I Pendulum Period (33 points)</a>
   <ul class="collapse">
-  <li><a href="#equpiment-needed" id="toc-equpiment-needed" class="nav-link" data-scroll-target="#equpiment-needed">Equpiment needed</a></li>
+  <li><a href="#equipment-needed" id="toc-equipment-needed" class="nav-link" data-scroll-target="#equipment-needed">Equipment needed</a></li>
   <li><a href="#goal-overview" id="toc-goal-overview" class="nav-link" data-scroll-target="#goal-overview">Goal (Overview)</a></li>
   <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
   </ul></li>
   <li><a href="#activity-ii---radioactivity-33-points" id="toc-activity-ii---radioactivity-33-points" class="nav-link" data-scroll-target="#activity-ii---radioactivity-33-points">Activity II - Radioactivity (33 points)</a>
   <ul class="collapse">
-  <li><a href="#equipment-needed" id="toc-equipment-needed" class="nav-link" data-scroll-target="#equipment-needed">Equipment needed</a></li>
+  <li><a href="#equipment-needed-1" id="toc-equipment-needed-1" class="nav-link" data-scroll-target="#equipment-needed-1">Equipment needed</a></li>
   <li><a href="#goal-overview-1" id="toc-goal-overview-1" class="nav-link" data-scroll-target="#goal-overview-1">Goal (Overview)</a></li>
   <li><a href="#procedure-1" id="toc-procedure-1" class="nav-link" data-scroll-target="#procedure-1">Procedure</a></li>
   </ul></li>
@@ -287,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="statistical-distributions">Statistical Distributions</h3>
 <p>We’ve learned that all measurements have uncertainties associated with them. This means that when a measurement (or experiment) is repeated, the obtained value is different every time. Statisticians call this a random variable, but the numbers aren’t as random as you might think. You might think that the word random means that the value can be <strong>anything</strong>; any number at all from <span class="math inline">\(-\infty \rightarrow \infty\)</span> but that’s not what we typically mean. Instead, random in this context means a number that is random but subject to some probability rules.</p>
 <p>The rules for deciding what random numbers are allowed are contained in a mathematical function called a probability distribution. The Gaussian (or Normal) distribution and Gamma distributions (pictured below) are two common distributions . (Students will no doubt be familiar with the term “bell curve”.)</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-2-output-1.png" width="664" height="358"></p>
 </div>
@@ -298,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 \]</span></p>
 <p>The shape and location of this function are controlled by two numbers: the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (<span class="math inline">\(\sigma\)</span>). The mean controls where the peak of the distribution is located and the standard deviation controls the width of the peak. One feature of the normal distribution is that 68% of the data lies between <span class="math inline">\(\mu - \sigma\)</span> and <span class="math inline">\(\mu + \sigma\)</span>. For this reason <strong>we often assign the mean to be the expected value and the standard deviation to be the associated uncertainty</strong>.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-3-output-1.png" width="671" height="470"></p>
 </div>
@@ -308,13 +338,13 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <section id="histograms" class="level3">
 <h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
 <p>When an experiment can be repeated over and over again under identical physical conditions, the data can be visualized using something called a histogram. To construct a histogram, the range of plausible measurement values is first divided into bins. Each measurement is then assigned a bin and the total number of measurements in each bin is updated. The number of measurements in all of the bins can be visualized by plotting a bar for each bin, with the height of the bar indicating how many measurements were in the bin. Below is a histogram for 10 repetitions of an experiment to determine the acceleration due to gravity.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
-<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-4-output-1.png" width="579" height="429"></p>
+<p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-4-output-1.png" width="571" height="429"></p>
 </div>
 </div>
 <p>Ten data points isn’t a lot but you can probably start to form a reasonable guess for the mean(expected value) and standard deviation(uncertainty) of the underlying distribution. As more data is gathered, your estimates for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> will update and your confidence in those values increases with it. (Illustrated in the figure below)</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -366,7 +396,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <h3 class="anchored" data-anchor-id="comparing-results">Comparing Results</h3>
 <p>In lab #1, the success of an experiment was decided by comparing the fractional uncertainty to the percent error. If the fractional uncertainty was bigger than the percent error then the experiment was judged to be a success. While this criteria isn’t wrong, it doesn’t tell us how good or bad the agreement is and it also doesn’t provide any boundary between acceptable and unacceptable results. We are now in a position to describe a more robust criteria for judging success.</p>
 <p>Recall that every time an experiment is performed the measurements gathered are random draws from a distribution. This distribution is assumed to be <strong>centered at the expected value (<span class="math inline">\(x_e\)</span>)</strong>. If the results of the experiment (usually the mean) are too far away from the expected mean, the probability that the measurements were random draws from the assumed distribution is so small that we lose confidence in that assumption. The figure below illustrates this idea. The red curve is the assumed distribution centered at the expected value and the blue bars indicate the measurements during the experiment. The mean of these results is indicated by the red dashed curve and the expected mean is indicated by the green dashed curve.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <p><img src="L4-Statistical-Description-Uncertainty_files/figure-html/cell-6-output-1.png" width="585" height="434"></p>
 </div>
@@ -376,7 +406,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <p>which measures how many standard deviations of the mean the measured result differs from the expected result. Here <span class="math inline">\(x_b\)</span> is the best result from your experiment(usually the mean of your dataset), <span class="math inline">\(x_e\)</span> is the expected value, and <span class="math inline">\(\sigma_n\)</span> is the standard deviation of the mean.</p>
 <p>For values of <span class="math inline">\(t &lt;1\)</span> the experiment is probably a success and for <span class="math inline">\(t \gg 1\)</span> the experiment probably isn’t a success. But what about intermediate values? It would be nice to make a more probabilistic statement about the success of our experiment. Something like, “The probability that the results of our experiment were drawn from a distribution with the expected result as the mean is 90%”</p>
 <p>We can use Python to answer this question using the code given below.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_1samp</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> [<span class="fl">1.64</span>,<span class="fl">1.57</span>,<span class="fl">1.72</span>,<span class="fl">1.55</span>,<span class="fl">1.68</span>,<span class="fl">1.62</span>,<span class="fl">1.70</span>,<span class="fl">1.59</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -396,7 +426,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <p>but the standard deviation is now given by</p>
 <p><span class="math display">\[\sigma_\text{joint} = \sqrt{{N_1 + N_2\over N_1 N_2} \cdot {(N_1 - 1)\sigma_1^2 + (N_2 - 1)\sigma_2^2 \over N_1 + N_2-2}}\]</span></p>
 <p>Fortunately, python can do all of these calculations for us. For example, if two groups of students measure the time it takes for a ball to fall <span class="math inline">\(3.00\)</span> m, you could use the code below to calculate a p-value.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_ind</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dataOne <span class="op">=</span> [<span class="fl">0.75</span>,<span class="fl">0.74</span>,<span class="fl">0.79</span>,<span class="fl">0.76</span>,<span class="fl">0.77</span>,<span class="fl">0.73</span>,<span class="fl">0.74</span>,<span class="fl">0.78</span>,<span class="fl">0.76</span>,<span class="fl">0.75</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dataTwo <span class="op">=</span> [<span class="fl">0.81</span>,<span class="fl">0.80</span>,<span class="fl">0.79</span>,<span class="fl">0.76</span>,<span class="fl">0.77</span>,<span class="fl">0.80</span>]</span>
@@ -448,7 +478,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 </tbody>
 </table>
 <p>Some example code for building a histogram is given below.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy.random <span class="im">as</span> rand</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -464,10 +494,21 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 </section>
 <section id="plotting-functions" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-functions">Plotting functions</h3>
-<p>Plotting a function in Python can be accomplished by following these steps: 1. Build a list of x value (horizontal axis). 2. Calculate the function value for every x value. 3. Use <code>pyplot.plot(x,y)</code> to plot the x-y pairs. 4. Use <code>pyplot.show()</code> to display the plot.</p>
-<p>Several options to the <code>pyplot.plot()</code> function will allow you to customize the plot. Some common ones are listed below: 1. <code>linestyle</code>: specify what the line representing the function looks like. 2. <code>color</code>: Specify the color of the line representing the function. 3. <code>linewidth</code>: Specify the thickness of the line representing the function.</p>
+<p>Plotting a function in Python can be accomplished by following these steps:</p>
+<ol type="1">
+<li>Build a list of x value (horizontal axis).</li>
+<li>Calculate the function value for every x value.</li>
+<li>Use <code>pyplot.plot(x,y)</code> to plot the x-y pairs.</li>
+<li>Use <code>pyplot.show()</code> to display the plot.</li>
+</ol>
+<p>Several options to the <code>pyplot.plot()</code> function will allow you to customize the plot. Some common ones are listed below:</p>
+<ol type="1">
+<li><code>linestyle</code>: specify what the line representing the function looks like.</li>
+<li><code>color</code>: Specify the color of the line representing the function.</li>
+<li><code>linewidth</code>: Specify the thickness of the line representing the function.</li>
+</ol>
 <p>The functions <code>ax.set_xlabel()</code>, <code>ax.set_ylabel()</code>, and <code>ax.set_title()</code> can also be used to specify axes labels and a plot title. An example is given in the code cell below.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -487,8 +528,8 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 </section>
 <section id="activity-i-pendulum-period-33-points" class="level2">
 <h2 class="anchored" data-anchor-id="activity-i-pendulum-period-33-points">Activity I Pendulum Period (33 points)</h2>
-<section id="equpiment-needed" class="level3">
-<h3 class="anchored" data-anchor-id="equpiment-needed">Equpiment needed</h3>
+<section id="equipment-needed" class="level3">
+<h3 class="anchored" data-anchor-id="equipment-needed">Equipment needed</h3>
 <ol type="1">
 <li>1.5-meter-long pendulum.</li>
 <li>Stopwatch (the one on your phone will do)</li>
@@ -519,36 +560,37 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statistics <span class="im">as</span> stats</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math <span class="im">as</span> mt</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.loadtxt(<span class="st">"pendulum_data.txt"</span>,<span class="bu">float</span>)  <span class="co"># Line 7</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">len</span>(T)     <span class="co"># Find the number of data points.</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>            <span class="co"># Line 9</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>meanG <span class="op">=</span>        <span class="co"># Line 10</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>stdG <span class="op">=</span>         <span class="co"># Line 11</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>stdMeanG <span class="op">=</span>     <span class="co"># Line 12</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>μ <span class="op">=</span>            <span class="co"># Line 14 </span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>σ <span class="op">=</span>            <span class="co"># Line 15</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>σ_μ <span class="op">=</span>          <span class="co"># Line 16</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span>      <span class="co"># Line 17</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> ttest_1samp</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.loadtxt(<span class="st">"pendulum_data.txt"</span>,<span class="bu">float</span>)  <span class="co"># Line 7</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">len</span>(T)     <span class="co"># Find the number of data points.</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>            <span class="co"># Line 9</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>meanG <span class="op">=</span>        <span class="co"># Line 10</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>stdG <span class="op">=</span>         <span class="co"># Line 11</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>stdMeanG <span class="op">=</span>     <span class="co"># Line 12</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>μ <span class="op">=</span>            <span class="co"># Line 14 </span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>σ <span class="op">=</span>            <span class="co"># Line 15</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>σ_μ <span class="op">=</span>          <span class="co"># Line 16</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>p_value <span class="op">=</span>      <span class="co"># Line 17</span></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram and Normal distribution below.</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>plt.plot(x,norm_data)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'g (m/s^2)'</span>)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability'</span>)</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram and Normal distribution below.</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.plot(x,norm_data)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'g (m/s^2)'</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Probability'</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="activity-ii---radioactivity-33-points" class="level2">
 <h2 class="anchored" data-anchor-id="activity-ii---radioactivity-33-points">Activity II - Radioactivity (33 points)</h2>
-<section id="equipment-needed" class="level3">
-<h3 class="anchored" data-anchor-id="equipment-needed">Equipment needed</h3>
+<section id="equipment-needed-1" class="level3">
+<h3 class="anchored" data-anchor-id="equipment-needed-1">Equipment needed</h3>
 <ol type="1">
 <li>Geiger Counter</li>
 <li>Radioactive sample (don’t worry, they aren’t active enough to be dangerous)</li>
@@ -569,7 +611,7 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <li>Use the equation above for the mean (<span class="math inline">\(\mu\)</span>) to calculate the mean of the data and the equation below to calculate the standard deviation of the data. <span class="math display">\[\sigma = \sqrt{\mu}\]</span>. Perform these calculations on lines 7 and 8 in the code cell below.</li>
 <li>Add a formatted print statement to report the appropriate count number with its associated uncertainty.</li>
 <li>One line 11 of the code cell below, produce a histogram just as we did together in activity I. Choose <code>bins =</code> so that the histogram displays a sufficient amount of detail.</li>
-<li>The limiting distribution for this kind of data is called a Poisson distribution (equation given below). It is only defined for interger values of the argument and it is hard to plot using standard plotting techniques. I have provided the code to plot this function in the code cell below. You may have to modify the numbers on line 14 to plot over the appropriate range. <span class="math display">\[P(x) = e^{-\mu} {\mu^x \over x!} \]</span></li>
+<li>The limiting distribution for this kind of data is called a Poisson distribution (equation given below). It is only defined for integer values of the argument and it is hard to plot using standard plotting techniques. I have provided the code to plot this function in the code cell below. You may have to modify the numbers on line 14 to plot over the appropriate range. <span class="math display">\[P(x) = e^{-\mu} {\mu^x \over x!} \]</span></li>
 </ol>
 <blockquote class="blockquote">
 <p>Instructions for using the Vernier Radiation Monitor:</p>
@@ -615,13 +657,13 @@ f(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2 \over 2 \sigma^2}
 <li>Using the projectile launcher, fire a steel ball 40 times (10 launches per student) and measure the range in meters. The projectile should be placed on the table. Use an initial launch angle of <span class="math inline">\(30^\circ\)</span> and use the third spring setting to produce the largest range.</li>
 <li>Again, we will pool our data together as a class to increase the size of the dataset. Therefore, it is very important that every student launches <strong>under the same conditions</strong>. Add your data to the Google sheets document linked below.</li>
 <li>When all the data is collected, have Python read the data set using <code>np.loadtxt()</code>.</li>
-<li>Calculate the mean, standard deviation, and standard deviation of the mean using your preferred calculation method. (Either with <code>stats.mean()</code> and <code>stats.stdev()</code> or brute force calcuation of the equations in the book.)</li>
+<li>Calculate the mean, standard deviation, and standard deviation of the mean using your preferred calculation method. (Either with <code>stats.mean()</code> and <code>stats.stdev()</code> or brute force calculation of the equations in the book.)</li>
 <li>Plot a histogram of the data. Choose <code>bins =</code> appropriately so the histogram displays with sufficient detail.</li>
 <li>Plot the normal distribution on top to verify that it is the limiting distribution.</li>
 <li>Add a formatted print statement to report the particle’s range with its associated uncertainty.</li>
 <li>Calculate the p-value for your data set using the predicted range from part 1 as your expected value. State whether the deviation of your experimental results are significant enough (at the <span class="math inline">\(5\%\)</span> level ) to reject the experiment.</li>
 </ol>
-<p>No template code cell will be provided for this activity (hopefully you are feeling more and more comfortable writing simple code on your own), but you can copy/paste from previous activities.</p>
+<p>No template code cell will be provided for this activity (hopefully you are feeling more and more comfortable writing simple code on your own), but you can copy/paste from previous activities if needed.</p>
 <p><a href="https://docs.google.com/spreadsheets/d/1frC8Yy7TK7fDN_z7E-1BQEOr6knhIZweFHdOTky6TQM/edit?usp=sharing">Projectile Data</a></p>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
@@ -838,7 +880,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="pagination-link">
-        <span class="nav-page-text">Lab 6 Experimental Design I</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Lab 5 Experimental Design I</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

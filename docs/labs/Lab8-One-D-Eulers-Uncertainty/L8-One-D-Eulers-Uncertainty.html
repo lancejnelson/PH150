@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Beginning Physics Lab - Lab 8 Air Resistance and Buoyancy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" rel="next">
+<link href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Lab 8 Air Resistance and Buoyancy</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Beginning Physics Lab</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Python and Jupyter Notebooks</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Measurements and Uncertainty</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">Lab 1 Measurement and Uncertainty</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" class="sidebar-item-text sidebar-link">Lab 2: Propagation of Uncertainty I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="sidebar-item-text sidebar-link">Lab 3: Propagation of Uncertainty Part II</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab 4 Statistical Interpretation of Uncertainty</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Experimental Design</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">Lab 5 Experimental Design I</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" class="sidebar-item-text sidebar-link">Lab 6 Experimental Design II</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Numerical Modeling</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">Lab 7 Falling Objects with Air Resistance</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link active">Lab 8 Air Resistance and Buoyancy</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">Lab #9 Projectile Motion with Drag and Uncertainty</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#activity-i-modeling-the-balloons-motion-eulers-method" id="toc-activity-i-modeling-the-balloons-motion-eulers-method" class="nav-link" data-scroll-target="#activity-i-modeling-the-balloons-motion-eulers-method">Activity I: Modeling the balloon’s motion (Euler’s Method)</a>
+  <ul class="collapse">
+  <li><a href="#goal-overview" id="toc-goal-overview" class="nav-link" data-scroll-target="#goal-overview">Goal (Overview)</a></li>
+  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
+  </ul></li>
+  <li><a href="#activity-ii-including-uncertainty" id="toc-activity-ii-including-uncertainty" class="nav-link" data-scroll-target="#activity-ii-including-uncertainty">Activity II: Including Uncertainty</a>
+  <ul class="collapse">
+  <li><a href="#goal-overview-1" id="toc-goal-overview-1" class="nav-link" data-scroll-target="#goal-overview-1">Goal (Overview)</a></li>
+  <li><a href="#procedure-1" id="toc-procedure-1" class="nav-link" data-scroll-target="#procedure-1">Procedure</a></li>
+  </ul></li>
+  <li><a href="#activity-iii-checking-our-prediction" id="toc-activity-iii-checking-our-prediction" class="nav-link" data-scroll-target="#activity-iii-checking-our-prediction">Activity III: Checking our Prediction</a>
+  <ul class="collapse">
+  <li><a href="#goal-overview-2" id="toc-goal-overview-2" class="nav-link" data-scroll-target="#goal-overview-2">Goal (Overview):</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Lab 8 Air Resistance and Buoyancy</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Name:</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Last time we learned that the force of air drag is given by:</p>
+<p><span class="math display">\[F_D =  {1\over 2} \; C \rho A |v| v \;\;\;\;\;(1) \]</span></p>
+<p>and used this together with Euler’s method to predict the fall times for several objects. This week we will study the motion of a weather balloon and predict the time it will take for the weather balloon to rise a chosen distance. This means that we will need to add one more force into the analysis: the buoyant force.</p>
+<p>The balloon has a total of three forces acting on it: gravity, air drag, and a buoyant force from the surrounding air. The downward gravitational force has three contributions: the weight of the balloon itself, the weight of the helium gas inside the balloon, and the weight of the payload attached to the balloon.</p>
+<p>Let’s first discuss the buoyant force. In principles of physics II you’ll learn that the magnitude of the buoyant force is equal the the <strong>weight of the displaced fluid</strong>, which in this case is just air. The balloon is displacing a volume of air equal to the balloon’s volume.</p>
+<p><span class="math display">\[
+F_b = m_\text{air} g = \rho_\text{air} V g
+\]</span></p>
+<p>Where <span class="math inline">\(\rho_\text{air}\)</span> is the density of the surrounding air and <span class="math inline">\(V\)</span> is the volume of the balloon. Since the balloon is approximately spherical we’ll use the volume of a sphere:</p>
+<p><span class="math display">\[
+V = {4\over 3} \pi r^3 = {1\over 6} \pi d^3
+\]</span></p>
+<p>The density of a gas varies with temperature and pressure according to the following formula:</p>
+<p><span class="math display">\[
+\rho(P,T) = \rho_0 {P \over P_0} {T_0 \over T}
+\]</span></p>
+<p>where <span class="math inline">\(\rho_0\)</span>, <span class="math inline">\(T_0\)</span> and <span class="math inline">\(P_0\)</span> are the density, temperature, and pressure at some common point of reference. We’ll use the values corresponding to standard temperature and pressure (STP) given below:</p>
+<p><span class="math display">\[
+P_0 = 1.0 \times 10^5 \text{ Pa}
+\]</span></p>
+<p><span class="math display">\[
+T_0 = 0^\circ \text{ C} = 273.15 \text{ K}
+\]</span></p>
+<p><span class="math display">\[
+\rho_\text{air,0} = 1.2754 \text{ kg/m}^3
+\]</span></p>
+<p><span class="math display">\[
+\rho_\text{He,0} = 0.1784 \text{ kg/m}^3
+\]</span></p>
+<p>Let’s write down Newton’s second law, including all of these terms and see if we can arrive at an expression for the acceleration of the balloon.</p>
+<p><span class="math display">\[
+F_b - F_g - F_D = m a
+\]</span></p>
+<p><span class="math display">\[
+{F_b - F_g - F_D\over m} =  a
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+F_b = \rho_\text{air} V_\text{balloon} g
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+F_g &amp;= m_\text{payload} g + m_\text{He} g + m_\text{balloon} g\\
+&amp;= m_\text{payload} g + \rho_\text{He} V g + m_\text{balloon} g
+\end{align*}
+\]</span></p>
+<p><span class="math display">\[
+F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
+\]</span></p>
+<p><span class="math display">\[
+\rho_\text{air} = \rho_\text{air,0} {P \over P_0} {T_0 \over T}
+\]</span></p>
+<p><span class="math display">\[
+\rho_\text{He} = \rho_\text{He,0} {P \over P_0} {T_0 \over T}
+\]</span></p>
+<p>Here <span class="math inline">\(m\)</span> is the combined mass of the payload and the balloon. (The mass of the helium contributes a little bit but we will neglect it.)</p>
+<p><span class="math display">\[
+m = m_\text{payload} + m_\text{balloon}
+\]</span></p>
+</section>
+<section id="activity-i-modeling-the-balloons-motion-eulers-method" class="level2">
+<h2 class="anchored" data-anchor-id="activity-i-modeling-the-balloons-motion-eulers-method">Activity I: Modeling the balloon’s motion (Euler’s Method)</h2>
+<section id="goal-overview" class="level3">
+<h3 class="anchored" data-anchor-id="goal-overview">Goal (Overview)</h3>
+<p>Modify your code from last week to incorporate the buoyant force experienced by the weather balloon.</p>
+</section>
+<section id="procedure" class="level3">
+<h3 class="anchored" data-anchor-id="procedure">Procedure</h3>
+<ol type="1">
+<li>Measure the mass of the balloon before we fill it with helium. Record a value and an uncertainty.</li>
+<li>We’ll be adding a small payload to the balloon and adjusting it until the time of flight falls in a reasonable range. For now, set the mass of the payload to be <span class="math inline">\(m_p = 15\)</span> grams. We’ll modify this number later.</li>
+<li>Measure the temperature in the room and <strong>assign an uncertainty to this measurement</strong>. Convert this temperature to Kelvins using the equation below. Then record this number in the code cell provided below.</li>
+</ol>
+<p><span class="math display">\[ T_K = {5 \over 9}(T_F - 32) + 273.15\]</span></p>
+<ol start="4" type="1">
+<li>Visit a weather website to look up the atmospheric pressure here in Rexburg. You’ll probably see a number with units of “inHg”, which means “inches of Mercury”. To convert this pressure into Pascals, use the equation below. (The <span class="math inline">\(4.865\)</span> is to undo the sea-level correction and the <span class="math inline">\(3386.39\)</span> is to convert from “inHg” to Pascals.) Record this value in the code cell provided below.</li>
+</ol>
+<p><span class="math display">\[ P_\text{Pa} = 3386.39 \times (P_\text{inHg} - 4.865) \]</span></p>
+<ol start="5" type="1">
+<li>Enter values for <span class="math inline">\(T_0\)</span> <span class="math inline">\(P_0\)</span> in the code cell below using the values shown above.</li>
+<li>Enter the expression for density given above into the code cell provided below for the density of air and helium.</li>
+<li>Enter the expression for <span class="math inline">\(V\)</span> and <span class="math inline">\(A\)</span> in the code cell below in terms of <span class="math inline">\(d\)</span> (diameter).</li>
+<li>Enter the expression for <span class="math inline">\(F_b\)</span> (the buoyant force) in the code cell below using the equation provided above.</li>
+<li>Enter the expression for <span class="math inline">\(F_g\)</span> (the weights) in the code cell below using the equation provided above.</li>
+<li>Enter the expression for <span class="math inline">\(F_D\)</span> (the drag force) in the code cell below using the equation provided above. As a reminder, the equation should be:</li>
+</ol>
+<p><span class="math display">\[
+{1\over 2} \; C \rho A |v| v
+\]</span></p>
+<ol start="11" type="1">
+<li>Enter the expression for <span class="math inline">\(a\)</span> (the acceleration) in the code cell below using the equation provided above. Note that since the acceleration is not constant the calculation must be performed inside the main Euler’s loop.</li>
+<li>Following the same pattern from last week, add expressions to update the velocity, position, and time inside the main Euler’s loop.</li>
+<li>Check with your neighbor and/or B. Nelson to ensure you have done these steps correctly before moving on.</li>
+<li>Have B. Nelson fill your balloon with helium. Once it is filled, devise a method for determining the diameter of the balloon. Record the value and its uncertainty in the code cell below. (Note: The helium will slowly diffuse out of the balloon, so you won’t want much time to pass between when you fill your balloon and when you test your prediction)</li>
+<li>Run your code and verify that your results are reasonable.</li>
+<li>Using trial and error, adjust the mass of the payload until the time of flight is in the <span class="math inline">\(6-10\)</span> seconds range.</li>
+</ol>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mb <span class="op">=</span>    <span class="co"># Mass of the balloon (kg).</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span>    <span class="co"># Mass of the payload (kg).</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span>     <span class="co"># Current temperature (Kelvins).</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span>     <span class="co"># Current pressure (Pa).</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ρa0 <span class="op">=</span>   <span class="co"># Reference density of air (kg/m^3)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ρh0 <span class="op">=</span>   <span class="co"># Reference density of helium (kg/m^3)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span>    <span class="co"># Reference temperature (Kelvins).</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span>    <span class="co"># Reference Pressure (Pa).</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span>    <span class="co"># Diameter of weather balloon (m).</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span>     <span class="co"># Volume of balloon (m^3).</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span>       <span class="co"># Cross-sectional area of balloon (m^3)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Drag constant for sphere (unitless)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span>  <span class="co"># Acceleration due to gravity (m/s^2)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>mt <span class="op">=</span> mp <span class="op">+</span> mb <span class="op">+</span> ρh <span class="op">*</span> V   <span class="co"># Total mass (kg).</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span>     <span class="co"># Time step (s).</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span>      <span class="co"># Initial height of balloon (meters).</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">0</span>    <span class="co"># Initial speed of balloon (m/s).</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>yCeiling <span class="op">=</span>   <span class="co"># Height of the ceiling (meters)</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Fb <span class="op">&lt;</span> Fg:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Your balloon will not fly!"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    exit()</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&lt;</span> yCeiling <span class="kw">and</span> t <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    Fd <span class="op">=</span>     <span class="co"># Drag Force (N).</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span>      <span class="co"># acceleration (m/s^2).</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span>      <span class="co"># Update velocity</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span>      <span class="co"># Update position</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span>      <span class="co"># Update time.</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    ax1.plot(t,a,<span class="st">'r.'</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    ax2.plot(t,v,<span class="st">'g.'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    ax3.plot(t,y,<span class="st">'b.'</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="activity-ii-including-uncertainty" class="level2">
+<h2 class="anchored" data-anchor-id="activity-ii-including-uncertainty">Activity II: Including Uncertainty</h2>
+<section id="goal-overview-1" class="level3">
+<h3 class="anchored" data-anchor-id="goal-overview-1">Goal (Overview)</h3>
+<p>Using the uncertainties that you assigned to your measured values from Activity I, use Euler’s method to calculate the uncertainty in the flight time.</p>
+</section>
+<section id="procedure-1" class="level3">
+<h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
+<p>To incorporate uncertainty into Euler’s method, you must repeat your Euler’s loop many times using different values for those quantities that carry uncertainty. In the code cell below you will find a template for doing this. Follow the instructions below to complete the task. 1. You’ll notice that the variable names in the code cell have been modified from what they were in Activity I. Instead of “mb” for mass of the balloon, we now have “meanmb” for mean mass of the balloon and “dmb” for uncertainty in the mass of the balloon. Transfer all of your measurements and uncertainties from Activity I into the code cell below. 2. If you haven’t yet, record the uncertainties in all of your measured values in the code cell below. 3. You’ll notice that our Euler’s loop from Activity I is now enclosed in another loop (called a ‘for’ loop). This will allow us to repeat the Euler’s loop as many times as we would like. We call the Euler’s loop the “inner” loop and the ‘for’ loop the “outer” loop. The first five lines in the outer loop are to select a random number for each of the variables that carry uncertainty. I’ve given an example of how to do this on the first line for the balloon mass. Repeat this same process to select random numbers for the other five quantities that carry uncertainty. 4. Fill in the correct expressions for the remainder of the code lines that are incomplete. (Most of these lines will be identical to what they were in Activity I.) 5. Check with a neighbor or B. Nelson to verify that you did it correctly. 6. Run your code and observe the results. Notice the spread in travel times depicted on the position vs.&nbsp;time graph. (Cool eh!)</p>
+<p>Note: The uncertainty in your balloon diameter will be the biggest contributor to the uncertainty in the predicted flight time.</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables with uncertainties attached.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>meanmb <span class="op">=</span>    <span class="co"># Mass of the balloon (kg).</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>dmb <span class="op">=</span>    <span class="co"># Unceratainty in balloon mass (kg).</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>meanT <span class="op">=</span>     <span class="co"># Current temperature (Kelvins).</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span>          <span class="co"># Uncertainty in current temperature (Kelvins).</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>meanP <span class="op">=</span>     <span class="co"># Current pressure (Pa).</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>dP <span class="op">=</span>          <span class="co"># Uncertainty in current atmospheric pressure (Pa).</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>meand <span class="op">=</span>    <span class="co"># Diameter of weather balloon (m).</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>dd <span class="op">=</span>           <span class="co"># Uncertainty in diameter of balloon (m).</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>meanyCeiling <span class="op">=</span>    <span class="co"># Height of the ceiling (meters)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>dyCeiling <span class="op">=</span> </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables with no uncertainty attached</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span>          <span class="co"># Mass of the payload (kg)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>ρa0 <span class="op">=</span> <span class="fl">1.2754</span>  <span class="co"># Reference density of air (kg/m^3)</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ρh0 <span class="op">=</span> <span class="fl">0.1784</span>  <span class="co"># Reference density of helium (kg/m^3)</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> <span class="fl">273.15</span>   <span class="co"># Reference temperature (Kelvins).</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> <span class="fl">1.0e5</span>   <span class="co"># Reference Pressure (Pa).</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Drag constant for sphere (unitless)</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span>  <span class="co"># Acceleration due to gravity (m/s^2)</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="fl">0.01</span>    <span class="co"># Time step (s).</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> []</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Counter</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>Ntrials <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> N <span class="op">&lt;</span> Ntrials:</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    mb <span class="op">=</span> np.random.uniform(meanmb <span class="op">-</span> dmb,meanmb <span class="op">+</span> dmb)  <span class="co"># Get a randon number for the balloon mass.</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span>   <span class="co"># Get a random number for the balloon diameter (m).</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span>   <span class="co"># Get a random number for the pressure (Pa).</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    T <span class="op">=</span>   <span class="co"># Get a random number for the temperature (Kelvins).</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    yCeiling <span class="op">=</span>   <span class="co"># Get a random number for the ceiling height (m).</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    V <span class="op">=</span>     <span class="co"># Volume of balloon (m^3).</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span>       <span class="co"># Cross-sectional area of balloon (m^3)</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    mt <span class="op">=</span> mb <span class="op">+</span> mp <span class="op">+</span> ρh <span class="op">*</span> V</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> d     <span class="co"># Initial height of balloon (meters).</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="dv">0</span>     <span class="co"># Initial velocity of balloon (m/s).</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> <span class="dv">0</span>     <span class="co"># Initial time (s).</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> Fb <span class="op">&lt;</span> Fg:  <span class="co"># If the buoyant force isn't enough to lift the balloon, don't run Euler's method.</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Your buoyant force is smaller than the weight of the balloon, skipping to next iteration."</span>)</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    N <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> y <span class="op">&lt;</span> yCeiling:</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>        Fd <span class="op">=</span> </span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span>  </span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> </span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> </span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>        t <span class="op">=</span> </span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        ax1.plot(t,a,<span class="st">'r.'</span>)</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        ax2.plot(t,v,<span class="st">'g.'</span>)</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>        ax3.plot(t,y,<span class="st">'b.'</span>)</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    times.append(t)</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(times), np.std(times))</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="activity-iii-checking-our-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="activity-iii-checking-our-prediction">Activity III: Checking our Prediction</h2>
+<section id="goal-overview-2" class="level3">
+<h3 class="anchored" data-anchor-id="goal-overview-2">Goal (Overview):</h3>
+<p>The balloon will be released and allowed to accelerate upwards towards the ceiling. The flight time will be measured and compared against the predicted flight time from Activity II. ### Procedure 1. Transfer the average flight time calculated in Activity II with its associated uncertainty into the table below. 2. Release the balloon from your pre-selected initial height and use a stopwatch to time the flight. Repeat the flight at least 5 times and calculate the average and standard deviation of the mean of your data. Record the mean and standard deviation of the mean in the table below. 3. Calculate the percent error and include that number in the table. 4. It’s possible that your percent error is high and the most likely explanation is in the measurement of the balloon diameter. If this is the case, return to your code from activity II and investigate what the balloon diameter would need be to reduce the percent error to <span class="math inline">\(&lt; 10\%\)</span>.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>–</th>
+<th>Flight Time (s)</th>
+<th>Uncertainty (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Predicted</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Measured</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Percent Error</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 7 Falling Objects with Air Resistance</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="pagination-link">
+        <span class="nav-page-text">Lab #9 Projectile Motion with Drag and Uncertainty</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
