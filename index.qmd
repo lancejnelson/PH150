@@ -1,0 +1,201 @@
+---
+jupyter: python3
+execute: 
+  enabled: false
+  freeze: auto
+---
+# Python and Jupyter Notebooks {-}
+
+
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/intro.ipynb)
+
+## Python
+
+
+
+Python is a computer programming language available on all major platforms (Mac, Windows, Linux).  Python is a scripting language which means that the computer interprets and runs your code at the moment you run it.  In contrast, with a compiled language like C the code must first be converted into binary before it can run (called "compiling" the code).  There are pros and cons to both types of languages. The on-the-fly interpretation of Python makes it quick and easy to write code and provides fast results for simple calculations.  When codes become longer and more complex, on-the-fly interpretation becomes less efficient and execution time will be much slower than it would be with a compiled language.  The pros and cons flip for a compiled language; writing code in a compiled language can be cumbersome and slow, but the execution time is typically much faster.  Out of necessity, most programmers become proficient in both types of languages.  Python(or another interpreted language) is used to "toy around" with your problem and build familiarity.  As the complexity of the code increases the user is then forced to transition to a compiled language to get the needed speed. This is the famous "two language" problem and there is a new programming language designed to eliminate this problem by combining the pros from both into one language. (The name of the language is [Julia](https://docs.julialang.org/en/v1/))
+
+Python is free, open source software and is maintained by the non-profit Python software foundation.  This is great because it means that you will always have free access to the Python language regardless of what organization or university you are affiliated with.  You'll never have to worry about not being able to use your Python code without paying for it.  Another benefit of open source languages is that all of the codes developed by other people are available for anyone to inspect, modify, and use.  This allows anyone to review another's code to ensure that it does what they say it does, or to modify it to do something else.  One last benefit that comes with an open source language is the community of Python users available to answer questions and provide instruction to the beginner. Answers to most questions about python are readily available on tutorial or forum websites.  
+
+## Installing Software
+The first step is to install the software (if you haven't already). The most convenient way to install Python and also get many of the commonly-used libraries is to use an installer. I recommend [Anaconda](https://www.anaconda.com/download/"). When installing the software be sure to choose Python 3 since this is the current version.  By default, Anaconda will install a suit of softwares and libraries that are commonly used.  If you want to install other Python libraries, open the Anaconda-Navigator (green circle icon) and select the **Environment** tab on the left.  Select **Not Installed** from the pull-down to see all of the libraries that are available to be installed.  To install a library, check the box next to it and click **Apply**.  Anaconda will take care of the rest. 
+
+
+>**_To Do:_**
+>
+>1. Install Anaconda
+>2. Check to see if the library "numpy" is installed. If not, install it.
+
+## Jupyter Notebooks
+A Jupyter notebook is an electronic document designed to support interactive data processing, analysis, and visualization in an easily shared format.  A Jupyter notebook can contain live code, math equations, explanatory text, and the output of codes (numbers, plots, graphics, etc..). 
+To launch a Jupyter notebook, first open Anaconda-Navigator (green circle icon) and click the **Launch** button under JupyterLab.  Jupyter can also be launched from the command line by typing `jupyter-lab`.  The jupyter notebook will launch in your default web browser, but it is not a website.  From here you can select an already existing Jupyter notebook, denoted by the orange icons and the .ipynb extension, or create a new notebook by clicking **New** from the **File** menu.
+
+>**_To Do:_**
+>
+>1. At the top of this page there is a link titled "Jupyter Notebook". Click on that link to download the Jupyter notebook version of this chapter.
+>2. Launch JupyterLab as explained above.
+>3. Open the file that you downloaded in step 1 and continue reading this book in the jupyter notebook.
+
+
+
+
+### Notebook Structure
+There are two types of "cells" in a Jupyter notebook: code cells and text cells (also called Markdown cell).  Code cells contain "live" Python code that can be run inside of the notebook with any output appearing directly below it.  An example of a code cell is given below:
+
+```{python}
+accel = 9.8
+dt = 0.5
+vi = 10
+vf = vi + a * dt
+print(vf)
+```
+
+
+Markdown cells are designed to contain explanatory information about what is happening inside of the code cells.  They can contain text, math equations, and images.  Markdown cells support markdown, html, and $\mathrm{\LaTeX}$ (for generating pretty math equations).
+
+Both markdown and code cells can be executed by either selecting **Run Selected Cells** in the **Run** menu, by clicking the **Play** icon at the top of the notebook, or by using the **Shift-Return** shortcut when your cursor is in the desired cell.
+
+### $\mathrm{\LaTeX}$
+Often you will want to include math equations as part of your explanation/text.  Below is an example of what your math should and should not look like.  
+
+- $|\vec{v}|  = \sqrt{v_x^2 + v_y^2}$ (like this)  
+- v = sqrt(vx^2 + vy^2) (not like this)
+
+To make your math equations look like the first example, you must enclose your math equation in "$$", one pair at the beginnning of the equation and one pair at the end.  Enclosing your expression in double dollar signs will put the expression on its own line.  To place the expression in the middle of a sentence (inline) you'll need to enclose the expression in single dollar signs. To generate the math symbols that often show up in equations, you'll need to know the correct syntax.  A table of commonly used math symbols is given below.
+
+|Math symbol | Example| $\mathrm{\LaTeX}$ syntax|
+|------------|------------|-------------|
+| Subscript | $v_x$  | `v_x`   |
+| Powers | $v^2$  | `v^2`   |
+| Powers with more than one digit | $v^{10}$  | `v^{10}`   |
+| Square root| $\sqrt{a + b}$  | `\sqrt{a + b}`   |
+| Fractions | $\frac{a}{b}$  | `\frac{a}{b}`   |
+| Vectors | $\vec{x}$  | `\vec{x}`   |
+| Integrals | $\int x^2 dx$  | `\int x^2 dx`   |
+| Partial Derivatives | ${\partial f \over \partial x}$  | `{\partial f \over \partial x}`   |
+| Summations | $\sum_{i = 1}^{10} x_i^2$  | `\sum_{i = 1}^{10} x_i^2`   |
+| Infinity | $\infty$ | `\infty`|
+
+You can include Greek letters in your expressions if you know the corresponding syntax.  The table below shows some of the more common Greek letters used in physics.
+
+|Greek Letter | $\mathrm{\LaTeX}$ syntax|
+|------------|-------------|
+| $\alpha$  | `\alpha`   |
+| $\beta$  | `\beta`   |
+| $\gamma$  | `\gamma`   |
+| $\Delta$  | `\Delta`   |
+| $\epsilon$  | `\epsilon`   |
+
+A more comprehensive list of math symbols available can be found [here](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
+
+### Tables
+Tables are often useful for presenting data.  You can make a table in a jupyter notebook using the following syntax
+
+
+```
+|t (s)       | v (m/s)     |
+|------------|-------------|
+| 0          | 10          |
+| 1.2        | 22          |
+| 2.3        | 25          |
+| 3.0        | 38          |
+| 5.5        | 56          |
+```
+
+which will generate the following table:
+
+|t (s)       | v (m/s)     |
+|------------|-------------|
+| 0          | 10          |
+| 1.2        | 22          |
+| 2.3        | 25          |
+| 3.0        | 38          |
+| 5.5        | 56          |
+
+
+
+
+
+
+
+### Navigating Jupyter Notebooks
+
+Navigating a Jupyter notebook is fairly straightforward but there are a few handy shortcuts/hotkeys that will make navigation quicker and your workflow more efficient.  When working in a Jupyter notebook, you are always operating in one of two modes: edit mode or navigate mode.  In edit mode you can make modifications to the text or code in a cell and in navigate mode you can add/delete cells and modify the cell type.  If you can see a blinking cursor in one of the cells you are in edit mode.  Otherwise you are in navigate mode.  To exit edit mode, simply press the `esc` key and you will enter navigate mode.   To exit navigate mode, simply press the `enter` key and you will enter edit mode for the cell you were focused on. (You can also double click on a cell with your mouse to enter edit mode.)   The `shift` + `enter` key sequence will "execute" a cell and produce the associated output.  For text cells, executing just means to render the text in a nicely formatted fashion.  "Executing" a code cell will actually execute the code block contained in the cell.  You also enter navigate mode every time you execute a cell using the `shift` + `enter` key sequence. A summary of these shortcuts is given below:
+
+
+- Up/down arrows - Navigate to different cells in the notebook.
+- `Y` - turns a text cell into a code cell.
+- `M` - turns a code cell into a text cell.
+- `A` - inserts a new cell above the current cell.
+- `B` - inserts a new cell below the current cell.
+- `X` - deletes the current cell. 
+- `enter` - enters edit mode. 
+- `shift` + `enter` - execute a cell.
+- `esc` - enter navigate mode.
+
+
+## Tips for studying Jupyter notebooks
+
+
+### Print Statements
+
+Jupyter notebooks in this class will be a nice mix of text cells (explanation) and code cells (examples). You will soon learn that code cells produce no output unless you explicitly tell them to using a `print` statement (similar to the one you used above).  When you encounter a code cell, you should feel free to make modifications and additions to the cell until you fully understand how the code works. 
+
+### Comments
+
+Comments are a way to describe what each section of code does and makes it easier for you and others to understand the code.  It may seem clear what each section of code does as you write it, but after a week, month or longer, it is unlikely to be obvious.  Paul Wilson of the University of Wisconsin at Madison is quoted as saying, "Your closest collaborator is you six months ago, but you don't reply to emails."  Comment your code now so that you are not confused later.
+
+There are several ways to add comments to your code:
+
+1. Use `#` to start a comment.  Everything on that line the follows will be ignored.
+2. For longer comments that will span several lines, use triple double quotes to begin and end the comment (`"""`)
+
+The cell below illustrates these two ways to make comments:
+
+```{python}
+# Speed of light in a vacuum
+c = 3e8
+
+v = 300 # Speed of sound in air
+
+"""
+The variables below are the initial conditions for a cannon
+launching a ball at a 30 degree angle with an initial speed of
+50 m/s.  The initial height of the cannon ball is 1000 m
+"""
+v = 50
+theta = 30
+h_i = 1000
+
+```
+
+
+>**_To Do:_**
+>
+>1. Execute the code block below and verify that no output is produced.
+>2. Add print statements that help you see the result of the calculation.
+>3. Add simple comments next to each line explaining the code.
+
+```{python}
+a = 2 
+b = 3 
+c = a**b
+```
+
+
+## Exercises
+
+1. Perform the following actions using the shortcuts above:
+
+   1. Add a cell below this one.
+   2. Turn the cell into a code cell (observe the distinct appearance of code cells).
+   3. In the code cell, calculate the Stefan-Boltzmann constant using the equation given in the first column of the table found [here](https://en.wikipedia.org/wiki/List_of_physical_constants).  Add a print statement so you can verify that you did it correctly. 
+   4. Execute the cell using `shift` + `enter`. Observe the output.
+   5. Create another cell just below the code cell you just created. 
+   6. Turn it into a text/markdown cell if it isn't already. 
+   7. Using $\mathrm{\LaTeX}$ syntax, write the equation from the table that you used to peform the calculation.
+   8. "Execute" the cell and observe the new output.
+2. Recreate the first three columns of your top 10 favorite physical constants found [here](https://en.wikipedia.org/wiki/List_of_physical_constants) (same table as given in exercise 1).  Pick constants that have Greek letters and fun mathematical equations associated with them.
+
+
+

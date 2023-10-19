@@ -1,0 +1,604 @@
+---
+jupyter: python3
+---
+
+# Lab 2: Propagation of Uncertainty I {-}
+
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L2-Propagation_of_UncertaintyI.ipynb)
+
+
+Name: 
+
+
+## Skills
+In this lab you will gain the following skills
+
+### Python
+1. Perform simple calculations.
+1. Construct Python dataframes and use them to display datasets.
+2. Construct arrays of plots in Python (multiple plots on one canvas).
+
+### Mathematical/Experimental Skills and Knowledge
+1. Know the meaning of the derivative and partial derivative.
+2. Use derivatives to propagate uncertainty for moderately complex calculations.
+
+## Basic Principles
+### The Slope of a Function
+Mathematical functions describe how one quantity depends on one or more other quantities. For example, the velocity function
+
+$$v(t) = 5 t + 2$$
+
+gives the relationship between velocity and time.  
+
+```{python}
+#| eval: true
+#| echo: false
+#| output: true
+
+from matplotlib import pyplot as plt
+from numpy import arange
+t = arange(0,10,0.1)
+v = 5 * t + 2
+
+plt.plot(t,v,lw = 3)
+plt.xlabel("t (sec)")
+plt.ylabel("v (meters/sec)")
+plt.show()
+
+```
+
+and this function gives the relationship between position and time
+
+$$y(t) = 5t^2 -3t + 8$$
+
+```{python}
+#| eval: true
+#| echo: false
+#| output: true
+
+from matplotlib import pyplot as plt
+from numpy import arange
+t = arange(0,10,0.1)
+y = 5 * t**2 - 3*t + 8
+
+plt.plot(t,y,lw = 3)
+plt.xlabel("t (sec)")
+plt.ylabel("y (meters)")
+plt.show()
+
+```
+
+The slope of a function ($m$) is the rate at which the function changes with its variables.  The slope is straightforward to calculate for linear functions: Just pick two points, calculate $\Delta y = y_2 -y_1$ and $\Delta t = t_2 - t_1$, and divide them. 
+$$m = {\Delta y \over \Delta t}$$
+
+Generally, the slope of a function isn't constant but varies across the domain.  The figure below illustrates how the tangent line to a non-linear function varies across the domain.  
+
+
+```{python}
+#| eval: true
+#| echo: false
+#| output: true
+
+from matplotlib import pyplot as plt
+from numpy import arange
+
+
+def f(yi,vi,a,t):
+    return yi + vi *t + 1/2 * a * t**2
+
+def slopeTwoPoints(yi,vi,a,ta,tb,axes):
+    
+    m = (f(yi,vi,a,tb) - f(yi,vi,a,ta)) / (tb - ta) 
+    t1 = arange(0,tb,0.01)
+    y1 = [yi + vi * tb + 1/2 *a * tb**2 for t in t1]
+    axes.plot(t1,y1,'b--')
+
+    y2 = arange(0,yi + vi * tb + 1/2 *a * tb**2,0.01)
+    t2 = [tb for t in y2]
+    axes.plot(t2,y2,'b--')
+
+    t3 = arange(0,ta,0.01)
+    y3 = [yi + vi * ta + 1/2 *a * ta**2 for t in t3]
+    axes.plot(t3,y3,'r--')
+
+    y4 = arange(0,yi + vi * ta + 1/2 *a * ta**2,0.01)
+    t4 = [ta for t in y4]
+    axes.plot(t4,y4,'r--')
+    tRange = arange(0,0.8,0.01)
+    y = m * tRange + f(yi,vi,a,ta) - ta * m
+    axes.plot(tRange,y,'g-.')
+    axes.set_ylim(0,1.1)
+    font = {'family':'serif','color':'darkred','weight':'normal','size':16}
+    axes.text(0.45, 0.85,f"slope = {m:5.2f}",fontdict = font)
+    axes.set_xlabel("t (sec)")
+    axes.set_ylabel("y (meters)")
+
+a = -9.8
+vi = 4
+yi = 0
+t = arange(0,0.83,0.01)
+y = f(yi,vi,a,t)
+
+
+fig,axs = plt.subplots(2,2,figsize = (10,5))
+
+axs[0,0].plot(t,y,lw = 3)
+axs[0,1].plot(t,y,lw = 3)
+axs[1,0].plot(t,y,lw = 3)
+axs[1,1].plot(t,y,lw = 3)
+
+
+slopeTwoPoints(yi,vi,a,0.2,0.22,axs[0,0])
+slopeTwoPoints(yi,vi,a,0.3,0.31,axs[0,1])
+slopeTwoPoints(yi,vi,a,0.45,0.47,axs[1,0])
+slopeTwoPoints(yi,vi,a,0.6,0.62,axs[1,1])
+
+plt.show()
+```
+
+
+For those that are interested, the slope of the tangent line of a function can be found by calculating the slope of a function in the limit that the change in $x$ ($\Delta x$) becomes infinitely small.
+
+```{python}
+#| eval: true
+#| echo: false
+#| output: true
+
+from matplotlib import pyplot as plt
+from numpy import arange
+
+
+def f(yi,vi,a,t):
+    return yi + vi *t + 1/2 * a * t**2
+
+def slopeTwoPoints(yi,vi,a,ta,tb,axes):
+    
+    m = (f(yi,vi,a,tb) - f(yi,vi,a,ta)) / (tb - ta) 
+    t1 = arange(0,tb,0.01)
+    y1 = [yi + vi * tb + 1/2 *a * tb**2 for t in t1]
+    axes.plot(t1,y1,'b--')
+
+    y2 = arange(0,yi + vi * tb + 1/2 *a * tb**2,0.01)
+    t2 = [tb for t in y2]
+    axes.plot(t2,y2,'b--')
+
+    t3 = arange(0,ta,0.01)
+    y3 = [yi + vi * ta + 1/2 *a * ta**2 for t in t3]
+    axes.plot(t3,y3,'r--')
+
+    y4 = arange(0,yi + vi * ta + 1/2 *a * ta**2,0.01)
+    t4 = [ta for t in y4]
+    axes.plot(t4,y4,'r--')
+    tRange = arange(0,0.5,0.01)
+    y = m * tRange + f(yi,vi,a,ta) - ta * m
+    axes.plot(tRange,y,'g-.')
+    axes.set_ylim(0,1.1)
+    font = {'family':'serif','color':'darkred','weight':'normal','size':16}
+    axes.text(0.45, 0.85,f"slope = {m:5.2f}",fontdict = font)
+    axes.set_xlabel("t (sec)")
+    axes.set_ylabel("y (meters)")
+
+a = -9.8
+vi = 4
+yi = 0
+t = arange(0,0.83,0.01)
+y = f(yi,vi,a,t)
+
+
+fig,axs = plt.subplots(3,2,figsize = (10,5))
+
+axs[0,0].plot(t,y,lw = 3)
+axs[0,1].plot(t,y,lw = 3)
+axs[1,0].plot(t,y,lw = 3)
+axs[1,1].plot(t,y,lw = 3)
+axs[2,0].plot(t,y,lw = 3)
+axs[2,1].plot(t,y,lw = 3)
+
+tb = 0.40
+ta = 0.25
+
+#m = 
+slopeTwoPoints(yi,vi,a,0.2,0.45,axs[0,0])
+slopeTwoPoints(yi,vi,a,0.2,0.4,axs[0,1])
+slopeTwoPoints(yi,vi,a,0.2,0.35,axs[1,0])
+slopeTwoPoints(yi,vi,a,0.2,0.3,axs[1,1])
+slopeTwoPoints(yi,vi,a,0.2,0.25,axs[2,0])
+slopeTwoPoints(yi,vi,a,0.2,0.22,axs[2,1])
+
+plt.show()
+```
+
+
+
+To reiterate: The slope isn't a single number but rather another **function**. (The slope for linear functions is also a function, but since it's a constant we sometimes forget this.)  This sloping function can be evaluated at any point to determine the slope of the original function.  For example, the slope of the function
+
+$$y(t) = 4t - 4.9 t^2$$
+
+is given by the sloping function
+
+$$y'(t) = {dy(t) \over dt} = -9.8 t + 4$$
+
+These functions are plotted below to illustrate their relationship.
+
+```{python}
+#| eval: true
+#| echo: false
+#| output: true
+
+
+
+from matplotlib import pyplot as plt
+from numpy import arange
+
+
+def f(t):
+    return 4 * t - 4.9 * t**2
+
+def slopeTwoPoints(ta,tb,axes):
+    
+    m = (f(tb) - f(ta)) / (tb - ta) 
+
+#    y2 = arange(-9.8 * ta + 4,0.01)
+#    t2 = [ta for x in y2]
+#    axes.plot(t2,y2,'b--')
+
+    tRange = arange(0,0.9,0.01)
+    y = m * tRange + f(ta) - ta * m
+    axes.plot(tRange,y,'g-.')
+    axes.set_ylim(0,1.5)
+    font = {'family':'serif','color':'darkred','weight':'normal','size':16}
+    axes.text(0.6, 1,f"slope = {m:5.2f}",fontdict = font)
+    axes.set_xlabel("t")
+    axes.set_ylabel("y(t)")
+
+def lines(t,axes):
+
+    t1 = arange(0,t,0.01)
+    y1 = [-9.8 * t + 4 for x in t1]
+    axes.plot(t1,y1,'b--')
+
+    y2 = arange(-6,-9.8 * t + 4,0.01)
+    t2 = [t for x in y2]
+    axes.plot(t2,y2,'b--')
+    font = {'family':'serif','color':'darkred','weight':'normal','size':16}
+    axes.text(0.6, 0.7,f"value = {-9.8 * t + 4:5.2f}",fontdict = font)
+    axes.set_xlabel("t")
+    axes.set_ylabel("y'(t)")
+
+t = arange(0,1,0.01)
+y = f(t)
+y2 = 4 - 9.8 * t
+
+
+fig,axs = plt.subplots(2,1,figsize = (6,4))
+
+axs[0].plot(t,y,lw = 3)
+axs[1].plot(t,y2,lw = 3)
+
+
+slopeTwoPoints(0.6,0.60005,axs[0])
+lines(0.6,axs[1])
+plt.show()
+```
+
+The notation ${dy(t) \over dt}$ is used to indicate the sloping function corresponding to $y(t)$.  ($y'(t)$ is another common way to indicate this function.)
+
+
+### The derivative
+The sloping function can be found by applying a set of mathematical rules to the function of interest.  Most of the first half of calculus are devoted to the learning and mastery of these rules.  One of the more common rules is the power rule which applies to polynomial functions.  Specifically, if $f(x) = a + bx + cx^2 + dx^2 + \dots = \sum_n a_n x^n$, then 
+
+$$ y(x) = f'(x) = a_n (n - 1) x^{n-1}$$ 
+
+This rule was used to find the sloping function above. A plot of these two functions is given below.
+
+
+To reiterate: **the value of the sloping function (derivative) is equal to the slope of the original function**.  That's a derivative.
+
+The derivative of some other common functions is given in the table below.  Your calculus class will teach you how to find the derivative of more complicated functions than those found in the table.
+
+| Function ($f(x)$) | Derivative ($y(x) = f'(x)$)|
+|:-----------------:|:---------------------------:|
+| $f(x) = \sin(a x)$| $y(x) = a \cos(a x)$|
+| $f(x) = \cos(a x)$| $y(x) = -a \sin(a x)$|
+| $f(x) = \tan(a x)$| $y(x) = a \sec(a x)^2$|
+| $f(x) = e^{a x}$| $y(x) = ae^{a x}$|
+| $f(x) = \ln(a x)$| $y(x) = {a \over x}$|
+| $f(x) = {a \over x}$| $y(x) = -{a \over x^2}$|
+
+
+### Using the derivative to find uncertainty.
+
+So how does the derivative help when calculating uncertainty. As a simple reminder: the slope of a function is the ratio of the change in function value to the change in variable value.  
+
+$$ \text{slope} = {\partial f \over \partial x} = {\text{rise} \over \text{run}} = {\delta f \over \delta x}$$
+
+If $\delta f$ is the uncertainty in a calculated value and $\delta x$ is the uncertainty in the measured value, the equation above provides a way to calculate the uncertainty in the calculated value.
+
+$$\delta f = \text{slope} \times \delta x = {\partial f \over \partial x}$$
+
+ Let's consider an example where we measure the frequency ($f$) of a certain light beam to be $f = 4.2 \pm 0.5 \times 10^{15}$ Hz and want to calculate the wavelength $\lambda$ (with its associated uncertainty).
+
+
+$$ \lambda(f) = {3 \times 10^8 \over f} = 7.14 \times 10^{-8}~ \text{m}$$
+
+
+
+A plot of this function is given below
+
+<div style="text-align: center;">
+<img src="https://lancejnelson.github.io/PH150/figures/derivativeUncertainty.png" alt="drawing" width="650"/>
+</div>
+
+Using the table above to calculate the derivative we find 
+
+$$ \lambda'(f) = {\partial \lambda \over \partial f} = -{3 \times 10^8 \over f^2} $$
+
+And hence, the unceratainty in the wavelength is:
+
+$$\delta \lambda = {\partial \lambda \over \partial f} \delta f $$
+$$ = -{3 \times 10^8 \over f^2} \delta f$$
+$$= -{3 \times 10^8 \over (4.25 \times 10^{15} ~\text{Hz})^2} (0.5 \times 10^{15} ~\text{Hz})$$
+$$ = 8.5 \times 10^9 ~ \text{m}$$
+
+
+### Partial Derivatives
+
+When the function of interest has more than one independent variable, derivatives are performed on each variable separately, and all other variables are treated as constants.  Derivatives of functions of many variables are called partial derivatives.
+
+For example, consider the function:
+
+$$f(x,y) = 5 x y^2 + 8 x^2 y$$
+
+The partial derivatives of this function are
+
+$${\partial f \over \partial x} = 5 y^2 + 16 x^2 y$$
+$${\partial f \over \partial y} = 10 xy + 8 x^2$$
+
+The uncertainty in the calculated values is calculated by first forming the product ${\partial f \over \partial x_i} \delta x_i$ for each independent variables and inserted into the equation below 
+$$(\delta f)^2 = ({\partial f\over \partial x} \delta x)^2 + ({\partial f\over \partial y}\delta y)^2  + \dots$$
+
+**This is the most important formula for uncertainty propagation and the one we will use going forward.**
+
+### An Example
+
+Imagine measuring the dimensions and mass of a block with their associated uncertainties:
+
+$$l = 5.2 \pm 0.1 ~\text{cm}$$
+$$w = 8.4 \pm 0.3 ~\text{cm}$$
+$$h = 10.8 \pm 0.4 ~\text{cm}$$
+$$m = 345 \pm 5 ~\text{grams}$$
+
+and proceeding to calculate the density of the block
+
+$$\rho = {m \over V} = {m \over l \times w \times h}$$
+
+```{python}
+#| echo: false
+#| eval: true
+
+m = 345
+l = 5.2
+w = 8.4
+h = 10.8 
+
+rho = m/l/w/h
+print(f"= {rho:5.2f} g/cm^3")
+```
+
+To calculate the uncertainty, we must first take four derivatives with respect to $l$, $w$, $h$, and $m$:
+
+$$ {\partial \rho \over l} = -{m \over l^2 w h}$$
+
+$$ {\partial \rho \over h} = -{m \over l w h^2}$$
+
+
+$$ {\partial \rho \over w} = -{m \over l w^2 h}$$
+
+
+$$ {\partial \rho \over m} = {1 \over l w h}$$
+
+Now we can calculate the uncertainty as
+
+$$\delta \rho = \sqrt{({\partial \rho \over \partial l} \delta l)^2 + ({\partial \rho \over \partial w} \delta w)^2 + ({\partial \rho \over \partial h} \delta h)^2 + ({\partial \rho \over \partial m} \delta m)^2}$$
+
+$$ = \sqrt{(-{m \over l^2 w h} \delta l)^2 + (-{m \over l w^2 h} \delta w)^2 + (-{m \over l w h^2} \delta h)^2 + ({1 \over l w h} \delta m)^2}$$
+
+$$ = \sqrt{(-{(345 ~\text{grams}) \over (5.42 ~\text{cm})^2 (8.4 ~\text{cm}) (10.8 ~\text{cm})} (0.1 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm})^2 (10.8 ~\text{cm})} (0.3 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})^2} (0.4 ~\text{cm}))^2 + ({1 \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})} (5 ~\text{grams}))^2}$$
+
+In the code cell below we use python to calculate this uncertainty.
+
+```{python}
+#| echo: true
+#| eval: true
+
+from numpy import sqrt
+m = 345
+dm = 5
+l = 5.2
+dl = 0.1
+w = 8.4
+dw = 0.3
+h = 10.8
+dh = 0.4 
+
+rho = m/l/w/h
+drdl = -m/l**2/w/h
+drdw = -m/l/w**2/h
+drdh = -m/l/w/h**2
+drdm = 1/l/w/h
+drho = sqrt((drdl * dl)**2 + (drdw * dw)**2 + (drdh * dh)**2 + (drdm * dm)**2)
+print(f"The density of the block is {rho:5.2f} +- {drho:4.2f} g/cm^3")
+```
+
+
+## Activity I:  The pendulum (50 pts)
+### Equipment needed:
+1. Pendulum. (We have some pre-made, or you can tie a string to a mass)
+2. Metal support stand for pendulum to swing from.
+3. Photogate.
+
+### Goal:  
+By taking measurements on a simple pendulum, calculate the acceleration due to gravity with its associated uncertainty.  Compare to the known value for Rexburg.
+
+### Procedure:  
+  1. Assemble five pendulums of different lengths, with the lengths ranging from $0.25$ m to $2.0$ m.  
+  2. For each pendulum, perform the following:  
+     1. Measure the distance from the support point to the center of the pendulum.  This is the length of the pendulum $L$.  Assign an uncertainty to this measurement and record the length with its associated uncertainty in the code cell provided below.
+     2. Release the pendulum from a small initial angle (no bigger than $15^\circ$ from the vertical) and use the photogate to measure the period $T$ of the pendulum with its associated uncertainty. (The period of a pendulum is the time it take to make one full cycle.)
+     3. Calculate the acceleration due to gravity ($g$) using $g = {4 \pi^2 L \over T^2}$.
+     4. Using the methods discussed above determine the equation for calculating the uncertainty in $g$.  Insert it into the math equation below $$ \delta g = $$
+     5. Calculate the uncertainty and **fractional uncertainty** in $g$ in the code cell below.
+
+
+  3. In lines 4,5, and 6 of the cell below record all of your length, period, and g values for the five pendulums.
+  4. In lines 7,8, and 9 record all of the uncertainties for the five pendulums. 
+  5. When you execute the cell, you will see a table summarizing your results and two plots to help analyze your results. Analyze the results to answer the following questions:  
+     1. Which result has the lowest uncertainty? Can you explain why?
+     2. What function do you think best represents the relationship between $L$ and $T$?(We will study curve-fitting in a later lab.)
+     3. The accepted value of $g$ for Rexburg is $g = 9.80056$ m/s$^2$.  Do your calculations agree with this value to within your calculated uncertainties?
+    > Response:
+
+
+```{python}
+#| eval: false
+#| echo: true
+
+# Pendulum Parameters
+T =           # period of the pendulum
+un_T =        # uncertainty of the period of the pendulum
+L =           # length of the pendulum
+un_L =        # uncertainty of the length of the pendulum
+
+# Compute volume of the room with uncertainty
+g =          # Compute a value for g
+un_g =       # Compute the uncertainty in g.
+frac_g =     # Fractional uncertainty in g
+
+print("The acceleration due to gravity is: {0:4.1f} +/- {1:3.1f} m/s^2. That's a fractional uncertainty of {2:6.2f}%.".format(g,un_g, 100 * frac_g))
+```
+
+```{python}
+#| eval: false
+#| echo: true
+
+import matplotlib.pyplot as plt
+from pandas import DataFrame
+import numpy as np
+%matplotlib inline
+
+periods = [,,,,] # Line 4
+lengths = [,,,,]  # Line 5
+gvalues = [,,,,]  # Line 6
+un_length = [,,,,]  # Line 7
+un_period = [,,,,]  # Line 8
+un_g = [,,,,]  # Line 9
+
+df = DataFrame(np.transpose([periods,un_period,lengths,un_length,gvalues,un_g]),columns = ["T (s)","δT (s)","L (m)","δL (m) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,6)))
+display(df)
+
+fig = plt.figure()            
+ax1 = fig.add_subplot(1,2,1)
+ax2 = fig.add_subplot(1,2,2)
+ax1.errorbar(lengths,periods,yerr = un_period,xerr = un_length,fmt = 'go', capsize = 6)
+ax1.set_aspect(1)
+ax1.set_xlabel("L (meters)")
+ax1.set_ylabel("T (seconds)")
+ax1.set_title("Period vs Length for five pendulums")
+
+ax2.errorbar(lengths,gvalues,yerr = un_g,fmt = 'ro', capsize = 6)
+ax2.set_aspect(1)
+ax2.set_xlabel("L (meters)")
+ax2.set_ylabel("g (m/s^2)")
+ax2.set_title("g vs Length for five pendulums")
+
+
+plt.show()
+
+```
+
+## Activity II (50 points)
+
+### Equipment needed
+1. Meter Stick
+2. Stopwatch (the one on your phone will do fine.)
+3. Tennis ball.
+
+### Goal
+By measuring the fall time for an object in free fall, calculate the acceleration due to gravity here in Rexburg.
+
+### Procedure
+1. Find a location in the building that will allow the greatest drop distance for the tennis ball. (the front foyer is a good choice.)  Measure the distance from the release point to the ground with its associated uncertainty.  Record your values in the code cell provided below.
+2. Using a stopwatch, measure the fall time with its associated uncertainty.  Record the values in the code cell provided below.
+3. Using the equation below, calculate the acceleration due to gravity. $$ g = {2 h \over t^2}$$
+4. Using the methods discussed above determine the equation for calculating the uncertainty in $g$.  Insert it into the math equation below $$ \delta g = $$
+6. Using the equation from step 4, calculate the uncertainty in $g$ in the code cell below. 
+7. Repeat steps 1 - 5 **ten** more times to obtain ten values of  $g$ and $\delta g$.
+8. Put all of your data in the code cell provided below (the second code cell) and execute the cell to reveal a summary table and plots that summarize your results.  
+9. Using your results, answer the following questions:
+    1. Are your ten g values consistent with one another to within their stated uncertainties. Explain.
+    2. What function do you think describes the relationship between the fall distance and the fall time. (We will study curve-fitting in a later lab.)
+    3. Which of your g values agree with the accepted value of g for Rexburg given in the first exercise.
+    
+    > Response:
+10. Take a minute to inspect all of the code that I have given to you today.  Ask questions about code that you don't understand.  As some point, you'll have to recreate code like this on your own.
+
+```{python}
+#| eval: false
+#| echo: true
+
+t =            # Time in air in sec
+un_t =         # Uncertainty of time measurement in sec
+h =            # Height in meters
+un_h =         # Uncertainty of height in meters
+g =            # Calculate g using equation above
+un_g =         # Calculate uncertainty in g
+frac_g =       # Fractional uncertainty in g
+
+print("g : {0:4.2f} +/- {1:4.2f} m/s^2.  That's a fractional uncertainty of {2:6.2f}%.".format(g,un_g,frac_g))
+```
+
+```{python}
+#| eval: false
+#| echo: true
+
+import matplotlib.pyplot as plt
+import numpy as np
+from pandas import DataFrame
+%matplotlib inline
+
+trial = [1,2,3,4,5,6,7,8,9,10]
+fallDistances = [,,,,,,,,,]
+un_distance = [,,,,,,,,,]
+fallTimes = [,,,,,,,,,]
+un_times = [,,,,,,,,,]
+g = [,,,,,,,,,]  
+un_g = [,,,,,,,,,]  
+
+df = DataFrame(np.transpose([fallDistances,un_distance,fallTimes,un_times,g,un_g]),columns = ["Fall Distance (m)","δd (m)","Fall Times (s)","δt (s) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,11)))
+display(df)
+
+
+fig = plt.figure()            
+ax1 = fig.add_subplot(1,2,1)
+ax2 = fig.add_subplot(1,2,2)
+
+
+ax1.errorbar(trial,g,yerr = un_g,fmt = 'go', capsize = 6)
+ax1.set_aspect(1)
+ax1.set_xlabel("trial")
+ax1.set_ylabel("g (m/s^2)")
+ax1.set_title("Acceleration due to gravity for 10 experiments")
+
+
+ax2.errorbar(fallTimes,fallDistances,yerr = un_distance,xerr=un_time,fmt = 'ro', capsize = 6)
+ax2.set_aspect(1)
+ax2.set_xlabel("Fall Times (sec)")
+ax2.set_ylabel("Fall Distance (m)")
+ax2.set_title("Fall Distance vs. Fall Time.")
+
+
+
+plt.show()
+```
+
+

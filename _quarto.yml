@@ -1,0 +1,47 @@
+project:
+  type: book
+  output-dir: docs
+  render:
+    - chapters/basicPlotting.qmd
+execute:
+  enabled: true
+  freeze: auto
+  cache: true
+book:
+  title: "Beginning Physics Lab"
+  author: "Lance Nelson"
+  date: "9/8/2023"
+  sidebar:
+    style: floating
+  chapters:
+    - index.qmd
+    - part: "Measurements and Uncertainty"
+      chapters:
+      - labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.qmd
+      - labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.qmd
+      - labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.qmd
+      - labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.qmd
+    - part: "Experimental Design"
+      chapters:
+      - labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.qmd
+      - labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.qmd
+    - part: "Numerical Modeling"
+      chapters:
+      - labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.qmd
+      - labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.qmd
+      - labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.qmd
+bibliography: references.bib
+
+format:
+  html:
+    toc: true
+    theme: 
+      light: cosmo  # simplex cosmo
+      dark: darkly
+    max-width: 1600px
+    margin: 10px 20px 30px 20px
+  pdf:
+    documentclass: scrreprt
+
+
+

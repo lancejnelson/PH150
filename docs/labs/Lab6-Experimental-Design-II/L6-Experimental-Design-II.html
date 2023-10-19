@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Beginning Physics Lab - Lab 6 Experimental Design II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" rel="next">
+<link href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html">Experimental Design</a></li><li class="breadcrumb-item"><a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html">Lab 6 Experimental Design II</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Beginning Physics Lab</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python and Jupyter Notebooks</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Measurements and Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1 Measurement and Uncertainty</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab2-Propagation_of_Uncertainty_I/L2-Propagation_of_UncertaintyI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Propagation of Uncertainty I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab3-Propagation_of_Uncertainty_II/L3-Propagation_of_UncertaintyII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Propagation of Uncertainty Part II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4 Statistical Interpretation of Uncertainty</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Experimental Design</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5 Experimental Design I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 6 Experimental Design II</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Numerical Modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 7 Falling Objects with Air Resistance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 8 Air Resistance and Buoyancy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab #9 Projectile Motion with Drag and Uncertainty</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
+  <ul class="collapse">
+  <li><a href="#standing-waves" id="toc-standing-waves" class="nav-link" data-scroll-target="#standing-waves">Standing Waves</a></li>
+  <li><a href="#research-proposal" id="toc-research-proposal" class="nav-link" data-scroll-target="#research-proposal">Research Proposal</a></li>
+  </ul></li>
+  <li><a href="#activity-i-standing-waves" id="toc-activity-i-standing-waves" class="nav-link" data-scroll-target="#activity-i-standing-waves">Activity I (standing waves)</a></li>
+  <li><a href="#activity-ii-proposal" id="toc-activity-ii-proposal" class="nav-link" data-scroll-target="#activity-ii-proposal">Activity II (Proposal)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 6 Experimental Design II</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L5-Experimental-Design-I.ipynb">Jupyter Notebook</a></p>
+<p>Name:</p>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<ol type="1">
+<li>Get more experience designing and executing a scientific experiment.</li>
+</ol>
+</section>
+<section id="background-information" class="level2">
+<h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
+<section id="standing-waves" class="level3">
+<h3 class="anchored" data-anchor-id="standing-waves">Standing Waves</h3>
+<p>Standing waves result from making waves that reflect back on themselves, or by making waves on both ends of a string. When we were children we formed a type of standing wave with jump ropes.</p>
+<div style="text-align: center;">
+<p><img src="https://lancejnelson.github.io/PH150/figures/JumpRope1stHar.png" alt="drawing" width="650"></p>
+</div>
+<p>This standing wave had a part that went up and down in the middle and two parts that did not move much on each end (called nodes). But if you had a bored kid, you might have seen a standing wave that looks like this.</p>
+<div style="text-align: center;">
+<p><img src="https://lancejnelson.github.io/PH150/figures/JumpRope2ndHar.png" alt="drawing" width="500"></p>
+</div>
+<p>This is not so good for jumping, but makes an interesting picture. The part in the middle that does not seem to be moving is called a node. Really there are also nodes on each end of the rope as well. So altogether there are three nodes in this picture. We can make standing waves that have many nodes. If you try this with a jump rope, you will find that the more nodes you have, the faster you have to shake your end of the rope. Another way to say this is that the frequency of your wave you are making must increase with the number of nodes. This is part of today’s model. In the setup on your table, ring stands are holding strings, and there is an oscillator on one end that has a frequency control box. The other end has a pulley and a hanging mass to provide tension on the string.</p>
+<div style="text-align: center;">
+<p><img src="https://lancejnelson.github.io/PH150/figures/StandingWaveonString.png" alt="drawing" width="500"></p>
+</div>
+<p>Experimentally we find that not all frequencies will make standing waves. So our model includes the idea that only some frequencies produce standing waves. Our model also includes the idea that the weight of the string will change which frequency will make a standing wave. If you play a stringed instrument, you may have noticed that some strings are thicker than others. Thicker strings have different standing wave frequencies than thinner strings. If you study this model (some of you will in PH123), you can derive an equation that tells which frequencies will work <span class="math display">\[f={n\over 2L} \sqrt{ Mg\over \mu}\]</span> where n is an integer (<span class="math inline">\(n = 1, 2, 3 \dots\)</span>). This integer for strings is the number of nodes minus one <span class="math inline">\(n = n_\text{nodes} − 1\)</span>. So you can form a standing wave, then count the places that don’t seem to move (remember the ends!) and subtract one to find n.&nbsp;The frequency that creates the standing wave should be a function of <span class="math inline">\(n\)</span>. <strong>Our model tells us that if we know n, we should be able to predict the frequency.</strong> You will find that for each way you can make a standing wave, a small range of frequencies will make the standing wave, not just one, single frequency. But the frequency that produces the largest standing wave is the one we want (biggest amplitude–or the one for which the wave looks bigger) . That was the <span class="math inline">\(f\)</span> that was included in forming our model equation. Of course there are other variables in our equation, so we should find out what they are.</p>
+<p>The quantity <span class="math inline">\(\mu\)</span> is the linear mass density. It is defined as mass of the string divided by the length of the string. So μ tells us how massive the string is. The quantity <span class="math inline">\(L\)</span> is the length of the string that is participating in the waving, <span class="math inline">\(g = 9.8004\)</span> m/s<span class="math inline">\(^2\)</span> is the acceleration due to gravity, and <span class="math inline">\(M\)</span> is the hanging mass tied to the end of the string beyond the pulley. One way we could verify our model equation is to use it to predict one of the input values. Let’s use <span class="math inline">\(\mu\)</span>. <strong>The idea is to use our model equation to somehow find μ and then measure μ to see if the model equation prediction is good.</strong></p>
+<p>Last week we learned that we can take more than one measurement, and use those measurements together with a curve fit to solve for a fit parameter. The quantity <span class="math inline">\(\mu\)</span> should be in one of the fit parameters. Then you can solve for <span class="math inline">\(\mu\)</span> using the fit parameter given by your Python linear fit code. This is a more robust way to find <span class="math inline">\(\mu\)</span>, and it is the way I want you to proceed.</p>
+<p>You may have to adjust the amplitude knob on the frequency controller for some frequencies to keep the apparatus from shaking itself apart. The frequency controller has a fine and a course frequency adjust knob, and a digital frequency display.</p>
+</section>
+<section id="research-proposal" class="level3">
+<h3 class="anchored" data-anchor-id="research-proposal">Research Proposal</h3>
+<p>At the end of the semester you will be asked to design and carry out a high-quality physics experiment. As part of that process you will submit a research proposal. A proposal is a document that is intended to persuade someone (your professor, funding agency, yourself, etc.) that you should be given the resources and support to perform the experiment. For our class, the proposal consists of the following parts:</p>
+<ol type="1">
+<li>Statement of the experimental problem</li>
+<li>Procedures and anticipated difficulties</li>
+<li>Proposed analysis and expected results</li>
+<li>Preliminary List of equipment needed</li>
+</ol>
+<p>Note that most of the steps involved in planning an experiment are contained in these four parts of the proposal. Each of the steps is explained in more detail below.</p>
+<section id="statement-of-the-experimental-problem" class="level4">
+<h4 class="anchored" data-anchor-id="statement-of-the-experimental-problem">Statement of the experimental problem</h4>
+<p>This is a physics class, so our experiment should be a physics experiment. The job of an experimental physicist is to test physics models. So your statement of the experimental problem should include what model you are testing and a brief, high level, overview of what you plan to do to test this model.</p>
+</section>
+<section id="procedures-and-anticipated-difficulties" class="level4">
+<h4 class="anchored" data-anchor-id="procedures-and-anticipated-difficulties">Procedures and anticipated difficulties</h4>
+<p>Hopefully, your reader will be so excited by the thought of you solving your experimental problem that he or she will want to know the details of what you plan to do. You should describe in some detail what you are planning. If there are hard parts of the procedure, tell how you plan to get through them. This is essentially steps 1-6 of our experimental design strategy.</p>
+</section>
+<section id="proposed-analysis-and-expected-results" class="level4">
+<h4 class="anchored" data-anchor-id="proposed-analysis-and-expected-results">Proposed analysis and expected results</h4>
+<p>You might think this is unfair, how are you supposed to know what analysis will be needed and what the results should be until you take the data? But really you both can, and should make a good plan for your data analysis and figure out what your expected results should be before you start taking data. After all, you have a model you are testing. You can encapsulate that model into a predictive equation for your experiment. Then you can use that predictive equation to obtain predicted results and uncertainties. Using this, you can design your experimental apparatus by putting in the numbers from your experimental design and seeing what the outcome should be. You can see if there is a chance that your experiment will measure what you want with the equipment you have (this is where our differential form of error calculation comes in).</p>
+<p>If you don’t do this, you don’t know what equipment you will need or how sensitive that equipment needs to be. If you are trying to measure the size of your text book, an odometer that only measures in whole miles may not be the best choice of equipment. This might be obvious, but depending on how well you need to measure your text book, a ruler may not work either. You don’t know until you have an estimate of the uncertainty. So to know what you need, do the calculations in advance with your range of inputs as the values you take for the prediction.</p>
+<p>Of course this means you must include a predictive calculation of the uncertainty. Uncertainty in your result is governed by the uncertainty inherent in the measurements you will take. The uncertainty calculation tells you what sensitivity you will need in your measurement devices. In our text book case, you could see immediately that you need a different apparatus than the odometer. You might also find our ruler to be problematic depending on what precision you need.</p>
+<p>I remember a time in my career when the US Naval Research Labs asked us to build a microwave radiometer to measure the sea wind direction from space. We spent some time and our predicted analysis and uncertainty said that it would be a very expensive instrument to be able to successfully measure the wind direction—it would take more money than they were offering. NRL disagreed and built the device themselves at less cost, but to lesser specifications with much greater uncertainties. Then they spent a billion (yes, a billion with a “b” ) dollars to launch the device into space. The device was a total failure. The uncertainty was so big that the data was totally useless. We want to find out whether our experiment will work before we risk our grades (or a billion dollars) on it. So we will do the prediction ahead of taking the data.</p>
+<p>You should do all of this symbolically if you can, numerically if you must, but almost never by hand giving single value results. Some measurements will come back poorer than you anticipated, or some piece of equipment will be unavailable. You don’t want to have to redo all your calculations from scratch each time this happens. For example, in the event of an equipment problem, your analysis tells you if another piece of equipment is sufficiently sensitive, or if you need to find an exact replacement. When I perform an analysis like this, I try for a symbolic equation for uncertainty. I like to program these equations into Scientific Workplace, or Maple, or SAGE, or MathCAD, or Mathematica or whatever symbolic math processor I have. Then, as actual measurements change, I instantly get new predictions. In the absence of a symbolic package, a python script or a spreadsheet program will do fine (and we have Excel on our computers). A numerical program also is quick and easy to re-run with new numbers when no symbolic answer is found.</p>
+</section>
+<section id="preliminary-list-of-equipment-needed" class="level4">
+<h4 class="anchored" data-anchor-id="preliminary-list-of-equipment-needed">Preliminary List of equipment needed</h4>
+<p>Once you have done your analysis, you are ready to list the equipment you need and the sensitivity of the equipment you need (that is, list the uncertainties you need to achieve). Final approval of the project and the ultimate success of your experiment depends on the equipment you choose or are granted. You want to do a good job analyzing so you know what you need, and a good job describing the experiment so you are likely to have the equipment you want available when you start.</p>
+</section>
+<section id="performing-the-experiment" class="level4">
+<h4 class="anchored" data-anchor-id="performing-the-experiment">Performing the experiment</h4>
+<p>Once your proposal is accepted, I will provide you with the equipment we have agreed upon from your proposal. You will have three weeks to perform your experimentation. I will be available for advice and to watch for problems or safety issues. But you and your team will perform the experiment. <strong>You will want to keep good notes in your lab notebook.</strong> You will likely have to change your procedure after you start because of problems. Take careful note of what was actually done, and what your measurements were. Give the reason for the change. Note any unusual things that happen. <strong>Carefully record what you do.</strong></p>
+</section>
+<section id="written-report" class="level4">
+<h4 class="anchored" data-anchor-id="written-report">Written Report</h4>
+<p>The written report is designed to match a normal format for an applied physics article in a journal like or the journals. It is useful to know now how I will grade the report later so you can make sure you design in all the parts I will look for. There should be an introduction, description of the procedure, description of the data and results, a description of the analysis, and a conclusion. These sections are described in detail in the following table.</p>
+<p>Experimentation is a lot of fun if done right. It can be frustrating and discouraging if not done well. Our goal is to learn how to perform and report on an experiment, so that is what will be graded. If you show something new and interesting, that is just more fun. If you show that your original model was not correct–that is science! If you have done a good job designing and reporting your experiment, a negative result is just as good as a positive result.</p>
+</section>
+<section id="grading-rubric" class="level4">
+<h4 class="anchored" data-anchor-id="grading-rubric">Grading Rubric</h4>
+</section>
+</section>
+</section>
+<section id="activity-i-standing-waves" class="level2">
+<h2 class="anchored" data-anchor-id="activity-i-standing-waves">Activity I (standing waves)</h2>
+<p>Design and carry out an experiment involving standing waves on a string. Record your work below.</p>
+<ol type="1">
+<li>Identify the system being studied. List all relevant variables.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="2" type="1">
+<li>Identify the hypothesis or model that you will test. Provide both a verbal description of this model <strong>and</strong> and mathematical equation. (use <span class="math inline">\(\LaTeX\)</span>)</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="3" type="1">
+<li>How will you know if your experiment is successful?</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Linearize your equation if possible.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Choose reasonable ranges for the pertinent variables in your experiment.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="6" type="1">
+<li>Plan the experimental procedure.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="7" type="1">
+<li>Carry out the experiment and report your results. Include all data collected, plots constructed and give evidence for or against your hypothesis. Data should be placed in a table of some kind. You can either use a markdown table in a text cell or a Pandas dataframe (see activity I from lab 2 for a refresher) to display the data.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform calculations and construct plots here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="activity-ii-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="activity-ii-proposal">Activity II (Proposal)</h2>
+<p>Work on your research proposal. They are due in two weeks.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 5 Experimental Design I</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="pagination-link">
+        <span class="nav-page-text">Lab 7 Falling Objects with Air Resistance</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
