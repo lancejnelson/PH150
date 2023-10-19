@@ -4,7 +4,7 @@ jupyter: python3
 
 # Lab 6 Experimental Design II {-}
 
-[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L5-Experimental-Design-I.ipynb)
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L6-Experimental-Design-II.ipynb)
 
 Name:
 
