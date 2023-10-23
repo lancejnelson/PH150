@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beginning Physics Lab - Lab #9 Projectile Motion with Drag and Uncertainty</title>
+<title>Beginning Physics Lab - Lab 7 Experimental Design III</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" rel="prev">
+<link href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html" rel="next">
+<link href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -111,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html">Numerical Modeling</a></li><li class="breadcrumb-item"><a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html">Lab #9 Projectile Motion with Drag and Uncertainty</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html">Experimental Design</a></li><li class="breadcrumb-item"><a href="../../labs/Lab7-Experimental-Design-III/L7-Experimental-Design-III.html">Lab 7 Experimental Design III</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -201,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 6 Experimental Design II</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab7-Experimental-Design-III/L7-Experimental-Design-III.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 7 Experimental Design III</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -214,20 +221,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 7 Falling Objects with Air Resistance</span></a>
+  <a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 8 Falling Objects with Air Resistance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 8 Air Resistance and Buoyancy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab #9 Projectile Motion with Drag and Uncertainty</span></a>
+  <a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 9 Air Resistance and Buoyancy</span></a>
   </div>
 </li>
       </ul>
@@ -242,22 +243,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#activity-i-model-for-2-d-motion-with-air-resistance" id="toc-activity-i-model-for-2-d-motion-with-air-resistance" class="nav-link" data-scroll-target="#activity-i-model-for-2-d-motion-with-air-resistance">Activity I Model for 2-d Motion with Air Resistance</a>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#conservation-of-energy" id="toc-conservation-of-energy" class="nav-link" data-scroll-target="#conservation-of-energy">Conservation of Energy</a>
   <ul class="collapse">
-  <li><a href="#goal-overview" id="toc-goal-overview" class="nav-link" data-scroll-target="#goal-overview">Goal (Overview)</a></li>
-  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
+  <li><a href="#sphere-on-an-incline" id="toc-sphere-on-an-incline" class="nav-link" data-scroll-target="#sphere-on-an-incline">Sphere on an Incline</a></li>
+  <li><a href="#simple-pendulum" id="toc-simple-pendulum" class="nav-link" data-scroll-target="#simple-pendulum">Simple Pendulum</a></li>
   </ul></li>
-  <li><a href="#activity-ii-video-of-2-d-motion" id="toc-activity-ii-video-of-2-d-motion" class="nav-link" data-scroll-target="#activity-ii-video-of-2-d-motion">Activity II Video of 2-d Motion</a></li>
-  <li><a href="#activity-iii-fit-model-to-data" id="toc-activity-iii-fit-model-to-data" class="nav-link" data-scroll-target="#activity-iii-fit-model-to-data">Activity III Fit Model to Data</a>
-  <ul class="collapse">
-  <li><a href="#goal-overview-1" id="toc-goal-overview-1" class="nav-link" data-scroll-target="#goal-overview-1">Goal (Overview)</a></li>
-  <li><a href="#procedure-1" id="toc-procedure-1" class="nav-link" data-scroll-target="#procedure-1">Procedure</a></li>
-  </ul></li>
-  <li><a href="#activity-iv-testing-the-model" id="toc-activity-iv-testing-the-model" class="nav-link" data-scroll-target="#activity-iv-testing-the-model">Activity IV Testing the Model</a>
-  <ul class="collapse">
-  <li><a href="#appendix-i" id="toc-appendix-i" class="nav-link" data-scroll-target="#appendix-i">Appendix I</a></li>
-  </ul></li>
+  <li><a href="#activity-i-conservation-of-energy" id="toc-activity-i-conservation-of-energy" class="nav-link" data-scroll-target="#activity-i-conservation-of-energy">Activity I (Conservation of Energy)</a></li>
+  <li><a href="#activity-ii-student-designed-lab-proposal" id="toc-activity-ii-student-designed-lab-proposal" class="nav-link" data-scroll-target="#activity-ii-student-designed-lab-proposal">Activity II (Student-Designed Lab Proposal)</a></li>
   </ul>
 </nav>
     </div>
@@ -266,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab #9 Projectile Motion with Drag and Uncertainty</h1>
+<h1 class="title">Lab 7 Experimental Design III</h1>
 </div>
 
 
@@ -281,145 +274,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L7-Experimental-Design-III.ipynb">Jupyter Notebook</a></p>
 <p>Name:</p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab, you will develop a model for the two-dimensional motion of a projectile with air resistance. The model will make use of Euler’s method for the x and y components of the motion. The drag force (due to air resistance) is given by:</p>
-<p><span class="math display">\[F_{D} =  \frac{1}{2} \; C \rho A v^{2} \;\;\;\;\;(1) \]</span></p>
-<p>where C is the drag coefficient, <span class="math inline">\(\rho\)</span> is the air density, and A is the cross-sectional area of the ball.</p>
-<p>The equations of motion are:</p>
-<p><span class="math display">\[ x_{n+1} = x_{n} + v_{x,n} \cdot \Delta t \;\;\;\;\;(2)\]</span></p>
-<p><span class="math display">\[ y_{n+1} = y_{n} + v_{y,n} \cdot \Delta t \;\;\;\;\;(3)\]</span></p>
-<p><span class="math display">\[ v_n = \sqrt{v_{x,n}^2 + v_{y,n}^2} \;\;\;\;\;(4)\]</span></p>
-<p><span class="math display">\[ v_{x,n+1} = v_{x,n} + a_x \cdot \Delta t  \;\;\;\;\;\;\;\;\;\;(5)\]</span></p>
-<p><span class="math display">\[ v_{y,n+1} = v_{y,n} + a_y\cdot \Delta t  \;\;\;\;\;\;\;(6)\]</span></p>
-<p>with the acceleration components given by <span class="math display">\[a_y = -\frac{B}{m}\cdot v_{n} \cdot v_{y,n} \cdot \Delta t - g\]</span></p>
-<p><span class="math display">\[a_x = -\frac{B}{m}\cdot v_{n} \cdot v_{x,n} \cdot \Delta t \]</span></p>
-<p>and where <span class="math display">\[B = {1 \over 2} C\cdot \rho \cdot A\]</span></p>
-<p>and just as we did last week:</p>
-<p><span class="math display">\[ \rho = \rho_0 {P\over P_0}{T_0\over T}\]</span></p>
-</section>
-<section id="activity-i-model-for-2-d-motion-with-air-resistance" class="level2">
-<h2 class="anchored" data-anchor-id="activity-i-model-for-2-d-motion-with-air-resistance">Activity I Model for 2-d Motion with Air Resistance</h2>
-<section id="goal-overview" class="level3">
-<h3 class="anchored" data-anchor-id="goal-overview">Goal (Overview)</h3>
-<p>Use Euler’s method to model the motion of a projectile experiencing non-negligble air drag.</p>
-</section>
-<section id="procedure" class="level3">
-<h3 class="anchored" data-anchor-id="procedure">Procedure</h3>
-<p>Use the code template provided below and any codes that you have authored in previous labs to construct your model. Below are some hints/tips:</p>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
 <ol type="1">
-<li>We don’t know exact values for the drag coefficient (<span class="math inline">\(C\)</span>) or the projectile’s exit speed. Make a guess for now and we’ll modify these values later.</li>
-<li>Previously, we have modeled one-dimensional motion which means we only had to calculate a single component of the position and velocity. To model two-dimensional motion, you’ll have to have two components of the position and velocity.<br>
-</li>
-<li>To calculate the drag force in two dimensions, you’ll need to calculate the <strong>speed</strong> (magnitude of the velocity vector) of the projectile as it changes. Since you are tracking the components of your velocity, you can do that with the following code <code>numpy.sqrt(vx**2 + vy**2)</code> or <code>numpy.linalg.norm([vx,vy])</code></li>
-<li>Once you have finished the code, run it and observe the trajectory of the particle. Then investigate how the following variables affect the shape of the trajectory:
-<ol type="1">
-<li>The drag constant (<span class="math inline">\(C\)</span>)</li>
-<li>The initial speed of the particle.</li>
-<li>The cross-sectional area of the particle.</li>
-<li>The air temperature.</li>
-<li>The air pressure.</li>
-</ol></li>
+<li>Get more experience designing and executing a scientific experiment.</li>
 </ol>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libaries</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Constants</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define g</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define dt (smaller is better, but if the value is too small, the computation time will be large.)</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define drag coefficient (Make a guess for now, you'll investigate a better value in activity II)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define radius of projectile</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate cross-sectional area of projectile.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define air density</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># define mass of projectile</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial Conditions</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define launch speed (Make a guess for now, we'll modify this later)</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define launch angle (radians!!!)</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define initial location (one for x and one for y)</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define initial velocity (one for vx and one for vy)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define time</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to calculate the flight time using Euler's equations </span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate speed (equation 4)</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate ax </span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate ay</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update vx</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update vy</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update x</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># updata y</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update time</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot y vs x</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conservation-of-energy" class="level2">
+<h2 class="anchored" data-anchor-id="conservation-of-energy">Conservation of Energy</h2>
+<p>Conseravtion of energy is one of the most fundamental and well-established ideas in physics. It states that the <strong>total</strong> energy of an isolated system must remain fixed and unchanged as time progresses. If one type of energy decreases, the amount of another type of energy must increase so that the total energy never changes. This week you will design an experiment to prove this hypothesis. You can choose between two experiments: a sphere rolling down an incline or a simple pendulum.</p>
+<section id="sphere-on-an-incline" class="level3">
+<h3 class="anchored" data-anchor-id="sphere-on-an-incline">Sphere on an Incline</h3>
+<p>A sphere that rolls down an incline will gain kinetic energy (both translational and rotational) as it loses gravitational potential energy (because its height is decreasing). Mathematically, this can be stated as</p>
+<div style="text-align: center;">
+<p><img src="https://lancejnelson.github.io/PH150/figures/rollingSphere.png" alt="drawing" width="650"></p>
+</div>
+<p><span class="math display">\[ U_i = K_f\]</span> where <span class="math inline">\(U_i = M g y\)</span> is the initial potential energy of the sphere and <span class="math inline">\(K_f ={1\over 2} M v^2 + {1\over 2} I {v^2\over r^2}\)</span> is the total kinetic energy of the sphere at the bottom of the incline. Plugging these in and reducing gives.. <span class="math display">\[M g y = {1\over 2} M v^2 + {1\over 2} I {v^2\over r^2}\]</span> <span class="math display">\[M g y = {1\over 2} M v^2 + {1\over 2} c M r^2 {v^2\over r^2}\]</span> <span class="math display">\[M g y = {1\over 2} M v^2 + {1\over 2} c M v^2 \]</span></p>
+<p><span class="math display">\[M g y = {1\over 2} M v^2(1 + c)\]</span> <span class="math display">\[ y = {v^2\over 2 g} (1 + c)\]</span></p>
+<p>Here <span class="math inline">\(c\)</span> is the constant in the moment of inertial value and should be equal to <span class="math inline">\({2 \over 5}\)</span> for a sphere. Your goal if you choose this experiment is to design an experiment that proves that this relationship is true and to calculate a value for <span class="math inline">\(c\)</span> with its uncertainty.</p>
+</section>
+<section id="simple-pendulum" class="level3">
+<h3 class="anchored" data-anchor-id="simple-pendulum">Simple Pendulum</h3>
+<p>The motion of a pendulum is also a good illustration of the concept of conservation of energy. When the pendulum bobs is at its highest point, it is briefly motionless and hence has no kinetic energy. It only has potential energy. Then, as the pendulum swings downward its potential energy is converted into kinetic energy. In order for energy to be conserved, these two energies should be equal.</p>
+<div style="text-align: center;">
+<p><img src="https://lancejnelson.github.io/PH150/figures/pendulum.png" alt="drawing" width="650"></p>
+</div>
+<p><span class="math display">\[ U_i = K_f\]</span></p>
+<p><span class="math display">\[M g y = {1\over 2} M v^2\]</span></p>
+<p><span class="math display">\[M g \left( L - L \cos \theta_i\right) = {1\over 2} M v^2\]</span> <span class="math display">\[M g L\left( 1 - \cos \theta_i\right) = {1\over 2} M v^2\]</span></p>
+<p><span class="math display">\[ \left( 1 - \cos \theta_i\right) = {v^2\over 2 g L} \]</span> If you choose this experiment, once you have verified the relationship, you should calculate the length of the pendulum with its uncertainty and compare to a measured value.</p>
 </section>
 </section>
-<section id="activity-ii-video-of-2-d-motion" class="level2">
-<h2 class="anchored" data-anchor-id="activity-ii-video-of-2-d-motion">Activity II Video of 2-d Motion</h2>
-<p>The drag coefficient and initial speed of the projectile are unknowns and we’ll need to devise a way to determine good values for them. In preparation for that, complete the following:</p>
+<section id="activity-i-conservation-of-energy" class="level2">
+<h2 class="anchored" data-anchor-id="activity-i-conservation-of-energy">Activity I (Conservation of Energy)</h2>
+<p>Design and carry out an experiment involving conservation of energy. You can choose an experiment involving a simple pendulum or a sphere rolling down an incline. Your goal is to prove that energy is conserved and calculate any relevant physical quantities with their uncertainties. Record your work below.</p>
 <ol type="1">
-<li>Using a smart phone, take a video of the projectile’s motion. <strong>Make sure that you have a meter stick in the video for your scale. (Having a proper scale is critical.)</strong> Also try to avoid distortion by capturing the video at a location at the mid-point of the trajectory.</li>
-<li>Load the video into Logger Pro and determine the trajectory (y vs.&nbsp;x) of the motion (see the instructions in Appendix I for the movie capture procedure).</li>
-<li>Copy and paste the x and y data into an Excel file and save the file <strong>in the same folder that this notebook is located in</strong>. The file should be a .txt. Do not include headings in your columns.</li>
+<li>Identify the system being studied. List all relevant variables.</li>
 </ol>
-<p>The code block below should plot the trajectory you recorded if you have saved the file as “projectile.txt” in the same folder that this noteobok is located in.</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libaries</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> loadtxt</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Import video analysis data</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> loadtxt(<span class="st">"projectile.txt"</span>)    <span class="co"># Enter the name of your data file.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>xPhone <span class="op">=</span> data[:,<span class="dv">0</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>yPhone <span class="op">=</span> data[:,<span class="dv">1</span>]</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes()</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.plot(xPhone,yPhone,<span class="st">'bo'</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="activity-iii-fit-model-to-data" class="level2">
-<h2 class="anchored" data-anchor-id="activity-iii-fit-model-to-data">Activity III Fit Model to Data</h2>
-<section id="goal-overview-1" class="level3">
-<h3 class="anchored" data-anchor-id="goal-overview-1">Goal (Overview)</h3>
-<p>Determine values for the initial speed of the particle and the drag constant.</p>
-</section>
-<section id="procedure-1" class="level3">
-<h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
-<ol type="1">
-<li>Copy your code from activity I into the code cell below.</li>
-<li>Add the code from Activity II into the code cell below to combine the two plots into one.</li>
-<li>Adjust the initial speed and drag coefficient until there is a good fit between the model and the experimental data.</li>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="2" type="1">
+<li>Identify the hypothesis or model that you will test. Provide both a verbal description of this model <strong>and</strong> and mathematical equation. (use <span class="math inline">\(\LaTeX\)</span>)</li>
 </ol>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="3" type="1">
+<li>How will you know if your experiment is successful?</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Linearize your equation if possible.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="5" type="1">
+<li>Choose reasonable ranges for the pertinent variables in your experiment.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="6" type="1">
+<li>Plan the experimental procedure.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<ol start="7" type="1">
+<li>Carry out the experiment and report your results. Include all data collected, plots constructed and give evidence for or against your hypothesis. Data should be placed in a table of some kind. You can either use a markdown table in a text cell or a Pandas dataframe (see activity I from lab 2 for a refresher) to display the data.</li>
+</ol>
+<blockquote class="blockquote">
+<p>Your response:</p>
+</blockquote>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform calculations and construct plots here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-</section>
-<section id="activity-iv-testing-the-model" class="level1">
-<h1>Activity IV Testing the Model</h1>
-<p>Use the model from Activity I with the values of initial velocity and drag coefficient from Activity III to predict the trajectory of the styrofoam ball. The instructor will give you an initial height and an initial angle. Using the third setting on the projectile launcher, you will need to predict the height of the projectile when <span class="math inline">\(x = {1\over 2} R\)</span>, where R is the range of the motion. A hoop with a <span class="math inline">\(10\)</span> cm diameter will be placed at the values of x and y that you specify.</p>
-<p>Don’t fire your styrofoam ball until the instructor or teaching assistant is there to observe.</p>
-<p>The points for this section will be:</p>
-<ul>
-<li><p>25 pts: Ball goes through the hoop on the first try</p></li>
-<li><p>20 pts: Ball goes through the hoop on the second try</p></li>
-<li><p>15 pts: Ball goes through the hoop on the third (or more) try</p></li>
-</ul>
-<section id="appendix-i" class="level2">
-<h2 class="anchored" data-anchor-id="appendix-i">Appendix I</h2>
-<p>Logger Pro Movie Capture</p>
-<p>Tips 1. Make sure that there is a meter stick in the field of view when the ball is fired.</p>
-<p>Logger Pro Procedure 1. Use Insert&gt;Movie to input the video clip. 2. Click on “Enable/Disable Video Analysis” which is located in the bottom right hand corner of the video window. 3. Click on “Set Scale.” Then click and drag on the image of the meter stick. 4. “Set Origin” to a position on the ground directly below where the ball is launched. 5. Make sure that the video clip is set to the frame just before the ball starts moving. Click on “Add Point” and then click on the ball. The video will advance one frame at a time.</p>
+<section id="activity-ii-student-designed-lab-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="activity-ii-student-designed-lab-proposal">Activity II (Student-Designed Lab Proposal)</h2>
+<p>Work on your research proposal. They are due in <strong>one week</strong>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -773,11 +714,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 8 Air Resistance and Buoyancy</span>
+      <a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6 Experimental Design II</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html" class="pagination-link">
+        <span class="nav-page-text">Lab 8 Falling Objects with Air Resistance</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

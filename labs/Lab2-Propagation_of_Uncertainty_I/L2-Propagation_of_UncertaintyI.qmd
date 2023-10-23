@@ -22,7 +22,7 @@ In this lab you will gain the following skills
 1. Know the meaning of the derivative and partial derivative.
 2. Use derivatives to propagate uncertainty for moderately complex calculations.
 
-## Basic Principles
+## Background Information
 ### The Slope of a Function
 Mathematical functions describe how one quantity depends on one or more other quantities. For example, the velocity function
 
@@ -429,6 +429,8 @@ drdm = 1/l/w/h
 drho = sqrt((drdl * dl)**2 + (drdw * dw)**2 + (drdh * dh)**2 + (drdm * dm)**2)
 print(f"The density of the block is {rho:5.2f} +- {drho:4.2f} g/cm^3")
 ```
+
+## Python Skills
 
 
 ## Activity I:  The pendulum (50 pts)

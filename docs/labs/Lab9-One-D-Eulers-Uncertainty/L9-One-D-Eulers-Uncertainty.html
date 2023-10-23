@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beginning Physics Lab - Lab 8 Air Resistance and Buoyancy</title>
+<title>Beginning Physics Lab - Lab 9 Air Resistance and Buoyancy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" rel="next">
-<link href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" rel="prev">
+<link href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html">Numerical Modeling</a></li><li class="breadcrumb-item"><a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html">Lab 8 Air Resistance and Buoyancy</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html">Numerical Modeling</a></li><li class="breadcrumb-item"><a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html">Lab 9 Air Resistance and Buoyancy</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,6 +201,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 6 Experimental Design II</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab7-Experimental-Design-III/L7-Experimental-Design-III.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 7 Experimental Design III</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -215,20 +220,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 7 Falling Objects with Air Resistance</span></a>
+  <a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 8 Falling Objects with Air Resistance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 8 Air Resistance and Buoyancy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab #9 Projectile Motion with Drag and Uncertainty</span></a>
+  <a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 9 Air Resistance and Buoyancy</span></a>
   </div>
 </li>
       </ul>
@@ -266,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 8 Air Resistance and Buoyancy</h1>
+<h1 class="title">Lab 9 Air Resistance and Buoyancy</h1>
 </div>
 
 
@@ -355,25 +354,16 @@ m = m_\text{payload} + m_\text{balloon}
 <ol type="1">
 <li>Measure the mass of the balloon before we fill it with helium. Record a value and an uncertainty.</li>
 <li>We’ll be adding a small payload to the balloon and adjusting it until the time of flight falls in a reasonable range. For now, set the mass of the payload to be <span class="math inline">\(m_p = 15\)</span> grams. We’ll modify this number later.</li>
-<li>Measure the temperature in the room and <strong>assign an uncertainty to this measurement</strong>. Convert this temperature to Kelvins using the equation below. Then record this number in the code cell provided below.</li>
-</ol>
-<p><span class="math display">\[ T_K = {5 \over 9}(T_F - 32) + 273.15\]</span></p>
-<ol start="4" type="1">
-<li>Visit a weather website to look up the atmospheric pressure here in Rexburg. You’ll probably see a number with units of “inHg”, which means “inches of Mercury”. To convert this pressure into Pascals, use the equation below. (The <span class="math inline">\(4.865\)</span> is to undo the sea-level correction and the <span class="math inline">\(3386.39\)</span> is to convert from “inHg” to Pascals.) Record this value in the code cell provided below.</li>
-</ol>
-<p><span class="math display">\[ P_\text{Pa} = 3386.39 \times (P_\text{inHg} - 4.865) \]</span></p>
-<ol start="5" type="1">
+<li>Measure the temperature in the room and <strong>assign an uncertainty to this measurement</strong>. Convert this temperature to Kelvins using the equation below. Then record this number in the code cell provided below. <span class="math display">\[ T_K = {5 \over 9}(T_F - 32) + 273.15\]</span></li>
+<li>Visit a weather website to look up the atmospheric pressure here in Rexburg. You’ll probably see a number with units of “inHg”, which means “inches of Mercury”. To convert this pressure into Pascals, use the equation below. (The <span class="math inline">\(4.865\)</span> is to undo the sea-level correction and the <span class="math inline">\(3386.39\)</span> is to convert from “inHg” to Pascals.) Record this value in the code cell provided below. <span class="math display">\[ P_\text{Pa} = 3386.39 \times (P_\text{inHg} - 4.865) \]</span></li>
 <li>Enter values for <span class="math inline">\(T_0\)</span> <span class="math inline">\(P_0\)</span> in the code cell below using the values shown above.</li>
 <li>Enter the expression for density given above into the code cell provided below for the density of air and helium.</li>
 <li>Enter the expression for <span class="math inline">\(V\)</span> and <span class="math inline">\(A\)</span> in the code cell below in terms of <span class="math inline">\(d\)</span> (diameter).</li>
 <li>Enter the expression for <span class="math inline">\(F_b\)</span> (the buoyant force) in the code cell below using the equation provided above.</li>
 <li>Enter the expression for <span class="math inline">\(F_g\)</span> (the weights) in the code cell below using the equation provided above.</li>
-<li>Enter the expression for <span class="math inline">\(F_D\)</span> (the drag force) in the code cell below using the equation provided above. As a reminder, the equation should be:</li>
-</ol>
-<p><span class="math display">\[
+<li>Enter the expression for <span class="math inline">\(F_D\)</span> (the drag force) in the code cell below using the equation provided above. As a reminder, the equation should be: <span class="math display">\[
 {1\over 2} \; C \rho A |v| v
-\]</span></p>
-<ol start="11" type="1">
+\]</span></li>
 <li>Enter the expression for <span class="math inline">\(a\)</span> (the acceleration) in the code cell below using the equation provided above. Note that since the acceleration is not constant the calculation must be performed inside the main Euler’s loop.</li>
 <li>Following the same pattern from last week, add expressions to update the velocity, position, and time inside the main Euler’s loop.</li>
 <li>Check with your neighbor and/or B. Nelson to ensure you have done these steps correctly before moving on.</li>
@@ -381,6 +371,7 @@ m = m_\text{payload} + m_\text{balloon}
 <li>Run your code and verify that your results are reasonable.</li>
 <li>Using trial and error, adjust the mass of the payload until the time of flight is in the <span class="math inline">\(6-10\)</span> seconds range.</li>
 </ol>
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -433,6 +424,7 @@ m = m_\text{payload} + m_\text{balloon}
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    ax3.plot(t,y,<span class="st">'b.'</span>)</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="activity-ii-including-uncertainty" class="level2">
@@ -445,6 +437,7 @@ m = m_\text{payload} + m_\text{balloon}
 <h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
 <p>To incorporate uncertainty into Euler’s method, you must repeat your Euler’s loop many times using different values for those quantities that carry uncertainty. In the code cell below you will find a template for doing this. Follow the instructions below to complete the task. 1. You’ll notice that the variable names in the code cell have been modified from what they were in Activity I. Instead of “mb” for mass of the balloon, we now have “meanmb” for mean mass of the balloon and “dmb” for uncertainty in the mass of the balloon. Transfer all of your measurements and uncertainties from Activity I into the code cell below. 2. If you haven’t yet, record the uncertainties in all of your measured values in the code cell below. 3. You’ll notice that our Euler’s loop from Activity I is now enclosed in another loop (called a ‘for’ loop). This will allow us to repeat the Euler’s loop as many times as we would like. We call the Euler’s loop the “inner” loop and the ‘for’ loop the “outer” loop. The first five lines in the outer loop are to select a random number for each of the variables that carry uncertainty. I’ve given an example of how to do this on the first line for the balloon mass. Repeat this same process to select random numbers for the other five quantities that carry uncertainty. 4. Fill in the correct expressions for the remainder of the code lines that are incomplete. (Most of these lines will be identical to what they were in Activity I.) 5. Check with a neighbor or B. Nelson to verify that you did it correctly. 6. Run your code and observe the results. Notice the spread in travel times depicted on the position vs.&nbsp;time graph. (Cool eh!)</p>
 <p>Note: The uncertainty in your balloon diameter will be the biggest contributor to the uncertainty in the predicted flight time.</p>
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -523,6 +516,7 @@ m = m_\text{payload} + m_\text{balloon}
 <span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    times.append(t)</span>
 <span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(times), np.std(times))</span>
 <span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="activity-iii-checking-our-prediction" class="level2">
@@ -912,14 +906,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 7 Falling Objects with Air Resistance</span>
+      <a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 8 Falling Objects with Air Resistance</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="pagination-link">
-        <span class="nav-page-text">Lab #9 Projectile Motion with Drag and Uncertainty</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

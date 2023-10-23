@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beginning Physics Lab - Lab 7 Falling Objects with Air Resistance</title>
+<title>Beginning Physics Lab - Lab 8 Falling Objects with Air Resistance</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" rel="next">
-<link href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" rel="prev">
+<link href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html" rel="next">
+<link href="../../labs/Lab7-Experimental-Design-III/L7-Experimental-Design-III.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html">Numerical Modeling</a></li><li class="breadcrumb-item"><a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html">Lab 7 Falling Objects with Air Resistance</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html">Numerical Modeling</a></li><li class="breadcrumb-item"><a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html">Lab 8 Falling Objects with Air Resistance</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -202,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Lab 6 Experimental Design II</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../labs/Lab7-Experimental-Design-III/L7-Experimental-Design-III.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 7 Experimental Design III</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -215,20 +221,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab7-One-Dimensional-Eulers/L7-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 7 Falling Objects with Air Resistance</span></a>
+  <a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 8 Falling Objects with Air Resistance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 8 Air Resistance and Buoyancy</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../labs/Lab9-Two-D-Eulers-Uncertainty/L9-Two-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab #9 Projectile Motion with Drag and Uncertainty</span></a>
+  <a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 9 Air Resistance and Buoyancy</span></a>
   </div>
 </li>
       </ul>
@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 7 Falling Objects with Air Resistance</h1>
+<h1 class="title">Lab 8 Falling Objects with Air Resistance</h1>
 </div>
 
 
@@ -308,14 +308,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="procedure" class="level3">
 <h3 class="anchored" data-anchor-id="procedure">Procedure</h3>
 <ol type="1">
-<li>The kinematic equations are given below.</li>
+<li>The kinematic equations are given below. <span class="math display">\[y_f = y_i + v_i \Delta t + {1\over 2}a \Delta t^2\]</span> <span class="math display">\[v_f = v_i + a \Delta t\]</span> <span class="math display">\[v_f^2 = v_i^2 + 2 a \Delta x\]</span> Use these equations to calculate the time it takes for a particle to fall through a distance of <span class="math inline">\(6.0\)</span> meters starting from rest. Neglect air resistance. Show your math and calculations below.</li>
 </ol>
-<p><span class="math display">\[y_f = y_i + v_i \Delta t + {1\over 2}a \Delta t^2\]</span> <span class="math display">\[v_f = v_i + a \Delta t\]</span> <span class="math display">\[v_f^2 = v_i^2 + 2 a \Delta x\]</span></p>
-<p>Use these equations to calculate the time it takes for a particle to fall through a distance of <span class="math inline">\(6.0\)</span> meters starting from rest. Neglect air resistance. Show your math and calculations below.</p>
 <blockquote class="blockquote">
 <p>Include kinematic details here</p>
 </blockquote>
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to perform calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="activity-ii-modeling-the-motion-using-eulers-method" class="level2">
@@ -334,6 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect.</li>
 </ol>
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import from libraries</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -344,6 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to calculate flight time using Euler's method</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="activity-iii-predicting-times" class="level2">
@@ -444,6 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Your score on the lab will be based on your % error for the five different objects.</p>
 <p>If any of your % differences are greater than 10%, give a possible explanation for the discrepancy. &gt; <strong>Response:</strong></p>
 <p>Note: Use the cell below to calculate the averages and percent error. I have started the code but it is not complete. You’ll have to finish it.</p>
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mean</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -455,6 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>mean_pingpong <span class="op">=</span> mean(pingPong)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -810,13 +814,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../labs/Lab6-Experimental-Design-II/L6-Experimental-Design-II.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 6 Experimental Design II</span>
+      <a href="../../labs/Lab7-Experimental-Design-III/L7-Experimental-Design-III.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 7 Experimental Design III</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../labs/Lab8-One-D-Eulers-Uncertainty/L8-One-D-Eulers-Uncertainty.html" class="pagination-link">
-        <span class="nav-page-text">Lab 8 Air Resistance and Buoyancy</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html" class="pagination-link">
+        <span class="nav-page-text">Lab 9 Air Resistance and Buoyancy</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

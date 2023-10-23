@@ -1,0 +1,91 @@
+---
+jupyter: python3
+---
+
+# Lab 7 Experimental Design III {-}
+
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L7-Experimental-Design-III.ipynb)
+
+Name:
+
+
+## Skills
+1. Get more experience designing and executing a scientific experiment.
+
+## Conservation of Energy
+Conseravtion of energy is one of the most fundamental and well-established ideas in physics. It states that the **total** energy of an isolated system must remain fixed and unchanged as time progresses.  If one type of energy decreases, the amount of another type of energy must increase so that the total energy never changes.  This week you will design an experiment to prove this hypothesis.  You can choose between two experiments: a sphere rolling down an incline or a simple pendulum.
+
+### Sphere on an Incline
+A sphere that rolls down an incline will gain kinetic energy (both translational and rotational) as it loses gravitational potential energy (because its height is decreasing).  Mathematically, this can be stated as
+
+
+<div style="text-align: center;">
+<img src="https://lancejnelson.github.io/PH150/figures/rollingSphere.png" alt="drawing" width="650"/>
+</div>
+$$ U_i = K_f$$
+where $U_i = M g y$ is the initial potential energy of the sphere and $K_f ={1\over 2} M v^2 + {1\over 2} I {v^2\over r^2}$ is the total kinetic energy of the sphere at the bottom of the incline.  Plugging these in and reducing gives.. 
+$$M g y = {1\over 2} M v^2 + {1\over 2} I {v^2\over r^2}$$
+$$M g y = {1\over 2} M v^2 + {1\over 2} c M r^2 {v^2\over r^2}$$
+$$M g y = {1\over 2} M v^2 + {1\over 2} c M v^2 $$
+
+$$M g y = {1\over 2} M v^2(1 + c)$$
+$$ y = {v^2\over 2 g} (1 + c)$$
+
+Here $c$ is the constant in the moment of inertial value and should be equal to ${2 \over 5}$ for a sphere.  Your goal if you choose this experiment is to design an experiment that proves that this relationship is true and to calculate a value for $c$ with its uncertainty.
+
+
+### Simple Pendulum
+The motion of a pendulum is also a good illustration of the concept of conservation of energy. When the pendulum bobs is at its highest point, it is briefly motionless and hence has no kinetic energy. It only has potential energy.  Then, as the pendulum swings downward its potential energy is converted into kinetic energy.  In order for energy to be conserved, these two energies should be equal.
+
+<div style="text-align: center;">
+<img src="https://lancejnelson.github.io/PH150/figures/pendulum.png" alt="drawing" width="650"/>
+</div>
+
+$$ U_i = K_f$$
+
+$$M g y = {1\over 2} M v^2$$
+
+$$M g \left( L - L \cos \theta_i\right) = {1\over 2} M v^2$$
+$$M g L\left( 1 - \cos \theta_i\right) = {1\over 2} M v^2$$
+
+$$ \left( 1 - \cos \theta_i\right) = {v^2\over 2 g L} $$
+If you choose this experiment, once  you have verified the relationship, you  should calculate the length of the pendulum with its uncertainty and compare to a measured value.
+
+## Activity I (Conservation of Energy)
+Design and carry out an experiment involving conservation of energy. You can choose an experiment involving a simple pendulum or a sphere rolling down an incline. Your goal is to prove that energy is conserved and calculate any relevant physical quantities with their uncertainties.  Record your work below.
+
+1. Identify the system being studied. List all relevant variables.
+
+ > Your response:
+
+2. Identify the hypothesis or model that you will test.  Provide both a verbal description of this model **and** and mathematical equation. (use $\LaTeX$)
+
+ > Your response:
+
+3. How will you know if your experiment is successful?
+
+ > Your response:
+
+4. Linearize your equation if possible.
+
+ > Your response:
+
+5. Choose reasonable ranges for the pertinent variables in your experiment.
+
+ > Your response:
+
+6. Plan the experimental procedure.
+
+ > Your response:
+
+7. Carry out the experiment and report your results. Include all data collected, plots constructed and give evidence for or against your hypothesis.  Data should be placed in a table of some kind.  You can either use a markdown table in a text cell or a Pandas dataframe (see activity I from lab 2 for a refresher) to display the data.
+
+ > Your response:
+
+```{python}
+
+# Perform calculations and construct plots here.
+```
+
+## Activity II (Student-Designed Lab Proposal)
+Work on your research proposal. They are due in **one week**.
