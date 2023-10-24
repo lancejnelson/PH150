@@ -20,7 +20,7 @@ A sphere that rolls down an incline will gain kinetic energy (both translational
 
 
 <div style="text-align: center;">
-<img src="https://lancejnelson.github.io/PH150/figures/rollingSphere.png" alt="drawing" width="650"/>
+<img src="https://lancejnelson.github.io/PH150/figures/rollingSphere.png" alt="drawing" width="550"/>
 </div>
 $$ U_i = K_f$$
 where $U_i = M g y$ is the initial potential energy of the sphere and $K_f ={1\over 2} M v^2 + {1\over 2} I {v^2\over r^2}$ is the total kinetic energy of the sphere at the bottom of the incline.  Plugging these in and reducing gives.. 
@@ -38,7 +38,7 @@ Here $c$ is the constant in the moment of inertial value and should be equal to 
 The motion of a pendulum is also a good illustration of the concept of conservation of energy. When the pendulum bobs is at its highest point, it is briefly motionless and hence has no kinetic energy. It only has potential energy.  Then, as the pendulum swings downward its potential energy is converted into kinetic energy.  In order for energy to be conserved, these two energies should be equal.
 
 <div style="text-align: center;">
-<img src="https://lancejnelson.github.io/PH150/figures/pendulum.png" alt="drawing" width="650"/>
+<img src="https://lancejnelson.github.io/PH150/figures/pendulum.png" alt="drawing" width="550"/>
 </div>
 
 $$ U_i = K_f$$

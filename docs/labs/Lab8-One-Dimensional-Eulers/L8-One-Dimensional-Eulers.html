@@ -243,7 +243,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#activity-i-minimum-fall-time" id="toc-activity-i-minimum-fall-time" class="nav-link active" data-scroll-target="#activity-i-minimum-fall-time">Activity I: Minimum Fall Time</a>
+  <li><a href="#background-information" id="toc-background-information" class="nav-link active" data-scroll-target="#background-information">Background Information</a>
+  <ul class="collapse">
+  <li><a href="#eulers-method" id="toc-eulers-method" class="nav-link" data-scroll-target="#eulers-method">Euler’s Method</a></li>
+  <li><a href="#air-drag" id="toc-air-drag" class="nav-link" data-scroll-target="#air-drag">Air Drag</a></li>
+  </ul></li>
+  <li><a href="#activity-i-minimum-fall-time" id="toc-activity-i-minimum-fall-time" class="nav-link" data-scroll-target="#activity-i-minimum-fall-time">Activity I: Minimum Fall Time</a>
   <ul class="collapse">
   <li><a href="#goal-overview" id="toc-goal-overview" class="nav-link" data-scroll-target="#goal-overview">Goal (Overview)</a></li>
   <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
@@ -282,28 +287,173 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Name:</p>
-<p>## Introduction</p>
-<p>The drag force acting on a falling object is given by:</p>
+<section id="background-information" class="level2">
+<h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
+<section id="eulers-method" class="level3">
+<h3 class="anchored" data-anchor-id="eulers-method">Euler’s Method</h3>
+<section id="review-of-kinematics" class="level4">
+<h4 class="anchored" data-anchor-id="review-of-kinematics">Review of Kinematics</h4>
+<p>Most will be familiar with the kinematic equations of motion, which can be used in situations involving constant acceleration. The kinematic equations are. <span class="math display">\[v_f = v_i + a \Delta t\]</span> <span class="math display">\[x_f = x_i + v_i \Delta t + {1\over 2} a \Delta t^2\]</span></p>
+<p>As an example, consider a car that is initially at rest, waiting for the stoplight to turn green. Once the light turns green, the driver presses on the accelerator and the car’s speed begins to increase. After accelerating at a rate of <span class="math inline">\(a = 5\)</span> m/s<span class="math inline">\(^2\)</span> for <span class="math inline">\(t = 3\)</span> s, the driver eases up and reduces the acceleration to more modest <span class="math inline">\(a = 2\)</span> m/s<span class="math inline">\(^2\)</span> and maintains this acceleration for another <span class="math inline">\(\Delta t = 8\)</span> s. How would you determine the speed of the car and its location after the full <span class="math inline">\(11\)</span> seconds had elapsed? The kinematic equations above could be applied to the first 3 seconds of the trip or the last 8 seconds of the trip, but couldn’t be applied from the start to the end. Let’s use the kinematic equations to determine the speed and position after the first 3 seconds. <span class="math display">\[ v_1 = v_0 + a_0 \Delta t\]</span> <span class="math display">\[ = (0 ~\text{m/s}) + (5 ~\text{m/s}^2) (3 ~\text{s})\]</span> <span class="math display">\[ = 15 ~\text{m/s}\]</span> <span class="math display">\[x_1 = x_0 + v_0 \Delta t + {1\over 2} a_0 \Delta t^2\]</span> <span class="math display">\[ = (0 ~\text{m}) + (0 ~\text{m/s}) (3 ~\text{s}) + {1\over 2}(5 ~\text{m/s}^2) (3 ~\text{s})^2\]</span> <span class="math display">\[ = 22.5 ~\text{m}\]</span> Now that we have the speed and velocity at <span class="math inline">\(t = 3\)</span> we can proceed to use the same kinematic equations for the second part of the motion. <span class="math display">\[ v_2 = v_1 + a_1 \Delta t\]</span> <span class="math display">\[ = (15 ~\text{m/s}) + (2 ~\text{m/s}^2) (8 ~\text{s})\]</span> <span class="math display">\[ = 31 ~\text{m/s}\]</span> <span class="math display">\[x_2 = x_1 + v_1 \Delta t + {1\over 2} a_1 \Delta t^2\]</span> <span class="math display">\[ = (22.5 ~\text{m}) + (15 ~\text{m/s}) (8 ~\text{s}) + {1\over 2}(2 ~\text{m/s}^2) (8 ~\text{s})^2\]</span> <span class="math display">\[ = 206.5 ~\text{m}\]</span> Since the kinematic equations only apply to constant-acceleration motion, the problem had to be divided into two parts: one for each constant-acceleration portion of the motion.<br>
+Now, what if the motion involved 5 different segments, each with a different acceleration, with the acceleration starting at 4 m/s<span class="math inline">\(^2\)</span> and decreasing by <span class="math inline">\(1\)</span> m/s<span class="math inline">\(^2\)</span> every second.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>time(s)</th>
+<th>acceleration (m/s<span class="math inline">\(^2\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>We could repeat the process from above to generate the positions and velocities at these four times.</p>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 14%">
+<col style="width: 26%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>time(s)</th>
+<th>x(m)</th>
+<th>v (m/s)</th>
+<th>a (m/s<span class="math inline">\(^2\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>equation</td>
+<td><span class="math inline">\(x_{n+1} = x_n + v_n \Delta t + {1\over 2}a_n \Delta t^2\)</span></td>
+<td><span class="math inline">\(v_{n+1} = v_n + a_n \Delta t\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>7.5</td>
+<td>7</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>15.5</td>
+<td>9</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="math inline">\(x_{n+1}\)</span> and <span class="math inline">\(x_n\)</span> is standard notation to mean the next x (<span class="math inline">\(x_{n+1}\)</span>) and the current x (<span class="math inline">\(x_n\)</span>)</p>
+<p>This process could be extended for as long as you wanted but I hope you can see that you don’t want to do this by hand for very long.</p>
+</section>
+<section id="eulers-method-1" class="level4">
+<h4 class="anchored" data-anchor-id="eulers-method-1">Euler’s Method</h4>
+<p>Euler’s method works in exactly the same as above with one small change; when using the kinematic equations, we use a time step (<span class="math inline">\(\Delta t\)</span>) that is very small. We do this because if the time step is very small, the acceleration can be treated as if it were constant even if it changes dramatically over longer time intervals. Most realistic scenarios involve accelerations that change <strong>continuously</strong>, which means that it is constantly changing. The steps to implement Euler’s method have the following basic steps:</p>
+<ol type="1">
+<li>Define the initial conditions. For particle motion this involves defining the initial position and velocity of the object as well as any other variable that <strong>do not change</strong> over time.</li>
+<li>Repeatedly calculate the following quantities.
+<ol type="1">
+<li>The current acceleration. The acceleration function is typically given to you or can be derived from Newton’s law. This expression will always be a function of time,position, and/or velocity and must be re-evaluated every time you advance by a time step.</li>
+<li>Use a kinematic equation to calculate the next position using the previous position and velocity.</li>
+<li>Use a kinematic equation to calculate the next velocity using the previous position and velocity.</li>
+<li>If you want to store all of your positions and velocities for later use, add them to a list.</li>
+</ol></li>
+</ol>
+<p>An example implementation of Euler’s method for a particle (experiencing no air resistance) dropped thrown upward (with $v = 30 $ m/s) from an initial height of <span class="math inline">\(y_i = 70\)</span> m, is shown below.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import statements</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>v0 <span class="op">=</span> <span class="fl">30.0</span> <span class="co"># Initial velocity in m/s</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> <span class="dv">70</span> <span class="co"># Initial height in m</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>delta_t <span class="op">=</span> <span class="fl">0.01</span> <span class="co"># Time step in seconds (should be small)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># Start time in seconds</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Make lists to store your positions, velocities and times.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [y0]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [v0]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [t0]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y[<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>   a <span class="op">=</span> <span class="op">-</span><span class="fl">9.8</span>  <span class="co"># Calculate the current acceleration</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Calculate the next position and velocity</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>   nextV <span class="op">=</span> v[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> a <span class="op">*</span> delta_t</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   nextY <span class="op">=</span> y[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> v[<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> delta_t</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   nextT <span class="op">=</span> t[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> delta_t</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position and velocity in the lists</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>   y.append(nextY)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>   v.append(nextV)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>   t.append(nextT)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.plot(t,y,linewidth <span class="op">=</span> <span class="dv">2</span>, color <span class="op">=</span> <span class="st">'red'</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"time (s)"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Position (m)"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Position vs. time for a ball in free fall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>Text(0.5, 1.0, 'Position vs. time for a ball in free fall')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="L8-One-Dimensional-Eulers_files/figure-html/cell-2-output-2.png" width="593" height="449"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="air-drag" class="level3">
+<h3 class="anchored" data-anchor-id="air-drag">Air Drag</h3>
+<p>This week we will be using Euler’s method to predict the fall time for an object experiencing a non-negligible amount of drag. The drag force acting on a falling object is given by:</p>
 <p><span class="math display">\[F_D =  {1\over 2} \; C \rho A v^2 \;\;\;\;\;(1) \]</span></p>
 <p>where <span class="math inline">\(C\)</span> is the drag coefficeint and has the following values: 0.5 for a sphere and 0.3 for a cone.</p>
-<p><span class="math inline">\(\rho\)</span> is the air density and has a value of 1.02 kg/m$^3 $ in Rexburg</p>
+<p><span class="math inline">\(\rho\)</span> is the air density and has a value of 1.02 kg/m<span class="math inline">\(^3\)</span> in Rexburg</p>
 <p>A is the cross-sectional area</p>
 <p>v is the velocity of the object</p>
-<p><img src="https://github.com/lancejnelson/PH121/raw/gh-pages/files/numericalHW/fbd.png" alt="drawing" width="100px"></p>
+<div style="text-align: center;">
+<p><img src="https://github.com/lancejnelson/PH121/raw/gh-pages/files/numericalHW/fbd.png" alt="drawing" width="125px"></p>
+</div>
 <p>Applying Newton’s second law to the free-body diagram shown above gives:</p>
 <p><span class="math display">\[ \Sigma F_{y} = -mg + F_{D} = ma_{y} \;\;\;\;\;(2) \]</span></p>
 <p>Solving for the acceleration in the y-direction gives:</p>
 <p><span class="math display">\[ a_y = {d v_y \over dt} = \frac{ C \rho A v^{2}}{2m} - g \;\;\;\;\;(3)\]</span></p>
-<p>and of course we still have the familiar equation:</p>
-<p><span class="math display">\[ {d y \over dt} = v_y \;\;\;\;\;(4)\]</span></p>
-<p>Euler’s equations can be used to determine the velocity and height of the object as a function of time. These are given by:</p>
-<p><span class="math display">\[ y_{n+1} = y_{n} + v_{n} \cdot \Delta t \;\;\;\;\;(5)\]</span></p>
+<p>Notice that this expression for the acceleration is not constant; it changes as <span class="math inline">\(v\)</span> changes. The kinematic equations can be used to update the position and velocity <span class="math display">\[ y_{n+1} = y_{n} + v_{n} \cdot \Delta t \;\;\;\;\;(5)\]</span></p>
 <p><span class="math display">\[ v_{n+1} = v_{n} + a_{n} \cdot \Delta t \;\;\;\;\;(6)\]</span></p>
+<p><span class="math display">\[ = v_{n} + ({C \rho A v^2 \over 2 m} - g) \cdot \Delta t \;\;\;\;\;(6)\]</span></p>
+</section>
+</section>
 <section id="activity-i-minimum-fall-time" class="level2">
 <h2 class="anchored" data-anchor-id="activity-i-minimum-fall-time">Activity I: Minimum Fall Time</h2>
 <section id="goal-overview" class="level3">
 <h3 class="anchored" data-anchor-id="goal-overview">Goal (Overview)</h3>
-<p>Using kinematics, calculate the time it takes for a particle to fall, starting from rest, through a distance of <span class="math inline">\(5\)</span> meters, neglecting air drag. This number will serve as a point of comparison when we include air drag in our analysis.</p>
+<p>Using kinematics, calculate the time it takes for a particle to fall, starting from rest, through a distance of <span class="math inline">\(6\)</span> meters, neglecting air drag. This number will serve as a point of comparison when we include air drag in our analysis.</p>
 </section>
 <section id="procedure" class="level3">
 <h3 class="anchored" data-anchor-id="procedure">Procedure</h3>
@@ -313,8 +463,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Include kinematic details here</p>
 </blockquote>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to perform calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to perform calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -327,24 +477,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="procedure-1" class="level3">
 <h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
 <ol type="1">
-<li>Together in class we constructed a model for a particle that is thrown upward and experiences no air resistance. Use equations 3-6 above to modify that code to include air resistance.</li>
+<li>Together in class we constructed a model for a particle that is thrown upward and experiences no air resistance. Use equations 3-6 above to modify that code to include air resistance. Set $= 1.02 $ kg/m<span class="math inline">\(^3\)</span>, <span class="math inline">\(C = 0.5\)</span> and make reasonable guesses for the values of <span class="math inline">\(A\)</span> and <span class="math inline">\(m\)</span>. We’ll fine tune these values later.</li>
 <li>Modify the code to model a particle that is dropped from rest rather than thrown upward initially.</li>
 <li>Your value for <span class="math inline">\(\Delta t\)</span> will need to be reasonably small to get accurate results. Decrease your value of <span class="math inline">\(\Delta t\)</span> until the results stop changing.</li>
 <li>As a test of the correctness of your code, increase the initial height of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect.</li>
 </ol>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import from libraries</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define constants</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set initial conditions</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to calculate flight time using Euler's method</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import from libraries</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define constants</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set initial conditions</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to calculate flight time using Euler's method</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -446,18 +596,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Your score on the lab will be based on your % error for the five different objects.</p>
 <p>If any of your % differences are greater than 10%, give a possible explanation for the discrepancy. &gt; <strong>Response:</strong></p>
 <p>Note: Use the cell below to calculate the averages and percent error. I have started the code but it is not complete. You’ll have to finish it.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mean</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pingPong <span class="op">=</span> []  </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cone <span class="op">=</span> []</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>smallBall <span class="op">=</span> []</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>mediumBall <span class="op">=</span> []</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>beachBall <span class="op">=</span> []</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>mean_pingpong <span class="op">=</span> mean(pingPong)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mean</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pingPong <span class="op">=</span> []  </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>cone <span class="op">=</span> []</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>smallBall <span class="op">=</span> []</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>mediumBall <span class="op">=</span> []</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>beachBall <span class="op">=</span> []</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>mean_pingpong <span class="op">=</span> mean(pingPong)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
