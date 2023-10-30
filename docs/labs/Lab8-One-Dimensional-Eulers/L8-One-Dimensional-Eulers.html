@@ -97,6 +97,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -243,10 +246,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#background-information" id="toc-background-information" class="nav-link active" data-scroll-target="#background-information">Background Information</a>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a>
   <ul class="collapse">
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#mathematicalexperimental-skills-and-knowledge" id="toc-mathematicalexperimental-skills-and-knowledge" class="nav-link" data-scroll-target="#mathematicalexperimental-skills-and-knowledge">Mathematical/Experimental Skills and Knowledge</a></li>
+  </ul></li>
+  <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
+  <ul class="collapse">
+  <li><a href="#review-of-kinematics" id="toc-review-of-kinematics" class="nav-link" data-scroll-target="#review-of-kinematics">Review of Kinematics</a></li>
   <li><a href="#eulers-method" id="toc-eulers-method" class="nav-link" data-scroll-target="#eulers-method">Euler’s Method</a></li>
+  <li><a href="#the-code---broken-down" id="toc-the-code---broken-down" class="nav-link" data-scroll-target="#the-code---broken-down">The code - Broken down</a></li>
   <li><a href="#air-drag" id="toc-air-drag" class="nav-link" data-scroll-target="#air-drag">Air Drag</a></li>
+  </ul></li>
+  <li><a href="#python-skills" id="toc-python-skills" class="nav-link" data-scroll-target="#python-skills">Python skills</a>
+  <ul class="collapse">
+  <li><a href="#for-loop" id="toc-for-loop" class="nav-link" data-scroll-target="#for-loop">For loop</a></li>
+  <li><a href="#boolean-logic-inside-loops" id="toc-boolean-logic-inside-loops" class="nav-link" data-scroll-target="#boolean-logic-inside-loops">Boolean logic inside loops</a></li>
   </ul></li>
   <li><a href="#activity-i-minimum-fall-time" id="toc-activity-i-minimum-fall-time" class="nav-link" data-scroll-target="#activity-i-minimum-fall-time">Activity I: Minimum Fall Time</a>
   <ul class="collapse">
@@ -288,14 +303,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><a href="https://lancejnelson.github.io/PH150/jupyter/L8-One-Dimensional-Eulers.ipynb">Jupyter Notebook</a></p>
 <p>Name:</p>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<p>In this lab you will gain the following skills</p>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">Python</h3>
+<ol type="1">
+<li>Understand the basics of loops.</li>
+<li>Know the difference between a for loop and a while loop.</li>
+<li>Use logic inside of a loop</li>
+<li>Construct an Euler’s method code for simple one-dimensional motion.</li>
+</ol>
+</section>
+<section id="mathematicalexperimental-skills-and-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="mathematicalexperimental-skills-and-knowledge">Mathematical/Experimental Skills and Knowledge</h3>
+<ol type="1">
+<li>Know and use kinematic equations to motion problems.</li>
+<li>Know what Euler’s method is.</li>
+</ol>
+</section>
+</section>
 <section id="background-information" class="level2">
 <h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
-<section id="eulers-method" class="level3">
-<h3 class="anchored" data-anchor-id="eulers-method">Euler’s Method</h3>
-<section id="review-of-kinematics" class="level4">
-<h4 class="anchored" data-anchor-id="review-of-kinematics">Review of Kinematics</h4>
+<section id="review-of-kinematics" class="level3">
+<h3 class="anchored" data-anchor-id="review-of-kinematics">Review of Kinematics</h3>
 <p>Most will be familiar with the kinematic equations of motion, which can be used in situations involving constant acceleration. The kinematic equations are. <span class="math display">\[v_f = v_i + a \Delta t\]</span> <span class="math display">\[x_f = x_i + v_i \Delta t + {1\over 2} a \Delta t^2\]</span></p>
-<p>As an example, consider a car that is initially at rest, waiting for the stoplight to turn green. Once the light turns green, the driver presses on the accelerator and the car’s speed begins to increase. After accelerating at a rate of <span class="math inline">\(a = 5\)</span> m/s<span class="math inline">\(^2\)</span> for <span class="math inline">\(t = 3\)</span> s, the driver eases up and reduces the acceleration to more modest <span class="math inline">\(a = 2\)</span> m/s<span class="math inline">\(^2\)</span> and maintains this acceleration for another <span class="math inline">\(\Delta t = 8\)</span> s. How would you determine the speed of the car and its location after the full <span class="math inline">\(11\)</span> seconds had elapsed? The kinematic equations above could be applied to the first 3 seconds of the trip or the last 8 seconds of the trip, but couldn’t be applied from the start to the end. Let’s use the kinematic equations to determine the speed and position after the first 3 seconds. <span class="math display">\[ v_1 = v_0 + a_0 \Delta t\]</span> <span class="math display">\[ = (0 ~\text{m/s}) + (5 ~\text{m/s}^2) (3 ~\text{s})\]</span> <span class="math display">\[ = 15 ~\text{m/s}\]</span> <span class="math display">\[x_1 = x_0 + v_0 \Delta t + {1\over 2} a_0 \Delta t^2\]</span> <span class="math display">\[ = (0 ~\text{m}) + (0 ~\text{m/s}) (3 ~\text{s}) + {1\over 2}(5 ~\text{m/s}^2) (3 ~\text{s})^2\]</span> <span class="math display">\[ = 22.5 ~\text{m}\]</span> Now that we have the speed and velocity at <span class="math inline">\(t = 3\)</span> we can proceed to use the same kinematic equations for the second part of the motion. <span class="math display">\[ v_2 = v_1 + a_1 \Delta t\]</span> <span class="math display">\[ = (15 ~\text{m/s}) + (2 ~\text{m/s}^2) (8 ~\text{s})\]</span> <span class="math display">\[ = 31 ~\text{m/s}\]</span> <span class="math display">\[x_2 = x_1 + v_1 \Delta t + {1\over 2} a_1 \Delta t^2\]</span> <span class="math display">\[ = (22.5 ~\text{m}) + (15 ~\text{m/s}) (8 ~\text{s}) + {1\over 2}(2 ~\text{m/s}^2) (8 ~\text{s})^2\]</span> <span class="math display">\[ = 206.5 ~\text{m}\]</span> Since the kinematic equations only apply to constant-acceleration motion, the problem had to be divided into two parts: one for each constant-acceleration portion of the motion.<br>
+<p>As an example, consider a car that is initially at rest, waiting for the stoplight to turn green. Once the light turns green, the driver presses on the accelerator and the car’s speed begins to increase. After accelerating at a rate of <span class="math inline">\(a = 5\)</span> m/s<span class="math inline">\(^2\)</span> for <span class="math inline">\(t = 3\)</span> s, the driver eases up and reduces the acceleration to a more modest <span class="math inline">\(a = 2\)</span> m/s<span class="math inline">\(^2\)</span> and maintains this acceleration for another <span class="math inline">\(\Delta t = 8\)</span> s. How would you determine the position and speed of the car after the full <span class="math inline">\(11\)</span> seconds had elapsed? The kinematic equations above could be applied to the first 3 seconds of the trip or to the last 8 seconds of the trip, but couldn’t be applied from the start to the end. Let’s use the kinematic equations to determine the speed and position after the first 3 seconds. <span class="math display">\[ v_1 = v_0 + a_0 \Delta t\]</span> <span class="math display">\[ = (0 ~\text{m/s}) + (5 ~\text{m/s}^2) (3 ~\text{s})\]</span> <span class="math display">\[ = 15 ~\text{m/s}\]</span> <span class="math display">\[x_1 = x_0 + v_0 \Delta t + {1\over 2} a_0 \Delta t^2\]</span> <span class="math display">\[ = (0 ~\text{m}) + (0 ~\text{m/s}) (3 ~\text{s}) + {1\over 2}(5 ~\text{m/s}^2) (3 ~\text{s})^2\]</span> <span class="math display">\[ = 22.5 ~\text{m}\]</span> Now that we have the speed and velocity at <span class="math inline">\(t = 3\)</span> we can proceed to use the same kinematic equations for the second part of the motion. <span class="math display">\[ v_2 = v_1 + a_1 \Delta t\]</span> <span class="math display">\[ = (15 ~\text{m/s}) + (2 ~\text{m/s}^2) (8 ~\text{s})\]</span> <span class="math display">\[ = 31 ~\text{m/s}\]</span> <span class="math display">\[x_2 = x_1 + v_1 \Delta t + {1\over 2} a_1 \Delta t^2\]</span> <span class="math display">\[ = (22.5 ~\text{m}) + (15 ~\text{m/s}) (8 ~\text{s}) + {1\over 2}(2 ~\text{m/s}^2) (8 ~\text{s})^2\]</span> <span class="math display">\[ = 206.5 ~\text{m}\]</span> Since the kinematic equations only apply to constant-acceleration motion, the problem had to be divided into two parts: one for each constant-acceleration portion of the motion.<br>
 Now, what if the motion involved 5 different segments, each with a different acceleration, with the acceleration starting at 4 m/s<span class="math inline">\(^2\)</span> and decreasing by <span class="math inline">\(1\)</span> m/s<span class="math inline">\(^2\)</span> every second.</p>
 <table class="table">
 <thead>
@@ -372,12 +405,12 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </tr>
 </tbody>
 </table>
-<p>The <span class="math inline">\(x_{n+1}\)</span> and <span class="math inline">\(x_n\)</span> is standard notation to mean the next x (<span class="math inline">\(x_{n+1}\)</span>) and the current x (<span class="math inline">\(x_n\)</span>)</p>
+<p>The <span class="math inline">\(x_{n+1}\)</span> and <span class="math inline">\(x_n\)</span> are standard notation to mean the next x (<span class="math inline">\(x_{n+1}\)</span>) and the current x (<span class="math inline">\(x_n\)</span>)</p>
 <p>This process could be extended for as long as you wanted but I hope you can see that you don’t want to do this by hand for very long.</p>
 </section>
-<section id="eulers-method-1" class="level4">
-<h4 class="anchored" data-anchor-id="eulers-method-1">Euler’s Method</h4>
-<p>Euler’s method works in exactly the same as above with one small change; when using the kinematic equations, we use a time step (<span class="math inline">\(\Delta t\)</span>) that is very small. We do this because if the time step is very small, the acceleration can be treated as if it were constant even if it changes dramatically over longer time intervals. Most realistic scenarios involve accelerations that change <strong>continuously</strong>, which means that it is constantly changing. The steps to implement Euler’s method have the following basic steps:</p>
+<section id="eulers-method" class="level3">
+<h3 class="anchored" data-anchor-id="eulers-method">Euler’s Method</h3>
+<p>Most realistic scenarios involve accelerations that change <strong>continuously</strong>, not discretely like the examples above. However, we can still employ the method used above if we use a time step (<span class="math inline">\(\Delta t\)</span>) that is very small. Even if the acceleration varies substantially over long time intervals, it will always be nearly constant over very small time steps. We call this Euler’s method and the steps to implement Euler’s method are as follows:</p>
 <ol type="1">
 <li>Define the initial conditions. For particle motion this involves defining the initial position and velocity of the object as well as any other variable that <strong>do not change</strong> over time.</li>
 <li>Repeatedly calculate the following quantities.
@@ -385,11 +418,11 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <li>The current acceleration. The acceleration function is typically given to you or can be derived from Newton’s law. This expression will always be a function of time,position, and/or velocity and must be re-evaluated every time you advance by a time step.</li>
 <li>Use a kinematic equation to calculate the next position using the previous position and velocity.</li>
 <li>Use a kinematic equation to calculate the next velocity using the previous position and velocity.</li>
-<li>If you want to store all of your positions and velocities for later use, add them to a list.</li>
+<li>If you want to store all of your positions and velocities for later use, append them to a list.</li>
 </ol></li>
 </ol>
-<p>An example implementation of Euler’s method for a particle (experiencing no air resistance) dropped thrown upward (with $v = 30 $ m/s) from an initial height of <span class="math inline">\(y_i = 70\)</span> m, is shown below.</p>
-<div class="cell" data-execution_count="2">
+<p>An example implementation of Euler’s method for a particle (experiencing no air resistance) thrown upward (with <span class="math inline">\(v = 30\)</span> m/s) from an initial height of <span class="math inline">\(y_i = 70\)</span> m, is shown below.</p>
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import statements</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -399,23 +432,23 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>delta_t <span class="op">=</span> <span class="fl">0.01</span> <span class="co"># Time step in seconds (should be small)</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># Start time in seconds</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Make lists to store your positions, velocities and times.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [y0]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [v0]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [t0]</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y[<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>   a <span class="op">=</span> <span class="op">-</span><span class="fl">9.8</span>  <span class="co"># Calculate the current acceleration</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Calculate the next position and velocity</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>   nextV <span class="op">=</span> v[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> a <span class="op">*</span> delta_t</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   nextY <span class="op">=</span> y[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> v[<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> delta_t</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>   nextT <span class="op">=</span> t[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> delta_t</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position and velocity in the lists</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>   y.append(nextY)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>   v.append(nextV)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>   t.append(nextT)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>t_max <span class="op">=</span> <span class="fl">7.0</span> <span class="co">#Final Time</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> (t_max <span class="op">-</span> t0)<span class="op">/</span>delta_t <span class="co"># Calculate the number of time steps</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">int</span>(N) <span class="co"># Make sure N is an integer</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Make lists to store your positions, velocities and times.</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [y0]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [v0]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [t0]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   a <span class="op">=</span> <span class="op">-</span><span class="fl">9.8</span>  <span class="co"># Calculate the current acceleration</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position, velocity, and time in the lists</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>   v.append(v[i] <span class="op">+</span> a <span class="op">*</span> delta_t)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>   y.append(y[i] <span class="op">+</span> v[i] <span class="op">*</span> delta_t)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>   t.append(t[i] <span class="op">+</span> delta_t)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.plot(t,y,linewidth <span class="op">=</span> <span class="dv">2</span>, color <span class="op">=</span> <span class="st">'red'</span>)</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"time (s)"</span>)</span>
@@ -427,6 +460,166 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <div class="cell-output cell-output-display">
 <p><img src="L8-One-Dimensional-Eulers_files/figure-html/cell-2-output-2.png" width="593" height="449"></p>
 </div>
+</div>
+</section>
+<section id="the-code---broken-down" class="level3">
+<h3 class="anchored" data-anchor-id="the-code---broken-down">The code - Broken down</h3>
+<p>This section will break the program down piece by piece. Here’s the first section:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">One Dimensional free-fall Euler Code</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">PH150</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">Brother Nelson</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">This code will calculate the exact solution for a ball in free fall</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">having been shot straight up using Euler's method.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#Import numerical and plotting packages</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Everything inside the triple quotes (“““) counts as one long comment. If you ever need to add comments that will take more than one line, you can start and end it with """. It’s a great way to leave yourself notes about what each program does. Below the introductory comment, numpy and matplotlib are imported to do the number crunching and plotting later on.</p>
+<p>This next part sets up all of the constants and inputs. It’s a good idea to put it at the beginning of the program so that they are easy to change.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Initial conditions and physical setup constants</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>v0<span class="op">=</span><span class="fl">30.0</span> <span class="co">#Initial velocity in m/s</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span><span class="dv">70</span> <span class="co">#Initial Postion in m</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Set up the time steps and number of calculations</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>delta_t <span class="op">=</span> <span class="fl">0.01</span> <span class="co">#Time step in seconds</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>t0<span class="op">=</span><span class="dv">0</span> <span class="co">#Start time in seconds</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>t_max <span class="op">=</span> <span class="fl">7.0</span> <span class="co">#Final time</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The part with <code>x0</code> and <code>v0</code> are the starting position and velocity. <code>delta_t</code> is time step or amount of time that will advance for each calculation. Remember, Euler’s method works by assuming that acceleration is roughly constant over short time intervals. <code>delta_t</code> sets that time interval.</p>
+<p>With initial values defined, the number of calculations that will be needed can be determined. Here’s the piece of code that does that:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate the number of timesteps we need to make</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span>(t_max<span class="op">-</span>t0)<span class="op">/</span>delta_t</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Make sure N is an integer</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span><span class="bu">int</span>(N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Python keeps two types of numbers: <em>Floats</em> - numbers with decimal points and <em>Integers</em> - whole numbers. For example: <span class="math inline">\(2.0\)</span> is a float, <span class="math inline">\(2\)</span> is an integer. Even though they have the same value, Python sees them as different things. You can only get an item from a list using an integer. (<code>myList[2]</code> works, but <code>myList[2.0]</code> won’t). The command <code>N=int(N)</code> takes whatever number <code>N</code> is and converts it to an integer. The <code>int</code> command truncates instead of rounding, so <code>int(2.9)</code> becomes <code>2</code>, not <code>3</code>.</p>
+<p>Next, lists that will eventually store <strong>all of the positions, velocities, and times</strong> are initialized. Putting square brackets around something tells Python that it is a list. Since more x,v, and t values are going to be added later, we need to warn Python that these are going to be lists. Initially, these lists only contain the initial values.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Make lists to hold our positions, velocities, and times</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[x0]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>v<span class="op">=</span>[v0]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>t<span class="op">=</span>[t0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This next section of code is what is called a loop:</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Now perform an Euler's method calculation.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Find the current acceleration</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=-</span><span class="fl">9.8</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position, velocity, and time in the lists</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>   v.append(v[i] <span class="op">+</span> a <span class="op">*</span> delta_t)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>   y.append(y[i] <span class="op">+</span> v[i] <span class="op">*</span> delta_t)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>   t.append(t[i] <span class="op">+</span> delta_t)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#End of Euler loop =========================================</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="breaking-down-the-while-loop" class="level4">
+<h4 class="anchored" data-anchor-id="breaking-down-the-while-loop">Breaking down the while loop</h4>
+<p>For most of you, a loop will be a new idea. Loops are very helpful when you need to tell a computer to do something over and over again. Here’s the general structure:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">&lt;</span>Thing that Changes<span class="op">&gt;</span>:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>     Stuff the computer does to<span class="op">/</span><span class="cf">with</span> the thing that changes</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Not part of the loop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code that gets inserted at: <code>&lt;Thing that Changes&gt;</code> should be a list of items that are to be iterated over. As an example, consider a famous mathematical sequence of numbers called the Fibonacci sequence. The first few numbers in the Fibonacci sequence are: [1,1,2,3,5,8,13] (Can you see the pattern). A loop to iterate over this list of numbers is shown below:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">13</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> fibonacci:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(num)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fibonacci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+1
+2
+3
+5
+8
+13
+[1, 1, 2, 3, 5, 8, 13]</code></pre>
+</div>
+</div>
+<p>When this code is executed, the sequence of numbers first gets stored in the variable <code>fibonacci</code>. The <code>for num in fibonacci</code> tells Python to look at each thing in the list one by one, and call it <code>num</code>, each in turn. Therefore, this program would first print 1, then 1 (again), then 2, etc. Once all of the numbers have been printed one at a time, the final command will execute and print the entire list. This last statement won’t execute until the loop has successfully iterated over everything in the list named <code>fibonacci</code>.</p>
+<p>Now let’s look at the <code>for</code> statement in the Euler’s code: <code>i in range(N)</code>. The <code>range(N)</code> command makes a list of integers from zero to <code>N-1</code>. If <code>N</code> was five, <code>range(N)</code> would be <code>[0,1,2,3,4]</code>. Therefore, the first time through the for loop <code>i=0</code>, the second time <code>i=1</code>, and so on until we reach <code>N-1</code>.</p>
+<p>Now let’s look at the inside of the loop:</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Find the current acceleration</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=-</span><span class="fl">9.8</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position, velocity, and time in the lists</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   v.append(v[i] <span class="op">+</span> a <span class="op">*</span> delta_t)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>   y.append(y[i] <span class="op">+</span> v[i] <span class="op">*</span> delta_t)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>   t.append(t[i] <span class="op">+</span> delta_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is where Euler’s method is found. First the acceleration is calculated, which is a constant -9.8 in this case but usually will be a function of time, position, and/or velocity. Then next statement involves an <code>append</code> statement:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>   v.append(v[i] <span class="op">+</span> a <span class="op">*</span> delta_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>append</code> statement is used to add something to the end of a list. In this case, the statement <code>v.append(v[i]+a*delta_t)</code> adds <code>v[i]+a*delta_t</code> to the end of the list named <code>v</code>. This is nothing more than the kinematic equation <span class="math inline">\(v_f=v_i+a\Delta t\)</span>, using <code>v[i]</code> as <span class="math inline">\(v_i\)</span> to calculate the “final” velocity. Each time the computer goes through the loop, a different value for <code>i</code> is used, and therefore a different value for <code>v[i]</code>. If the list starts with just one value in it (<code>v=[0]</code>), then by the end of the first iteration there are two things in the list. (The same can be said for the position and time lists)</p>
+<p>The first few iterations of this loop are done by hand and placed in the table below to help you see exactly what the loop is doing.</p>
+<div class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">$$y_f = y_i + v_i \Delta t$$</th>
+<th data-quarto-table-cell-role="th">$$v_f = v_i + a \Delta t$$</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.0</td>
+<td>70.000</td>
+<td>30.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.1</td>
+<td>73.000</td>
+<td>29.02</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.2</td>
+<td>75.902</td>
+<td>28.04</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.3</td>
+<td>78.706</td>
+<td>27.06</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Velocity can be used to calculate the position using the kinematic equation <span class="math inline">\(x_f=x_i+v_i\Delta t+\frac{1}{2}a\Delta t^2\)</span>. The term <span class="math inline">\(\frac{1}{2}a\Delta t^2\)</span> is neglected because if <span class="math inline">\(\Delta t\)</span> is small then <span class="math inline">\(\Delta t^2\)</span> will be very small, making this entire term inconsequential. Once the loop is finished, the program just builds a plot of the data:</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot the results</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t,x,linewidth<span class="op">=</span><span class="dv">2</span>,color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'time (s)'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Position (m)'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Position vs. time for a ball in free fall'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -450,6 +643,98 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <p><span class="math display">\[ = v_{n} + ({C \rho A v^2 \over 2 m} - g) \cdot \Delta t \;\;\;\;\;(6)\]</span></p>
 </section>
 </section>
+<section id="python-skills" class="level2">
+<h2 class="anchored" data-anchor-id="python-skills">Python skills</h2>
+<p>In this lab you will need to use programming loops to use Euler’s method. <em>Loops</em> allow programs to rerun the same block of code multiple times. This might seem like a funny thing to want to do but it turns out that there are many important tasks that are repetitive in nature (perhaps with small changes for each successive repetition). A loop provides a succinct and efficient way to perform tasks of this nature.</p>
+<section id="for-loop" class="level3">
+<h3 class="anchored" data-anchor-id="for-loop">For loop</h3>
+<p>The <code>for</code> loop is probably the most common loop you will encounter and is a good choice when you know beforehand exactly what things you want to loop over. Here is an example of a <code>for</code> loop that is used to add up the elements of a list.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="fl">9.9</span>]: </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    thesum <span class="op">+=</span> i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This would be equivalent to the following code:</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> thesum <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> thesum <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> thesum <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> thesum <span class="op">+</span> <span class="fl">9.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>which isn’t that much longer than using a loop. However, as the list gets longer and/or the mathematical operations being performed get more complex the second method would get unreasonably long.</p>
+<p>The correct language is to say that we are <em>iterating</em> over the list <code>[3,2,1,9.9]</code>. This means that the loop variable (<code>i</code> in this case but you can choose it to be whatever you want) gets assigned the values of the list elements, one by one, until it reaches the end of the list. You can use <code>for</code> loops to iterate over any multi-element object like lists or tuples. Python uses indentation to indicate where the loop ends. In this case there was only one statement inside to loop, but if you wanted more than one each line should be indented.</p>
+<p>Often you will want to iterate over a list of integers. The <code>range</code> function is a good choice for this. The range function takes up to 3 arguments. The first is the starting number, the second is the ending number, and the third is the step size.</p>
+<p><code>range(start,stop,stepsize)</code></p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">50</span>,<span class="dv">3</span>):  <span class="co">#Generates a list from 5 -&gt; 50 with a step size of 3</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5
+8
+11
+14
+17
+20
+23
+26
+29
+32
+35
+38
+41
+44
+47</code></pre>
+</div>
+</div>
+<p>These examples are so simple that you might wonder when a loop might actually be useful to you. Let’s see if we can build a loop to calculate the following sum</p>
+<p><span id="eq-sum"><span class="math display">\[ \sum_{n=1}^{1000} {1\over n^2} \tag{1}\]</span></span></p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>theSum <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">1000</span>):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    theSum <span class="op">=</span> theSum <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(theSum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.6439335666815615</code></pre>
+</div>
+</div>
+<p>Here, <code>n</code> is being assigned the values <code>1,2,3,4....1000</code>, one by one, until it gets all the way to 1000. Each time through the loop, <code>n</code> is different and the expression <code>1/n**2</code> evaluates to a new value. The variable <code>theSum</code> is updated each time through to be the running total of all calculations performed thus far. Here’s another example of a loop used to calculate the value of <span class="math inline">\(20!\)</span>:</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>theProduct <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">21</span>):</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    theProduct <span class="op">=</span> theProduct <span class="op">*</span> n <span class="co">#Multiply theProduct by n</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(theProduct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2432902008176640000</code></pre>
+</div>
+</div>
+<p>Remember that the range function creates a list starting at <span class="math inline">\(1\)</span>, going up to <span class="math inline">\(21\)</span> but not including it. The math library has a function called <code>factorial</code> that does the same thing. Let’s use it to check our answer:</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> factorial</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>factorial(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>2432902008176640000</code></pre>
+</div>
+</div>
+</section>
+<section id="boolean-logic-inside-loops" class="level3">
+<h3 class="anchored" data-anchor-id="boolean-logic-inside-loops">Boolean logic inside loops</h3>
+<p>Often when using loops, we only want a block of code to execute when some condition is satisfied. We can use boolean logic inside of the loop to accomplish this. For example, let’s write a loop to compute the following sum:</p>
+<p><span class="math display">\[ \sum_{{n\over 5} \in \text{ Int and } {n\over 3} \in \text{ Int}} {1\over n^2} \]</span></p>
+<p>which is similar to the one we did above, but this time we only want to include terms where <span class="math inline">\(n\)</span> is a perfect multiple of both 5 and 3. To check to see if <code>n</code> is a perfect multiple of a number we can calculate the modulo (remainder after division) using the <code>%</code> operator and check that it is equal to zero.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>theSum <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">1000</span>):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        theSum <span class="op">=</span> theSum <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>n<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(theSum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.007243985583159138</code></pre>
+</div>
+</div>
+</section>
+</section>
 <section id="activity-i-minimum-fall-time" class="level2">
 <h2 class="anchored" data-anchor-id="activity-i-minimum-fall-time">Activity I: Minimum Fall Time</h2>
 <section id="goal-overview" class="level3">
@@ -464,8 +749,8 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <blockquote class="blockquote">
 <p>Include kinematic details here</p>
 </blockquote>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to perform calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to perform calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -478,24 +763,24 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <section id="procedure-1" class="level3">
 <h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
 <ol type="1">
-<li>Together in class we constructed a model for a particle that is thrown upward and experiences no air resistance. Use equations 3-6 above to modify that code to include air resistance. Set $= 1.02 $ kg/m<span class="math inline">\(^3\)</span>, <span class="math inline">\(C = 0.5\)</span> and make reasonable guesses for the values of <span class="math inline">\(A\)</span> and <span class="math inline">\(m\)</span>. We’ll fine tune these values later.</li>
+<li>Together in class we constructed a model for a particle that is thrown upward and experiences no air resistance. Use equations 3-6 above to modify that code to include air resistance. Set <span class="math inline">\(\rho = 1.02\)</span> kg/m<span class="math inline">\(^3\)</span>, <span class="math inline">\(C = 0.5\)</span> and make reasonable guesses for the values of <span class="math inline">\(A\)</span> and <span class="math inline">\(m\)</span>. We’ll fine tune these values later.</li>
 <li>Modify the code to model a particle that is dropped from rest rather than thrown upward initially.</li>
 <li>Your value for <span class="math inline">\(\Delta t\)</span> will need to be reasonably small to get accurate results. Decrease your value of <span class="math inline">\(\Delta t\)</span> until the results stop changing.</li>
 <li>As a test of the correctness of your code, increase the initial height of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect.</li>
 </ol>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import from libraries</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define constants</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set initial conditions</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to calculate flight time using Euler's method</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import from libraries</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define constants</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set initial conditions</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to calculate flight time using Euler's method</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="co"># Put your stopping condition here:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -597,18 +882,18 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <p>Your score on the lab will be based on your % error for the five different objects.</p>
 <p>If any of your % differences are greater than 10%, give a possible explanation for the discrepancy. &gt; <strong>Response:</strong></p>
 <p>Note: Use the cell below to calculate the averages and percent error. I have started the code but it is not complete. You’ll have to finish it.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mean</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pingPong <span class="op">=</span> []  </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>cone <span class="op">=</span> []</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>smallBall <span class="op">=</span> []</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>mediumBall <span class="op">=</span> []</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>beachBall <span class="op">=</span> []</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>mean_pingpong <span class="op">=</span> mean(pingPong)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mean</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>pingPong <span class="op">=</span> []  </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>cone <span class="op">=</span> []</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>smallBall <span class="op">=</span> []</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>mediumBall <span class="op">=</span> []</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>beachBall <span class="op">=</span> []</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>mean_pingpong <span class="op">=</span> mean(pingPong)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
