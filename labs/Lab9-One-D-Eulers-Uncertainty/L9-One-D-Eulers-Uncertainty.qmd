@@ -316,14 +316,14 @@ C = 0.5   # Drag constant for sphere (unitless)
 Fb =   # Buoyant Force (N).
 
 g = 9.8  # Acceleration due to gravity (m/s^2)
+mt = mp + mb + ρh * V   # Total mass (kg).
 Fg =   # Weight of helium + payload + balloon (N).
 
-mt = mp + mb + ρh * V   # Total mass (kg).
 dt =     # Time step (s).
 
 y = []     # Initial height of balloon (meters).
 v = [0]    # Initial speed of balloon (m/s).
-a = [ (ρa * V * g - mt * g)/mt]  #Initial acceleration of the balloon
+a = [ (Fb - Fg)/mt]  #Initial acceleration of the balloon
 t = [0]
 yCeiling =   # Height of the ceiling (meters)
 
@@ -421,15 +421,15 @@ for N in range(Ntrials):
     V =     # Volume of balloon (m^3).
     A =       # Cross-sectional area of balloon (m^3)
 
-    mt = mb + mp + ρh * V
     ρa =    # Density of air (kg/m^3)
     ρh =   # Density of Helium (kg/m^3)
+    mt = mb + mp + ρh * V
     Fb =   # Buoyant Force (N).
     Fg =   # Weight of helium + payload + balloon (N).
     
     y = [d]     # Initial height of balloon (meters).
     v = [0]     # Initial velocity of balloon (m/s).
-    a = [(ρa * V * g - mt * g)/mt]
+    a = [(Fb - Fg)/mt]
     t = [0]     # Initial time (s).
     
     if Fb < Fg:  # If the buoyant force isn't enough to lift the balloon, don't run Euler's method.
