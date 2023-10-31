@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Beginning Physics Lab - Lab 9 Air Resistance and Buoyancy</title>
+<title>Beginning Physics Lab - Lab 9 Euler’s Method with Uncertainty: Weather Balloons</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html">Numerical Modeling</a></li><li class="breadcrumb-item"><a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html">Lab 9 Air Resistance and Buoyancy</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.html">Numerical Modeling</a></li><li class="breadcrumb-item"><a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html">Lab 9 Euler’s Method with Uncertainty: Weather Balloons</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 9 Air Resistance and Buoyancy</span></a>
+ <span class="menu-text">Lab 9 Euler’s Method with Uncertainty: Weather Balloons</span></a>
   </div>
 </li>
       </ul>
@@ -242,9 +242,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#activity-i-modeling-the-balloons-motion-eulers-method" id="toc-activity-i-modeling-the-balloons-motion-eulers-method" class="nav-link" data-scroll-target="#activity-i-modeling-the-balloons-motion-eulers-method">Activity I: Modeling the balloon’s motion (Euler’s Method)</a>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
+  <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
   <ul class="collapse">
+  <li><a href="#weather-balloons-and-buoyant-forces" id="toc-weather-balloons-and-buoyant-forces" class="nav-link" data-scroll-target="#weather-balloons-and-buoyant-forces">Weather Balloons and Buoyant Forces</a></li>
+  <li><a href="#while-loops" id="toc-while-loops" class="nav-link" data-scroll-target="#while-loops"><code>While</code> Loops</a></li>
+  <li><a href="#propagating-uncertainty---random-numbers" id="toc-propagating-uncertainty---random-numbers" class="nav-link" data-scroll-target="#propagating-uncertainty---random-numbers">Propagating Uncertainty - Random numbers</a></li>
   <li><a href="#goal-overview" id="toc-goal-overview" class="nav-link" data-scroll-target="#goal-overview">Goal (Overview)</a></li>
   <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
   </ul></li>
@@ -256,6 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#activity-iii-checking-our-prediction" id="toc-activity-iii-checking-our-prediction" class="nav-link" data-scroll-target="#activity-iii-checking-our-prediction">Activity III: Checking our Prediction</a>
   <ul class="collapse">
   <li><a href="#goal-overview-2" id="toc-goal-overview-2" class="nav-link" data-scroll-target="#goal-overview-2">Goal (Overview):</a></li>
+  <li><a href="#procedure-2" id="toc-procedure-2" class="nav-link" data-scroll-target="#procedure-2">Procedure</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -265,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 9 Air Resistance and Buoyancy</h1>
+<h1 class="title">Lab 9 Euler’s Method with Uncertainty: Weather Balloons</h1>
 </div>
 
 
@@ -281,8 +285,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>Name:</p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p><a href="https://lancejnelson.github.io/PH150/jupyter/L9-One-D-Eulers-Uncertainty.ipynb">Jupyter Notebook</a></p>
+<p>Name:</p>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<p>In this lab you will gain the following skills</p>
+<ol type="1">
+<li>Learn how to construct a Python <code>while</code> loop.</li>
+<li>Learn how to select random numbers from a statistical distribution.</li>
+<li>Learn how to propagate uncertainty in a numerical calculation.</li>
+</ol>
+</section>
+<section id="background-information" class="level2">
+<h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
+<section id="weather-balloons-and-buoyant-forces" class="level3">
+<h3 class="anchored" data-anchor-id="weather-balloons-and-buoyant-forces">Weather Balloons and Buoyant Forces</h3>
 <p>Last time we learned that the force of air drag is given by:</p>
 <p><span class="math display">\[F_D =  {1\over 2} \; C \rho A |v| v \;\;\;\;\;(1) \]</span></p>
 <p>and used this together with Euler’s method to predict the fall times for several objects. This week we will study the motion of a weather balloon and predict the time it will take for the weather balloon to rise a chosen distance. This means that we will need to add one more force into the analysis: the buoyant force.</p>
@@ -338,13 +355,108 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <p><span class="math display">\[
 \rho_\text{He} = \rho_\text{He,0} {P \over P_0} {T_0 \over T}
 \]</span></p>
-<p>Here <span class="math inline">\(m\)</span> is the combined mass of the payload and the balloon. (The mass of the helium contributes a little bit but we will neglect it.)</p>
-<p><span class="math display">\[
-m = m_\text{payload} + m_\text{balloon}
-\]</span></p>
 </section>
-<section id="activity-i-modeling-the-balloons-motion-eulers-method" class="level2">
-<h2 class="anchored" data-anchor-id="activity-i-modeling-the-balloons-motion-eulers-method">Activity I: Modeling the balloon’s motion (Euler’s Method)</h2>
+<section id="while-loops" class="level3">
+<h3 class="anchored" data-anchor-id="while-loops"><code>While</code> Loops</h3>
+<p>Last week we used a <code>for</code> loop with Euler’s method, which was a good first choice because its easy to understand. However a <code>for</code> loop is often a clunky approach because we often don’t know how many iterations need to be performed to achieve the desired result. For example, last week we showed an example of Euler’s method for a particle launched straight upward and allowed to travel up and then come back down and hit the ground. Instead of performing a specified number of iterations of this loop, it would be nice to let the loop continue until the particle hit the ground. We can do this with a <code>while</code> loop which has the following basic structure:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">&lt;</span>stopping condition<span class="op">&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">&lt;</span>Body of loop<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>&lt;stopping condition&gt;</code> is a statement that determines whether the loop will continue to run or not. If the statement evaluates to <code>True</code>, the loop continues and if it evaluates to <code>False</code>, it will stop. As a simple example let’s use a <code>while</code> loop find the first 20 numbers in the fibonacci sequence:</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>previous <span class="op">=</span> <span class="dv">1</span> <span class="co"># First number in the Fibonacci sequence</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> <span class="dv">1</span> <span class="co"># Second number in the Fibonacci sequence</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> n <span class="op">&lt;</span> <span class="dv">20</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    nextN <span class="op">=</span> current <span class="op">+</span> previous <span class="co">#Find the next Fibonacci number</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    previous <span class="op">=</span> current  <span class="co"># The current number becomes the previous</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> nextN  <span class="co"># The next number becomes the current</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n <span class="op">+</span> <span class="dv">1</span>        <span class="co"># Keep track of how many numbers we've found</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(nextN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The stopping condition for this loop is <code>n &lt; 20</code>, where <code>n</code> is counting how many numbers in the sequence have been found so far. This variable starts off with a value of <span class="math inline">\(2\)</span> and increases by <span class="math inline">\(1\)</span> every time that another number is found. Once the value of <code>n</code> reaches <span class="math inline">\(20\)</span>, the statement <code>n &lt; 20</code> produces a <code>False</code> and the loop terminates.</p>
+<p><code>while</code> loops should be used with caution because you can easily write a <em>faulty stopping condition</em> and inadvertently write a loop that runs forever. This happens because your stopping condition was never met. For example, if the statement <code>n = n + 1</code> were omitted in the code above, <code>n</code> would never change and the stopping condition <code>n &lt; 20</code> would never evaluate to <code>False</code> and the loop will run forever. To avoid this, you should always get in the habit of building a fail safe into your while loops. To build a fail safe, first define a variable that counts the number of loop iterations. Then add an <code>if</code> statement inside the loop body to check to see if the value of the counter variable becomes too large. A <code>break</code> statement is used in this case to exit the loop. Below is an example of the loop above with faulty termination logic but with a fail safe to prevent it from looping forever.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>previous <span class="op">=</span> <span class="dv">1</span> <span class="co"># First number in the Fibonacci sequence</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> <span class="dv">1</span> <span class="co"># Second number in the Fibonacci sequence</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> n <span class="op">&lt;</span> <span class="dv">20</span>:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    nextN <span class="op">=</span> current <span class="op">+</span> previous <span class="co">#Find the next Fibonacci number</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    previous <span class="op">=</span> current  <span class="co"># The current number becomes the previous</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> nextN  <span class="co"># The next number becomes the current</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">+=</span> <span class="dv">1</span>      <span class="co"># Keep track of how many numbers we've found</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> counter <span class="op">&gt;</span> <span class="dv">1000</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Something went wrong"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(nextN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To use a <code>while</code> loop in Euler’s method for a projectile that is going to hit the ground, we should use the stopping condition <code>y[-1] &gt; 0</code> so that the loop terminates once the position of the projectile becomes negative. The example from last week with the modifications to use a <code>while</code> loop is given below. Notice also that since we no long use the loop variable <code>i</code>, we can’t use it to index the position and velocity lists. Instead we use <code>v[-1]</code> and <code>y[-1]</code> to access the last element in each of these lists.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import statements</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>v0 <span class="op">=</span> <span class="fl">30.0</span> <span class="co"># Initial velocity in m/s</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>y0 <span class="op">=</span> <span class="dv">70</span> <span class="co"># Initial height in m</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>delta_t <span class="op">=</span> <span class="fl">0.01</span> <span class="co"># Time step in seconds (should be small)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># Start time in seconds</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>t_max <span class="op">=</span> <span class="fl">7.0</span> <span class="co">#Final Time</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> (t_max <span class="op">-</span> t0)<span class="op">/</span>delta_t <span class="co"># Calculate the number of time steps</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">int</span>(N) <span class="co"># Make sure N is an integer</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Make lists to store your positions, velocities and times.</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [y0]</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [v0]</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [t0]</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y[<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>   a <span class="op">=</span> <span class="op">-</span><span class="fl">9.8</span>  <span class="co"># Calculate the current acceleration</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position, velocity, and time in the lists</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>   v.append(v[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> a <span class="op">*</span> delta_t)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>   y.append(y[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> v[<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> delta_t)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>   t.append(t[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> delta_t)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.plot(t,y,linewidth <span class="op">=</span> <span class="dv">2</span>, color <span class="op">=</span> <span class="st">'red'</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"time (s)"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Position (m)"</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Position vs. time for a ball in free fall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>Text(0.5, 1.0, 'Position vs. time for a ball in free fall')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="L9-One-D-Eulers-Uncertainty_files/figure-html/cell-5-output-2.png" width="593" height="449"></p>
+</div>
+</div>
+</section>
+<section id="propagating-uncertainty---random-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="propagating-uncertainty---random-numbers">Propagating Uncertainty - Random numbers</h3>
+<p>A centeral theme in this class is that of propagating uncertainty. When performing numerical simulations, the uncertainties in the measured quantities used will propagate through to the final result. As a simple example, recall the equation for the acceleration due to gravity (<span class="math inline">\(g\)</span>) in terms of the lengthe of a pendulum (<span class="math inline">\(L\)</span>) and its period (<span class="math inline">\(T\)</span>): <span class="math inline">\(g = {4 \pi^2 L \over T^2}\)</span>. Imagine collecting (L,T) data pairs and wanting to use them to determine the uncertainty on the value of <span class="math inline">\(g\)</span>. This situation is depicted graphically in the figures below.</p>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>Text(0.5, 0, 'g (m/s$^2$)')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="L9-One-D-Eulers-Uncertainty_files/figure-html/cell-6-output-2.png" width="672" height="1128"></p>
+</div>
+</div>
+<p>The top figures represent the distribution of the (L,T) pairs and the one-dimensional projections. The second figure shows the same data as the top figure but now the value of g for each (L,T) data pair is represented by the color of the plot point. Finally the final figure gives the histogram of g values. The standard deviation of this final data set could be used as the uncertainty on <span class="math inline">\(g\)</span>. So to propagate uncertainty in a numerical calculation we should <strong>run Euler’s method many times, each time starting with a different set of initial conditions.</strong> When selecting a value for the initial condition we should generate a random number from the appropriate distribution. This can be accomplished by placing your Euler’s loop from last week into <em>another loop</em>, called the outer loop.</p>
+<p>To generate a random number from a normal distribution in Python, use the <code>norm.rvs</code> function (short for random variate sample) from the <code>scipy.stats</code> module. (Example below)</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> sp</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>randomNumber <span class="op">=</span> sp.norm.rvs(loc <span class="op">=</span> <span class="dv">5</span>,scale <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(randomNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.1571447549094485</code></pre>
+</div>
+</div>
+<p>The <code>loc</code> keyword argument specifies the mean of the distribution (<span class="math inline">\(\mu\)</span>) and the <code>scale</code> keyword argument specifies the standard deviation of the distribution (<span class="math inline">\(\sigma\)</span>). ## Activity I: Modeling the balloon’s motion (Euler’s Method)</p>
+</section>
 <section id="goal-overview" class="level3">
 <h3 class="anchored" data-anchor-id="goal-overview">Goal (Overview)</h3>
 <p>Modify your code from last week to incorporate the buoyant force experienced by the weather balloon.</p>
@@ -371,59 +483,60 @@ m = m_\text{payload} + m_\text{balloon}
 <li>Run your code and verify that your results are reasonable.</li>
 <li>Using trial and error, adjust the mass of the payload until the time of flight is in the <span class="math inline">\(6-10\)</span> seconds range.</li>
 </ol>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mb <span class="op">=</span>    <span class="co"># Mass of the balloon (kg).</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span>    <span class="co"># Mass of the payload (kg).</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span>     <span class="co"># Current temperature (Kelvins).</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span>     <span class="co"># Current pressure (Pa).</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ρa0 <span class="op">=</span>   <span class="co"># Reference density of air (kg/m^3)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ρh0 <span class="op">=</span>   <span class="co"># Reference density of helium (kg/m^3)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span>    <span class="co"># Reference temperature (Kelvins).</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span>    <span class="co"># Reference Pressure (Pa).</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span>    <span class="co"># Diameter of weather balloon (m).</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span>     <span class="co"># Volume of balloon (m^3).</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span>       <span class="co"># Cross-sectional area of balloon (m^3)</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Drag constant for sphere (unitless)</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span>  <span class="co"># Acceleration due to gravity (m/s^2)</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>mt <span class="op">=</span> mp <span class="op">+</span> mb <span class="op">+</span> ρh <span class="op">*</span> V   <span class="co"># Total mass (kg).</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span>     <span class="co"># Time step (s).</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span>      <span class="co"># Initial height of balloon (meters).</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">0</span>    <span class="co"># Initial speed of balloon (m/s).</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>yCeiling <span class="op">=</span>   <span class="co"># Height of the ceiling (meters)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Fb <span class="op">&lt;</span> Fg:</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Your balloon will not fly!"</span>)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    exit()</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&lt;</span> yCeiling <span class="kw">and</span> t <span class="op">&lt;</span> <span class="dv">10</span>:</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    Fd <span class="op">=</span>     <span class="co"># Drag Force (N).</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span>      <span class="co"># acceleration (m/s^2).</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span>      <span class="co"># Update velocity</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span>      <span class="co"># Update position</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span>      <span class="co"># Update time.</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    ax1.plot(t,a,<span class="st">'r.'</span>)</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    ax2.plot(t,v,<span class="st">'g.'</span>)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    ax3.plot(t,y,<span class="st">'b.'</span>)</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>mb <span class="op">=</span>    <span class="co"># Mass of the balloon (kg).</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span>    <span class="co"># Mass of the payload (kg).</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span>     <span class="co"># Current temperature (Kelvins).</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span>     <span class="co"># Current pressure (Pa).</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ρa0 <span class="op">=</span>   <span class="co"># Reference density of air (kg/m^3)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ρh0 <span class="op">=</span>   <span class="co"># Reference density of helium (kg/m^3)</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span>    <span class="co"># Reference temperature (Kelvins).</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span>    <span class="co"># Reference Pressure (Pa).</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span>    <span class="co"># Diameter of weather balloon (m).</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span>     <span class="co"># Volume of balloon (m^3).</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span>       <span class="co"># Cross-sectional area of balloon (m^3)</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Drag constant for sphere (unitless)</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span>  <span class="co"># Acceleration due to gravity (m/s^2)</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>mt <span class="op">=</span> mp <span class="op">+</span> mb <span class="op">+</span> ρh <span class="op">*</span> V   <span class="co"># Total mass (kg).</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span>     <span class="co"># Time step (s).</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> []     <span class="co"># Initial height of balloon (meters).</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="dv">0</span>]    <span class="co"># Initial speed of balloon (m/s).</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [ (ρa <span class="op">*</span> V <span class="op">*</span> g <span class="op">-</span> mt <span class="op">*</span> g)<span class="op">/</span>mt]  <span class="co">#Initial acceleration of the balloon</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [<span class="dv">0</span>]</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>yCeiling <span class="op">=</span>   <span class="co"># Height of the ceiling (meters)</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Fb <span class="op">&lt;</span> Fg:</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Your balloon will not fly!"</span>)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    exit()</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y <span class="op">&lt;</span> yCeiling <span class="kw">and</span> t <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    Fd <span class="op">=</span>     <span class="co"># Drag Force (N).</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    a.append()      <span class="co"># acceleration (m/s^2).</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>    v.append()      <span class="co"># Update velocity</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    y.append()      <span class="co"># Update position</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    t.append()      <span class="co"># Update time.</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>ax1.plot(t,a,<span class="st">'r.'</span>)</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>ax2.plot(t,v,<span class="st">'g.'</span>)</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>ax3.plot(t,y,<span class="st">'b.'</span>)</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -435,87 +548,96 @@ m = m_\text{payload} + m_\text{balloon}
 </section>
 <section id="procedure-1" class="level3">
 <h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
-<p>To incorporate uncertainty into Euler’s method, you must repeat your Euler’s loop many times using different values for those quantities that carry uncertainty. In the code cell below you will find a template for doing this. Follow the instructions below to complete the task. 1. You’ll notice that the variable names in the code cell have been modified from what they were in Activity I. Instead of “mb” for mass of the balloon, we now have “meanmb” for mean mass of the balloon and “dmb” for uncertainty in the mass of the balloon. Transfer all of your measurements and uncertainties from Activity I into the code cell below. 2. If you haven’t yet, record the uncertainties in all of your measured values in the code cell below. 3. You’ll notice that our Euler’s loop from Activity I is now enclosed in another loop (called a ‘for’ loop). This will allow us to repeat the Euler’s loop as many times as we would like. We call the Euler’s loop the “inner” loop and the ‘for’ loop the “outer” loop. The first five lines in the outer loop are to select a random number for each of the variables that carry uncertainty. I’ve given an example of how to do this on the first line for the balloon mass. Repeat this same process to select random numbers for the other five quantities that carry uncertainty. 4. Fill in the correct expressions for the remainder of the code lines that are incomplete. (Most of these lines will be identical to what they were in Activity I.) 5. Check with a neighbor or B. Nelson to verify that you did it correctly. 6. Run your code and observe the results. Notice the spread in travel times depicted on the position vs.&nbsp;time graph. (Cool eh!)</p>
+<p>To incorporate uncertainty into Euler’s method, you must repeat your Euler’s loop many times using different values for those quantities that carry uncertainty. In the code cell below you will find a template for doing this. Follow the instructions below to complete the task.</p>
+<ol type="1">
+<li>You’ll notice that the variable names in the code cell have been modified from what they were in Activity I. Instead of “mb” for mass of the balloon, we now have “meanmb” for mean mass of the balloon and “dmb” for uncertainty (or standard deviation) in the mass of the balloon. Transfer all of your measurements and uncertainties from Activity I into the code cell below.</li>
+<li>If you haven’t yet, record the uncertainties in all of your measured values in the code cell below.</li>
+<li>You’ll notice that our Euler’s loop from Activity I is now enclosed in a <code>for</code> loop . This will allow us to repeat the Euler’s loop as many times as we would like. We call the Euler’s loop the “inner” loop and the ‘for’ loop the “outer” loop. The first five lines in the outer loop are to select a random number for each of the variables that carry uncertainty. I’ve given an example of how to do this on the first line for the balloon mass. Repeat this same process to select random numbers for the other five quantities that carry uncertainty.</li>
+<li>Fill in the correct expressions for the remainder of the code lines that are incomplete. (Most of these lines will be identical to what they were in Activity I.)</li>
+<li>Check with a neighbor or B. Nelson to verify that you did it correctly.</li>
+<li>Run your code and observe the results. Notice the spread in travel times depicted on the position vs.&nbsp;time graph. (Cool eh!)</li>
+</ol>
 <p>Note: The uncertainty in your balloon diameter will be the biggest contributor to the uncertainty in the predicted flight time.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables with uncertainties attached.</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>meanmb <span class="op">=</span>    <span class="co"># Mass of the balloon (kg).</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>dmb <span class="op">=</span>    <span class="co"># Unceratainty in balloon mass (kg).</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>meanT <span class="op">=</span>     <span class="co"># Current temperature (Kelvins).</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span>          <span class="co"># Uncertainty in current temperature (Kelvins).</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>meanP <span class="op">=</span>     <span class="co"># Current pressure (Pa).</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>dP <span class="op">=</span>          <span class="co"># Uncertainty in current atmospheric pressure (Pa).</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>meand <span class="op">=</span>    <span class="co"># Diameter of weather balloon (m).</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>dd <span class="op">=</span>           <span class="co"># Uncertainty in diameter of balloon (m).</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>meanyCeiling <span class="op">=</span>    <span class="co"># Height of the ceiling (meters)</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>dyCeiling <span class="op">=</span> </span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables with no uncertainty attached</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span>          <span class="co"># Mass of the payload (kg)</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>ρa0 <span class="op">=</span> <span class="fl">1.2754</span>  <span class="co"># Reference density of air (kg/m^3)</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>ρh0 <span class="op">=</span> <span class="fl">0.1784</span>  <span class="co"># Reference density of helium (kg/m^3)</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> <span class="fl">273.15</span>   <span class="co"># Reference temperature (Kelvins).</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> <span class="fl">1.0e5</span>   <span class="co"># Reference Pressure (Pa).</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Drag constant for sphere (unitless)</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span>  <span class="co"># Acceleration due to gravity (m/s^2)</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="fl">0.01</span>    <span class="co"># Time step (s).</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> []</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Counter</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>Ntrials <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> N <span class="op">&lt;</span> Ntrials:</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    mb <span class="op">=</span> np.random.uniform(meanmb <span class="op">-</span> dmb,meanmb <span class="op">+</span> dmb)  <span class="co"># Get a randon number for the balloon mass.</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span>   <span class="co"># Get a random number for the balloon diameter (m).</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span>   <span class="co"># Get a random number for the pressure (Pa).</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    T <span class="op">=</span>   <span class="co"># Get a random number for the temperature (Kelvins).</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    yCeiling <span class="op">=</span>   <span class="co"># Get a random number for the ceiling height (m).</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    V <span class="op">=</span>     <span class="co"># Volume of balloon (m^3).</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span>       <span class="co"># Cross-sectional area of balloon (m^3)</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    mt <span class="op">=</span> mb <span class="op">+</span> mp <span class="op">+</span> ρh <span class="op">*</span> V</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> d     <span class="co"># Initial height of balloon (meters).</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> <span class="dv">0</span>     <span class="co"># Initial velocity of balloon (m/s).</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> <span class="dv">0</span>     <span class="co"># Initial time (s).</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> Fb <span class="op">&lt;</span> Fg:  <span class="co"># If the buoyant force isn't enough to lift the balloon, don't run Euler's method.</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Your buoyant force is smaller than the weight of the balloon, skipping to next iteration."</span>)</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    N <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> y <span class="op">&lt;</span> yCeiling:</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>        Fd <span class="op">=</span> </span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span>  </span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        v <span class="op">=</span> </span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> </span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>        t <span class="op">=</span> </span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>        ax1.plot(t,a,<span class="st">'r.'</span>)</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>        ax2.plot(t,v,<span class="st">'g.'</span>)</span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>        ax3.plot(t,y,<span class="st">'b.'</span>)</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    times.append(t)</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(times), np.std(times))</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> sp</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables with uncertainties attached.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>meanmb <span class="op">=</span>    <span class="co"># Mass of the balloon (kg).</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>dmb <span class="op">=</span>    <span class="co"># Unceratainty in balloon mass (kg).</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>meanT <span class="op">=</span>     <span class="co"># Current temperature (Kelvins).</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>dT <span class="op">=</span>          <span class="co"># Uncertainty in current temperature (Kelvins).</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>meanP <span class="op">=</span>     <span class="co"># Current pressure (Pa).</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>dP <span class="op">=</span>          <span class="co"># Uncertainty in current atmospheric pressure (Pa).</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>meand <span class="op">=</span>    <span class="co"># Diameter of weather balloon (m).</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>dd <span class="op">=</span>           <span class="co"># Uncertainty in diameter of balloon (m).</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>meanyCeiling <span class="op">=</span>    <span class="co"># Height of the ceiling (meters)</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>dyCeiling <span class="op">=</span> </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables with no uncertainty attached</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>mp <span class="op">=</span>          <span class="co"># Mass of the payload (kg)</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>ρa0 <span class="op">=</span> <span class="fl">1.2754</span>  <span class="co"># Reference density of air (kg/m^3)</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>ρh0 <span class="op">=</span> <span class="fl">0.1784</span>  <span class="co"># Reference density of helium (kg/m^3)</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>T0 <span class="op">=</span> <span class="fl">273.15</span>   <span class="co"># Reference temperature (Kelvins).</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>P0 <span class="op">=</span> <span class="fl">1.0e5</span>   <span class="co"># Reference Pressure (Pa).</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="fl">0.5</span>   <span class="co"># Drag constant for sphere (unitless)</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span>  <span class="co"># Acceleration due to gravity (m/s^2)</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="fl">0.01</span>    <span class="co"># Time step (s).</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> []</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>Ntrials <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> N <span class="kw">in</span> <span class="bu">range</span>(Ntrials):</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    mb <span class="op">=</span> sp.norm.rvs(loc <span class="op">=</span> meanmb, scale <span class="op">=</span> dmb)  <span class="co"># Get a randon number for the balloon mass.</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span>   <span class="co"># Get a random number for the balloon diameter (m).</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    P <span class="op">=</span>   <span class="co"># Get a random number for the pressure (Pa).</span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    T <span class="op">=</span>   <span class="co"># Get a random number for the temperature (Kelvins).</span></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    yCeiling <span class="op">=</span>   <span class="co"># Get a random number for the ceiling height (m).</span></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>    V <span class="op">=</span>     <span class="co"># Volume of balloon (m^3).</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span>       <span class="co"># Cross-sectional area of balloon (m^3)</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>    mt <span class="op">=</span> mb <span class="op">+</span> mp <span class="op">+</span> ρh <span class="op">*</span> V</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>    ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>    Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> [d]     <span class="co"># Initial height of balloon (meters).</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> [<span class="dv">0</span>]     <span class="co"># Initial velocity of balloon (m/s).</span></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> [(ρa <span class="op">*</span> V <span class="op">*</span> g <span class="op">-</span> mt <span class="op">*</span> g)<span class="op">/</span>mt]</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> [<span class="dv">0</span>]     <span class="co"># Initial time (s).</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> Fb <span class="op">&lt;</span> Fg:  <span class="co"># If the buoyant force isn't enough to lift the balloon, don't run Euler's method.</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Your buoyant force is smaller than the weight of the balloon, skipping to next iteration."</span>)</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> y <span class="op">&lt;</span> yCeiling:</span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>        Fd <span class="op">=</span> </span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>        a.append()  </span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>        v.append() </span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>        y.append() </span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>        t.append()</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>    ax1.plot(t,a,<span class="st">'r.'</span>)</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>    ax2.plot(t,v,<span class="st">'g.'</span>)</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>    ax3.plot(t,y,<span class="st">'b.'</span>)</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>    times.append(t)</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(times), np.std(times))</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -523,7 +645,16 @@ m = m_\text{payload} + m_\text{balloon}
 <h2 class="anchored" data-anchor-id="activity-iii-checking-our-prediction">Activity III: Checking our Prediction</h2>
 <section id="goal-overview-2" class="level3">
 <h3 class="anchored" data-anchor-id="goal-overview-2">Goal (Overview):</h3>
-<p>The balloon will be released and allowed to accelerate upwards towards the ceiling. The flight time will be measured and compared against the predicted flight time from Activity II. ### Procedure 1. Transfer the average flight time calculated in Activity II with its associated uncertainty into the table below. 2. Release the balloon from your pre-selected initial height and use a stopwatch to time the flight. Repeat the flight at least 5 times and calculate the average and standard deviation of the mean of your data. Record the mean and standard deviation of the mean in the table below. 3. Calculate the percent error and include that number in the table. 4. It’s possible that your percent error is high and the most likely explanation is in the measurement of the balloon diameter. If this is the case, return to your code from activity II and investigate what the balloon diameter would need be to reduce the percent error to <span class="math inline">\(&lt; 10\%\)</span>.</p>
+<p>The balloon will be released and allowed to accelerate upwards towards the ceiling. The flight time will be measured and compared against the predicted flight time from Activity II.</p>
+</section>
+<section id="procedure-2" class="level3">
+<h3 class="anchored" data-anchor-id="procedure-2">Procedure</h3>
+<ol type="1">
+<li>Transfer the average flight time calculated in Activity II with its associated uncertainty into the table below.</li>
+<li>Release the balloon from your pre-selected initial height and use a stopwatch to time the flight. Repeat the flight at least 5 times and calculate the average and standard deviation of the mean of your data. Record the mean and standard deviation of the mean in the table below.</li>
+<li>Calculate the percent error and include that number in the table.</li>
+<li>It’s possible that your percent error is high and the most likely explanation is in the measurement of the balloon diameter. If this is the case, return to your code from activity II and investigate what the balloon diameter would need be to reduce the percent error to <span class="math inline">\(&lt; 10\%\)</span>.</li>
+</ol>
 <table class="table">
 <thead>
 <tr class="header">
