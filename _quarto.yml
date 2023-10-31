@@ -30,6 +30,7 @@ book:
       chapters:
       - labs/Lab8-One-Dimensional-Eulers/L8-One-Dimensional-Eulers.qmd
       - labs/Lab9-One-D-Eulers-Uncertainty/L9-One-D-Eulers-Uncertainty.qmd
+      - labs/Lab10-Two-D-Eulers-Uncertainty/L10-Two-D-Eulers-Uncertainty.qmd
 bibliography: references.bib
 
 format:
