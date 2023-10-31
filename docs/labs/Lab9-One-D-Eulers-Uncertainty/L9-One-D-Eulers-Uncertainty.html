@@ -252,17 +252,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#activity-i-modeling-the-balloons-motion-eulers-method" id="toc-activity-i-modeling-the-balloons-motion-eulers-method" class="nav-link" data-scroll-target="#activity-i-modeling-the-balloons-motion-eulers-method">Activity I: Modeling the balloon’s motion (Euler’s Method)</a>
   <ul class="collapse">
   <li><a href="#goal-overview" id="toc-goal-overview" class="nav-link" data-scroll-target="#goal-overview">Goal (Overview)</a></li>
-  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
   </ul></li>
   <li><a href="#activity-ii-including-uncertainty" id="toc-activity-ii-including-uncertainty" class="nav-link" data-scroll-target="#activity-ii-including-uncertainty">Activity II: Including Uncertainty</a>
   <ul class="collapse">
   <li><a href="#goal-overview-1" id="toc-goal-overview-1" class="nav-link" data-scroll-target="#goal-overview-1">Goal (Overview)</a></li>
-  <li><a href="#procedure-1" id="toc-procedure-1" class="nav-link" data-scroll-target="#procedure-1">Procedure</a></li>
+  <li><a href="#procedure" id="toc-procedure" class="nav-link" data-scroll-target="#procedure">Procedure</a></li>
   </ul></li>
   <li><a href="#activity-iii-checking-our-prediction" id="toc-activity-iii-checking-our-prediction" class="nav-link" data-scroll-target="#activity-iii-checking-our-prediction">Activity III: Checking our Prediction</a>
   <ul class="collapse">
   <li><a href="#goal-overview-2" id="toc-goal-overview-2" class="nav-link" data-scroll-target="#goal-overview-2">Goal (Overview):</a></li>
-  <li><a href="#procedure-2" id="toc-procedure-2" class="nav-link" data-scroll-target="#procedure-2">Procedure</a></li>
+  <li><a href="#procedure-1" id="toc-procedure-1" class="nav-link" data-scroll-target="#procedure-1">Procedure</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -362,12 +361,12 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <section id="while-loops" class="level3">
 <h3 class="anchored" data-anchor-id="while-loops"><code>While</code> Loops</h3>
 <p>Last week we used a <code>for</code> loop with Euler’s method, which was a good first choice because its easy to understand. However a <code>for</code> loop is often a clunky approach because we often don’t know how many iterations need to be performed to achieve the desired result. For example, last week we showed an example of Euler’s method for a particle launched straight upward and allowed to travel up and then come back down and hit the ground. Instead of performing a specified number of iterations of this loop, it would be nice to let the loop continue until the particle hit the ground. We can do this with a <code>while</code> loop which has the following basic structure:</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">&lt;</span>stopping condition<span class="op">&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">&lt;</span>Body of loop<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>&lt;stopping condition&gt;</code> is a statement that determines whether the loop will continue to run or not. If the statement evaluates to <code>True</code>, the loop continues and if it evaluates to <code>False</code>, it will stop. As a simple example let’s use a <code>while</code> loop find the first 20 numbers in the fibonacci sequence:</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>previous <span class="op">=</span> <span class="dv">1</span> <span class="co"># First number in the Fibonacci sequence</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> <span class="dv">1</span> <span class="co"># Second number in the Fibonacci sequence</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
@@ -380,7 +379,7 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 </div>
 <p>The stopping condition for this loop is <code>n &lt; 20</code>, where <code>n</code> is counting how many numbers in the sequence have been found so far. This variable starts off with a value of <span class="math inline">\(2\)</span> and increases by <span class="math inline">\(1\)</span> every time that another number is found. Once the value of <code>n</code> reaches <span class="math inline">\(20\)</span>, the statement <code>n &lt; 20</code> produces a <code>False</code> and the loop terminates.</p>
 <p><code>while</code> loops should be used with caution because you can easily write a <em>faulty stopping condition</em> and inadvertently write a loop that runs forever. This happens because your stopping condition was never met. For example, if the statement <code>n = n + 1</code> were omitted in the code above, <code>n</code> would never change and the stopping condition <code>n &lt; 20</code> would never evaluate to <code>False</code> and the loop will run forever. To avoid this, you should always get in the habit of building a fail safe into your while loops. To build a fail safe, first define a variable that counts the number of loop iterations. Then add an <code>if</code> statement inside the loop body to check to see if the value of the counter variable becomes too large. A <code>break</code> statement is used in this case to exit the loop. Below is an example of the loop above with faulty termination logic but with a fail safe to prevent it from looping forever.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>previous <span class="op">=</span> <span class="dv">1</span> <span class="co"># First number in the Fibonacci sequence</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> <span class="dv">1</span> <span class="co"># Second number in the Fibonacci sequence</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">2</span></span>
@@ -396,7 +395,7 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(nextN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To use a <code>while</code> loop in Euler’s method for a projectile that is going to hit the ground, we should use the stopping condition <code>y[-1] &gt; 0</code> so that the loop terminates once the position of the projectile becomes negative. The example from last week with the modifications to use a <code>while</code> loop is given below. Notice also that since we no long use the loop variable <code>i</code>, we can’t use it to index the position and velocity lists. Instead we use <code>v[-1]</code> and <code>y[-1]</code> to access the last element in each of these lists.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import statements</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -439,23 +438,23 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <section id="propagating-uncertainty---random-numbers" class="level3">
 <h3 class="anchored" data-anchor-id="propagating-uncertainty---random-numbers">Propagating Uncertainty - Random numbers</h3>
 <p>A centeral theme in this class is that of propagating uncertainty. When performing numerical simulations, the uncertainties in the measured quantities used will propagate through to the final result. As a simple example, recall the equation for the acceleration due to gravity (<span class="math inline">\(g\)</span>) in terms of the lengthe of a pendulum (<span class="math inline">\(L\)</span>) and its period (<span class="math inline">\(T\)</span>): <span class="math inline">\(g = {4 \pi^2 L \over T^2}\)</span>. Imagine collecting (L,T) data pairs and wanting to use them to determine the uncertainty on the value of <span class="math inline">\(g\)</span>. This situation is depicted graphically in the figures below.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>Text(0.5, 0, 'g (m/s$^2$)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="L9-One-D-Eulers-Uncertainty_files/figure-html/cell-6-output-2.png" width="672" height="1128"></p>
+<p><img src="L9-One-D-Eulers-Uncertainty_files/figure-html/cell-6-output-2.png" width="670" height="1128"></p>
 </div>
 </div>
 <p>The top figures represent the distribution of the (L,T) pairs and the one-dimensional projections. The second figure shows the same data as the top figure but now the value of g for each (L,T) data pair is represented by the color of the plot point. Finally the final figure gives the histogram of g values. The standard deviation of this final data set could be used as the uncertainty on <span class="math inline">\(g\)</span>. So to propagate uncertainty in a numerical calculation we should <strong>run Euler’s method many times, each time starting with a different set of initial conditions.</strong> When selecting a value for the initial condition we should generate a random number from the appropriate distribution. This can be accomplished by placing your Euler’s loop from last week into <em>another loop</em>, called the outer loop.</p>
 <p>To generate a random number from a normal distribution in Python, use the <code>norm.rvs</code> function (short for random variate sample) from the <code>scipy.stats</code> module. (Example below)</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> sp</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>randomNumber <span class="op">=</span> sp.norm.rvs(loc <span class="op">=</span> <span class="dv">5</span>,scale <span class="op">=</span> <span class="fl">0.5</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(randomNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5.1571447549094485</code></pre>
+<pre><code>4.874858274023304</code></pre>
 </div>
 </div>
 <p>The <code>loc</code> keyword argument specifies the mean of the distribution (<span class="math inline">\(\mu\)</span>) and the <code>scale</code> keyword argument specifies the standard deviation of the distribution (<span class="math inline">\(\sigma\)</span>).</p>
@@ -465,31 +464,10 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <h2 class="anchored" data-anchor-id="activity-i-modeling-the-balloons-motion-eulers-method">Activity I: Modeling the balloon’s motion (Euler’s Method)</h2>
 <section id="goal-overview" class="level3">
 <h3 class="anchored" data-anchor-id="goal-overview">Goal (Overview)</h3>
-<p>Modify your code from last week to incorporate the buoyant force experienced by the weather balloon.</p>
-</section>
-<section id="procedure" class="level3">
-<h3 class="anchored" data-anchor-id="procedure">Procedure</h3>
-<ol type="1">
-<li>Measure the mass of the balloon before we fill it with helium. Record a value and an uncertainty.</li>
-<li>We’ll be adding a small payload to the balloon and adjusting it until the time of flight falls in a reasonable range. For now, set the mass of the payload to be <span class="math inline">\(m_p = 15\)</span> grams. We’ll modify this number later.</li>
-<li>Measure the temperature in the room and <strong>assign an uncertainty to this measurement</strong>. Convert this temperature to Kelvins using the equation below. Then record this number in the code cell provided below. <span class="math display">\[ T_K = {5 \over 9}(T_F - 32) + 273.15\]</span></li>
-<li>Visit a weather website to look up the atmospheric pressure here in Rexburg. You’ll probably see a number with units of “inHg”, which means “inches of Mercury”. To convert this pressure into Pascals, use the equation below. (The <span class="math inline">\(4.865\)</span> is to undo the sea-level correction and the <span class="math inline">\(3386.39\)</span> is to convert from “inHg” to Pascals.) Record this value in the code cell provided below. <span class="math display">\[ P_\text{Pa} = 3386.39 \times (P_\text{inHg} - 4.865) \]</span></li>
-<li>Enter values for <span class="math inline">\(T_0\)</span> <span class="math inline">\(P_0\)</span> in the code cell below using the values shown above.</li>
-<li>Enter the expression for density given above into the code cell provided below for the density of air and helium.</li>
-<li>Enter the expression for <span class="math inline">\(V\)</span> and <span class="math inline">\(A\)</span> in the code cell below in terms of <span class="math inline">\(d\)</span> (diameter).</li>
-<li>Enter the expression for <span class="math inline">\(F_b\)</span> (the buoyant force) in the code cell below using the equation provided above.</li>
-<li>Enter the expression for <span class="math inline">\(F_g\)</span> (the weights) in the code cell below using the equation provided above.</li>
-<li>Enter the expression for <span class="math inline">\(F_D\)</span> (the drag force) in the code cell below using the equation provided above. As a reminder, the equation should be: <span class="math display">\[
+<p>Modify your code from last week to incorporate the buoyant force experienced by the weather balloon. git c ### Procedure 1. Measure the mass of the balloon before we fill it with helium. Record a value and an uncertainty. 2. We’ll be adding a small payload to the balloon and adjusting it until the time of flight falls in a reasonable range. For now, set the mass of the payload to be <span class="math inline">\(m_p = 15\)</span> grams. We’ll modify this number later. 3. Measure the temperature in the room and <strong>assign an uncertainty to this measurement</strong>. Convert this temperature to Kelvins using the equation below. Then record this number in the code cell provided below. <span class="math display">\[ T_K = {5 \over 9}(T_F - 32) + 273.15\]</span> 4. Visit a weather website to look up the atmospheric pressure here in Rexburg. You’ll probably see a number with units of “inHg”, which means “inches of Mercury”. To convert this pressure into Pascals, use the equation below. (The <span class="math inline">\(4.865\)</span> is to undo the sea-level correction and the <span class="math inline">\(3386.39\)</span> is to convert from “inHg” to Pascals.) Record this value in the code cell provided below. <span class="math display">\[ P_\text{Pa} = 3386.39 \times (P_\text{inHg} - 4.865) \]</span> 5. Enter values for <span class="math inline">\(T_0\)</span> <span class="math inline">\(P_0\)</span> in the code cell below using the values shown above. 6. Enter the expression for density given above into the code cell provided below for the density of air and helium. 7. Enter the expression for <span class="math inline">\(V\)</span> and <span class="math inline">\(A\)</span> in the code cell below in terms of <span class="math inline">\(d\)</span> (diameter). 8. Enter the expression for <span class="math inline">\(F_b\)</span> (the buoyant force) in the code cell below using the equation provided above. 9. Enter the expression for <span class="math inline">\(F_g\)</span> (the weights) in the code cell below using the equation provided above. 10. Enter the expression for <span class="math inline">\(F_D\)</span> (the drag force) in the code cell below using the equation provided above. As a reminder, the equation should be: <span class="math display">\[
 {1\over 2} \; C \rho A |v| v
-\]</span></li>
-<li>Enter the expression for <span class="math inline">\(a\)</span> (the acceleration) in the code cell below using the equation provided above. Note that since the acceleration is not constant the calculation must be performed inside the main Euler’s loop.</li>
-<li>Following the same pattern from last week, add expressions to update the velocity, position, and time inside the main Euler’s loop.</li>
-<li>Check with your neighbor and/or B. Nelson to ensure you have done these steps correctly before moving on.</li>
-<li>Have B. Nelson fill your balloon with helium. Once it is filled, devise a method for determining the diameter of the balloon. Record the value and its uncertainty in the code cell below. (Note: The helium will slowly diffuse out of the balloon, so you won’t want much time to pass between when you fill your balloon and when you test your prediction)</li>
-<li>Run your code and verify that your results are reasonable.</li>
-<li>Using trial and error, adjust the mass of the payload until the time of flight is in the <span class="math inline">\(6-10\)</span> seconds range.</li>
-</ol>
-<div class="cell" data-execution_count="8">
+\]</span> 11. Enter the expression for <span class="math inline">\(a\)</span> (the acceleration) in the code cell below using the equation provided above. Note that since the acceleration is not constant the calculation must be performed inside the main Euler’s loop. 12. Following the same pattern from last week, add expressions to update the velocity, position, and time inside the main Euler’s loop. 13. Check with your neighbor and/or B. Nelson to ensure you have done these steps correctly before moving on. 14. Have B. Nelson fill your balloon with helium. Once it is filled, devise a method for determining the diameter of the balloon. Record the value and its uncertainty in the code cell below. (Note: The helium will slowly diffuse out of the balloon, so you won’t want much time to pass between when you fill your balloon and when you test your prediction) 15. Run your code and verify that your results are reasonable. 16. Using trial and error, adjust the mass of the payload until the time of flight is in the <span class="math inline">\(6-10\)</span> seconds range.</p>
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -514,14 +492,14 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.8</span>  <span class="co"># Acceleration due to gravity (m/s^2)</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>mt <span class="op">=</span> mp <span class="op">+</span> mb <span class="op">+</span> ρh <span class="op">*</span> V   <span class="co"># Total mass (kg).</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>mt <span class="op">=</span> mp <span class="op">+</span> mb <span class="op">+</span> ρh <span class="op">*</span> V   <span class="co"># Total mass (kg).</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span>     <span class="co"># Time step (s).</span></span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> []     <span class="co"># Initial height of balloon (meters).</span></span>
 <span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="dv">0</span>]    <span class="co"># Initial speed of balloon (m/s).</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [ (ρa <span class="op">*</span> V <span class="op">*</span> g <span class="op">-</span> mt <span class="op">*</span> g)<span class="op">/</span>mt]  <span class="co">#Initial acceleration of the balloon</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [ (Fb <span class="op">-</span> Fg)<span class="op">/</span>mt]  <span class="co">#Initial acceleration of the balloon</span></span>
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [<span class="dv">0</span>]</span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>yCeiling <span class="op">=</span>   <span class="co"># Height of the ceiling (meters)</span></span>
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
@@ -552,8 +530,8 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <h3 class="anchored" data-anchor-id="goal-overview-1">Goal (Overview)</h3>
 <p>Using the uncertainties that you assigned to your measured values from Activity I, use Euler’s method to calculate the uncertainty in the flight time.</p>
 </section>
-<section id="procedure-1" class="level3">
-<h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
+<section id="procedure" class="level3">
+<h3 class="anchored" data-anchor-id="procedure">Procedure</h3>
 <p>To incorporate uncertainty into Euler’s method, you must repeat your Euler’s loop many times using different values for those quantities that carry uncertainty. In the code cell below you will find a template for doing this. Follow the instructions below to complete the task.</p>
 <ol type="1">
 <li>You’ll notice that the variable names in the code cell have been modified from what they were in Activity I. Instead of “mb” for mass of the balloon, we now have “meanmb” for mean mass of the balloon and “dmb” for uncertainty (or standard deviation) in the mass of the balloon. Transfer all of your measurements and uncertainties from Activity I into the code cell below.</li>
@@ -564,7 +542,7 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <li>Run your code and observe the results. Notice the spread in travel times depicted on the position vs.&nbsp;time graph. (Cool eh!)</li>
 </ol>
 <p>Note: The uncertainty in your balloon diameter will be the biggest contributor to the uncertainty in the predicted flight time.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> sp</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -618,15 +596,15 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>    V <span class="op">=</span>     <span class="co"># Volume of balloon (m^3).</span></span>
 <span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span>       <span class="co"># Cross-sectional area of balloon (m^3)</span></span>
 <span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>    mt <span class="op">=</span> mb <span class="op">+</span> mp <span class="op">+</span> ρh <span class="op">*</span> V</span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>    ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>    ρa <span class="op">=</span>    <span class="co"># Density of air (kg/m^3)</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>    ρh <span class="op">=</span>   <span class="co"># Density of Helium (kg/m^3)</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>    mt <span class="op">=</span> mb <span class="op">+</span> mp <span class="op">+</span> ρh <span class="op">*</span> V</span>
 <span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>    Fb <span class="op">=</span>   <span class="co"># Buoyant Force (N).</span></span>
 <span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>    Fg <span class="op">=</span>   <span class="co"># Weight of helium + payload + balloon (N).</span></span>
 <span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> [d]     <span class="co"># Initial height of balloon (meters).</span></span>
 <span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> [<span class="dv">0</span>]     <span class="co"># Initial velocity of balloon (m/s).</span></span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> [(ρa <span class="op">*</span> V <span class="op">*</span> g <span class="op">-</span> mt <span class="op">*</span> g)<span class="op">/</span>mt]</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> [(Fb <span class="op">-</span> Fg)<span class="op">/</span>mt]</span>
 <span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> [<span class="dv">0</span>]     <span class="co"># Initial time (s).</span></span>
 <span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> Fb <span class="op">&lt;</span> Fg:  <span class="co"># If the buoyant force isn't enough to lift the balloon, don't run Euler's method.</span></span>
@@ -653,8 +631,8 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <h3 class="anchored" data-anchor-id="goal-overview-2">Goal (Overview):</h3>
 <p>The balloon will be released and allowed to accelerate upwards towards the ceiling. The flight time will be measured and compared against the predicted flight time from Activity II.</p>
 </section>
-<section id="procedure-2" class="level3">
-<h3 class="anchored" data-anchor-id="procedure-2">Procedure</h3>
+<section id="procedure-1" class="level3">
+<h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
 <ol type="1">
 <li>Transfer the average flight time calculated in Activity II with its associated uncertainty into the table below.</li>
 <li>Release the balloon from your pre-selected initial height and use a stopwatch to time the flight. Repeat the flight at least 5 times and calculate the average and standard deviation of the mean of your data. Record the mean and standard deviation of the mean in the table below.</li>
