@@ -258,7 +258,8 @@ print(randomNumber)
 
 ```
 
-The `loc` keyword argument specifies the mean of the distribution ($\mu$) and the `scale` keyword argument specifies the standard deviation of the distribution ($\sigma$).
+The `loc` keyword argument specifies the mean of the distribution ($\mu$) and the `scale` keyword argument specifies the standard deviation of the distribution ($\sigma$).  
+
 ## Activity I: Modeling the balloon's motion (Euler's Method)
 
 ### Goal (Overview)

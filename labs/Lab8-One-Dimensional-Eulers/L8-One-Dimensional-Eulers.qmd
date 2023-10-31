@@ -13,17 +13,11 @@ Name:
 In this lab you will gain the following skills
 
 ### Python
-1. Understand the basics of loops.
-2. Know the difference between a for loop and a while loop.
-3. Use logic inside of a loop
-4. Construct an Euler's method code for simple one-dimensional motion.
+1. How to construct a Python `for` loop.
+2. Construct an Euler's method code for simple one-dimensional motion.
 
 
-### Mathematical/Experimental Skills and Knowledge
-1. Know and use kinematic equations to motion problems.
-2. Know what Euler's method is.
-
-    
+   
 ## Background Information
 
 ### Review of Kinematics
