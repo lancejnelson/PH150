@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 1 Measurement and Uncertainty</span></a>
+ <span class="menu-text">Lab 1: Measurement and Uncertainty</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 4 Statistical Interpretation of Uncertainty</span></a>
+ <span class="menu-text">Lab 4: Statistical Interpretation of Uncertainty</span></a>
   </div>
 </li>
       </ul>
@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 5 Experimental Design I</span></a>
+ <span class="menu-text">Lab 5: Experimental Design I</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -292,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="skills-youll-gain">Skills you’ll gain</h2>
 <ol type="1">
 <li>Use basic LaTeX syntax to write simple mathematical equations.</li>
-<li>Use Sympy to calculate derivatives.</li>
+<li>Use sympy to calculate derivatives.</li>
 <li>Propagate uncertainty for complex equations using the equation <span class="math display">\[ \delta q =  \sqrt{({\partial q \over \partial a} \delta a)^2 + ({\partial q \over \partial b} \delta b)^2 + \dots}\]</span></li>
 </ol>
 </section>
@@ -315,18 +315,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>display(z)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>zprime <span class="op">=</span> sp.diff(z,x)  <span class="co"># Step 3: Use 'diff' to differentiate.</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>display(zprime)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> zprime.subs({x:<span class="dv">5</span>,y:<span class="dv">3</span>})  <span class="co">#Evaluate the derivative at x = 5, y = 3</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>subsDict <span class="op">=</span> {x:<span class="dv">5</span>,y:<span class="dv">3</span>} <span class="co"># Step 4 part 1: Define a dictionary with the substitution rules: x-&gt;5, y-&gt; 3</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> zprime.subs(subsDict)  <span class="co">#Step 4 part 2: Evaluate the derivative at x = 5, y = 3</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="L3-Propagation_of_UncertaintyII_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+<p><span class="math inline">\(\displaystyle \frac{x^{2}}{y}\)</span></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="L3-Propagation_of_UncertaintyII_files/figure-html/cell-2-output-2.png" class="img-fluid"></p>
+<p><span class="math inline">\(\displaystyle \frac{2 x}{y}\)</span></p>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>10/3</code></pre>
 </div>
 </div>
+<p>Notice that curly braces (<code>{}</code>) were used to define the set of substitution rules. Make sure to not mistakenly use parenthesis or square brackets in their place or the substitution will not work.</p>
 </section>
 <section id="activity-i-exit-speed-50-pts" class="level2">
 <h2 class="anchored" data-anchor-id="activity-i-exit-speed-50-pts">Activity I: Exit Speed (50 pts)</h2>
@@ -348,31 +350,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Set your cannon on the floor or table and set the launch angle to <span class="math inline">\(90^\circ\)</span> (straight up)</li>
 <li>Measure the distance from where the sphere exits the launcher to the peak of its trajectory. Record the value and the uncertainty in the code cell provided below.</li>
 <li>In the cell below, record the best value of “g” from the previous lab with its associated uncertainty.</li>
-<li>You may remember the following kinematic equation: <span class="math display">\[ v_f^2 = v_i^2 - 2 g h\]</span>. Do the algebra needed to solve this equation for <span class="math inline">\(v_i\)</span>. Complete the equation below <span class="math display">\[ v_i = \]</span></li>
+<li>You may remember the following kinematic equation: <span class="math display">\[ v_f^2 = v_i^2 - 2 g h\]</span>. Do the algebra needed to solve this equation for <span class="math inline">\(v_i\)</span>. Use <span class="math inline">\(\LaTeX\)</span> syntax to complete the equation below <span class="math display">\[ v_i = \]</span></li>
+<li>On line 8 of the code cell below, define sympy symbols for g and delta_h.</li>
 <li>On line 9 of the code cell below, enter the expression you found in step 4 for the initial velocity. To calculate a square root, use <code>sp.sqrt()</code></li>
-<li>To calculate the uncertainty in the initial velocity, you need to take two derivatives of the function that you found in step 4; <span class="math inline">\({\partial v_i \over \partial g}\)</span> and <span class="math inline">\({\partial v_i \over \partial h}\)</span>. Complete the mathematical statements below with the expressions for these derivatives. <span class="math display">\[{\partial v_i \over \partial g} = \]</span> <span class="math display">\[{\partial v_i \over \partial h} = \]</span></li>
-<li>Now execute the cell below and compare python’s derivatives to your hand-written ones.</li>
-<li>The expression for uncertainty propagation for <span class="math inline">\(v_i\)</span> is <span class="math display">\[ \delta v_i =  \sqrt{({\partial v_i \over \partial g} \delta g)^2 + ({\partial v_i \over \partial h} \delta h)^2}\]</span> This calculation is performed on line 17 in the code cell below. Study the code and ask questions so you can recreate this in activity II.</li>
+<li>To calculate the uncertainty in the initial velocity, you need to take two derivatives of the function that you found in step 4; <span class="math inline">\({\partial v_i \over \partial g}\)</span> and <span class="math inline">\({\partial v_i \over \partial h}\)</span>. Use <span class="math inline">\(\LaTeX\)</span> syntax to complete the mathematical statements below with the expressions for these derivatives. <span class="math display">\[{\partial v_i \over \partial g} = \]</span> <span class="math display">\[{\partial v_i \over \partial h} = \]</span></li>
+<li>On lines 11 and 12 of the code cell below, use sympy to calculate the derivatives of vi with respect to g and h.</li>
+<li>On lines 16 of the code cell below, substitute values for the symbols to get a value for the initial velocity.</li>
+<li>Now execute the cell below and compare python’s derivatives to your hand-written ones. (You may need to comment out some lines that haven’t been completed yet)</li>
+<li>The expression for the uncertainty for <span class="math inline">\(v_i\)</span> is <span class="math display">\[ \delta v_i =  \sqrt{({\partial v_i \over \partial g} \delta g)^2 + ({\partial v_i \over \partial h} \delta h)^2}\]</span> Perform this calculation on line 17 in the code cell below to obtain a value for the uncertainty in <span class="math inline">\(v_i\)</span>.<br>
+</li>
+<li>Add a formatted print statement to display the initial velocity and its associated uncertainty (with units).</li>
 </ol>
+<div class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch Parameters</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>           <span class="co"># distance from exit point to peak</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>un_h <span class="op">=</span>        <span class="co"># uncertainty of the distance</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>gval <span class="op">=</span>           <span class="co"># acceleration due to gravity (refer to last week's results)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>g_val <span class="op">=</span>           <span class="co"># acceleration due to gravity (refer to last week's results)</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>        <span class="co"># uncertainty in g (refer to last week's results)</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>g,dh <span class="op">=</span> sp.symbols(<span class="st">"g Δh"</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>vi <span class="op">=</span>                   <span class="co"># Line 9. </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>g,dh <span class="op">=</span>        <span class="co"># define sympy symbols for g and delta_h (Line 8)</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>vi <span class="op">=</span>          <span class="co"># Calculate the initial speed (Line 9). </span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>dvdg <span class="op">=</span> sp.diff(vi,g)  <span class="co"># Take the derivative with respect to g  #Line 11</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>dvdh <span class="op">=</span> sp.diff(vi,dh) <span class="co"># Take the derivative with respect to h (distance to peak)  #Line 12</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>display(dvdg)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>dvdg <span class="op">=</span>   <span class="co"># Take the derivative with respect to g  (Line 11)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>dvdh <span class="op">=</span>  <span class="co"># Take the derivative with respect to h (distance to peak) (Line 12)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>display(dvdg)  <span class="co"># Display the derivatives to check that you did it right.</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>display(dvdh)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>initialV <span class="op">=</span> vi.subs({g:gval,dh:h})</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>Δvi <span class="op">=</span> sp.sqrt((dvdg.subs({g:gval,dh:h}) <span class="op">*</span> un_g)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (dvdy.subs({g:gval,dh:h}) <span class="op">*</span> un_h)<span class="op">**</span><span class="dv">2</span>) <span class="co"># Line 17</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>initialV <span class="op">=</span> <span class="co"># Substitute numbers in for the symbols.  (line 16)</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>Δvi <span class="op">=</span>  <span class="co"># Line 17</span></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The initial velocity of the particle is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> m/s."</span>.<span class="bu">format</span>(initialV,Δvi))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a formatted print statement here to display your results.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="activity-ii---projectile-motion-prediction-50-points" class="level2">
@@ -397,38 +406,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Set your cannon on a table and aim it in a direction so that the projectile won’t hit anything (or anyone).</li>
 <li>Choose an initial launch angle and speed setting. Then adjust your cannon to match these choices. Record your launch angle with its associated uncertainty (in radians) in the code cell below.</li>
 <li>Transfer the initial velocity and uncerainty that you found from activity I into the code cell below.</li>
-<li>Measure the distance from the ground to the projectile’s point of exit. Record this number with its associated uncertainty in the code cell below.</li>
+<li>Measure the distance from the ground to the projectile’s point of exit. Record this number with its associated uncertainty in the code cell below.<br>
+</li>
+<li>On line 14 of the code cell below, define symbols for the variables <span class="math inline">\(v_i\)</span>, <span class="math inline">\(y_i\)</span>, <span class="math inline">\(\theta\)</span>,<span class="math inline">\(g\)</span>, and <span class="math inline">\(t\)</span>.</li>
+<li>On line 15 of the code cell below, define a dictionary containing the substitution rules for <span class="math inline">\(v_i\)</span>, <span class="math inline">\(y_i\)</span>, <span class="math inline">\(\theta\)</span>, and <span class="math inline">\(g\)</span>.</li>
 </ol>
 </section>
 <section id="calculations" class="level4">
 <h4 class="anchored" data-anchor-id="calculations">Calculations</h4>
-<ol start="5" type="1">
-<li>You may recall the following kinematic equations from your PH121 class. <span class="math display">\[x_f = x_i + v_i \cos(\theta) t\]</span> <span class="math display">\[y_f = y_i + v_i \sin(\theta) t -{1\over 2} g  t^2\]</span> Use the second of these equations to find an expression for the projectile’s flight time in terms of <span class="math inline">\(y_i\)</span>, <span class="math inline">\(v_i\)</span>, <span class="math inline">\(\theta\)</span>, and <span class="math inline">\(g\)</span>. Fill in the equation below with your answer. <strong>Hint:</strong> You will have to solve a quadratic equation.<span class="math display">\[ t = \]</span></li>
-<li>Following the same pattern used on line 9 in the code cell above, enter the expression that you found in part 5 on line 18 of the code cell below. Use <code>sp.sqrt()</code> for square root expressions and <code>sp.sin()</code> for sine expressions.<br>
+<ol start="7" type="1">
+<li>You may recall the following kinematic equations from your PH121 class. <span class="math display">\[x_f = x_i + v_i \cos(\theta) t\]</span> <span class="math display">\[y_f = y_i + v_i \sin(\theta) t -{1\over 2} g  t^2\]</span> Use the second of these equations to find an expression for the projectile’s flight time in terms of <span class="math inline">\(y_i\)</span>, <span class="math inline">\(v_i\)</span>, <span class="math inline">\(\theta\)</span>, and <span class="math inline">\(g\)</span>. Use <span class="math inline">\(\LaTeX\)</span> syntax to complete the equation below with your answer. <strong>Hint:</strong> You will have to solve a quadratic equation.<span class="math display">\[ t = \]</span></li>
+<li>Enter the expression that you found in part 5 on line 18 of the code cell below. Use <code>sp.sqrt()</code> for square root expressions and <code>sp.sin()</code> for sine expressions.<br>
 </li>
-<li>To find the uncertainty in the flight time, you’ll need to evaluate four partial derivatives: <span class="math inline">\({\partial t \over \partial v_i}\)</span>, <span class="math inline">\({\partial t \over \partial \theta}\)</span>, <span class="math inline">\({\partial t \over \partial g}\)</span>, and <span class="math inline">\({\partial t \over \partial y_i}\)</span>. We’ll let python calculate these derivatives, following the same pattern shown in activity I. Fill in lines 20 - 23 in the code cell below with the appropriate code to calculate the four relevant derivatives. (They will look similar to lines 11 and 12 from the code cell above.)</li>
-<li>The expression for the uncertainty in the flight time is given by:<span class="math display">\[ \delta t = \sqrt{({\partial t \over \partial v_i} \delta v_i)^2 + ({\partial t \over \partial \theta} \delta \theta)^2 + ({\partial t \over \partial y_i} \delta y_i)^2 + ({\partial t \over \partial g} \delta g)^2}\]</span> Fill in line 29 in the code cell below with the appropriate code to calculate this expression. (It will be similar to line 17 from the code cell above)</li>
-<li>Now that you have the flight time with its uncertainty, you can use the first kinematic equation from above to calculate the projectile’s landing location. Fill in the equation below with an expression for the landing location <span class="math inline">\(x_f\)</span> in terms of <span class="math inline">\(v_i\)</span>, <span class="math inline">\(\theta\)</span>, and <span class="math inline">\(t\)</span>. <span class="math display">\[x_f = \]</span></li>
-<li>To find the uncertainty in the landing location, you’ll need to evaluate three partial derivatives: <span class="math inline">\({\partial x_f \over \partial v_i}\)</span>, <span class="math inline">\({\partial x_f \over \partial \theta}\)</span>, and <span class="math inline">\({\partial x_f \over \partial t}\)</span>. We’ll let python calculate these derivatives, following the same pattern from activity I. Fill in lines 35 - 37 in the code cell below with the appropriate code to calculate the three relevant derivatives.(They will look similar to lines 11 and 12 from the code cell above.)</li>
+<li>On line 19 of the code cell, substitute values for <span class="math inline">\(v_i\)</span>, <span class="math inline">\(y_i\)</span>, <span class="math inline">\(\theta\)</span>, and <span class="math inline">\(g\)</span> to obtain a value for the flight time.</li>
+<li>To find the uncertainty in the flight time, you’ll need to evaluate four partial derivatives: <span class="math inline">\({\partial t \over \partial v_i}\)</span>, <span class="math inline">\({\partial t \over \partial \theta}\)</span>, <span class="math inline">\({\partial t \over \partial g}\)</span>, and <span class="math inline">\({\partial t \over \partial y_i}\)</span>. We’ll let python calculate these derivatives (don’t do them by hand!), following the same pattern shown in activity I. Fill in lines 21 - 24 in the code cell below with the appropriate code to calculate the four relevant derivatives. (They will look similar to lines 11 and 12 from the code cell above.)</li>
+<li>The expression for the uncertainty in the flight time is given by:<span class="math display">\[ \delta t = \sqrt{({\partial t \over \partial v_i} \delta v_i)^2 + ({\partial t \over \partial \theta} \delta \theta)^2 + ({\partial t \over \partial y_i} \delta y_i)^2 + ({\partial t \over \partial g} \delta g)^2}\]</span> Fill in line 27 in the code cell below with the appropriate code to calculate this expression. (It will be similar to line 17 from the code cell above)</li>
+<li>Now that you have the flight time with its uncertainty, you can use the first kinematic equation from above to calculate the projectile’s landing location. Use <span class="math inline">\(\LaTeX\)</span> syntax to complete an expression for the landing location <span class="math inline">\(x_f\)</span> in terms of <span class="math inline">\(v_i\)</span>, <span class="math inline">\(\theta\)</span>, and <span class="math inline">\(t\)</span>. <span class="math display">\[x_f = \]</span></li>
+<li>Enter the expression that you found in part 9 on line 33 of the code cell below.</li>
+<li>On line 34 of the code cell, substitute values for <span class="math inline">\(v_i\)</span>, <span class="math inline">\(y_i\)</span>, <span class="math inline">\(\theta\)</span>, <span class="math inline">\(g\)</span>, and <span class="math inline">\(t\)</span> to obtain a value for the landing location.</li>
+<li>To find the uncertainty in the landing location, you’ll need to evaluate three partial derivatives: <span class="math inline">\({\partial x_f \over \partial v_i}\)</span>, <span class="math inline">\({\partial x_f \over \partial \theta}\)</span>, and <span class="math inline">\({\partial x_f \over \partial t}\)</span>. We’ll let python calculate these derivatives, following the same pattern from activity I. Fill in lines 36 - 38 in the code cell below with the appropriate code to calculate the three relevant derivatives.(They will look similar to lines 11 and 12 from the code cell above.)</li>
 <li>The expression for the uncertainty in the landing location:<span class="math display">\[ \delta x_f = \sqrt{({\partial x_f \over \partial v_i} \delta v_i)^2 + ({\partial x_f \over \partial \theta} \delta \theta)^2 + ({\partial x_f \over \partial t} \delta t)^2}\]</span> Fill in line 43 in the code cell below with the appropriate code to calculate this expression. (It will be similar to line 17 from the code cell above)</li>
+<li>Add formatted print statements to display the flight time and landing location with their associated uncertainties (include units).</li>
 <li>Evaluate the code cell below and observe the results. By experimenting with the uncertainties in measured values, can you determine which variable has the greatest affect on the uncertainty in the projectile’s landing location?</li>
 </ol>
-</section>
-<section id="experiment-and-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="experiment-and-analysis">Experiment and Analysis</h4>
-<ol start="13" type="1">
-<li>Put a piece of carbon paper on the floor at your predicted landing location. Draw a circle on the carbon paper to reflect the uncertainty in your prediction. Then launch the projectile and observe where it lands. Measure the distance to the landing location with its associated uncertainty and record it in the second code cell below. Put your names on the carbon paper and hand it in to B. Nelson.</li>
-<li>Using a stop watch, measure the time of flight with it’s associated uncertainty. (Don’t forget to consider your reaction time when assigning the uncertainty.) Record these values in the code cell below.</li>
-<li>Evaluate the second code cell below and, after observing the results, answer the following questions about your experiment in the area marked “Response” below:
-<ol type="1">
-<li>Do your predictions and measurements agree to within your stated uncertainty?</li>
-<li>If your observations did not match your predictions to within your stated uncertainties, comment on why you think it was?</li>
-</ol>
-<blockquote class="blockquote">
-<p>Response:</p>
-</blockquote></li>
-<li>Take a minute to inspect all of the code that I have given to you today. Ask questions about code that you don’t understand. As some point, you’ll have to recreate code like this on your own.</li>
-</ol>
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -442,64 +443,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>grav <span class="op">=</span>            <span class="co"># Acceleration due to gravity (m/s^2). (Use value obtained in previous lab)</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>δ_g <span class="op">=</span>         <span class="co"># Uncertainty in acceleration due to gravity (m/s^2)</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>vi,θ,yi,g,t <span class="op">=</span> sp.symbols(<span class="st">"vi θ yi g t"</span>)  <span class="co"># Define the symbols you'll need.</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>vi,θ,yi,g,t <span class="op">=</span>  <span class="co"># Define the symbols you'll need. (Line 14)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> <span class="co"># Define the dictionary with the substitution rules (Line 15)</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Quadratic formula</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span>        <span class="co"># Line 18</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>dtdv <span class="op">=</span>   <span class="co"># Derivative with respect to vi (Line 20)</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>dtdθ <span class="op">=</span>    <span class="co"># Derivative with respect to θ (Line 21)</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>dtdy <span class="op">=</span>   <span class="co"># Derivative with respect to yi (Line 22)</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>dtdg <span class="op">=</span>    <span class="co"># Derivative with respect to g (Line 23)</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>tFlight<span class="op">=</span>   <span class="co"># Substitute values to obtain a number for the flight time. (Line 19)</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>dtdv <span class="op">=</span>   <span class="co"># Derivative with respect to vi (Line 21)</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>dtdθ <span class="op">=</span>    <span class="co"># Derivative with respect to θ (Line 22)</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>dtdy <span class="op">=</span>   <span class="co"># Derivative with respect to yi (Line 23)</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>dtdg <span class="op">=</span>    <span class="co"># Derivative with respect to g (Line 24)</span></span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> {vi:initialV,θ:theta,yi:h,g:grav}</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#Plug in the values and calculate the flight time.</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>tFlight<span class="op">=</span> time.subs(values)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>δt <span class="op">=</span>      <span class="co"># Calculate uncertainty in flight time (Line 27)</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>values[t] <span class="op">=</span> tFlight  <span class="co"># Add flight time to dictionary of values</span></span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#Plug in values to calculate uncertainty in flight time.</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>δt <span class="op">=</span>      <span class="co"># Line 29</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>xf <span class="op">=</span>   <span class="co"># define range function (Line 33)</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>landingloc <span class="op">=</span>   <span class="co"># Substitute values to obtain the landing location (Line 34)</span></span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>values[t] <span class="op">=</span> tFlight  <span class="co"># Add flight time to dictionary of values</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>xf <span class="op">=</span>   <span class="co"># define range function (Line 33)</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>dxdvi <span class="op">=</span>   <span class="co"># Derivative with respect to vi (Line 36) </span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>dxdθ <span class="op">=</span>     <span class="co"># Derivative with respect to θ (Line 37)</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>dxdt <span class="op">=</span>     <span class="co"># Derivative with respect to time (Line 38)</span></span>
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>dxdvi <span class="op">=</span>   <span class="co"># Derivative with respect to vi (Line 35) </span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>dxdθ <span class="op">=</span>     <span class="co"># Derivative with respect to θ (Line 36)</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>dxdt <span class="op">=</span>     <span class="co"># Derivative with respect to time (Line 37)</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>landingloc <span class="op">=</span> xf.subs(values)  <span class="co"># Calculate landing location</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate uncertainty in landing location</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>δloc <span class="op">=</span>   <span class="co"># Line 43</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The flight time is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> s."</span>.<span class="bu">format</span>(tFlight,δt))</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The landing location is: </span><span class="sc">{0:4.1f}</span><span class="st"> +- </span><span class="sc">{1:3.1f}</span><span class="st"> m."</span>.<span class="bu">format</span>(landingloc,δloc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>obs_xf <span class="op">=</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>δ_obs_xf <span class="op">=</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>obs_t <span class="op">=</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>δ_obs_t <span class="op">=</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate uncertainty in landing location</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>δloc <span class="op">=</span>   <span class="co"># Line 43</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="experiment-and-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="experiment-and-analysis">Experiment and Analysis</h4>
+<ol start="19" type="1">
+<li>Put a piece of carbon paper on the floor at your predicted landing location. Draw a circle on the carbon paper to reflect the uncertainty in your prediction. Then launch the projectile and observe where it lands. Measure the distance to the landing location with its associated uncertainty and record it in the second code cell below. Put your names on the carbon paper and hand it in to B. Nelson.</li>
+<li>Using a stop watch, measure the time of flight with it’s associated uncertainty. (Don’t forget to consider your reaction time when assigning the uncertainty.) Record these values in the code cell below.</li>
+<li>Construct a multi-figure plot containing two plots. The first plot should display your predicted flight time next to your observed flight time. The second plot should display your predicted landing location next to your observed landing location. Both plots should have error bars on them.</li>
+<li>Add axes labels and titles to both of your plots.</li>
+<li>Evaluate the code cell and, after observing the results, answer the following questions about your experiment in the area marked “Response” below:
+<ol type="1">
+<li>Do your predictions and measurements agree to within your stated uncertainty?</li>
+<li>If your observations did not match your predictions to within your stated uncertainties, comment on why you think it was?</li>
+</ol>
+<blockquote class="blockquote">
+<p>Response:</p>
+</blockquote></li>
+</ol>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>obs_xf <span class="op">=</span>  <span class="co">#Record your observed landing location.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>δ_obs_xf <span class="op">=</span>  <span class="co"># Record the uncertainty in your observed landing location.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>obs_t <span class="op">=</span>     <span class="co"># Record your observed flight time.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>δ_obs_t <span class="op">=</span>   <span class="co"># Recored the uncertainty in your observed flight time.</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>,<span class="dv">8</span>)) </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ax1.errorbar([<span class="dv">1</span>,<span class="fl">1.2</span>],[<span class="bu">float</span>(tFlight),<span class="bu">float</span>(obs_t)],yerr<span class="op">=</span>[<span class="bu">float</span>(δt),<span class="bu">float</span>(δ_obs_t)],fmt <span class="op">=</span> <span class="st">'go'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="dv">1</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks([])</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Flight Time (seconds)"</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Predicted and measured flight times."</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>ax2.errorbar([<span class="dv">1</span>,<span class="fl">1.2</span>],[<span class="bu">float</span>(landingloc),<span class="bu">float</span>(obs_xf)],yerr<span class="op">=</span>[<span class="bu">float</span>(δloc),<span class="bu">float</span>(δ_obs_xf)],fmt <span class="op">=</span> <span class="st">'ro'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ax2.set_aspect(<span class="dv">1</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax2.set_xticks([])</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Landing Location (m)"</span>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Predicted and measured landing locations."</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>fig.tight_layout(pad <span class="op">=</span> <span class="fl">5.0</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add figures here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -863,7 +860,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="pagination-link">
-        <span class="nav-page-text">Lab 4 Statistical Interpretation of Uncertainty</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Lab 4: Statistical Interpretation of Uncertainty</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -13,14 +13,12 @@ Name:
 ## Skills
 In this lab you will gain the following skills
 
-### Python
-1. Perform simple calculations.
 1. Construct Python dataframes and use them to display datasets.
 2. Construct arrays of plots in Python (multiple plots on one canvas).
-
-### Mathematical/Experimental Skills and Knowledge
-1. Know the meaning of the derivative and partial derivative.
-2. Use derivatives to propagate uncertainty for moderately complex calculations.
+3. Use numpy arrays to perform mathematical calculations on data sets.
+4. Use $\LaTeX$ to write simple math equations.
+5. Know the meaning of the derivative and partial derivative.
+6. Use derivatives to propagate uncertainty for moderately complex calculations.
 
 ## Background Information
 ### The Slope of a Function
@@ -432,6 +430,226 @@ print(f"The density of the block is {rho:5.2f} +- {drho:4.2f} g/cm^3")
 
 ## Python Skills
 
+### DataFrames
+A dataframe is a data structure that organizes data into a 2-dimensional table of rows and columns, similar to a spreadsheet. A dataframe can be initiated in Python using the `pandas.DataFrame()` function (case sensitive). For example, suppose that you used the accelerometer on your phone to gather the following data.
+
+```
+   time     gFx     gFy     gFz  
+0  0.007 -0.0056 -0.0046  1.0120  
+1  0.008  0.0007  0.0024  1.0022  
+2  0.008  0.0000  0.0059  1.0039  
+3  0.009  0.0054 -0.0022  1.0032  
+4  0.009 -0.0015 -0.0056  1.0042  
+5  0.009  0.0037 -0.0020  0.9951  
+6  0.010 -0.0020 -0.0020  1.0020  
+7  0.014  0.0090 -0.0024  1.0159  
+8  0.015  0.0012 -0.0037  1.0100  
+9  0.017 -0.0115 -0.0020  1.0012 
+``` 
+
+
+This data can be loaded into a dataframe like this.  
+
+
+```{python}
+from pandas import DataFrame
+import numpy as np
+
+time = [0.007,0.008,0.008,0.009,0.009,0.009,0.01,0.014,0.015,0.017]
+gFx = [-0.0056,0.007,0,0.0054,-0.0015,0.0037,-0.002,0.009,0.0012,-0.0115]
+gFy = [-0.0046,0.0024,0.0059,-0.0022,-0.0056,-0.002,-0.002,-0.0025,-0.0037,-0.002]
+gFz = [1.012,1.0022,1.0039,1.0032,1.0042,0.9951,1.002,1.0159,1.01,1.0012]
+elevator_data = DataFrame(np.transpose([time,gFx,gFy,gFz]),columns = ["time", "gFx","gFy", "gFz"])
+display(elevator_data)
+```
+
+The `display` command can then be used to display the dataframe to screen.  The keyword argument `columns = ["time", "gFx","gFy", "gFz"]` will assign names to the columns of the dataframe. The rows also have names attached but since these names were not specified, they defaulted to the integers 0 - 9. If you want to assign different names to the rows of your dataframe, add the keyword argument `index =` when you call `DataFrame`, like this
+
+
+```{python}
+from pandas import DataFrame
+import numpy as np
+
+time = [0.007,0.008,0.008,0.009,0.009,0.009,0.01,0.014,0.015,0.017]
+gFx = [-0.0056,0.007,0,0.0054,-0.0015,0.0037,-0.002,0.009,0.0012,-0.0115]
+gFy = [-0.0046,0.0024,0.0059,-0.0022,-0.0056,-0.002,-0.002,-0.0025,-0.0037,-0.002]
+gFz = [1.012,1.0022,1.0039,1.0032,1.0042,0.9951,1.002,1.0159,1.01,1.0012]
+elevator_data = DataFrame(np.transpose([time,gFx,gFy,gFz]),columns = ["time", "gFx","gFy", "gFz"],index = ["A","B","C","D","E","F","G","H","J","K"])
+display(elevator_data)
+```
+Now the names of your rows will be "A" through "K"  
+
+### Multiple Plots
+Last week we learned how to generate a single, simple plot. Often you may want to generate multiple, independent plots in the same figure.  To do this, first we must use the `figure` function which generates the canvas upon which the plots will appear. Assign this object to a variable so you can refer to it later. To create each subplot, the `fig.add_subplot(rows,columns, plot_number)` function is used.  There are three arguments to this function; the first two indicate the shape of the grid and the third indicates which position on the grid this plot will be assigned.
+
+```
+fig.add_subplot(rows,columns,plot_location)
+```
+
+  After the axes object has been created, we can call the `plot`, or `errorbar` function again, and a plot will be generated at its location.  Here is an example that will generate two plots side by side.
+
+
+```{python}
+from matplotlib import pyplot as plt
+%matplotlib inline
+from numpy import linspace,sqrt
+
+r = linspace(0.9,4,50)
+
+sigmaOne = 1
+epsilonOne = 1
+sigmaTwo = 2
+epsilonTwo = 2
+energyOne = 4 * sigmaOne* ((epsilonOne/r)**12 - (epsilonOne/r)**6)
+energyTwo = 4 * sigmaTwo * ((epsilonTwo/r)**12 - (epsilonTwo/r)**6)
+
+fig = plt.figure()
+ax1 = fig.add_subplot(1,2,1)
+ax2 = fig.add_subplot(1,2,2)
+
+ax1.plot(r,energyOne,marker = '+',color = 'k')
+ax1.set_xlim(0.5,3.0)
+ax1.set_ylim(-1.5,5)
+ax1.set_xlabel("Separation Distance")
+ax1.set_ylabel("Energy")
+ax1.set_title("Lennard-Jones Potential")
+
+ax2.plot(r,energyTwo,marker = 'o',color = 'r')
+ax2.set_xlim(0.5,4.0)
+ax2.set_ylim(-2,5)
+ax2.set_xlabel("Separation Distance")
+ax2.set_ylabel("Energy")
+ax2.set_title("Lennard-Jones Potential")
+```
+
+Pay close attention to the `add_subplot` function.  `ax1=add_subplot(1,2,1)` will generate a $1$ x $2$ grid of plots and `ax1` will correspond plot at the 1st location. Below is an example of a more advanced array of plots.  Pay close attention to the `add_subplot` functions until you understand. 
+
+```{python}
+from matplotlib import pyplot as plt
+%matplotlib inline
+from numpy import linspace,sqrt
+
+r = linspace(0.9,4,50)
+
+sigmaOne = 1
+epsilonOne = 1
+sigmaTwo = 2
+epsilonTwo = 2
+energyOne = 4 * sigmaOne* ((epsilonOne/r)**12 - (epsilonOne/r)**6)
+energyTwo = 4 * sigmaTwo * ((epsilonTwo/r)**12 - (epsilonTwo/r)**6)
+
+fig = plt.figure()
+ax1 = fig.add_subplot(2,1,1)
+ax2= fig.add_subplot(2,2,3)
+ax3 = fig.add_subplot(2,2,4)
+
+ax1.plot(r,energyOne,marker = '+',color = 'k')
+ax1.set_xlim(0.5,3.0)
+ax1.set_ylim(-1.5,5)
+ax1.set_xlabel("Separation Distance")
+ax1.set_ylabel("Energy")
+ax1.set_title("Lennard-Jones Potential")
+
+ax2.plot(r,energyTwo,marker = 'o',color = 'r')
+ax2.set_xlim(0.5,4.0)
+ax2.set_ylim(-2,5)
+ax2.set_xlabel("Separation Distance")
+ax2.set_ylabel("Energy")
+ax2.set_title("Lennard-Jones Potential")
+
+ax3.plot(r,energyTwo,marker = 'o',color = 'r')
+ax3.set_xlim(0.5,4.0)
+ax3.set_ylim(-2,5)
+ax3.set_xlabel("Separation Distance")
+ax3.set_ylabel("Energy")
+ax3.set_title("Lennard-Jones Potential")
+plt.tight_layout()
+```
+
+
+
+Also notice the `set_xlim`, `set_ylim`, `set_xlabel` etc methods that were used to customize each individual plot. There are a host of other methods available for further customization.  
+
+[This][axes] website has a comprehensive list of them.
+
+[axes]: https://matplotlib.org/stable/api/axes_api.html#subplots
+
+### Numpy Arrays
+Often in science you'll be working with more than one data point at a time.  For example, consider the data shown  below of a ball that is dropped from several different initial heights.  
+
+```{python}
+#| echo: False
+#| eval: True
+
+import numpy as np
+import pandas as pd
+y = np.array([2,2.5,3,3.5,4])
+g = 9.8
+t = np.sqrt(2 * y /g)
+df = pd.DataFrame(np.transpose([y,t]),columns = ["Initial height (meters)", "Fall time (seconds)"])
+pd.set_option("display.precision",2)
+display(df)
+```
+
+Data like this should be stored in a numpy ("num-pie") array, like this:
+
+
+```{python}
+import numpy as np
+
+t = np.array([0.64,0.71,0.78,0.85,0.90])
+y = np.array([2.0,2.5,3.0,3.5,4.0])
+
+```
+
+The benefit of storing your data in arrays is that mathematical calculations are "vectorized" which means that the mathematical operation is performed across the entire data set without needing a loop.  For example, the equation $g = {2 y \over t^2}$ could be used to find the acceleration due to gravity for all of the data points like this:
+
+```{python}
+import numpy as np
+
+t = np.array([0.64,0.71,0.78,0.85,0.90])
+y = np.array([2.0,2.5,3.0,3.5,4.0])
+
+g = 2 * y/t**2
+print(g)
+```
+
+
+If you need to use mathematical function like square roots or trigonometric functions, you should always import them from `numpy` and not `math`.  
+
+## $\mathrm{\LaTeX}$ 
+Often you will want to include math equations as part of your explanation/text.  Below is an example of what your math should and should not look like.  
+
+- $|\vec{v}|  = \sqrt{v_x^2 + v_y^2}$ (like this)  
+- v = sqrt(vx^2 + vy^2) (not like this)
+
+To make your math equations look like the first example, you must enclose your math equation in "$$", one pair at the beginnning of the equation and one pair at the end.  Enclosing your expression in double dollar signs will put the expression on its own line.  To place the expression in the middle of a sentence (inline) you'll need to enclose the expression in single dollar signs. To generate the math symbols that often show up in equations, you'll need to know the correct syntax.  A table of commonly used math symbols is given below.
+
+|Math symbol | Example| $\mathrm{\LaTeX}$ syntax|
+|------------|------------|-------------|
+| Subscript | $v_x$  | `v_x`   |
+| Powers | $v^2$  | `v^2`   |
+| Powers with more than one digit | $v^{10}$  | `v^{10}`   |
+| Square root| $\sqrt{a + b}$  | `\sqrt{a + b}`   |
+| Fractions | $\frac{a}{b}$  | `\frac{a}{b}`   |
+| Vectors | $\vec{x}$  | `\vec{x}`   |
+| Integrals | $\int x^2 dx$  | `\int x^2 dx`   |
+| Partial Derivatives | ${\partial f \over \partial x}$  | `{\partial f \over \partial x}`   |
+| Summations | $\sum_{i = 1}^{10} x_i^2$  | `\sum_{i = 1}^{10} x_i^2`   |
+| Infinity | $\infty$ | `\infty`|
+
+You can include Greek letters in your expressions if you know the corresponding syntax.  The table below shows some of the more common Greek letters used in physics.
+
+|Greek Letter | $\mathrm{\LaTeX}$ syntax|
+|------------|-------------|
+| $\alpha$  | `\alpha`   |
+| $\beta$  | `\beta`   |
+| $\gamma$  | `\gamma`   |
+| $\Delta$  | `\Delta`   |
+| $\epsilon$  | `\epsilon`   |
+
+A more comprehensive list of math symbols available can be found [here](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
+
 
 ## Activity I:  The pendulum (50 pts)
 ### Equipment needed:
@@ -443,80 +661,54 @@ print(f"The density of the block is {rho:5.2f} +- {drho:4.2f} g/cm^3")
 By taking measurements on a simple pendulum, calculate the acceleration due to gravity with its associated uncertainty.  Compare to the known value for Rexburg.
 
 ### Procedure:  
-  1. Assemble five pendulums of different lengths, with the lengths ranging from $0.25$ m to $2.0$ m.  
-  2. For each pendulum, perform the following:  
-     1. Measure the distance from the support point to the center of the pendulum.  This is the length of the pendulum $L$.  Assign an uncertainty to this measurement and record the length with its associated uncertainty in the code cell provided below.
-     2. Release the pendulum from a small initial angle (no bigger than $15^\circ$ from the vertical) and use the photogate to measure the period $T$ of the pendulum with its associated uncertainty. (The period of a pendulum is the time it take to make one full cycle.)
-     3. Calculate the acceleration due to gravity ($g$) using $g = {4 \pi^2 L \over T^2}$.
-     4. Using the methods discussed above determine the equation for calculating the uncertainty in $g$.  Insert it into the math equation below $$ \delta g = $$
-     5. Calculate the uncertainty and **fractional uncertainty** in $g$ in the code cell below.
-
-
-  3. In lines 4,5, and 6 of the cell below record all of your length, period, and g values for the five pendulums.
-  4. In lines 7,8, and 9 record all of the uncertainties for the five pendulums. 
-  5. When you execute the cell, you will see a table summarizing your results and two plots to help analyze your results. Analyze the results to answer the following questions:  
-     1. Which result has the lowest uncertainty? Can you explain why?
-     2. What function do you think best represents the relationship between $L$ and $T$?(We will study curve-fitting in a later lab.)
-     3. The accepted value of $g$ for Rexburg is $g = 9.80056$ m/s$^2$.  Do your calculations agree with this value to within your calculated uncertainties?
-    > Response:
+1. Assemble five pendulums of different lengths, with the lengths ranging from $0.25$ m to $2.0$ m.  
+2. For each pendulum, perform the following:  
+   1. Measure the distance from the support point to the center of the pendulum.  This is the length of the pendulum $L$.  Assign an uncertainty to this measurement.
+   2. Release the pendulum from a small initial angle (no bigger than $15^\circ$ from the vertical) and use the photogate to measure the period $T$ of the pendulum with its associated uncertainty. (The period of a pendulum is the time it take to make one full cycle.)
+   3. Place all of your lengths and periods and their uncertainties into numpy arrays.
+3. Calculate the acceleration due to gravity ($g$) using $g = {4 \pi^2 L \over T^2}$.
+4. Using the methods discussed above determine the equation for calculating the uncertainty in $g$.  Use $\LaTeX$ syntax to complete the math equation below $$ \delta g = $$
+5. Calculate the uncertainty and **fractional uncertainty** in $g$ in the code cell below.
+8. Put your data in a dataframe and display the dataframe to visually verify that it has 10 rows and 6 columns. The columns should be $L$, $T$, $g$ and their uncertainties.  Give the appropriate names. 
+9. Construct a multi-figure plot containing two plots.  The first plot should be period vs length and the other plot should be g vs. length. The points on both plots should have error bars attached.
+10. Add axes labels and titles to both of your plots. 
+11. Analyze the results to answer the following questions:  
+  1. Which result has the lowest uncertainty? Can you explain why?  
+  2. What function do you think best represents the relationship between $L$ and $T$?(We will study curve-fitting in a later lab.)  
+  3. The accepted value of $g$ for Rexburg is $g = 9.80056$ m/s$^2$.  Do your calculations agree with this value to within your calculated uncertainties?  
+  
+  > Response:
 
 
 ```{python}
 #| eval: false
 #| echo: true
-
-# Pendulum Parameters
-T =           # period of the pendulum
-un_T =        # uncertainty of the period of the pendulum
-L =           # length of the pendulum
-un_L =        # uncertainty of the length of the pendulum
-
-# Compute volume of the room with uncertainty
-g =          # Compute a value for g
-un_g =       # Compute the uncertainty in g.
-frac_g =     # Fractional uncertainty in g
-
-print("The acceleration due to gravity is: {0:4.1f} +/- {1:3.1f} m/s^2. That's a fractional uncertainty of {2:6.2f}%.".format(g,un_g, 100 * frac_g))
-```
-
-```{python}
-#| eval: false
-#| echo: true
-
 import matplotlib.pyplot as plt
-from pandas import DataFrame
+import pandas as pd
 import numpy as np
 %matplotlib inline
 
-periods = [,,,,] # Line 4
-lengths = [,,,,]  # Line 5
-gvalues = [,,,,]  # Line 6
-un_length = [,,,,]  # Line 7
-un_period = [,,,,]  # Line 8
-un_g = [,,,,]  # Line 9
 
-df = DataFrame(np.transpose([periods,un_period,lengths,un_length,gvalues,un_g]),columns = ["T (s)","δT (s)","L (m)","δL (m) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,6)))
-display(df)
 
+T =    # Create array of period values.
+un_T =  # Create array of uncertainties in the period measurements.
+L =     # Create array of length values.
+un_L =  # Create array of uncertainties in the length measurements.
+g =     # Calculate g for the whole data set.
+un_g =   # Calculate the uncertainty in g for the whole data set.
+frac_un =  # Calculate fractional uncertainties.
+
+df =            # Creat a dataframe of your data. Give the columns appropriate names
+display(df) # Display the dataframe
+
+# Construct a multi-figure plot below.
 fig = plt.figure()            
-ax1 = fig.add_subplot(1,2,1)
-ax2 = fig.add_subplot(1,2,2)
-ax1.errorbar(lengths,periods,yerr = un_period,xerr = un_length,fmt = 'go', capsize = 6)
-ax1.set_aspect(1)
-ax1.set_xlabel("L (meters)")
-ax1.set_ylabel("T (seconds)")
-ax1.set_title("Period vs Length for five pendulums")
-
-ax2.errorbar(lengths,gvalues,yerr = un_g,fmt = 'ro', capsize = 6)
-ax2.set_aspect(1)
-ax2.set_xlabel("L (meters)")
-ax2.set_ylabel("g (m/s^2)")
-ax2.set_title("g vs Length for five pendulums")
-
 
 plt.show()
 
+
 ```
+
 
 ## Activity II (50 points)
 
@@ -530,34 +722,21 @@ By measuring the fall time for an object in free fall, calculate the acceleratio
 
 ### Procedure
 1. Find a location in the building that will allow the greatest drop distance for the tennis ball. (the front foyer is a good choice.)  Measure the distance from the release point to the ground with its associated uncertainty.  Record your values in the code cell provided below.
-2. Using a stopwatch, measure the fall time with its associated uncertainty.  Record the values in the code cell provided below.
-3. Using the equation below, calculate the acceleration due to gravity. $$ g = {2 h \over t^2}$$
-4. Using the methods discussed above determine the equation for calculating the uncertainty in $g$.  Insert it into the math equation below $$ \delta g = $$
-6. Using the equation from step 4, calculate the uncertainty in $g$ in the code cell below. 
-7. Repeat steps 1 - 5 **ten** more times to obtain ten values of  $g$ and $\delta g$.
-8. Put all of your data in the code cell provided below (the second code cell) and execute the cell to reveal a summary table and plots that summarize your results.  
-9. Using your results, answer the following questions:
+2. Using a stopwatch, measure the fall time with its associated uncertainty.  Record the values in the code cell provided below.  Note: typical reaction times are around $0.25$ s. 
+3. Repeat steps 1 and 2 **ten** more times to obtain ten data points. Place your heights and drop times and their uncertainties in numpy arrays.
+4. Using the equation below, calculate the acceleration due to gravity for all 10 data points. $$ g = {2 h \over t^2}$$ 
+5. Using the methods discussed above determine the equation for calculating the uncertainty in $g$.  Use $\LaTeX$ syntax to complete the math equation below $$ \delta g = $$
+6. Using the equation from step 5, calculate the uncertainty in $g$ in the code cell below for all 10 data points.  
+7. Put your data in a dataframe and display the dataframe to visually verify that it has 10 rows and 6 columns. 
+8. Construct a multi-figure plot containing two plots.  The first plot should be $g$ vs trial number and the other plot should be fall time vs. fall distance. The points on both plots should have error bars attached.
+9. Add axes labels and titles to both of your plots.
+10. Using your results, answer the following questions:
     1. Are your ten g values consistent with one another to within their stated uncertainties. Explain.
     2. What function do you think describes the relationship between the fall distance and the fall time. (We will study curve-fitting in a later lab.)
     3. Which of your g values agree with the accepted value of g for Rexburg given in the first exercise.
     
     > Response:
-10. Take a minute to inspect all of the code that I have given to you today.  Ask questions about code that you don't understand.  As some point, you'll have to recreate code like this on your own.
 
-```{python}
-#| eval: false
-#| echo: true
-
-t =            # Time in air in sec
-un_t =         # Uncertainty of time measurement in sec
-h =            # Height in meters
-un_h =         # Uncertainty of height in meters
-g =            # Calculate g using equation above
-un_g =         # Calculate uncertainty in g
-frac_g =       # Fractional uncertainty in g
-
-print("g : {0:4.2f} +/- {1:4.2f} m/s^2.  That's a fractional uncertainty of {2:6.2f}%.".format(g,un_g,frac_g))
-```
 
 ```{python}
 #| eval: false
@@ -565,38 +744,26 @@ print("g : {0:4.2f} +/- {1:4.2f} m/s^2.  That's a fractional uncertainty of {2:6
 
 import matplotlib.pyplot as plt
 import numpy as np
-from pandas import DataFrame
+import pandas as pd
 %matplotlib inline
 
-trial = [1,2,3,4,5,6,7,8,9,10]
-fallDistances = [,,,,,,,,,]
-un_distance = [,,,,,,,,,]
-fallTimes = [,,,,,,,,,]
-un_times = [,,,,,,,,,]
-g = [,,,,,,,,,]  
-un_g = [,,,,,,,,,]  
+trial = np.array([1,2,3,4,5,6,7,8,9,10])
+fallDistances =   # Construct an array of the fall distances
+un_distance =     # Construct an array of the uncertainties in the fall distances.
+fallTimes =       # Construct an array of the measured fall times.
+un_times =        # Construct an array of the uncertainties in the fall times.
+g =               # Calculate g for the entire data set.
+un_g =            # Calculate the uncertainty in g
+frac_g =          # Calculate the fractional uncertainty.
 
-df = DataFrame(np.transpose([fallDistances,un_distance,fallTimes,un_times,g,un_g]),columns = ["Fall Distance (m)","δd (m)","Fall Times (s)","δt (s) ","g (m/s^2)","δg (m/s^2)"],index = list(range(1,11)))
-display(df)
+df = # Create a dataframe of your data. Give the columns appropriate names
+display(df) # Display your dataframe
 
 
+# Construct plots
 fig = plt.figure()            
-ax1 = fig.add_subplot(1,2,1)
-ax2 = fig.add_subplot(1,2,2)
 
 
-ax1.errorbar(trial,g,yerr = un_g,fmt = 'go', capsize = 6)
-ax1.set_aspect(1)
-ax1.set_xlabel("trial")
-ax1.set_ylabel("g (m/s^2)")
-ax1.set_title("Acceleration due to gravity for 10 experiments")
-
-
-ax2.errorbar(fallTimes,fallDistances,yerr = un_distance,xerr=un_time,fmt = 'ro', capsize = 6)
-ax2.set_aspect(1)
-ax2.set_xlabel("Fall Times (sec)")
-ax2.set_ylabel("Fall Distance (m)")
-ax2.set_title("Fall Distance vs. Fall Time.")
 
 
 

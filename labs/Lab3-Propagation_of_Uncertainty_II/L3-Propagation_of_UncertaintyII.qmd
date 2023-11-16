@@ -1,0 +1,202 @@
+---
+jupyter: python3
+---
+
+# Lab 3: Propagation of Uncertainty Part II {-}
+
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L3-Propagation_of_UncertaintyII.ipynb)
+
+Name: 
+
+
+## Skills you'll gain
+1. Use basic LaTeX syntax to write simple mathematical equations.
+2. Use sympy to calculate derivatives.
+3. Propagate uncertainty for complex equations using the equation $$ \delta q =  \sqrt{({\partial q \over \partial a} \delta a)^2 + ({\partial q \over \partial b} \delta b)^2 + \dots}$$
+
+## Background
+Last week we learned about partial derivatives and how they can be used to calculate uncertainties in calculated quantities.   The most important equation for propagation of uncertainty is   $$ \delta q =  \sqrt{({\partial q \over \partial a} \delta a)^2 + ({\partial q \over \partial b} \delta b)^2 + \dots}$$  It's not hard to find a situations that result in very difficult (and very messy) partial derivatives. This week we'll continue to use this equation to propagate uncertainty but we'll use Python to calculate the derivatives.
+  Python can calculate derivatives for you using a module called `sympy` (short for symbolic python).  To use `sympy` to calculate derivatives, follow the the following steps.
+
+1. Step 1: Define the variables that are in the expression that you want to differentiate.
+2. Step 2: Define the expression that you want to differentiate.
+3. Step 3: Use `sympy`'s diff function to perform the differentiation.
+4. Step 4: Use `subs` to evaluate the derivative for given value of the variables.
+
+To see how this works, let's follow these steps to differentiate the following function. $$z(x,y) = {x^2 \over y}$$.  Study the code cell below to see how this is done.
+
+```{python}
+import sympy as sp
+sp.init_printing(use_unicode = True)
+x,y = sp.symbols("x y")  # Step 1: Define variables 
+
+z = x**2/y  # Step 2: Define expression
+display(z)
+zprime = sp.diff(z,x)  # Step 3: Use 'diff' to differentiate.
+display(zprime)
+subsDict = {x:5,y:3} # Step 4 part 1: Define a dictionary with the substitution rules: x->5, y-> 3
+result = zprime.subs(subsDict)  #Step 4 part 2: Evaluate the derivative at x = 5, y = 3
+print(result)
+```
+
+
+Notice that curly braces (`{}`) were used to define the set of substitution rules. Make sure to not mistakenly use parenthesis or square brackets in their place or the substitution will not work.
+
+
+## Activity I:  Exit Speed (50 pts)
+### Equipment needed:
+1. Cannon and plunger
+2. Spherical steel ball (projectile)
+3. Meter Stick
+
+### Goal:  
+Determine the speed with which the projectile leaves the cannon for all three launch settings with their associated uncertainties.  
+
+### Procedure:  
+  1. Set your cannon on the floor or table and set the launch angle to $90^\circ$ (straight up)
+  2. Measure the distance from where the sphere exits the launcher to the peak of its trajectory.  Record the value and the uncertainty in the code cell provided below.
+  3. In the cell below, record the best value of "g" from the previous lab with its associated uncertainty.
+  4. You may remember the following kinematic equation: $$ v_f^2 = v_i^2 - 2 g h$$.   Do the algebra needed to solve this equation for $v_i$. Use $\LaTeX$ syntax to complete the equation below $$ v_i = $$
+  5. On line 8 of the code cell below, define sympy symbols for g and delta_h. 
+  6. On line 9 of the code cell below, enter the expression you found in step 4 for the initial velocity. To calculate a square root, use `sp.sqrt()`
+  7. To calculate the uncertainty in the initial velocity, you need to take two derivatives of the function that you found in step 4; ${\partial v_i \over \partial g}$ and ${\partial v_i \over \partial h}$.  Use $\LaTeX$ syntax to complete the mathematical statements below with the expressions for these derivatives. $${\partial v_i \over \partial g} = $$ $${\partial v_i \over \partial h} = $$
+  8. On lines 11 and 12 of the code cell below, use sympy to calculate the derivatives of vi with respect to g and h. 
+  9. On lines 16 of the code cell below, substitute values for the symbols to get a value for the initial velocity.
+  10. Now execute the cell below and compare python's derivatives to your hand-written ones. (You may need to comment out some lines that haven't been completed yet)
+  11. The expression for the uncertainty for $v_i$ is  $$ \delta v_i =  \sqrt{({\partial v_i \over \partial g} \delta g)^2 + ({\partial v_i \over \partial h} \delta h)^2}$$  Perform this calculation on line 17 in the code cell below to obtain a value for the uncertainty in $v_i$.  
+  12. Add a formatted print statement to display the initial velocity and its associated uncertainty (with units).
+
+```{python}
+#| tags: []
+#| eval: false
+#| echo: true
+import sympy as sp
+# Launch Parameters
+h =           # distance from exit point to peak
+un_h =        # uncertainty of the distance
+g_val =           # acceleration due to gravity (refer to last week's results)
+un_g =        # uncertainty in g (refer to last week's results)
+
+g,dh =        # define sympy symbols for g and delta_h (Line 8)
+vi =          # Calculate the initial speed (Line 9). 
+
+dvdg =   # Take the derivative with respect to g  (Line 11)
+dvdh =  # Take the derivative with respect to h (distance to peak) (Line 12)
+display(dvdg)  # Display the derivatives to check that you did it right.
+display(dvdh)
+
+initialV = # Substitute numbers in for the symbols.  (line 16)
+Δvi =  # Line 17
+
+# Add a formatted print statement here to display your results.
+```
+
+## Activity II - Projectile Motion Prediction (50 points)
+
+### Equipment needed
+1. Launcher Cannon
+2. Spherical Steel Projectile
+3. Meter Stick
+
+### Goal
+Predict the landing location for a launched projectile with its associated uncertainty.  Verify that observed results agree with your prediction to within your stated uncertainty.
+
+### Procedure
+#### Setup
+1. Set your cannon on a table and aim it in a direction so that the projectile won't hit anything (or anyone).
+2. Choose an initial launch angle and speed setting. Then adjust your cannon to match these choices.  Record your launch angle with its associated uncertainty (in radians) in the code cell below.
+3. Transfer the initial velocity and uncerainty that you found from activity I into the code cell below.
+4. Measure the distance from the ground to the projectile's point of exit.  Record this number with its associated uncertainty in the code cell below.  
+5. On line 14 of the code cell below, define symbols for the variables $v_i$, $y_i$, $\theta$,$g$, and $t$.
+6. On line 15 of the code cell below, define a dictionary containing the substitution rules for $v_i$, $y_i$, $\theta$, and $g$.
+
+#### Calculations
+7. You may recall the following kinematic equations from your PH121 class.   $$x_f = x_i + v_i \cos(\theta) t$$ $$y_f = y_i + v_i \sin(\theta) t -{1\over 2} g  t^2$$ Use the second of these equations to find an expression for the projectile's flight time in terms of $y_i$, $v_i$, $\theta$,  and $g$. Use $\LaTeX$ syntax to complete the equation below with your answer. **Hint:** You will have to solve a quadratic equation.$$ t = $$
+8. Enter the expression that you found in part 5 on line 18 of the code cell below. Use `sp.sqrt()` for square root expressions and `sp.sin()` for sine expressions.   
+9. On line 19 of the code cell, substitute values for $v_i$, $y_i$, $\theta$, and $g$ to obtain a value for the flight time.
+10. To find the uncertainty in the flight time, you'll need to evaluate four partial derivatives: ${\partial t \over \partial v_i}$, ${\partial t \over \partial \theta}$, ${\partial t \over \partial g}$, and ${\partial t \over \partial y_i}$. We'll let python calculate these derivatives (don't do them by hand!), following the same pattern shown in activity I. Fill in lines 21 - 24 in the code cell below with the appropriate code to calculate the four relevant derivatives. (They will look similar to lines 11 and 12 from the code cell above.)
+11. The expression for the uncertainty in the flight time is given by:$$ \delta t = \sqrt{({\partial t \over \partial v_i} \delta v_i)^2 + ({\partial t \over \partial \theta} \delta \theta)^2 + ({\partial t \over \partial y_i} \delta y_i)^2 + ({\partial t \over \partial g} \delta g)^2}$$  Fill in line 27 in the code cell below with the appropriate code to calculate this expression. (It will be similar to line 17 from the code cell above)
+12. Now that you have the flight time with its uncertainty, you can use the first kinematic equation from above to calculate the projectile's landing location.   Use $\LaTeX$ syntax to complete an expression for the landing location $x_f$ in terms of $v_i$, $\theta$, and $t$.  $$x_f = $$
+13. Enter the expression that you found in part 9 on line 33 of the code cell below.
+14. On line 34 of the code cell, substitute values for $v_i$, $y_i$, $\theta$, $g$, and $t$ to obtain a value for the landing location.
+15. To find the uncertainty in the landing location, you'll need to evaluate three partial derivatives: ${\partial x_f \over \partial v_i}$, ${\partial x_f \over \partial \theta}$, and ${\partial x_f \over \partial t}$. We'll let python calculate these derivatives, following the same pattern from activity I. Fill in lines 36 - 38 in the code cell below with the appropriate code to calculate the three relevant derivatives.(They will look similar to lines 11 and 12 from the code cell above.)
+16. The expression for the uncertainty in the landing location:$$ \delta x_f = \sqrt{({\partial x_f \over \partial v_i} \delta v_i)^2 + ({\partial x_f \over \partial \theta} \delta \theta)^2 + ({\partial x_f \over \partial t} \delta t)^2}$$  Fill in line 43 in the code cell below with the appropriate code to calculate this expression. (It will be similar to line 17 from the code cell above)
+17. Add formatted print statements to display the flight time and landing location with their associated uncertainties (include units).
+18. Evaluate the code cell below and observe the results.  By experimenting with the uncertainties in measured values, can you determine which variable has the greatest affect on the uncertainty in the projectile's landing location?  
+
+
+
+```{python}
+#| eval: false
+#| echo: true
+import sympy as sp
+from matplotlib import pyplot as plt
+import numpy as np
+
+initialV =            # Initial speed of projectile.  
+δ_vi =          # Uncertainty in initial speed of projectile.
+theta =            # Launch angle (Must be in Radians!!)
+δ_θ =         # Uncertainty in launch angle (Must be in radians)
+h =            # Initial height of projectile (meters).
+δ_h =         # Uncertainty in intial height (meters).
+grav =            # Acceleration due to gravity (m/s^2). (Use value obtained in previous lab)
+δ_g =         # Uncertainty in acceleration due to gravity (m/s^2)
+
+vi,θ,yi,g,t =  # Define the symbols you'll need. (Line 14)
+values = # Define the dictionary with the substitution rules (Line 15)
+
+
+time =        # Line 18
+tFlight=   # Substitute values to obtain a number for the flight time. (Line 19)
+
+dtdv =   # Derivative with respect to vi (Line 21)
+dtdθ =    # Derivative with respect to θ (Line 22)
+dtdy =   # Derivative with respect to yi (Line 23)
+dtdg =    # Derivative with respect to g (Line 24)
+
+
+δt =      # Calculate uncertainty in flight time (Line 27)
+
+values[t] = tFlight  # Add flight time to dictionary of values
+
+xf =   # define range function (Line 33)
+landingloc =   # Substitute values to obtain the landing location (Line 34)
+
+dxdvi =   # Derivative with respect to vi (Line 36) 
+dxdθ =     # Derivative with respect to θ (Line 37)
+dxdt =     # Derivative with respect to time (Line 38)
+
+
+
+# Calculate uncertainty in landing location
+δloc =   # Line 43
+
+```
+
+
+
+#### Experiment and Analysis
+19. Put a piece of carbon paper on the floor at your predicted landing location. Draw a circle on the carbon paper to reflect the uncertainty in your prediction. Then launch the projectile and observe where it lands. Measure the distance to the landing location with its associated uncertainty and record it in the second code cell below. Put your names on the carbon paper and hand it in to B. Nelson.
+20. Using a stop watch, measure the time of flight with it's associated uncertainty. (Don't forget to consider your reaction time when assigning the uncertainty.) Record these values in the code cell below.
+21. Construct a multi-figure plot containing two plots. The first plot should display your predicted flight time next to your observed flight time. The second plot should display your predicted landing location next to your observed landing location.  Both plots should have error bars on them.
+22. Add axes labels and titles to both of your plots.
+23. Evaluate the code cell and, after observing the results, answer the following questions about your experiment in the area marked "Response" below: 
+    1. Do your predictions and measurements agree to within your stated uncertainty?
+    2. If your observations did not match your predictions to within your stated uncertainties, comment on why you think it was?
+    
+    > Response:
+
+```{python}
+#| eval: false
+#| echo: true
+
+obs_xf =  #Record your observed landing location.
+δ_obs_xf =  # Record the uncertainty in your observed landing location.
+obs_t =     # Record your observed flight time.
+δ_obs_t =   # Recored the uncertainty in your observed flight time.
+
+# Add figures here.
+
+```
+
+

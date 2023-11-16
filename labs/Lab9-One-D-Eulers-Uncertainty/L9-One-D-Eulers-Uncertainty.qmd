@@ -9,13 +9,12 @@ Name:
 
 [Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L9-One-D-Eulers-Uncertainty.ipynb)
 
-Name:
 
 ## Skills
 In this lab you will gain the following skills
 
 1. Learn how to construct a Python `while` loop.
-2. Learn how to select random numbers from a statistical distribution.
+2. Learn how to generate random numbers from a statistical distribution.
 3. Learn how to propagate uncertainty in a numerical calculation.
 
 
@@ -319,7 +318,7 @@ g = 9.8  # Acceleration due to gravity (m/s^2)
 mt = mp + mb + ρh * V   # Total mass (kg).
 Fg =   # Weight of helium + payload + balloon (N).
 
-dt =     # Time step (s).
+dt = 0.01    # Time step (s).
 
 y = []     # Initial height of balloon (meters).
 v = [0]    # Initial speed of balloon (m/s).
@@ -334,7 +333,7 @@ ax3 = fig.add_subplot(3,1,3)
 if Fb < Fg:
     print("Your balloon will not fly!")
     exit()
-while y < yCeiling and t < 10:
+while y[-1] < yCeiling and t[-1] < 10:
     Fd =     # Drag Force (N).
     a.append()      # acceleration (m/s^2).
     v.append()      # Update velocity
@@ -361,8 +360,7 @@ To incorporate uncertainty into Euler's method, you must repeat your Euler's loo
 4. Fill in the correct expressions for the remainder of the code lines that are incomplete.  (Most of these lines will be identical to what they were in Activity I.)
 5. Check with a neighbor or B. Nelson to verify that you did it correctly.
 6. Run your code and observe the results. Notice the spread in travel times depicted on the position vs. time graph. (Cool eh!)
-
-Note: The uncertainty in your balloon diameter will be the biggest contributor to the uncertainty in the predicted flight time.  
+7. By modifying the uncertainties in your input variables, determine which variable affects the uncertainty in your travel time the most.
 
 ```{python}
 #| eval: false
@@ -404,9 +402,10 @@ dt = 0.01    # Time step (s).
 
 
 fig = plt.figure(figsize = (8,8))
-ax1 = fig.add_subplot(3,1,1)
-ax2 = fig.add_subplot(3,1,2)
-ax3 = fig.add_subplot(3,1,3)
+ax1 = fig.add_subplot(2,2,1)
+ax2 = fig.add_subplot(2,2,2)
+ax3 = fig.add_subplot(2,2,3)
+ax4 = fig.add_subplot(2,2,4)
 
 times = []
 
@@ -435,7 +434,7 @@ for N in range(Ntrials):
     if Fb < Fg:  # If the buoyant force isn't enough to lift the balloon, don't run Euler's method.
         print("Your buoyant force is smaller than the weight of the balloon, skipping to next iteration.")
         continue
-    while y < yCeiling:
+    while y[-1] < yCeiling:
         Fd = 
         a.append()  
         v.append() 
@@ -444,7 +443,8 @@ for N in range(Ntrials):
     ax1.plot(t,a,'r.')
     ax2.plot(t,v,'g.')
     ax3.plot(t,y,'b.')
-    times.append(t)
+    times.append(t[-1])
+ax4.histogram(times,bins = 50)
 print(np.mean(times), np.std(times))
 plt.show()
         

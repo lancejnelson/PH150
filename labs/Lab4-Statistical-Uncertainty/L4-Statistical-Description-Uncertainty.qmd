@@ -2,7 +2,7 @@
 jupyter: python3
 ---
 
-# Lab 4 Statistical Interpretation of Uncertainty {-}
+# Lab 4: Statistical Interpretation of Uncertainty {-}
 
 [Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L4-Statistical-Description-Uncertainty.ipynb)
 
@@ -11,8 +11,9 @@ Name:
 ## Skills
 1. Use Python to plot statistical distributions and histograms.
 2. Use Python to calculate the mean, standard deviation, and standard deviation of the mean for a data set.
-3. Explain the difference between standard deviation and standard deviation of the mean.
-4. Use Python to read data from a file.
+3. Use Python to read data from a file.
+4. Explain the difference between standard deviation and standard deviation of the mean.
+5. Use statistical information to report uncertainties.
 
 ## Background Information
 
@@ -48,7 +49,7 @@ ax[0][1].plot(x,gamma.pdf(x,a),'r-',lw=4,alpha = 0.8)
 
 dataNorm = norm.rvs(loc = μ,scale = σ,size = 20)
 
-ax[1][0].plot(dataNorm,[0.25 for x in dataNorm],'.',axes = None,ms = 8)
+ax[1][0].plot(dataNorm,[0.25 for x in dataNorm],'.',ms = 8)
 ax[1][0].set_xlim(2,7)
 ax[1][0].set_aspect(8)
 ax[1][0].spines['top'].set_visible(False)
@@ -63,7 +64,7 @@ ax[0][0].set_title("Gaussian (Normal) Distribution")
 
 dataGamma = gamma.rvs(a,size = 20)
 
-ax[1][1].plot(dataGamma,[0.25 for x in dataGamma],'.',axes = None,ms = 8)
+ax[1][1].plot(dataGamma,[0.25 for x in dataGamma],'.',ms = 8)
 ax[1][1].set_xlim(2,7)
 ax[1][1].set_aspect(8)
 ax[1][1].spines['top'].set_visible(False)
@@ -328,9 +329,9 @@ print(f"The p-value for these two data sets is {P.pvalue:8.4f} = {P.pvalue*100:4
 
 Since the p-value is less than the $5\%$ boundary we conclude that the results from these two experiments differ significantly.
 
-## Useful Plots
+## Python Skills
 
-### Histograms
+### Plotting Histograms
 To plot a histogram in Python you should use the `pyplot.hist(data)` function and pass your data set into the function.  There are several optional arguments to the `hist` function that can help customize the appearance. A few of the more important ones are given in the table below
 
 |Optional Argument| Description| Example|
@@ -388,6 +389,76 @@ ax.set_title("f vs x")
 plt.show()                     # Step 4
 ```
 
+### Reading Data Files
+In this lab we will be reading in a CSV file, which is a file where a comma is used to separate the numbers. The function `np.genfromtxt()` will read a file like this and put it into a numpy array for later use.  The `genfromtxt` function requires only one argument (the file name) with another optional argument (`delimiter`) that is typically included to specify the character used to separate the data.  Below is an example to read a hypothetical file named squares.csv file (comma separated values).
+
+
+```{python}
+#| eval: False
+from numpy import genfromtxt
+
+data = genfromtxt('squares.csv',delimiter = ",")
+
+print(data)
+
+```
+
+Notice that the data was read into a NumPy array (2D in this case because there were two columns of data), which means that we can easily slice off the individual columns if needed.
+
+```{python}
+#| eval: False
+from numpy import genfromtxt
+
+data = genfromtxt('squares.csv',delimiter = ",")
+
+numbers = data[:,0]
+squares = data[:,1]
+
+
+```
+
+Other optional arguments that can be used with the `genfromtxt` function are given in the table below:
+
+
+
+| Argument | Description |
+|--------|------------|
+| `delimiter`  |The string used to separate value.  By default, whitespace acts as the delimiter.|
+| `skip_header`  |The number of lines to skip at the beginning of a file.|
+| `skip_footer`  |The number of lines to skip at the end of a file.|
+| `usecols`  |Specify which columns to read with 0 being the first. For example, `usecols = (0,2,5)` will read the 1st, 3rd, and 6th columns.|
+| `comments`  |The character used to indicate the start of a comment.  Lines beginning with this character will be discarded.|
+
+
+**Important:** If the file you are reading is not located **in the same directory as this jupyter notebook**, `genfromtxt` will **not be able to find the file**.  In this case, you have two options: 1- copy the file from its current location into the directory where this jupyter notebook is located, or 2- Use python's `os` module to change your working directory to where the file is located.  
+
+
+If you choose the second option you'll need to familiarize yourself with the `os` module, which can perform standard operations on the files and folders on your computer.  When opening files from a python script, the default search path is the directory where the current file is located. If you want to open files located in other directories, you may need to use the `os` module to navigate there first. The following functions are the most commonly used ones
+
+
+|Function|Description|
+|--------|-----------|
+|`getcwd()`| Short for get current working directory.  Returns a string of the current directory.|
+|`chdir(path)`| Change the current working direction to be at `path`.|
+|`listdir()`| List all of the files and folders in the current working directory.|
+|`mkdir(path)`| Make an new directory at location `path`.|
+
+In the cell below, we show the usage of these functions.
+
+```{python}
+#| eval: false
+from os import getcwd,chdir,listdir
+
+currentdir = getcwd()  
+myfiles = listdir()
+print(currentdir)
+print(myfiles)
+#chdir(/path/to/new/directory) 
+
+```
+
+
+
 ## Activity I Pendulum Period (33 points)
 
 ### Equipment needed
@@ -400,14 +471,16 @@ Each student will measure the period of a 1.5-meter-long pendulum 10 times. This
 ### Procedure
 1. A pendulum that is 1.5 meters long will be set up at the front of the class. Each person should measure the period of the pendulum with a stopwatch 10 times. Data should be recorded to the nearest 0.01 s.  For the best results try to keep the pendulum's amplitude consistent for all of the measurements, even by restarting as necessary.  The amplitude should be relatively small (less than about $10^\circ$).  The pendulum should be swinging (rather than at rest) when the time measurement begins.
 2. Record your 10 measurements in the google sheets link provided below.
-3. Once everyone has collected their measurements someone needs to move all of the data into a single column.  Then download the file to your computer and use the `np.loadtxt()` function to read this data into Python. Do this on line 7 of the code cell below.  (Remember: The file must be located in the same directory as this Jupyter notebook.)
+3. Once everyone has collected their measurements someone needs to move all of the data into a single column.  Then download the file to your computer, saving it as a .csv file.  Then use the `np.loadtxt()` function to read this data into Python. Do this on line 7 of the code cell below.  (Remember: The file must be located in the same directory as this Jupyter notebook.)
 4. The acceleration due to gravity can be calculated from $$ g = {4 \pi^2 L \over T^2}$$ On line 9 of the code cell below calculate the acceleration due to gravity for each period measurement in the data set. To include $\pi$ in your calculation use `np.pi`.
 5. Use the equations given in the reading above to calculate the mean, standard deviation, and standard deviation of the mean.  Perform these calculations on lines 10, 11, and 12 of the code cell below.  Use `np.sum()` to perform summations and `np.sqrt()` to perform square root functions.
 6. On lines 14,15, and 16 in the code cell below use the functions `stats.mean()` and `stats.stdev()` to calculate the mean, standard deviation, and standard deviation of the mean.  
-7. Add a formatted print statement (see examples from previous labs) to report an appropriate value for $g$ with its uncertainty.
+7. Construct a dataframe of data with the period located in the first column and the values of g in the second column.
+8. A statistical analysis of the data can be generated using `dataframe.describe()`, which creates a new dataframe containing often used statistics.  Do this on line.  
+7. Add a formatted print statement  to report an appropriate value for $g$ with its uncertainty.
 8. Plot a histogram of the g values.  
 9. The normal distribution is given by $$ N(x) = {1\over \sigma \sqrt{2 \pi}} e^{-(x- \mu)^2\over 2 \sigma^2}$$. Plot this distribution on top of the histogram. Verify that the limiting distribution matches the histogram.  
-10. Calculate the p-value for this dataset using $g= 9.8$ as the expected value.  State whether the deviation of your experimental results are significant enough (at the $5\%$ level ) to reject the experiment. Do this on line 17 in the code cell below.
+10. Calculate the p-value for this dataset using $g= 9.8$ as the expected value.  State whether the deviation of your experimental results are significant enough (at the $5\%$ level ) to reject the experiment. Do this on line 22 in the code cell below.
 
 [Pendulum Data](https://docs.google.com/spreadsheets/d/1A2Xb7dDaDxjSH8YzRn0-Lb2er6qxWySYjmuLK-yiP4w/edit?usp=sharing)
 
@@ -422,7 +495,7 @@ from scipy.stats import ttest_1samp
 
 %matplotlib inline
 
-T = np.loadtxt("pendulum_data.txt",float)  # Line 7
+T =   # Line 7
 N = len(T)     # Find the number of data points.
 g =            # Line 9
 meanG =        # Line 10
@@ -432,17 +505,17 @@ stdMeanG =     # Line 12
 μ =            # Line 14 
 σ =            # Line 15
 σ_μ =          # Line 16
-p_value =      # Line 17
+
+df =  # Construct a dataframe with periods in the first column and g-values in the second. (Line 18)
+display(df)
+summary =  #Construct a summary dataframe containing often-used statistics (Line 20)
+display(summary)
+p_value =      # Line 22
 
 
 
-ax = plt.axes()
 # Plot the histogram and Normal distribution below.
 
-plt.plot(x,norm_data)
-plt.xlabel('g (m/s^2)')
-plt.ylabel('Probability')
-plt.show()
 ```
 
 ## Activity II - Radioactivity (33 points)
@@ -478,22 +551,20 @@ We will use the electronic radiation monitor to measure the number of decays for
 ```{python}
 #| eval: false
 #| echo: true
-
 from scipy.stats import poisson,norm
 from numpy import arange
 from matplotlib import pyplot as plt
 
-#data = np.loadtxt("radiation_data.txt",float)
+data =  #Load the data from file (Line 5)
 
-#μ =   # Line 7
-#σ =   # Line 8
+μ =   # Calculate mean (Line 7)
+σ =   # Calculate standard deviation (Line 8)
 
-ax = plt.axes()
-              # Line 11
+              
+              # Construct Histogram (Line 11)
 
 dist = poisson(μ)
 x = arange(0,40)    # Line 14: May have to modify these numbers.
-
 ax.plot(x,dist.pmf(x))
 plt.show()
 
@@ -504,14 +575,18 @@ plt.show()
 ## Activity III - Projectile Range (33 points)
 
 ### Goal (Overview)
-This activity is identical in nature to Activity I.  Instead of measuring the period of a pendulum, we will measure the range of a projectile.  The analysis of the data will be very similar to that performed in Activity I. 
+This activity is identical in nature to Activity I.  Instead of measuring the period of a pendulum, we will measure the range of a projectile.  The analysis of the data will be very similar to that performed in Activity I.  
+
+### Setup
+1. As a class, pick some launch conditions.  Thes must include the launch angle, launch power setting, and initial height.  Pick one person to write these launch conditions on the whiteboard at the front of the class.
+2. Setup the cannon in a location where everyone in the class can access it and perform measurements.  
 
 ### Procedure
-1. Use kinematics to predict the range of the steel ball.  Perform the calculations in the code cell below. 
-2. Using the projectile launcher, fire a steel ball 40 times (10 launches per student) and measure the range in meters.  The projectile should be placed on the table.  Use an initial launch angle of $30^\circ$ and use the third spring setting to produce the largest range.
-3. Again, we will pool our data together as a class to increase the size of the dataset.  Therefore, it is very important that every student launches **under the same conditions**.  Add your data to the Google sheets document linked below.
-4. When all the data is collected, have Python read the data set using `np.loadtxt()`.
-5. Calculate the mean, standard deviation, and standard deviation of the mean using your preferred calculation method. (Either with `stats.mean()` and `stats.stdev()` or brute force calculation of the equations in the book.)
+1. Using the launch conditions chosen in step 1, predict the range of the steel ball.  Perform the calculations in the code cell below. 
+2. Using the projectile launcher, fire a steel ball 10 times per student and measure the range in meters.  
+3. Again, we will pool our data together as a class to increase the size of the dataset.  Therefore, it is very important that every student launches **under the same conditions** and every students' measurements are free of bias.  Add your data to the Google sheets document linked below.
+4. When all the data is collected, have Python read the data set using `np.genfromtxt()` just as you did in activity I.
+5. Calculate the mean, standard deviation, and standard deviation of the mean using your preferred calculation method. (Either with `stats.mean()` and `stats.stdev()` ,using the equations given above, or using a python dataframe.)
 6. Plot a histogram of the data.  Choose `bins =` appropriately so the histogram displays with sufficient detail.
 7. Plot the normal distribution on top to verify that it is the limiting distribution.
 8. Add a formatted print statement to report the particle's range with its associated uncertainty.

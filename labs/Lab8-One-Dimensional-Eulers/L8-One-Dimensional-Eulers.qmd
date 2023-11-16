@@ -2,7 +2,6 @@
 jupyter: python3
 ---
 
-
 # Lab 8 Euler's Method: Including Air Resistance {-}
 
 [Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L8-One-Dimensional-Eulers.ipynb)
@@ -14,7 +13,8 @@ In this lab you will gain the following skills
 
 ### Python
 1. How to construct a Python `for` loop.
-2. Construct an Euler's method code for simple one-dimensional motion.
+2. Learn the physics of air drag.
+3. Construct an Euler's method code for simple one-dimensional motion.
 
 
    
@@ -427,12 +427,13 @@ Use these equations to calculate the time it takes for a particle to fall throug
 Write some python code that will accurately predict the fall time for a projectile that is experiencing air resistance.  
 
 ### Procedure
-1. Together in class we constructed a model for a particle that is thrown upward and experiences no air resistance.  Use equations 3-6 above to modify that code to include air resistance.  Set $\rho = 1.02$ kg/m$^3$, $C = 0.5$ and make reasonable guesses for the values of $A$ and $m$. We'll fine tune these values later.
+1. In the example discussed above, a model for a particle that is thrown upward and experiences no air resistance was constructed.  Use equations 3-6 from the "Air Drag" section to modify that code to include air resistance.  Set $\rho = 1.02$ kg/m$^3$, $C = 0.5$ and make reasonable guesses for the values of $A$ and $m$. We'll fine tune these values later.
 2. Modify the code to model a particle that is dropped from rest rather than thrown upward initially.
 3. Your value for $\Delta t$ will need to be reasonably small to get accurate results.  Decrease your value of $\Delta t$ until the results stop changing.
-4. As a test of the correctness of your code, increase the initial height of the projectile and verify that the drop time changes as you would expect. 
-5. As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.
-6. As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect. 
+4. To find the flight time, you should use trial and error on t_max until the particle hits the ground.
+5. As a test of the correctness of your code, increase the initial height of the projectile and verify that the drop time changes as you would expect. 
+6. As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.
+7. As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect. 
 
 
 ```{python}
@@ -449,31 +450,35 @@ from numpy import pi
 # Loop to calculate flight time using Euler's method
 while # Put your stopping condition here:
     
+
+plt.ylim(0,y0)
 ```
 
 ## Activity III: Predicting times
 
 ### Procedure
 1. Make mass and diameter measurements on each of the objects given to you. 
-2. Then use the code you wrote above to  predict the drop times for each of the six objects dropped from a height of 16.92 m.
-3. Fill in the table below with your predictions. 
-4. After the table is filled out, run some tests in the lab room to verify the accuracy of your model.
+2. Choose a location to perform the drop and measure the initial height. You should find a location that provides a large drop distance.  (The track above the I-center or the foyer in the Manwaring center are good choices.  We've dropped them from the top of the stadium before but a tall fence was recently installed which makes it hard to drop from there. )
+3. Then use the code you wrote above to predict the drop times for each of the six objects.
+4. Fill in the table below with your predictions. 
 
-|Object | Precited fall time (s)|
-|-------|-----------------------|
-|Ping Pong Ball |               |
-|Styrofoam cone |               |
-|Styrofoam sphere (small) |               |
-|Styrofoam sphere (medium) |               |
-|Beach ball |               |
+|Object | Mass (kg) | Diameter (m) |Precited fall time (s)|
+|-------|-----------|--------------|----------------------|
+|Ping Pong Ball |   |              |            |
+|Styrofoam cone |   |              |            |
+|Styrofoam sphere (small) |   |              |            |
+|Styrofoam sphere (medium) |   |              |            |
+|Beach ball |   |              |            |
 
 
 
 
 ## Activity IV: Comparison of Predicted and Measured Times
-Each group will measure the time of flight for the five objects. Average the time measurements for each object and compare to your predicted values. 
 
-The percent difference is calculated as:
+1. Measure the flight time for each object $10$ times. 
+2. Calculate the average fall time for each object.
+3. Calculate the percent error for each object.
+4. Fill in your results in the table below.
 
 $$ \text{% diff} = {\text{measured} - \text{predicted} \over \text{measured} } \times 100 \text{%}$$
 
@@ -493,22 +498,11 @@ If any of your % differences are greater than 10%, give a possible explanation f
 > **Response:**
 
 
-Note: Use the cell below to calculate the averages and percent error. I have started the code but it is not complete. You'll have to finish it.
 
 ```{python}
 #| eval: false
 #| echo: true
 
-from scipy.stats import mean
-
-
-pingPong = []  
-cone = []
-smallBall = []
-mediumBall = []
-beachBall = []
-
-
-mean_pingpong = mean(pingPong)
+# Python code here
 ```
 

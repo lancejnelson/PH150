@@ -97,6 +97,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -158,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 1 Measurement and Uncertainty</span></a>
+ <span class="menu-text">Lab 1: Measurement and Uncertainty</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -176,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 4 Statistical Interpretation of Uncertainty</span></a>
+ <span class="menu-text">Lab 4: Statistical Interpretation of Uncertainty</span></a>
   </div>
 </li>
       </ul>
@@ -193,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 5 Experimental Design I</span></a>
+ <span class="menu-text">Lab 5: Experimental Design I</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -249,11 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a>
-  <ul class="collapse">
-  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
-  <li><a href="#mathematicalexperimental-skills-and-knowledge" id="toc-mathematicalexperimental-skills-and-knowledge" class="nav-link" data-scroll-target="#mathematicalexperimental-skills-and-knowledge">Mathematical/Experimental Skills and Knowledge</a></li>
-  </ul></li>
+  <li><a href="#skills" id="toc-skills" class="nav-link active" data-scroll-target="#skills">Skills</a></li>
   <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
   <ul class="collapse">
   <li><a href="#the-slope-of-a-function" id="toc-the-slope-of-a-function" class="nav-link" data-scroll-target="#the-slope-of-a-function">The Slope of a Function</a></li>
@@ -262,7 +261,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#partial-derivatives" id="toc-partial-derivatives" class="nav-link" data-scroll-target="#partial-derivatives">Partial Derivatives</a></li>
   <li><a href="#an-example" id="toc-an-example" class="nav-link" data-scroll-target="#an-example">An Example</a></li>
   </ul></li>
-  <li><a href="#python-skills" id="toc-python-skills" class="nav-link" data-scroll-target="#python-skills">Python Skills</a></li>
+  <li><a href="#python-skills" id="toc-python-skills" class="nav-link" data-scroll-target="#python-skills">Python Skills</a>
+  <ul class="collapse">
+  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes">DataFrames</a></li>
+  <li><a href="#multiple-plots" id="toc-multiple-plots" class="nav-link" data-scroll-target="#multiple-plots">Multiple Plots</a></li>
+  <li><a href="#numpy-arrays" id="toc-numpy-arrays" class="nav-link" data-scroll-target="#numpy-arrays">Numpy Arrays</a></li>
+  </ul></li>
+  <li><a href="#mathrmlatex" id="toc-mathrmlatex" class="nav-link" data-scroll-target="#mathrmlatex"><span class="math inline">\(\mathrm{\LaTeX}\)</span></a></li>
   <li><a href="#activity-i-the-pendulum-50-pts" id="toc-activity-i-the-pendulum-50-pts" class="nav-link" data-scroll-target="#activity-i-the-pendulum-50-pts">Activity I: The pendulum (50 pts)</a>
   <ul class="collapse">
   <li><a href="#equipment-needed" id="toc-equipment-needed" class="nav-link" data-scroll-target="#equipment-needed">Equipment needed:</a></li>
@@ -303,21 +308,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="skills" class="level2">
 <h2 class="anchored" data-anchor-id="skills">Skills</h2>
 <p>In this lab you will gain the following skills</p>
-<section id="python" class="level3">
-<h3 class="anchored" data-anchor-id="python">Python</h3>
 <ol type="1">
-<li>Perform simple calculations.</li>
 <li>Construct Python dataframes and use them to display datasets.</li>
 <li>Construct arrays of plots in Python (multiple plots on one canvas).</li>
-</ol>
-</section>
-<section id="mathematicalexperimental-skills-and-knowledge" class="level3">
-<h3 class="anchored" data-anchor-id="mathematicalexperimental-skills-and-knowledge">Mathematical/Experimental Skills and Knowledge</h3>
-<ol type="1">
+<li>Use numpy arrays to perform mathematical calculations on data sets.</li>
+<li>Use <span class="math inline">\(\LaTeX\)</span> to write simple math equations.</li>
 <li>Know the meaning of the derivative and partial derivative.</li>
 <li>Use derivatives to propagate uncertainty for moderately complex calculations.</li>
 </ol>
-</section>
 </section>
 <section id="background-information" class="level2">
 <h2 class="anchored" data-anchor-id="background-information">Background Information</h2>
@@ -326,27 +324,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Mathematical functions describe how one quantity depends on one or more other quantities. For example, the velocity function</p>
 <p><span class="math display">\[v(t) = 5 t + 2\]</span></p>
 <p>gives the relationship between velocity and time.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-2-output-1.png" width="585" height="429"></p>
 </div>
 </div>
 <p>and this function gives the relationship between position and time</p>
 <p><span class="math display">\[y(t) = 5t^2 -3t + 8\]</span></p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-3-output-1.png" width="593" height="429"></p>
 </div>
 </div>
 <p>The slope of a function (<span class="math inline">\(m\)</span>) is the rate at which the function changes with its variables. The slope is straightforward to calculate for linear functions: Just pick two points, calculate <span class="math inline">\(\Delta y = y_2 -y_1\)</span> and <span class="math inline">\(\Delta t = t_2 - t_1\)</span>, and divide them. <span class="math display">\[m = {\Delta y \over \Delta t}\]</span></p>
 <p>Generally, the slope of a function isn’t constant but varies across the domain. The figure below illustrates how the tangent line to a non-linear function varies across the domain.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-4-output-1.png" width="812" height="429"></p>
 </div>
 </div>
 <p>For those that are interested, the slope of the tangent line of a function can be found by calculating the slope of a function in the limit that the change in <span class="math inline">\(x\)</span> (<span class="math inline">\(\Delta x\)</span>) becomes infinitely small.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-5-output-1.png" width="812" height="429"></p>
 </div>
@@ -356,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>is given by the sloping function</p>
 <p><span class="math display">\[y'(t) = {dy(t) \over dt} = -9.8 t + 4\]</span></p>
 <p>These functions are plotted below to illustrate their relationship.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-6-output-1.png" width="526" height="361"></p>
 </div>
@@ -438,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[l = 5.2 \pm 0.1 ~\text{cm}\]</span> <span class="math display">\[w = 8.4 \pm 0.3 ~\text{cm}\]</span> <span class="math display">\[h = 10.8 \pm 0.4 ~\text{cm}\]</span> <span class="math display">\[m = 345 \pm 5 ~\text{grams}\]</span></p>
 <p>and proceeding to calculate the density of the block</p>
 <p><span class="math display">\[\rho = {m \over V} = {m \over l \times w \times h}\]</span></p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>=  0.73 g/cm^3</code></pre>
 </div>
@@ -453,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[ = \sqrt{(-{m \over l^2 w h} \delta l)^2 + (-{m \over l w^2 h} \delta w)^2 + (-{m \over l w h^2} \delta h)^2 + ({1 \over l w h} \delta m)^2}\]</span></p>
 <p><span class="math display">\[ = \sqrt{(-{(345 ~\text{grams}) \over (5.42 ~\text{cm})^2 (8.4 ~\text{cm}) (10.8 ~\text{cm})} (0.1 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm})^2 (10.8 ~\text{cm})} (0.3 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})^2} (0.4 ~\text{cm}))^2 + ({1 \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})} (5 ~\text{grams}))^2}\]</span></p>
 <p>In the code cell below we use python to calculate this uncertainty.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">345</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dm <span class="op">=</span> <span class="dv">5</span></span>
@@ -479,6 +477,495 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="python-skills" class="level2">
 <h2 class="anchored" data-anchor-id="python-skills">Python Skills</h2>
+<section id="dataframes" class="level3">
+<h3 class="anchored" data-anchor-id="dataframes">DataFrames</h3>
+<p>A dataframe is a data structure that organizes data into a 2-dimensional table of rows and columns, similar to a spreadsheet. A dataframe can be initiated in Python using the <code>pandas.DataFrame()</code> function (case sensitive). For example, suppose that you used the accelerometer on your phone to gather the following data.</p>
+<pre><code>   time     gFx     gFy     gFz  
+0  0.007 -0.0056 -0.0046  1.0120  
+1  0.008  0.0007  0.0024  1.0022  
+2  0.008  0.0000  0.0059  1.0039  
+3  0.009  0.0054 -0.0022  1.0032  
+4  0.009 -0.0015 -0.0056  1.0042  
+5  0.009  0.0037 -0.0020  0.9951  
+6  0.010 -0.0020 -0.0020  1.0020  
+7  0.014  0.0090 -0.0024  1.0159  
+8  0.015  0.0012 -0.0037  1.0100  
+9  0.017 -0.0115 -0.0020  1.0012 </code></pre>
+<p>This data can be loaded into a dataframe like this.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> [<span class="fl">0.007</span>,<span class="fl">0.008</span>,<span class="fl">0.008</span>,<span class="fl">0.009</span>,<span class="fl">0.009</span>,<span class="fl">0.009</span>,<span class="fl">0.01</span>,<span class="fl">0.014</span>,<span class="fl">0.015</span>,<span class="fl">0.017</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>gFx <span class="op">=</span> [<span class="op">-</span><span class="fl">0.0056</span>,<span class="fl">0.007</span>,<span class="dv">0</span>,<span class="fl">0.0054</span>,<span class="op">-</span><span class="fl">0.0015</span>,<span class="fl">0.0037</span>,<span class="op">-</span><span class="fl">0.002</span>,<span class="fl">0.009</span>,<span class="fl">0.0012</span>,<span class="op">-</span><span class="fl">0.0115</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>gFy <span class="op">=</span> [<span class="op">-</span><span class="fl">0.0046</span>,<span class="fl">0.0024</span>,<span class="fl">0.0059</span>,<span class="op">-</span><span class="fl">0.0022</span>,<span class="op">-</span><span class="fl">0.0056</span>,<span class="op">-</span><span class="fl">0.002</span>,<span class="op">-</span><span class="fl">0.002</span>,<span class="op">-</span><span class="fl">0.0025</span>,<span class="op">-</span><span class="fl">0.0037</span>,<span class="op">-</span><span class="fl">0.002</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gFz <span class="op">=</span> [<span class="fl">1.012</span>,<span class="fl">1.0022</span>,<span class="fl">1.0039</span>,<span class="fl">1.0032</span>,<span class="fl">1.0042</span>,<span class="fl">0.9951</span>,<span class="fl">1.002</span>,<span class="fl">1.0159</span>,<span class="fl">1.01</span>,<span class="fl">1.0012</span>]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>elevator_data <span class="op">=</span> DataFrame(np.transpose([time,gFx,gFy,gFz]),columns <span class="op">=</span> [<span class="st">"time"</span>, <span class="st">"gFx"</span>,<span class="st">"gFy"</span>, <span class="st">"gFz"</span>])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>display(elevator_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">gFx</th>
+<th data-quarto-table-cell-role="th">gFy</th>
+<th data-quarto-table-cell-role="th">gFz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.007</td>
+<td>-0.0056</td>
+<td>-0.0046</td>
+<td>1.0120</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.008</td>
+<td>0.0070</td>
+<td>0.0024</td>
+<td>1.0022</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.008</td>
+<td>0.0000</td>
+<td>0.0059</td>
+<td>1.0039</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.009</td>
+<td>0.0054</td>
+<td>-0.0022</td>
+<td>1.0032</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.009</td>
+<td>-0.0015</td>
+<td>-0.0056</td>
+<td>1.0042</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0.009</td>
+<td>0.0037</td>
+<td>-0.0020</td>
+<td>0.9951</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0.010</td>
+<td>-0.0020</td>
+<td>-0.0020</td>
+<td>1.0020</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>0.014</td>
+<td>0.0090</td>
+<td>-0.0025</td>
+<td>1.0159</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>0.015</td>
+<td>0.0012</td>
+<td>-0.0037</td>
+<td>1.0100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>0.017</td>
+<td>-0.0115</td>
+<td>-0.0020</td>
+<td>1.0012</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The <code>display</code> command can then be used to display the dataframe to screen. The keyword argument <code>columns = ["time", "gFx","gFy", "gFz"]</code> will assign names to the columns of the dataframe. The rows also have names attached but since these names were not specified, they defaulted to the integers 0 - 9. If you want to assign different names to the rows of your dataframe, add the keyword argument <code>index =</code> when you call <code>DataFrame</code>, like this</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> [<span class="fl">0.007</span>,<span class="fl">0.008</span>,<span class="fl">0.008</span>,<span class="fl">0.009</span>,<span class="fl">0.009</span>,<span class="fl">0.009</span>,<span class="fl">0.01</span>,<span class="fl">0.014</span>,<span class="fl">0.015</span>,<span class="fl">0.017</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>gFx <span class="op">=</span> [<span class="op">-</span><span class="fl">0.0056</span>,<span class="fl">0.007</span>,<span class="dv">0</span>,<span class="fl">0.0054</span>,<span class="op">-</span><span class="fl">0.0015</span>,<span class="fl">0.0037</span>,<span class="op">-</span><span class="fl">0.002</span>,<span class="fl">0.009</span>,<span class="fl">0.0012</span>,<span class="op">-</span><span class="fl">0.0115</span>]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>gFy <span class="op">=</span> [<span class="op">-</span><span class="fl">0.0046</span>,<span class="fl">0.0024</span>,<span class="fl">0.0059</span>,<span class="op">-</span><span class="fl">0.0022</span>,<span class="op">-</span><span class="fl">0.0056</span>,<span class="op">-</span><span class="fl">0.002</span>,<span class="op">-</span><span class="fl">0.002</span>,<span class="op">-</span><span class="fl">0.0025</span>,<span class="op">-</span><span class="fl">0.0037</span>,<span class="op">-</span><span class="fl">0.002</span>]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>gFz <span class="op">=</span> [<span class="fl">1.012</span>,<span class="fl">1.0022</span>,<span class="fl">1.0039</span>,<span class="fl">1.0032</span>,<span class="fl">1.0042</span>,<span class="fl">0.9951</span>,<span class="fl">1.002</span>,<span class="fl">1.0159</span>,<span class="fl">1.01</span>,<span class="fl">1.0012</span>]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>elevator_data <span class="op">=</span> DataFrame(np.transpose([time,gFx,gFy,gFz]),columns <span class="op">=</span> [<span class="st">"time"</span>, <span class="st">"gFx"</span>,<span class="st">"gFy"</span>, <span class="st">"gFz"</span>],index <span class="op">=</span> [<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"F"</span>,<span class="st">"G"</span>,<span class="st">"H"</span>,<span class="st">"J"</span>,<span class="st">"K"</span>])</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>display(elevator_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">gFx</th>
+<th data-quarto-table-cell-role="th">gFy</th>
+<th data-quarto-table-cell-role="th">gFz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">A</td>
+<td>0.007</td>
+<td>-0.0056</td>
+<td>-0.0046</td>
+<td>1.0120</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">B</td>
+<td>0.008</td>
+<td>0.0070</td>
+<td>0.0024</td>
+<td>1.0022</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">C</td>
+<td>0.008</td>
+<td>0.0000</td>
+<td>0.0059</td>
+<td>1.0039</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">D</td>
+<td>0.009</td>
+<td>0.0054</td>
+<td>-0.0022</td>
+<td>1.0032</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">E</td>
+<td>0.009</td>
+<td>-0.0015</td>
+<td>-0.0056</td>
+<td>1.0042</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">F</td>
+<td>0.009</td>
+<td>0.0037</td>
+<td>-0.0020</td>
+<td>0.9951</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">G</td>
+<td>0.010</td>
+<td>-0.0020</td>
+<td>-0.0020</td>
+<td>1.0020</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">H</td>
+<td>0.014</td>
+<td>0.0090</td>
+<td>-0.0025</td>
+<td>1.0159</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">J</td>
+<td>0.015</td>
+<td>0.0012</td>
+<td>-0.0037</td>
+<td>1.0100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">K</td>
+<td>0.017</td>
+<td>-0.0115</td>
+<td>-0.0020</td>
+<td>1.0012</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Now the names of your rows will be “A” through “K”</p>
+</section>
+<section id="multiple-plots" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-plots">Multiple Plots</h3>
+<p>Last week we learned how to generate a single, simple plot. Often you may want to generate multiple, independent plots in the same figure. To do this, first we must use the <code>figure</code> function which generates the canvas upon which the plots will appear. Assign this object to a variable so you can refer to it later. To create each subplot, the <code>fig.add_subplot(rows,columns, plot_number)</code> function is used. There are three arguments to this function; the first two indicate the shape of the grid and the third indicates which position on the grid this plot will be assigned.</p>
+<pre><code>fig.add_subplot(rows,columns,plot_location)</code></pre>
+<p>After the axes object has been created, we can call the <code>plot</code>, or <code>errorbar</code> function again, and a plot will be generated at its location. Here is an example that will generate two plots side by side.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> linspace,sqrt</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> linspace(<span class="fl">0.9</span>,<span class="dv">4</span>,<span class="dv">50</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>sigmaOne <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>epsilonOne <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>sigmaTwo <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>epsilonTwo <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>energyOne <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> sigmaOne<span class="op">*</span> ((epsilonOne<span class="op">/</span>r)<span class="op">**</span><span class="dv">12</span> <span class="op">-</span> (epsilonOne<span class="op">/</span>r)<span class="op">**</span><span class="dv">6</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>energyTwo <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> sigmaTwo <span class="op">*</span> ((epsilonTwo<span class="op">/</span>r)<span class="op">**</span><span class="dv">12</span> <span class="op">-</span> (epsilonTwo<span class="op">/</span>r)<span class="op">**</span><span class="dv">6</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>ax1.plot(r,energyOne,marker <span class="op">=</span> <span class="st">'+'</span>,color <span class="op">=</span> <span class="st">'k'</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>ax1.set_xlim(<span class="fl">0.5</span>,<span class="fl">3.0</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>ax1.set_ylim(<span class="op">-</span><span class="fl">1.5</span>,<span class="dv">5</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Separation Distance"</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Energy"</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Lennard-Jones Potential"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>ax2.plot(r,energyTwo,marker <span class="op">=</span> <span class="st">'o'</span>,color <span class="op">=</span> <span class="st">'r'</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>ax2.set_xlim(<span class="fl">0.5</span>,<span class="fl">4.0</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>ax2.set_ylim(<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Separation Distance"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Energy"</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Lennard-Jones Potential"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>Text(0.5, 1.0, 'Lennard-Jones Potential')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-11-output-2.png" width="591" height="449"></p>
+</div>
+</div>
+<p>Pay close attention to the <code>add_subplot</code> function. <code>ax1=add_subplot(1,2,1)</code> will generate a <span class="math inline">\(1\)</span> x <span class="math inline">\(2\)</span> grid of plots and <code>ax1</code> will correspond plot at the 1st location. Below is an example of a more advanced array of plots. Pay close attention to the <code>add_subplot</code> functions until you understand.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> linspace,sqrt</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> linspace(<span class="fl">0.9</span>,<span class="dv">4</span>,<span class="dv">50</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sigmaOne <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>epsilonOne <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>sigmaTwo <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>epsilonTwo <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>energyOne <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> sigmaOne<span class="op">*</span> ((epsilonOne<span class="op">/</span>r)<span class="op">**</span><span class="dv">12</span> <span class="op">-</span> (epsilonOne<span class="op">/</span>r)<span class="op">**</span><span class="dv">6</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>energyTwo <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> sigmaTwo <span class="op">*</span> ((epsilonTwo<span class="op">/</span>r)<span class="op">**</span><span class="dv">12</span> <span class="op">-</span> (epsilonTwo<span class="op">/</span>r)<span class="op">**</span><span class="dv">6</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>ax2<span class="op">=</span> fig.add_subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>ax1.plot(r,energyOne,marker <span class="op">=</span> <span class="st">'+'</span>,color <span class="op">=</span> <span class="st">'k'</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>ax1.set_xlim(<span class="fl">0.5</span>,<span class="fl">3.0</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>ax1.set_ylim(<span class="op">-</span><span class="fl">1.5</span>,<span class="dv">5</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Separation Distance"</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Energy"</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Lennard-Jones Potential"</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>ax2.plot(r,energyTwo,marker <span class="op">=</span> <span class="st">'o'</span>,color <span class="op">=</span> <span class="st">'r'</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>ax2.set_xlim(<span class="fl">0.5</span>,<span class="fl">4.0</span>)</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>ax2.set_ylim(<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Separation Distance"</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Energy"</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Lennard-Jones Potential"</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>ax3.plot(r,energyTwo,marker <span class="op">=</span> <span class="st">'o'</span>,color <span class="op">=</span> <span class="st">'r'</span>)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>ax3.set_xlim(<span class="fl">0.5</span>,<span class="fl">4.0</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>ax3.set_ylim(<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>ax3.set_xlabel(<span class="st">"Separation Distance"</span>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="st">"Energy"</span>)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>ax3.set_title(<span class="st">"Lennard-Jones Potential"</span>)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-12-output-1.png" width="662" height="470"></p>
+</div>
+</div>
+<p>Also notice the <code>set_xlim</code>, <code>set_ylim</code>, <code>set_xlabel</code> etc methods that were used to customize each individual plot. There are a host of other methods available for further customization.</p>
+<p><a href="https://matplotlib.org/stable/api/axes_api.html#subplots">This</a> website has a comprehensive list of them.</p>
+</section>
+<section id="numpy-arrays" class="level3">
+<h3 class="anchored" data-anchor-id="numpy-arrays">Numpy Arrays</h3>
+<p>Often in science you’ll be working with more than one data point at a time. For example, consider the data shown below of a ball that is dropped from several different initial heights.</p>
+<div class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Initial height (meters)</th>
+<th data-quarto-table-cell-role="th">Fall time (seconds)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2.0</td>
+<td>0.64</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2.5</td>
+<td>0.71</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3.0</td>
+<td>0.78</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3.5</td>
+<td>0.85</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4.0</td>
+<td>0.90</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Data like this should be stored in a numpy (“num-pie”) array, like this:</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.array([<span class="fl">0.64</span>,<span class="fl">0.71</span>,<span class="fl">0.78</span>,<span class="fl">0.85</span>,<span class="fl">0.90</span>])</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">2.5</span>,<span class="fl">3.0</span>,<span class="fl">3.5</span>,<span class="fl">4.0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The benefit of storing your data in arrays is that mathematical calculations are “vectorized” which means that the mathematical operation is performed across the entire data set without needing a loop. For example, the equation <span class="math inline">\(g = {2 y \over t^2}\)</span> could be used to find the acceleration due to gravity for all of the data points like this:</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.array([<span class="fl">0.64</span>,<span class="fl">0.71</span>,<span class="fl">0.78</span>,<span class="fl">0.85</span>,<span class="fl">0.90</span>])</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">2.5</span>,<span class="fl">3.0</span>,<span class="fl">3.5</span>,<span class="fl">4.0</span>])</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> y<span class="op">/</span>t<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[9.765625   9.91866693 9.86193294 9.68858131 9.87654321]</code></pre>
+</div>
+</div>
+<p>If you need to use mathematical function like square roots or trigonometric functions, you should always import them from <code>numpy</code> and not <code>math</code>.</p>
+</section>
+</section>
+<section id="mathrmlatex" class="level2">
+<h2 class="anchored" data-anchor-id="mathrmlatex"><span class="math inline">\(\mathrm{\LaTeX}\)</span></h2>
+<p>Often you will want to include math equations as part of your explanation/text. Below is an example of what your math should and should not look like.</p>
+<ul>
+<li><span class="math inline">\(|\vec{v}| = \sqrt{v_x^2 + v_y^2}\)</span> (like this)<br>
+</li>
+<li>v = sqrt(vx^2 + vy^2) (not like this)</li>
+</ul>
+<p>To make your math equations look like the first example, you must enclose your math equation in “$$”, one pair at the beginnning of the equation and one pair at the end. Enclosing your expression in double dollar signs will put the expression on its own line. To place the expression in the middle of a sentence (inline) you’ll need to enclose the expression in single dollar signs. To generate the math symbols that often show up in equations, you’ll need to know the correct syntax. A table of commonly used math symbols is given below.</p>
+<table class="table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 32%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Math symbol</th>
+<th>Example</th>
+<th><span class="math inline">\(\mathrm{\LaTeX}\)</span> syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Subscript</td>
+<td><span class="math inline">\(v_x\)</span></td>
+<td><code>v_x</code></td>
+</tr>
+<tr class="even">
+<td>Powers</td>
+<td><span class="math inline">\(v^2\)</span></td>
+<td><code>v^2</code></td>
+</tr>
+<tr class="odd">
+<td>Powers with more than one digit</td>
+<td><span class="math inline">\(v^{10}\)</span></td>
+<td><code>v^{10}</code></td>
+</tr>
+<tr class="even">
+<td>Square root</td>
+<td><span class="math inline">\(\sqrt{a + b}\)</span></td>
+<td><code>\sqrt{a + b}</code></td>
+</tr>
+<tr class="odd">
+<td>Fractions</td>
+<td><span class="math inline">\(\frac{a}{b}\)</span></td>
+<td><code>\frac{a}{b}</code></td>
+</tr>
+<tr class="even">
+<td>Vectors</td>
+<td><span class="math inline">\(\vec{x}\)</span></td>
+<td><code>\vec{x}</code></td>
+</tr>
+<tr class="odd">
+<td>Integrals</td>
+<td><span class="math inline">\(\int x^2 dx\)</span></td>
+<td><code>\int x^2 dx</code></td>
+</tr>
+<tr class="even">
+<td>Partial Derivatives</td>
+<td><span class="math inline">\({\partial f \over \partial x}\)</span></td>
+<td><code>{\partial f \over \partial x}</code></td>
+</tr>
+<tr class="odd">
+<td>Summations</td>
+<td><span class="math inline">\(\sum_{i = 1}^{10} x_i^2\)</span></td>
+<td><code>\sum_{i = 1}^{10} x_i^2</code></td>
+</tr>
+<tr class="even">
+<td>Infinity</td>
+<td><span class="math inline">\(\infty\)</span></td>
+<td><code>\infty</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can include Greek letters in your expressions if you know the corresponding syntax. The table below shows some of the more common Greek letters used in physics.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Greek Letter</th>
+<th><span class="math inline">\(\mathrm{\LaTeX}\)</span> syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span></td>
+<td><code>\alpha</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span></td>
+<td><code>\beta</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\gamma\)</span></td>
+<td><code>\gamma</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Delta\)</span></td>
+<td><code>\Delta</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\epsilon\)</span></td>
+<td><code>\epsilon</code></td>
+</tr>
+</tbody>
+</table>
+<p>A more comprehensive list of math symbols available can be found <a href="https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf">here</a></p>
 </section>
 <section id="activity-i-the-pendulum-50-pts" class="level2">
 <h2 class="anchored" data-anchor-id="activity-i-the-pendulum-50-pts">Activity I: The pendulum (50 pts)</h2>
@@ -501,68 +988,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>For each pendulum, perform the following:
 <ol type="1">
-<li>Measure the distance from the support point to the center of the pendulum. This is the length of the pendulum <span class="math inline">\(L\)</span>. Assign an uncertainty to this measurement and record the length with its associated uncertainty in the code cell provided below.</li>
+<li>Measure the distance from the support point to the center of the pendulum. This is the length of the pendulum <span class="math inline">\(L\)</span>. Assign an uncertainty to this measurement.</li>
 <li>Release the pendulum from a small initial angle (no bigger than <span class="math inline">\(15^\circ\)</span> from the vertical) and use the photogate to measure the period <span class="math inline">\(T\)</span> of the pendulum with its associated uncertainty. (The period of a pendulum is the time it take to make one full cycle.)</li>
+<li>Place all of your lengths and periods and their uncertainties into numpy arrays.</li>
+</ol></li>
 <li>Calculate the acceleration due to gravity (<span class="math inline">\(g\)</span>) using <span class="math inline">\(g = {4 \pi^2 L \over T^2}\)</span>.</li>
-<li>Using the methods discussed above determine the equation for calculating the uncertainty in <span class="math inline">\(g\)</span>. Insert it into the math equation below <span class="math display">\[ \delta g = \]</span></li>
+<li>Using the methods discussed above determine the equation for calculating the uncertainty in <span class="math inline">\(g\)</span>. Use <span class="math inline">\(\LaTeX\)</span> syntax to complete the math equation below <span class="math display">\[ \delta g = \]</span></li>
 <li>Calculate the uncertainty and <strong>fractional uncertainty</strong> in <span class="math inline">\(g\)</span> in the code cell below.</li>
-</ol></li>
-<li>In lines 4,5, and 6 of the cell below record all of your length, period, and g values for the five pendulums.</li>
-<li>In lines 7,8, and 9 record all of the uncertainties for the five pendulums.</li>
-<li>When you execute the cell, you will see a table summarizing your results and two plots to help analyze your results. Analyze the results to answer the following questions:
-<ol type="1">
-<li>Which result has the lowest uncertainty? Can you explain why?</li>
-<li>What function do you think best represents the relationship between <span class="math inline">\(L\)</span> and <span class="math inline">\(T\)</span>?(We will study curve-fitting in a later lab.)</li>
-<li>The accepted value of <span class="math inline">\(g\)</span> for Rexburg is <span class="math inline">\(g = 9.80056\)</span> m/s<span class="math inline">\(^2\)</span>. Do your calculations agree with this value to within your calculated uncertainties? &gt; Response:</li>
-</ol></li>
+<li>Put your data in a dataframe and display the dataframe to visually verify that it has 10 rows and 6 columns. The columns should be <span class="math inline">\(L\)</span>, <span class="math inline">\(T\)</span>, <span class="math inline">\(g\)</span> and their uncertainties. Give the appropriate names.</li>
+<li>Construct a multi-figure plot containing two plots. The first plot should be period vs length and the other plot should be g vs.&nbsp;length. The points on both plots should have error bars attached.</li>
+<li>Add axes labels and titles to both of your plots.</li>
+<li>Analyze the results to answer the following questions:<br>
+</li>
+<li>Which result has the lowest uncertainty? Can you explain why?<br>
+</li>
+<li>What function do you think best represents the relationship between <span class="math inline">\(L\)</span> and <span class="math inline">\(T\)</span>?(We will study curve-fitting in a later lab.)<br>
+</li>
+<li>The accepted value of <span class="math inline">\(g\)</span> for Rexburg is <span class="math inline">\(g = 9.80056\)</span> m/s<span class="math inline">\(^2\)</span>. Do your calculations agree with this value to within your calculated uncertainties?</li>
 </ol>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pendulum Parameters</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span>           <span class="co"># period of the pendulum</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>un_T <span class="op">=</span>        <span class="co"># uncertainty of the period of the pendulum</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span>           <span class="co"># length of the pendulum</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>un_L <span class="op">=</span>        <span class="co"># uncertainty of the length of the pendulum</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute volume of the room with uncertainty</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>          <span class="co"># Compute a value for g</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>       <span class="co"># Compute the uncertainty in g.</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>     <span class="co"># Fractional uncertainty in g</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The acceleration due to gravity is: </span><span class="sc">{0:4.1f}</span><span class="st"> +/- </span><span class="sc">{1:3.1f}</span><span class="st"> m/s^2. That's a fractional uncertainty of </span><span class="sc">{2:6.2f}</span><span class="st">%."</span>.<span class="bu">format</span>(g,un_g, <span class="dv">100</span> <span class="op">*</span> frac_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [,,,,] <span class="co"># Line 4</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>lengths <span class="op">=</span> [,,,,]  <span class="co"># Line 5</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>gvalues <span class="op">=</span> [,,,,]  <span class="co"># Line 6</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>un_length <span class="op">=</span> [,,,,]  <span class="co"># Line 7</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>un_period <span class="op">=</span> [,,,,]  <span class="co"># Line 8</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span> [,,,,]  <span class="co"># Line 9</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> DataFrame(np.transpose([periods,un_period,lengths,un_length,gvalues,un_g]),columns <span class="op">=</span> [<span class="st">"T (s)"</span>,<span class="st">"δT (s)"</span>,<span class="st">"L (m)"</span>,<span class="st">"δL (m) "</span>,<span class="st">"g (m/s^2)"</span>,<span class="st">"δg (m/s^2)"</span>],index <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">6</span>)))</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>display(df)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()            </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>ax1.errorbar(lengths,periods,yerr <span class="op">=</span> un_period,xerr <span class="op">=</span> un_length,fmt <span class="op">=</span> <span class="st">'go'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="dv">1</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"L (meters)"</span>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"T (seconds)"</span>)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Period vs Length for five pendulums"</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>ax2.errorbar(lengths,gvalues,yerr <span class="op">=</span> un_g,fmt <span class="op">=</span> <span class="st">'ro'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>ax2.set_aspect(<span class="dv">1</span>)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"L (meters)"</span>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"g (m/s^2)"</span>)</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"g vs Length for five pendulums"</span>)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Response:</p>
+</blockquote>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span>    <span class="co"># Create array of period values.</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>un_T <span class="op">=</span>  <span class="co"># Create array of uncertainties in the period measurements.</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span>     <span class="co"># Create array of length values.</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>un_L <span class="op">=</span>  <span class="co"># Create array of uncertainties in the length measurements.</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>     <span class="co"># Calculate g for the whole data set.</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>   <span class="co"># Calculate the uncertainty in g for the whole data set.</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>frac_un <span class="op">=</span>  <span class="co"># Calculate fractional uncertainties.</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span>            <span class="co"># Creat a dataframe of your data. Give the columns appropriate names</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>display(df) <span class="co"># Display the dataframe</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a multi-figure plot below.</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()            </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -584,13 +1053,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
 <ol type="1">
 <li>Find a location in the building that will allow the greatest drop distance for the tennis ball. (the front foyer is a good choice.) Measure the distance from the release point to the ground with its associated uncertainty. Record your values in the code cell provided below.</li>
-<li>Using a stopwatch, measure the fall time with its associated uncertainty. Record the values in the code cell provided below.</li>
-<li>Using the equation below, calculate the acceleration due to gravity. <span class="math display">\[ g = {2 h \over t^2}\]</span></li>
-<li>Using the methods discussed above determine the equation for calculating the uncertainty in <span class="math inline">\(g\)</span>. Insert it into the math equation below <span class="math display">\[ \delta g = \]</span></li>
-<li>Using the equation from step 4, calculate the uncertainty in <span class="math inline">\(g\)</span> in the code cell below.</li>
-<li>Repeat steps 1 - 5 <strong>ten</strong> more times to obtain ten values of <span class="math inline">\(g\)</span> and <span class="math inline">\(\delta g\)</span>.</li>
-<li>Put all of your data in the code cell provided below (the second code cell) and execute the cell to reveal a summary table and plots that summarize your results.<br>
+<li>Using a stopwatch, measure the fall time with its associated uncertainty. Record the values in the code cell provided below. Note: typical reaction times are around <span class="math inline">\(0.25\)</span> s.</li>
+<li>Repeat steps 1 and 2 <strong>ten</strong> more times to obtain ten data points. Place your heights and drop times and their uncertainties in numpy arrays.</li>
+<li>Using the equation below, calculate the acceleration due to gravity for all 10 data points. <span class="math display">\[ g = {2 h \over t^2}\]</span></li>
+<li>Using the methods discussed above determine the equation for calculating the uncertainty in <span class="math inline">\(g\)</span>. Use <span class="math inline">\(\LaTeX\)</span> syntax to complete the math equation below <span class="math display">\[ \delta g = \]</span></li>
+<li>Using the equation from step 5, calculate the uncertainty in <span class="math inline">\(g\)</span> in the code cell below for all 10 data points.<br>
 </li>
+<li>Put your data in a dataframe and display the dataframe to visually verify that it has 10 rows and 6 columns.</li>
+<li>Construct a multi-figure plot containing two plots. The first plot should be <span class="math inline">\(g\)</span> vs trial number and the other plot should be fall time vs.&nbsp;fall distance. The points on both plots should have error bars attached.</li>
+<li>Add axes labels and titles to both of your plots.</li>
 <li>Using your results, answer the following questions:
 <ol type="1">
 <li>Are your ten g values consistent with one another to within their stated uncertainties. Explain.</li>
@@ -600,58 +1071,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Response:</p>
 </blockquote></li>
-<li>Take a minute to inspect all of the code that I have given to you today. Ask questions about code that you don’t understand. As some point, you’ll have to recreate code like this on your own.</li>
 </ol>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span>            <span class="co"># Time in air in sec</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>un_t <span class="op">=</span>         <span class="co"># Uncertainty of time measurement in sec</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>            <span class="co"># Height in meters</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>un_h <span class="op">=</span>         <span class="co"># Uncertainty of height in meters</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>            <span class="co"># Calculate g using equation above</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>         <span class="co"># Calculate uncertainty in g</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>       <span class="co"># Fractional uncertainty in g</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"g : </span><span class="sc">{0:4.2f}</span><span class="st"> +/- </span><span class="sc">{1:4.2f}</span><span class="st"> m/s^2.  That's a fractional uncertainty of </span><span class="sc">{2:6.2f}</span><span class="st">%."</span>.<span class="bu">format</span>(g,un_g,frac_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>trial <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>]</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>fallDistances <span class="op">=</span> [,,,,,,,,,]</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>un_distance <span class="op">=</span> [,,,,,,,,,]</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>fallTimes <span class="op">=</span> [,,,,,,,,,]</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>un_times <span class="op">=</span> [,,,,,,,,,]</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> [,,,,,,,,,]  </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span> [,,,,,,,,,]  </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> DataFrame(np.transpose([fallDistances,un_distance,fallTimes,un_times,g,un_g]),columns <span class="op">=</span> [<span class="st">"Fall Distance (m)"</span>,<span class="st">"δd (m)"</span>,<span class="st">"Fall Times (s)"</span>,<span class="st">"δt (s) "</span>,<span class="st">"g (m/s^2)"</span>,<span class="st">"δg (m/s^2)"</span>],index <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>)))</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>display(df)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()            </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>ax1.errorbar(trial,g,yerr <span class="op">=</span> un_g,fmt <span class="op">=</span> <span class="st">'go'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="dv">1</span>)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"trial"</span>)</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"g (m/s^2)"</span>)</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Acceleration due to gravity for 10 experiments"</span>)</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>ax2.errorbar(fallTimes,fallDistances,yerr <span class="op">=</span> un_distance,xerr<span class="op">=</span>un_time,fmt <span class="op">=</span> <span class="st">'ro'</span>, capsize <span class="op">=</span> <span class="dv">6</span>)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>ax2.set_aspect(<span class="dv">1</span>)</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"Fall Times (sec)"</span>)</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Fall Distance (m)"</span>)</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Fall Distance vs. Fall Time."</span>)</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>trial <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>])</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>fallDistances <span class="op">=</span>   <span class="co"># Construct an array of the fall distances</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>un_distance <span class="op">=</span>     <span class="co"># Construct an array of the uncertainties in the fall distances.</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>fallTimes <span class="op">=</span>       <span class="co"># Construct an array of the measured fall times.</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>un_times <span class="op">=</span>        <span class="co"># Construct an array of the uncertainties in the fall times.</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>               <span class="co"># Calculate g for the entire data set.</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>            <span class="co"># Calculate the uncertainty in g</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>          <span class="co"># Calculate the fractional uncertainty.</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="co"># Create a dataframe of your data. Give the columns appropriate names</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>display(df) <span class="co"># Display your dataframe</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct plots</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()            </span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1010,7 +1457,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 1 Measurement and Uncertainty</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lab 1: Measurement and Uncertainty</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

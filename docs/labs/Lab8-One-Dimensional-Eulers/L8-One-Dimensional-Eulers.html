@@ -161,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab1-Measurements/L1-Intro_to_Error_Analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 1 Measurement and Uncertainty</span></a>
+ <span class="menu-text">Lab 1: Measurement and Uncertainty</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab4-Statistical-Uncertainty/L4-Statistical-Description-Uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 4 Statistical Interpretation of Uncertainty</span></a>
+ <span class="menu-text">Lab 4: Statistical Interpretation of Uncertainty</span></a>
   </div>
 </li>
       </ul>
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/Lab5-Experimental-Design-I/L5-Experimental-Design-I.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 5 Experimental Design I</span></a>
+ <span class="menu-text">Lab 5: Experimental Design I</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -315,6 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="python">Python</h3>
 <ol type="1">
 <li>How to construct a Python <code>for</code> loop.</li>
+<li>Learn the physics of air drag.</li>
 <li>Construct an Euler’s method code for simple one-dimensional motion.</li>
 </ol>
 </section>
@@ -759,9 +760,10 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <section id="procedure-1" class="level3">
 <h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
 <ol type="1">
-<li>Together in class we constructed a model for a particle that is thrown upward and experiences no air resistance. Use equations 3-6 above to modify that code to include air resistance. Set <span class="math inline">\(\rho = 1.02\)</span> kg/m<span class="math inline">\(^3\)</span>, <span class="math inline">\(C = 0.5\)</span> and make reasonable guesses for the values of <span class="math inline">\(A\)</span> and <span class="math inline">\(m\)</span>. We’ll fine tune these values later.</li>
+<li>In the example discussed above, a model for a particle that is thrown upward and experiences no air resistance was constructed. Use equations 3-6 from the “Air Drag” section to modify that code to include air resistance. Set <span class="math inline">\(\rho = 1.02\)</span> kg/m<span class="math inline">\(^3\)</span>, <span class="math inline">\(C = 0.5\)</span> and make reasonable guesses for the values of <span class="math inline">\(A\)</span> and <span class="math inline">\(m\)</span>. We’ll fine tune these values later.</li>
 <li>Modify the code to model a particle that is dropped from rest rather than thrown upward initially.</li>
 <li>Your value for <span class="math inline">\(\Delta t\)</span> will need to be reasonably small to get accurate results. Decrease your value of <span class="math inline">\(\Delta t\)</span> until the results stop changing.</li>
+<li>To find the flight time, you should use trial and error on t_max until the particle hits the ground.</li>
 <li>As a test of the correctness of your code, increase the initial height of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect.</li>
@@ -776,7 +778,10 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set initial conditions</span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to calculate flight time using Euler's method</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="co"># Put your stopping condition here:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="co"># Put your stopping condition here:</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,y0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -786,14 +791,16 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <h3 class="anchored" data-anchor-id="procedure-2">Procedure</h3>
 <ol type="1">
 <li>Make mass and diameter measurements on each of the objects given to you.</li>
-<li>Then use the code you wrote above to predict the drop times for each of the six objects dropped from a height of 16.92 m.</li>
+<li>Choose a location to perform the drop and measure the initial height. You should find a location that provides a large drop distance. (The track above the I-center or the foyer in the Manwaring center are good choices. We’ve dropped them from the top of the stadium before but a tall fence was recently installed which makes it hard to drop from there. )</li>
+<li>Then use the code you wrote above to predict the drop times for each of the six objects.</li>
 <li>Fill in the table below with your predictions.</li>
-<li>After the table is filled out, run some tests in the lab room to verify the accuracy of your model.</li>
 </ol>
 <table class="table">
 <thead>
 <tr class="header">
 <th>Object</th>
+<th>Mass (kg)</th>
+<th>Diameter (m)</th>
 <th>Precited fall time (s)</th>
 </tr>
 </thead>
@@ -801,21 +808,31 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <tr class="odd">
 <td>Ping Pong Ball</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Styrofoam cone</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>Styrofoam sphere (small)</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Styrofoam sphere (medium)</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Beach ball</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -824,8 +841,12 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </section>
 <section id="activity-iv-comparison-of-predicted-and-measured-times" class="level2">
 <h2 class="anchored" data-anchor-id="activity-iv-comparison-of-predicted-and-measured-times">Activity IV: Comparison of Predicted and Measured Times</h2>
-<p>Each group will measure the time of flight for the five objects. Average the time measurements for each object and compare to your predicted values.</p>
-<p>The percent difference is calculated as:</p>
+<ol type="1">
+<li>Measure the flight time for each object <span class="math inline">\(10\)</span> times.</li>
+<li>Calculate the average fall time for each object.</li>
+<li>Calculate the percent error for each object.</li>
+<li>Fill in your results in the table below.</li>
+</ol>
 <p><span class="math display">\[ \text{% diff} = {\text{measured} - \text{predicted} \over \text{measured} } \times 100 \text{%}\]</span></p>
 <table class="table">
 <colgroup>
@@ -877,19 +898,8 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </table>
 <p>Your score on the lab will be based on your % error for the five different objects.</p>
 <p>If any of your % differences are greater than 10%, give a possible explanation for the discrepancy. &gt; <strong>Response:</strong></p>
-<p>Note: Use the cell below to calculate the averages and percent error. I have started the code but it is not complete. You’ll have to finish it.</p>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mean</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>pingPong <span class="op">=</span> []  </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>cone <span class="op">=</span> []</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>smallBall <span class="op">=</span> []</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>mediumBall <span class="op">=</span> []</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>beachBall <span class="op">=</span> []</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>mean_pingpong <span class="op">=</span> mean(pingPong)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
