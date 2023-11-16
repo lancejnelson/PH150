@@ -178,7 +178,7 @@ designing and reporting your experiment, a negative result is just as good
 as a positive result.
 
 #### Grading Rubric
-
+It is important that you know how this report will be graded before you begin so you can make sure to include all the required content.  The grading rubric for this report can be found [here](https://lancejnelson.github.io/PH150/files/reportrubric.pdf). 
 
 ## Activity I (standing waves)
 Design and carry out an experiment involving standing waves on a string.  Record your work below.

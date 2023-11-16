@@ -21,20 +21,9 @@ Python is free, open source software and is maintained by the non-profit Python 
 The first step is to install the software (if you haven't already). The most convenient way to install Python and also get many of the commonly-used libraries is to use an installer. I recommend [Anaconda](https://www.anaconda.com/download/"). When installing the software be sure to choose Python 3 since this is the current version.  By default, Anaconda will install a suit of softwares and libraries that are commonly used.  If you want to install other Python libraries, open the Anaconda-Navigator (green circle icon) and select the **Environment** tab on the left.  Select **Not Installed** from the pull-down to see all of the libraries that are available to be installed.  To install a library, check the box next to it and click **Apply**.  Anaconda will take care of the rest. 
 
 
->**_To Do:_**
->
->1. Install Anaconda
->2. Check to see if the library "numpy" is installed. If not, install it.
-
 ## Jupyter Notebooks
 A Jupyter notebook is an electronic document designed to support interactive data processing, analysis, and visualization in an easily shared format.  A Jupyter notebook can contain live code, math equations, explanatory text, and the output of codes (numbers, plots, graphics, etc..). 
 To launch a Jupyter notebook, first open Anaconda-Navigator (green circle icon) and click the **Launch** button under JupyterLab.  Jupyter can also be launched from the command line by typing `jupyter-lab`.  The jupyter notebook will launch in your default web browser, but it is not a website.  From here you can select an already existing Jupyter notebook, denoted by the orange icons and the .ipynb extension, or create a new notebook by clicking **New** from the **File** menu.
-
->**_To Do:_**
->
->1. At the top of this page there is a link titled "Jupyter Notebook". Click on that link to download the Jupyter notebook version of this chapter.
->2. Launch JupyterLab as explained above.
->3. Open the file that you downloaded in step 1 and continue reading this book in the jupyter notebook.
 
 
 
@@ -54,68 +43,6 @@ print(vf)
 Markdown cells are designed to contain explanatory information about what is happening inside of the code cells.  They can contain text, math equations, and images.  Markdown cells support markdown, html, and $\mathrm{\LaTeX}$ (for generating pretty math equations).
 
 Both markdown and code cells can be executed by either selecting **Run Selected Cells** in the **Run** menu, by clicking the **Play** icon at the top of the notebook, or by using the **Shift-Return** shortcut when your cursor is in the desired cell.
-
-### $\mathrm{\LaTeX}$
-Often you will want to include math equations as part of your explanation/text.  Below is an example of what your math should and should not look like.  
-
-- $|\vec{v}|  = \sqrt{v_x^2 + v_y^2}$ (like this)  
-- v = sqrt(vx^2 + vy^2) (not like this)
-
-To make your math equations look like the first example, you must enclose your math equation in "$$", one pair at the beginnning of the equation and one pair at the end.  Enclosing your expression in double dollar signs will put the expression on its own line.  To place the expression in the middle of a sentence (inline) you'll need to enclose the expression in single dollar signs. To generate the math symbols that often show up in equations, you'll need to know the correct syntax.  A table of commonly used math symbols is given below.
-
-|Math symbol | Example| $\mathrm{\LaTeX}$ syntax|
-|------------|------------|-------------|
-| Subscript | $v_x$  | `v_x`   |
-| Powers | $v^2$  | `v^2`   |
-| Powers with more than one digit | $v^{10}$  | `v^{10}`   |
-| Square root| $\sqrt{a + b}$  | `\sqrt{a + b}`   |
-| Fractions | $\frac{a}{b}$  | `\frac{a}{b}`   |
-| Vectors | $\vec{x}$  | `\vec{x}`   |
-| Integrals | $\int x^2 dx$  | `\int x^2 dx`   |
-| Partial Derivatives | ${\partial f \over \partial x}$  | `{\partial f \over \partial x}`   |
-| Summations | $\sum_{i = 1}^{10} x_i^2$  | `\sum_{i = 1}^{10} x_i^2`   |
-| Infinity | $\infty$ | `\infty`|
-
-You can include Greek letters in your expressions if you know the corresponding syntax.  The table below shows some of the more common Greek letters used in physics.
-
-|Greek Letter | $\mathrm{\LaTeX}$ syntax|
-|------------|-------------|
-| $\alpha$  | `\alpha`   |
-| $\beta$  | `\beta`   |
-| $\gamma$  | `\gamma`   |
-| $\Delta$  | `\Delta`   |
-| $\epsilon$  | `\epsilon`   |
-
-A more comprehensive list of math symbols available can be found [here](https://www.cmor-faculty.rice.edu/~heinken/latex/symbols.pdf)
-
-### Tables
-Tables are often useful for presenting data.  You can make a table in a jupyter notebook using the following syntax
-
-
-```
-|t (s)       | v (m/s)     |
-|------------|-------------|
-| 0          | 10          |
-| 1.2        | 22          |
-| 2.3        | 25          |
-| 3.0        | 38          |
-| 5.5        | 56          |
-```
-
-which will generate the following table:
-
-|t (s)       | v (m/s)     |
-|------------|-------------|
-| 0          | 10          |
-| 1.2        | 22          |
-| 2.3        | 25          |
-| 3.0        | 38          |
-| 5.5        | 56          |
-
-
-
-
-
 
 
 ### Navigating Jupyter Notebooks
@@ -169,33 +96,6 @@ h_i = 1000
 
 ```
 
-
->**_To Do:_**
->
->1. Execute the code block below and verify that no output is produced.
->2. Add print statements that help you see the result of the calculation.
->3. Add simple comments next to each line explaining the code.
-
-```{python}
-a = 2 
-b = 3 
-c = a**b
-```
-
-
-## Exercises
-
-1. Perform the following actions using the shortcuts above:
-
-   1. Add a cell below this one.
-   2. Turn the cell into a code cell (observe the distinct appearance of code cells).
-   3. In the code cell, calculate the Stefan-Boltzmann constant using the equation given in the first column of the table found [here](https://en.wikipedia.org/wiki/List_of_physical_constants).  Add a print statement so you can verify that you did it correctly. 
-   4. Execute the cell using `shift` + `enter`. Observe the output.
-   5. Create another cell just below the code cell you just created. 
-   6. Turn it into a text/markdown cell if it isn't already. 
-   7. Using $\mathrm{\LaTeX}$ syntax, write the equation from the table that you used to peform the calculation.
-   8. "Execute" the cell and observe the new output.
-2. Recreate the first three columns of your top 10 favorite physical constants found [here](https://en.wikipedia.org/wiki/List_of_physical_constants) (same table as given in exercise 1).  Pick constants that have Greek letters and fun mathematical equations associated with them.
 
 
 
