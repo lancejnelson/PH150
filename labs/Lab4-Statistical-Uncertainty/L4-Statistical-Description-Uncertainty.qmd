@@ -578,8 +578,10 @@ plt.show()
 This activity is identical in nature to Activity I.  Instead of measuring the period of a pendulum, we will measure the range of a projectile.  The analysis of the data will be very similar to that performed in Activity I.  
 
 ### Setup
-1. As a class, pick some launch conditions.  Thes must include the launch angle, launch power setting, and initial height.  Pick one person to write these launch conditions on the whiteboard at the front of the class.
-2. Setup the cannon in a location where everyone in the class can access it and perform measurements.  
+1. As a class, pick some launch conditions.  These must include the launch angle, launch power setting, and initial height. 
+2. As a group, use your code from Activity I from lab 3 to calculate the exit speed of the ball.
+3. Write the launch conditions (initial height, launch angle, and exit speed) on the board at the front of the class.
+4. Setup the cannon in a location where everyone in the class can access it and perform measurements.  
 
 ### Procedure
 1. Using the launch conditions chosen in step 1, predict the range of the steel ball.  Perform the calculations in the code cell below. 

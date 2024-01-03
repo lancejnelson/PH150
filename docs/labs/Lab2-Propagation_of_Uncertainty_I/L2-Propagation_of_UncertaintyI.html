@@ -442,15 +442,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>To calculate the uncertainty, we must first take four derivatives with respect to <span class="math inline">\(l\)</span>, <span class="math inline">\(w\)</span>, <span class="math inline">\(h\)</span>, and <span class="math inline">\(m\)</span>:</p>
-<p><span class="math display">\[ {\partial \rho \over l} = -{m \over l^2 w h}\]</span></p>
-<p><span class="math display">\[ {\partial \rho \over h} = -{m \over l w h^2}\]</span></p>
-<p><span class="math display">\[ {\partial \rho \over w} = -{m \over l w^2 h}\]</span></p>
-<p><span class="math display">\[ {\partial \rho \over m} = {1 \over l w h}\]</span></p>
+<p><span class="math display">\[ {\partial \rho \over \partial l} = -{m \over l^2 w h}\]</span></p>
+<p><span class="math display">\[ {\partial \rho \over \partial h} = -{m \over l w h^2}\]</span></p>
+<p><span class="math display">\[ {\partial \rho \over \partial w} = -{m \over l w^2 h}\]</span></p>
+<p><span class="math display">\[ {\partial \rho \over \partial m} = {1 \over l w h}\]</span></p>
 <p>Now we can calculate the uncertainty as</p>
 <p><span class="math display">\[\delta \rho = \sqrt{({\partial \rho \over \partial l} \delta l)^2 + ({\partial \rho \over \partial w} \delta w)^2 + ({\partial \rho \over \partial h} \delta h)^2 + ({\partial \rho \over \partial m} \delta m)^2}\]</span></p>
 <p><span class="math display">\[ = \sqrt{(-{m \over l^2 w h} \delta l)^2 + (-{m \over l w^2 h} \delta w)^2 + (-{m \over l w h^2} \delta h)^2 + ({1 \over l w h} \delta m)^2}\]</span></p>
 <p><span class="math display">\[ = \sqrt{(-{(345 ~\text{grams}) \over (5.42 ~\text{cm})^2 (8.4 ~\text{cm}) (10.8 ~\text{cm})} (0.1 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm})^2 (10.8 ~\text{cm})} (0.3 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})^2} (0.4 ~\text{cm}))^2 + ({1 \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})} (5 ~\text{grams}))^2}\]</span></p>
-<p>In the code cell below we use python to calculate this uncertainty.</p>
+<p>In the code cell below we use python to calculate this uncertainty. Note that we use a formatted print statement to display the uncertainty to one significant figure.</p>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">345</span></span>
@@ -1047,20 +1047,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="goal-1" class="level3">
 <h3 class="anchored" data-anchor-id="goal-1">Goal</h3>
-<p>By measuring the fall time for an object in free fall, calculate the acceleration due to gravity here in Rexburg.</p>
+<p>By measuring the fall time for an object in free fall, calculate the acceleration due to gravity here in Rexburg. You’ll be dropping a tennis ball from 10 different heights and measuring the fall time for each.</p>
 </section>
 <section id="procedure-1" class="level3">
 <h3 class="anchored" data-anchor-id="procedure-1">Procedure</h3>
 <ol type="1">
-<li>Find a location in the building that will allow the greatest drop distance for the tennis ball. (the front foyer is a good choice.) Measure the distance from the release point to the ground with its associated uncertainty. Record your values in the code cell provided below.</li>
+<li>Find a location in the building that will allow the greatest drop distance for the tennis ball. (The front foyer is a good choice.) You’ll be dropping the tennis ball from 10 different heights starting at <span class="math inline">\(1\)</span> meter and ending at the largest height you can achieve. Measure the height.</li>
 <li>Using a stopwatch, measure the fall time with its associated uncertainty. Record the values in the code cell provided below. Note: typical reaction times are around <span class="math inline">\(0.25\)</span> s.</li>
-<li>Repeat steps 1 and 2 <strong>ten</strong> more times to obtain ten data points. Place your heights and drop times and their uncertainties in numpy arrays.</li>
+<li>Repeat steps 1 and 2 <strong>ten</strong> more times to obtain ten data points. <strong>The ball should be dropped from a different height for each trial.</strong> Place your heights and drop times and their uncertainties in numpy arrays.</li>
 <li>Using the equation below, calculate the acceleration due to gravity for all 10 data points. <span class="math display">\[ g = {2 h \over t^2}\]</span></li>
 <li>Using the methods discussed above determine the equation for calculating the uncertainty in <span class="math inline">\(g\)</span>. Use <span class="math inline">\(\LaTeX\)</span> syntax to complete the math equation below <span class="math display">\[ \delta g = \]</span></li>
 <li>Using the equation from step 5, calculate the uncertainty in <span class="math inline">\(g\)</span> in the code cell below for all 10 data points.<br>
 </li>
 <li>Put your data in a dataframe and display the dataframe to visually verify that it has 10 rows and 6 columns.</li>
-<li>Construct a multi-figure plot containing two plots. The first plot should be <span class="math inline">\(g\)</span> vs trial number and the other plot should be fall time vs.&nbsp;fall distance. The points on both plots should have error bars attached.</li>
+<li>Construct a multi-figure plot containing two plots. The first plot should be <span class="math inline">\(g\)</span> vs trial number and the other plot should be <span class="math inline">\(g\)</span> vs.&nbsp;fall time. The points on both plots should have error bars attached.</li>
 <li>Add axes labels and titles to both of your plots.</li>
 <li>Using your results, answer the following questions:
 <ol type="1">
@@ -1079,10 +1079,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>trial <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>])</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>fallDistances <span class="op">=</span>   <span class="co"># Construct an array of the fall distances</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>un_distance <span class="op">=</span>     <span class="co"># Construct an array of the uncertainties in the fall distances.</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>fallTimes <span class="op">=</span>       <span class="co"># Construct an array of the measured fall times.</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>un_times <span class="op">=</span>        <span class="co"># Construct an array of the uncertainties in the fall times.</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span>   <span class="co"># Construct an array of the fall distances</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>un_h <span class="op">=</span>     <span class="co"># Construct an array of the uncertainties in the fall distances.</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span>       <span class="co"># Construct an array of the measured fall times.</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>un_t <span class="op">=</span>        <span class="co"># Construct an array of the uncertainties in the fall times.</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span>               <span class="co"># Calculate g for the entire data set.</span></span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>un_g <span class="op">=</span>            <span class="co"># Calculate the uncertainty in g</span></span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>frac_g <span class="op">=</span>          <span class="co"># Calculate the fractional uncertainty.</span></span>

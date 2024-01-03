@@ -419,7 +419,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </ol></li>
 </ol>
 <p>An example implementation of Euler’s method for a particle (experiencing no air resistance) thrown upward (with <span class="math inline">\(v = 30\)</span> m/s) from an initial height of <span class="math inline">\(y_i = 70\)</span> m, is shown below.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import statements</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -462,7 +462,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <section id="the-code---broken-down" class="level3">
 <h3 class="anchored" data-anchor-id="the-code---broken-down">The code - Broken down</h3>
 <p>This section will break the program down piece by piece. Here’s the first section:</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">One Dimensional free-fall Euler Code</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -480,7 +480,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </div>
 <p>Everything inside the triple quotes (“““) counts as one long comment. If you ever need to add comments that will take more than one line, you can start and end it with """. It’s a great way to leave yourself notes about what each program does. Below the introductory comment, numpy and matplotlib are imported to do the number crunching and plotting later on.</p>
 <p>This next part sets up all of the constants and inputs. It’s a good idea to put it at the beginning of the program so that they are easy to change.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Initial conditions and physical setup constants</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>v0<span class="op">=</span><span class="fl">30.0</span> <span class="co">#Initial velocity in m/s</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span><span class="dv">70</span> <span class="co">#Initial Postion in m</span></span>
@@ -492,7 +492,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </div>
 <p>The part with <code>x0</code> and <code>v0</code> are the starting position and velocity. <code>delta_t</code> is time step or amount of time that will advance for each calculation. Remember, Euler’s method works by assuming that acceleration is roughly constant over short time intervals. <code>delta_t</code> sets that time interval.</p>
 <p>With initial values defined, the number of calculations that will be needed can be determined. Here’s the piece of code that does that:</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate the number of timesteps we need to make</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span>(t_max<span class="op">-</span>t0)<span class="op">/</span>delta_t</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Make sure N is an integer</span></span>
@@ -500,14 +500,14 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </div>
 <p>Python keeps two types of numbers: <em>Floats</em> - numbers with decimal points and <em>Integers</em> - whole numbers. For example: <span class="math inline">\(2.0\)</span> is a float, <span class="math inline">\(2\)</span> is an integer. Even though they have the same value, Python sees them as different things. You can only get an item from a list using an integer. (<code>myList[2]</code> works, but <code>myList[2.0]</code> won’t). The command <code>N=int(N)</code> takes whatever number <code>N</code> is and converts it to an integer. The <code>int</code> command truncates instead of rounding, so <code>int(2.9)</code> becomes <code>2</code>, not <code>3</code>.</p>
 <p>Next, lists that will eventually store <strong>all of the positions, velocities, and times</strong> are initialized. Putting square brackets around something tells Python that it is a list. Since more x,v, and t values are going to be added later, we need to warn Python that these are going to be lists. Initially, these lists only contain the initial values.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Make lists to hold our positions, velocities, and times</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[x0]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>v<span class="op">=</span>[v0]</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>t<span class="op">=</span>[t0]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This next section of code is what is called a loop:</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Now perform an Euler's method calculation.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Find the current acceleration</span></span>
@@ -520,22 +520,20 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#End of Euler loop =========================================</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="breaking-down-the-while-loop" class="level4">
-<h4 class="anchored" data-anchor-id="breaking-down-the-while-loop">Breaking down the while loop</h4>
+<section id="breaking-down-the-for-loop" class="level4">
+<h4 class="anchored" data-anchor-id="breaking-down-the-for-loop">Breaking down the <code>for</code> loop</h4>
 <p>For most of you, a loop will be a new idea. Loops are very helpful when you need to tell a computer to do something over and over again. Here’s the general structure:</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="op">&lt;</span>Thing that Changes<span class="op">&gt;</span>:</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>     Stuff the computer does to<span class="op">/</span><span class="cf">with</span> the thing that changes</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Not part of the loop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The code that gets inserted at: <code>&lt;Thing that Changes&gt;</code> should be a list of items that are to be iterated over. As an example, consider a famous mathematical sequence of numbers called the Fibonacci sequence. The first few numbers in the Fibonacci sequence are: [1,1,2,3,5,8,13] (Can you see the pattern). A loop to iterate over this list of numbers is shown below:</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fibonacci <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">13</span>]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> fibonacci:</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(num)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fibonacci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(num)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1
 1
@@ -543,14 +541,13 @@ Now, what if the motion involved 5 different segments, each with a different acc
 3
 5
 8
-13
-[1, 1, 2, 3, 5, 8, 13]</code></pre>
+13</code></pre>
 </div>
 </div>
 <p>When this code is executed, the sequence of numbers first gets stored in the variable <code>fibonacci</code>. The <code>for num in fibonacci</code> tells Python to look at each thing in the list one by one, and call it <code>num</code>, each in turn. Therefore, this program would first print 1, then 1 (again), then 2, etc. Once all of the numbers have been printed one at a time, the final command will execute and print the entire list. This last statement won’t execute until the loop has successfully iterated over everything in the list named <code>fibonacci</code>.</p>
 <p>Now let’s look at the <code>for</code> statement in the Euler’s code: <code>i in range(N)</code>. The <code>range(N)</code> command makes a list of integers from zero to <code>N-1</code>. If <code>N</code> was five, <code>range(N)</code> would be <code>[0,1,2,3,4]</code>. Therefore, the first time through the for loop <code>i=0</code>, the second time <code>i=1</code>, and so on until we reach <code>N-1</code>.</p>
 <p>Now let’s look at the inside of the loop:</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Find the current acceleration</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    a<span class="op">=-</span><span class="fl">9.8</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -559,13 +556,13 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>   y.append(y[i] <span class="op">+</span> v[i] <span class="op">*</span> delta_t)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>   t.append(t[i] <span class="op">+</span> delta_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is where Euler’s method is found. First the acceleration is calculated, which is a constant -9.8 in this case but usually will be a function of time, position, and/or velocity. Then next statement involves an <code>append</code> statement:</p>
-<div class="cell" data-execution_count="11">
+<p>This is where Euler’s method is found. First the acceleration is calculated, which is a constant -9.8 in this case but usually will be a function of time, position, and/or velocity. The next statement involves an <code>append</code> statement:</p>
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>   v.append(v[i] <span class="op">+</span> a <span class="op">*</span> delta_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>append</code> statement is used to add something to the end of a list. In this case, the statement <code>v.append(v[i]+a*delta_t)</code> adds <code>v[i]+a*delta_t</code> to the end of the list named <code>v</code>. This is nothing more than the kinematic equation <span class="math inline">\(v_f=v_i+a\Delta t\)</span>, using <code>v[i]</code> as <span class="math inline">\(v_i\)</span> to calculate the “final” velocity. Each time the computer goes through the loop, a different value for <code>i</code> is used, and therefore a different value for <code>v[i]</code>. If the list starts with just one value in it (<code>v=[0]</code>), then by the end of the first iteration there are two things in the list. (The same can be said for the position and time lists)</p>
 <p>The first few iterations of this loop are done by hand and placed in the table below to help you see exactly what the loop is doing.</p>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 
@@ -611,7 +608,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </div>
 </div>
 <p>Velocity can be used to calculate the position using the kinematic equation <span class="math inline">\(x_f=x_i+v_i\Delta t+\frac{1}{2}a\Delta t^2\)</span>. The term <span class="math inline">\(\frac{1}{2}a\Delta t^2\)</span> is neglected because if <span class="math inline">\(\Delta t\)</span> is small then <span class="math inline">\(\Delta t^2\)</span> will be very small, making this entire term inconsequential. Once the loop is finished, the program just builds a plot of the data:</p>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Plot the results</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.plot(t,x,linewidth<span class="op">=</span><span class="dv">2</span>,color<span class="op">=</span><span class="st">'red'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'time (s)'</span>)</span>
@@ -646,13 +643,13 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <section id="for-loop" class="level3">
 <h3 class="anchored" data-anchor-id="for-loop">For loop</h3>
 <p>The <code>for</code> loop is probably the most common loop you will encounter and is a good choice when you know beforehand exactly what things you want to loop over. Here is an example of a <code>for</code> loop that is used to add up the elements of a list.</p>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="fl">9.9</span>]: </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    thesum <span class="op">+=</span> i</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This would be equivalent to the following code:</p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>thesum <span class="op">=</span> thesum <span class="op">+</span> <span class="dv">3</span></span>
@@ -664,7 +661,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <p>The correct language is to say that we are <em>iterating</em> over the list <code>[3,2,1,9.9]</code>. This means that the loop variable (<code>i</code> in this case but you can choose it to be whatever you want) gets assigned the values of the list elements, one by one, until it reaches the end of the list. You can use <code>for</code> loops to iterate over any multi-element object like lists or tuples. Python uses indentation to indicate where the loop ends. In this case there was only one statement inside to loop, but if you wanted more than one each line should be indented.</p>
 <p>Often you will want to iterate over a list of integers. The <code>range</code> function is a good choice for this. The range function takes up to 3 arguments. The first is the starting number, the second is the ending number, and the third is the step size.</p>
 <p><code>range(start,stop,stepsize)</code></p>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">50</span>,<span class="dv">3</span>):  <span class="co">#Generates a list from 5 -&gt; 50 with a step size of 3</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -687,7 +684,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </div>
 <p>These examples are so simple that you might wonder when a loop might actually be useful to you. Let’s see if we can build a loop to calculate the following sum</p>
 <p><span id="eq-sum"><span class="math display">\[ \sum_{n=1}^{1000} {1\over n^2} \tag{1}\]</span></span></p>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>theSum <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">1000</span>):</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    theSum <span class="op">=</span> theSum <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>n<span class="op">**</span><span class="dv">2</span></span>
@@ -697,7 +694,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </div>
 </div>
 <p>Here, <code>n</code> is being assigned the values <code>1,2,3,4....1000</code>, one by one, until it gets all the way to 1000. Each time through the loop, <code>n</code> is different and the expression <code>1/n**2</code> evaluates to a new value. The variable <code>theSum</code> is updated each time through to be the running total of all calculations performed thus far. Here’s another example of a loop used to calculate the value of <span class="math inline">\(20!\)</span>:</p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>theProduct <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">21</span>):</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    theProduct <span class="op">=</span> theProduct <span class="op">*</span> n <span class="co">#Multiply theProduct by n</span></span>
@@ -707,7 +704,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </div>
 </div>
 <p>Remember that the range function creates a list starting at <span class="math inline">\(1\)</span>, going up to <span class="math inline">\(21\)</span> but not including it. The math library has a function called <code>factorial</code> that does the same thing. Let’s use it to check our answer:</p>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> factorial</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>factorial(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -720,7 +717,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <p>Often when using loops, we only want a block of code to execute when some condition is satisfied. We can use boolean logic inside of the loop to accomplish this. For example, let’s write a loop to compute the following sum:</p>
 <p><span class="math display">\[ \sum_{{n\over 5} \in \text{ Int and } {n\over 3} \in \text{ Int}} {1\over n^2} \]</span></p>
 <p>which is similar to the one we did above, but this time we only want to include terms where <span class="math inline">\(n\)</span> is a perfect multiple of both 5 and 3. To check to see if <code>n</code> is a perfect multiple of a number we can calculate the modulo (remainder after division) using the <code>%</code> operator and check that it is equal to zero.</p>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>theSum <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">1000</span>):</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> n <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -746,7 +743,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <blockquote class="blockquote">
 <p>Include kinematic details here</p>
 </blockquote>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to perform calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -768,7 +765,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 <li>As a test of the correctness of your code, increase the mass of the projectile and verify that the drop time changes as you would expect.</li>
 <li>As a test of the correctness of your code, decrease the drag constant of the projectile and verify that the drop time changes as you would expect.</li>
 </ol>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import from libraries</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -898,7 +895,7 @@ Now, what if the motion involved 5 different segments, each with a different acc
 </table>
 <p>Your score on the lab will be based on your % error for the five different objects.</p>
 <p>If any of your % differences are greater than 10%, give a possible explanation for the discrepancy. &gt; <strong>Response:</strong></p>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 

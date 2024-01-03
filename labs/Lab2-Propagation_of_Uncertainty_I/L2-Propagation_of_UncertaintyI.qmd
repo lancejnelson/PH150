@@ -385,15 +385,15 @@ print(f"= {rho:5.2f} g/cm^3")
 
 To calculate the uncertainty, we must first take four derivatives with respect to $l$, $w$, $h$, and $m$:
 
-$$ {\partial \rho \over l} = -{m \over l^2 w h}$$
+$$ {\partial \rho \over \partial l} = -{m \over l^2 w h}$$
 
-$$ {\partial \rho \over h} = -{m \over l w h^2}$$
-
-
-$$ {\partial \rho \over w} = -{m \over l w^2 h}$$
+$$ {\partial \rho \over \partial h} = -{m \over l w h^2}$$
 
 
-$$ {\partial \rho \over m} = {1 \over l w h}$$
+$$ {\partial \rho \over \partial w} = -{m \over l w^2 h}$$
+
+
+$$ {\partial \rho \over \partial m} = {1 \over l w h}$$
 
 Now we can calculate the uncertainty as
 
@@ -403,7 +403,7 @@ $$ = \sqrt{(-{m \over l^2 w h} \delta l)^2 + (-{m \over l w^2 h} \delta w)^2 + (
 
 $$ = \sqrt{(-{(345 ~\text{grams}) \over (5.42 ~\text{cm})^2 (8.4 ~\text{cm}) (10.8 ~\text{cm})} (0.1 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm})^2 (10.8 ~\text{cm})} (0.3 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})^2} (0.4 ~\text{cm}))^2 + ({1 \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})} (5 ~\text{grams}))^2}$$
 
-In the code cell below we use python to calculate this uncertainty.
+In the code cell below we use python to calculate this uncertainty. Note that we use a formatted print statement to display the uncertainty to one significant figure.
 
 ```{python}
 #| echo: true
@@ -718,17 +718,17 @@ plt.show()
 3. Tennis ball.
 
 ### Goal
-By measuring the fall time for an object in free fall, calculate the acceleration due to gravity here in Rexburg.
+By measuring the fall time for an object in free fall, calculate the acceleration due to gravity here in Rexburg.  You'll be dropping a tennis ball from 10 different heights and measuring the fall time for each.
 
 ### Procedure
-1. Find a location in the building that will allow the greatest drop distance for the tennis ball. (the front foyer is a good choice.)  Measure the distance from the release point to the ground with its associated uncertainty.  Record your values in the code cell provided below.
+1. Find a location in the building that will allow the greatest drop distance for the tennis ball. (The front foyer is a good choice.)  You'll be dropping the tennis ball from 10 different heights starting at $1$ meter and ending at the largest height you can achieve.  Measure the height.
 2. Using a stopwatch, measure the fall time with its associated uncertainty.  Record the values in the code cell provided below.  Note: typical reaction times are around $0.25$ s. 
-3. Repeat steps 1 and 2 **ten** more times to obtain ten data points. Place your heights and drop times and their uncertainties in numpy arrays.
+3. Repeat steps 1 and 2 **ten** more times to obtain ten data points. **The ball should be dropped from a different height for each trial.** Place your heights and drop times and their uncertainties in numpy arrays.
 4. Using the equation below, calculate the acceleration due to gravity for all 10 data points. $$ g = {2 h \over t^2}$$ 
 5. Using the methods discussed above determine the equation for calculating the uncertainty in $g$.  Use $\LaTeX$ syntax to complete the math equation below $$ \delta g = $$
 6. Using the equation from step 5, calculate the uncertainty in $g$ in the code cell below for all 10 data points.  
 7. Put your data in a dataframe and display the dataframe to visually verify that it has 10 rows and 6 columns. 
-8. Construct a multi-figure plot containing two plots.  The first plot should be $g$ vs trial number and the other plot should be fall time vs. fall distance. The points on both plots should have error bars attached.
+8. Construct a multi-figure plot containing two plots.  The first plot should be $g$ vs trial number and the other plot should be $g$ vs. fall time. The points on both plots should have error bars attached.
 9. Add axes labels and titles to both of your plots.
 10. Using your results, answer the following questions:
     1. Are your ten g values consistent with one another to within their stated uncertainties. Explain.
@@ -748,10 +748,10 @@ import pandas as pd
 %matplotlib inline
 
 trial = np.array([1,2,3,4,5,6,7,8,9,10])
-fallDistances =   # Construct an array of the fall distances
-un_distance =     # Construct an array of the uncertainties in the fall distances.
-fallTimes =       # Construct an array of the measured fall times.
-un_times =        # Construct an array of the uncertainties in the fall times.
+h =   # Construct an array of the fall distances
+un_h =     # Construct an array of the uncertainties in the fall distances.
+t =       # Construct an array of the measured fall times.
+un_t =        # Construct an array of the uncertainties in the fall times.
 g =               # Calculate g for the entire data set.
 un_g =            # Calculate the uncertainty in g
 frac_g =          # Calculate the fractional uncertainty.

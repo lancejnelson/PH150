@@ -187,7 +187,7 @@ for i in range(N):
 
 ```
 
-#### Breaking down the while loop
+#### Breaking down the `for` loop
 For most of you, a loop will be a new idea. Loops are very helpful when you need to tell a computer to do something over and over again.  Here's the general structure:
 ```{python}
 #| eval: False
@@ -203,7 +203,6 @@ fibonacci = [1,1,2,3,5,8,13]
 for num in fibonacci:
     print(num)
 
-print(fibonacci)
 ```
 
 When this code is executed, the sequence of numbers first gets stored in the variable `fibonacci`.  The `for num in fibonacci` tells Python to look at each thing in the list one by one, and call it `num`, each in turn.  Therefore, this program would first print 1, then 1 (again), then 2, etc.  Once all of the numbers have been printed one at a time, the final command will execute and print the entire list.  This last statement won't execute until the loop has successfully iterated over everything in the list named `fibonacci`.
@@ -223,7 +222,7 @@ Now let's look at the inside of the loop:
 
 ```
 
-This is where  Euler's method is found.  First the acceleration is calculated, which is a constant -9.8 in this case but usually will be a function of time, position, and/or velocity. Then next statement involves an `append` statement:
+This is where  Euler's method is found.  First the acceleration is calculated, which is a constant -9.8 in this case but usually will be a function of time, position, and/or velocity. The next statement involves an `append` statement:
 ```{python}
 #| eval: False
    v.append(v[i] + a * delta_t)

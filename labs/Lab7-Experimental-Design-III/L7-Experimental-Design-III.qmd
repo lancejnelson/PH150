@@ -11,11 +11,14 @@ Name:
 
 ## Skills
 1. Get more experience designing and executing a scientific experiment.
+2. Learn the appropriate structure, style, and content of a scientific report.
 
-## Conservation of Energy
+## Background Information
+
+### Conservation of Energy
 Conseravtion of energy is one of the most fundamental and well-established ideas in physics. It states that the **total** energy of an isolated system must remain fixed and unchanged as time progresses.  If one type of energy decreases, the amount of another type of energy must increase so that the total energy never changes.  This week you will design an experiment to prove this hypothesis.  You can choose between two experiments: a sphere rolling down an incline or a simple pendulum.
 
-### Sphere on an Incline
+#### Sphere on an Incline
 A sphere that rolls down an incline will gain kinetic energy (both translational and rotational) as it loses gravitational potential energy (because its height is decreasing).  Mathematically, this can be stated as
 
 
@@ -34,7 +37,7 @@ $$ y = {v^2\over 2 g} (1 + c)$$
 Here $c$ is the constant in the moment of inertial value and should be equal to ${2 \over 5}$ for a sphere.  Your goal if you choose this experiment is to design an experiment that proves that this relationship is true and to calculate a value for $c$ with its uncertainty.
 
 
-### Simple Pendulum
+#### Simple Pendulum
 The motion of a pendulum is also a good illustration of the concept of conservation of energy. When the pendulum bobs is at its highest point, it is briefly motionless and hence has no kinetic energy. It only has potential energy.  Then, as the pendulum swings downward its potential energy is converted into kinetic energy.  In order for energy to be conserved, these two energies should be equal.
 
 <div style="text-align: center;">
@@ -50,6 +53,45 @@ $$M g L\left( 1 - \cos \theta_i\right) = {1\over 2} M v^2$$
 
 $$ \left( 1 - \cos \theta_i\right) = {v^2\over 2 g L} $$
 If you choose this experiment, once  you have verified the relationship, you  should calculate the length of the pendulum with its uncertainty and compare to a measured value.
+
+
+### Scientific Reports
+A scientific report is a detailed description of an experiment that you have performed. The purpose of the report is to add the analysis, results, and conclusions from your work to the collection of knowledge in the scientific community. It is important that your report/experiment invlolves experiments, analysis, and/or results that have not been presented previously. When publishing your report in a scientific journal, the journal will select referees to review your work and ensure that it is  Your report should include a short explanation for each of the following topics:
+
+1. Introduction
+    - What do we already know about the physics of your experiment?
+    - What hypothesis/model are you testing?
+    - How will you know if you are successful?
+2. Experimental Setup 
+    - What did your experiment look like?
+    - What measurements did you perform?
+    - What equipment did you use?
+    - What were the uncertainties in your measurements?
+3. Results and Analysis 
+    - What data did you gather?
+    - What analysis did you perform?
+    - How did you calculate the uncertainty in your final result?
+4. Conclusion
+    - Did you prove or disprove your theory.
+    - What are you going to do next?
+
+A short explanation of each element is discussed below.
+
+
+#### Introduction
+The introduction should "hook" your audience, or convince them that your experiment is worth their time and attention.  Explain the physics involved in your experiment and state the hypothesis that you are testing.  If anyone else in the scientific community has done work in this area, mention them and give them credit with a citation of their work. Make a convincing argument for why this work/experiment is a noteworthy contribution to the scientific community.
+
+#### Experimental Setup
+In this section you should describe how you setup your experiment. Often, referencing a well-crafted figure can help this discussion greatly.  Any figures must have captions with **detail sufficient that a reader could understand the figure** without reading the main body of the paper.  The equipment used in the experiment should be described with their associated precisions (state their uncertainties).  Describe how you collected the data and explain any challenges that arose during that process. 
+
+#### Results and Analysis
+In this section you should present your results in a table and/or plot for easy viewing. All plots and tables **must have detailed captions** and plots **must have axes labels and titles** that are easily viewable to the reader (without squinting!). If you linearized the data or fit a function to the data, explain how this was done and state your results with uncertainties.  Explain how the uncertainty analysis was performed and state all calculated uncertainties.  Any math that was performed should be included in this section.
+
+#### Conclusion
+Explain why the results of your experiment verified or failed to verify your hypothesis.  Describe what the next step in this experiment might be.
+
+The rubric that will be used to grade the report for your student-designed project can be found [here](https://lancejnelson.github.io/PH150/files/reportrubric.pdf)  
+An example report can be found [here](https://lancejnelson.github.io/PH150/files/examplereport.pdf) 
 
 ## Activity I (Conservation of Energy)
 Design and carry out an experiment involving conservation of energy. You can choose an experiment involving a simple pendulum or a sphere rolling down an incline. Your goal is to prove that energy is conserved and calculate any relevant physical quantities with their uncertainties.  Record your work below.
