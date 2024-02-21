@@ -324,27 +324,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Mathematical functions describe how one quantity depends on one or more other quantities. For example, the velocity function</p>
 <p><span class="math display">\[v(t) = 5 t + 2\]</span></p>
 <p>gives the relationship between velocity and time.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-2-output-1.png" width="585" height="429"></p>
 </div>
 </div>
 <p>and this function gives the relationship between position and time</p>
 <p><span class="math display">\[y(t) = 5t^2 -3t + 8\]</span></p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-3-output-1.png" width="593" height="429"></p>
 </div>
 </div>
 <p>The slope of a function (<span class="math inline">\(m\)</span>) is the rate at which the function changes with its variables. The slope is straightforward to calculate for linear functions: Just pick two points, calculate <span class="math inline">\(\Delta y = y_2 -y_1\)</span> and <span class="math inline">\(\Delta t = t_2 - t_1\)</span>, and divide them. <span class="math display">\[m = {\Delta y \over \Delta t}\]</span></p>
 <p>Generally, the slope of a function isn’t constant but varies across the domain. The figure below illustrates how the tangent line to a non-linear function varies across the domain.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-4-output-1.png" width="812" height="429"></p>
 </div>
 </div>
 <p>For those that are interested, the slope of the tangent line of a function can be found by calculating the slope of a function in the limit that the change in <span class="math inline">\(x\)</span> (<span class="math inline">\(\Delta x\)</span>) becomes infinitely small.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-5-output-1.png" width="812" height="429"></p>
 </div>
@@ -354,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>is given by the sloping function</p>
 <p><span class="math display">\[y'(t) = {dy(t) \over dt} = -9.8 t + 4\]</span></p>
 <p>These functions are plotted below to illustrate their relationship.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <p><img src="L2-Propagation_of_UncertaintyI_files/figure-html/cell-6-output-1.png" width="526" height="361"></p>
 </div>
@@ -426,7 +426,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For example, consider the function:</p>
 <p><span class="math display">\[f(x,y) = 5 x y^2 + 8 x^2 y\]</span></p>
 <p>The partial derivatives of this function are</p>
-<p><span class="math display">\[{\partial f \over \partial x} = 5 y^2 + 16 x^2 y\]</span> <span class="math display">\[{\partial f \over \partial y} = 10 xy + 8 x^2\]</span></p>
+<p><span class="math display">\[{\partial f \over \partial x} = 5 y^2 + 16 x y\]</span> <span class="math display">\[{\partial f \over \partial y} = 10 xy + 8 x^2\]</span></p>
 <p>The uncertainty in the calculated values is calculated by first forming the product <span class="math inline">\({\partial f \over \partial x_i} \delta x_i\)</span> for each independent variables and inserted into the equation below <span class="math display">\[(\delta f)^2 = ({\partial f\over \partial x} \delta x)^2 + ({\partial f\over \partial y}\delta y)^2  + \dots\]</span></p>
 <p><strong>This is the most important formula for uncertainty propagation and the one we will use going forward.</strong></p>
 </section>
@@ -436,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[l = 5.2 \pm 0.1 ~\text{cm}\]</span> <span class="math display">\[w = 8.4 \pm 0.3 ~\text{cm}\]</span> <span class="math display">\[h = 10.8 \pm 0.4 ~\text{cm}\]</span> <span class="math display">\[m = 345 \pm 5 ~\text{grams}\]</span></p>
 <p>and proceeding to calculate the density of the block</p>
 <p><span class="math display">\[\rho = {m \over V} = {m \over l \times w \times h}\]</span></p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>=  0.73 g/cm^3</code></pre>
 </div>
@@ -451,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[ = \sqrt{(-{m \over l^2 w h} \delta l)^2 + (-{m \over l w^2 h} \delta w)^2 + (-{m \over l w h^2} \delta h)^2 + ({1 \over l w h} \delta m)^2}\]</span></p>
 <p><span class="math display">\[ = \sqrt{(-{(345 ~\text{grams}) \over (5.42 ~\text{cm})^2 (8.4 ~\text{cm}) (10.8 ~\text{cm})} (0.1 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm})^2 (10.8 ~\text{cm})} (0.3 ~\text{cm}))^2 + (-{(345 ~\text{grams}) \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})^2} (0.4 ~\text{cm}))^2 + ({1 \over (5.42 ~\text{cm}) (8.4 ~\text{cm}) (10.8 ~\text{cm})} (5 ~\text{grams}))^2}\]</span></p>
 <p>In the code cell below we use python to calculate this uncertainty. Note that we use a formatted print statement to display the uncertainty to one significant figure.</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> sqrt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">345</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dm <span class="op">=</span> <span class="dv">5</span></span>
@@ -492,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 8  0.015  0.0012 -0.0037  1.0100  
 9  0.017 -0.0115 -0.0020  1.0012 </code></pre>
 <p>This data can be loaded into a dataframe like this.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -594,7 +594,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The <code>display</code> command can then be used to display the dataframe to screen. The keyword argument <code>columns = ["time", "gFx","gFy", "gFz"]</code> will assign names to the columns of the dataframe. The rows also have names attached but since these names were not specified, they defaulted to the integers 0 - 9. If you want to assign different names to the rows of your dataframe, add the keyword argument <code>index =</code> when you call <code>DataFrame</code>, like this</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -702,7 +702,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Last week we learned how to generate a single, simple plot. Often you may want to generate multiple, independent plots in the same figure. To do this, first we must use the <code>figure</code> function which generates the canvas upon which the plots will appear. Assign this object to a variable so you can refer to it later. To create each subplot, the <code>fig.add_subplot(rows,columns, plot_number)</code> function is used. There are three arguments to this function; the first two indicate the shape of the grid and the third indicates which position on the grid this plot will be assigned.</p>
 <pre><code>fig.add_subplot(rows,columns,plot_location)</code></pre>
 <p>After the axes object has been created, we can call the <code>plot</code>, or <code>errorbar</code> function again, and a plot will be generated at its location. Here is an example that will generate two plots side by side.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> linspace,sqrt</span>
@@ -741,7 +741,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Pay close attention to the <code>add_subplot</code> function. <code>ax1=add_subplot(1,2,1)</code> will generate a <span class="math inline">\(1\)</span> x <span class="math inline">\(2\)</span> grid of plots and <code>ax1</code> will correspond plot at the 1st location. Below is an example of a more advanced array of plots. Pay close attention to the <code>add_subplot</code> functions until you understand.</p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> linspace,sqrt</span>
@@ -791,7 +791,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="numpy-arrays" class="level3">
 <h3 class="anchored" data-anchor-id="numpy-arrays">Numpy Arrays</h3>
 <p>Often in science you’ll be working with more than one data point at a time. For example, consider the data shown below of a ball that is dropped from several different initial heights.</p>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 
@@ -837,14 +837,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Data like this should be stored in a numpy (“num-pie”) array, like this:</p>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.array([<span class="fl">0.64</span>,<span class="fl">0.71</span>,<span class="fl">0.78</span>,<span class="fl">0.85</span>,<span class="fl">0.90</span>])</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="fl">2.0</span>,<span class="fl">2.5</span>,<span class="fl">3.0</span>,<span class="fl">3.5</span>,<span class="fl">4.0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The benefit of storing your data in arrays is that mathematical calculations are “vectorized” which means that the mathematical operation is performed across the entire data set without needing a loop. For example, the equation <span class="math inline">\(g = {2 y \over t^2}\)</span> could be used to find the acceleration due to gravity for all of the data points like this:</p>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.array([<span class="fl">0.64</span>,<span class="fl">0.71</span>,<span class="fl">0.78</span>,<span class="fl">0.85</span>,<span class="fl">0.90</span>])</span>
@@ -1009,7 +1009,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>Response:</p>
 </blockquote>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1072,7 +1072,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Response:</p>
 </blockquote></li>
 </ol>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>

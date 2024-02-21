@@ -253,10 +253,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#background-information" id="toc-background-information" class="nav-link" data-scroll-target="#background-information">Background Information</a>
   <ul class="collapse">
   <li><a href="#conservation-of-energy" id="toc-conservation-of-energy" class="nav-link" data-scroll-target="#conservation-of-energy">Conservation of Energy</a></li>
+  <li><a href="#sphere-on-an-incline" id="toc-sphere-on-an-incline" class="nav-link" data-scroll-target="#sphere-on-an-incline">Sphere on an Incline</a></li>
+  <li><a href="#simple-pendulum" id="toc-simple-pendulum" class="nav-link" data-scroll-target="#simple-pendulum">Simple Pendulum</a></li>
+  <li><a href="#measuring-the-velocity" id="toc-measuring-the-velocity" class="nav-link" data-scroll-target="#measuring-the-velocity">Measuring the velocity</a></li>
   <li><a href="#scientific-reports" id="toc-scientific-reports" class="nav-link" data-scroll-target="#scientific-reports">Scientific Reports</a></li>
   </ul></li>
   <li><a href="#activity-i-conservation-of-energy" id="toc-activity-i-conservation-of-energy" class="nav-link" data-scroll-target="#activity-i-conservation-of-energy">Activity I (Conservation of Energy)</a></li>
-  <li><a href="#activity-ii-student-designed-lab-proposal" id="toc-activity-ii-student-designed-lab-proposal" class="nav-link" data-scroll-target="#activity-ii-student-designed-lab-proposal">Activity II (Student-Designed Lab Proposal)</a></li>
+  <li><a href="#activity-ii" id="toc-activity-ii" class="nav-link" data-scroll-target="#activity-ii">Activity II</a></li>
   </ul>
 </nav>
     </div>
@@ -294,8 +297,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conservation-of-energy" class="level3">
 <h3 class="anchored" data-anchor-id="conservation-of-energy">Conservation of Energy</h3>
 <p>Conseravtion of energy is one of the most fundamental and well-established ideas in physics. It states that the <strong>total</strong> energy of an isolated system must remain fixed and unchanged as time progresses. If one type of energy decreases, the amount of another type of energy must increase so that the total energy never changes. This week you will design an experiment to prove this hypothesis. You can choose between two experiments: a sphere rolling down an incline or a simple pendulum.</p>
-<section id="sphere-on-an-incline" class="level4">
-<h4 class="anchored" data-anchor-id="sphere-on-an-incline">Sphere on an Incline</h4>
+</section>
+<section id="sphere-on-an-incline" class="level3">
+<h3 class="anchored" data-anchor-id="sphere-on-an-incline">Sphere on an Incline</h3>
 <p>A sphere that rolls down an incline will gain kinetic energy (both translational and rotational) as it loses gravitational potential energy (because its height is decreasing). Mathematically, this can be stated as</p>
 <div style="text-align: center;">
 <p><img src="https://lancejnelson.github.io/PH150/figures/rollingSphere.png" alt="drawing" width="550"></p>
@@ -304,8 +308,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[M g y = {1\over 2} M v^2(1 + c)\]</span> <span class="math display">\[ y = {v^2\over 2 g} (1 + c)\]</span></p>
 <p>Here <span class="math inline">\(c\)</span> is the constant in the moment of inertial value and should be equal to <span class="math inline">\({2 \over 5}\)</span> for a sphere. Your goal if you choose this experiment is to design an experiment that proves that this relationship is true and to calculate a value for <span class="math inline">\(c\)</span> with its uncertainty.</p>
 </section>
-<section id="simple-pendulum" class="level4">
-<h4 class="anchored" data-anchor-id="simple-pendulum">Simple Pendulum</h4>
+<section id="simple-pendulum" class="level3">
+<h3 class="anchored" data-anchor-id="simple-pendulum">Simple Pendulum</h3>
 <p>The motion of a pendulum is also a good illustration of the concept of conservation of energy. When the pendulum bobs is at its highest point, it is briefly motionless and hence has no kinetic energy. It only has potential energy. Then, as the pendulum swings downward its potential energy is converted into kinetic energy. In order for energy to be conserved, these two energies should be equal.</p>
 <div style="text-align: center;">
 <p><img src="https://lancejnelson.github.io/PH150/figures/pendulum.png" alt="drawing" width="550"></p>
@@ -315,10 +319,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[M g \left( L - L \cos \theta_i\right) = {1\over 2} M v^2\]</span> <span class="math display">\[M g L\left( 1 - \cos \theta_i\right) = {1\over 2} M v^2\]</span></p>
 <p><span class="math display">\[ \left( 1 - \cos \theta_i\right) = {v^2\over 2 g L} \]</span> If you choose this experiment, once you have verified the relationship, you should calculate the length of the pendulum with its uncertainty and compare to a measured value.</p>
 </section>
+<section id="measuring-the-velocity" class="level3">
+<h3 class="anchored" data-anchor-id="measuring-the-velocity">Measuring the velocity</h3>
+<p>To find the speed of the ball(or pendulum) with its uncertainty, you’ll need to use a photogate placed at the location where you want to measure the speed. Here are a few tips/steps to follow to be successful.</p>
+<ol type="1">
+<li>A photogate shows the time that the laser was blocked,so to turn that into a speed, you’ll need to divide a distance by the time</li>
+<li>To get the uncertainty in time, make several measurements and find the average and standard deviation of your data.</li>
+<li>If the laser isn’t perfectly aligned with the center of the ball as it goes through, then the part of the ball that blocks the laser will be shorter than the diameter (i.e.&nbsp;less ball will travel through the laser beam). With a bit of geometry, you can show that <span class="math inline">\(d_\text{beam} =d_\text{ball}\sqrt{1 - \alpha^2}\)</span> where <span class="math inline">\(d_\text{beam}\)</span> is the amount of ball that went through the beam, <span class="math inline">\(d_\text{ball}\)</span> is the actual diameter of the ball, and <span class="math inline">\(\alpha\)</span> is how far from the center of the ball the beam is (as a ratio of the radius). Here’s an example on how to use this equation: If the diameter of the ball were <span class="math inline">\(2\)</span> cm, and I think that I can confidently keep the laser within <span class="math inline">\(0.5\)</span> cm of the center of the ball (50% of the radius), the smallest diameter that I would expect to pass through the beam would be: <span class="math display">\[ d_\text{beam} =(2\text{cm}) \sqrt{1 - 0.5^2} = (1.73 ~\text{cm}) \approx 1.7~ \text{cm}\]</span> Since I’d expect my diameter to be somewhere between that number and 2 cm, I’d quote the diameter that passes through the beam to be <span class="math inline">\(1.8 \pm 0.2\)</span> cm.</li>
+</ol>
 </section>
 <section id="scientific-reports" class="level3">
 <h3 class="anchored" data-anchor-id="scientific-reports">Scientific Reports</h3>
-<p>A scientific report is a detailed description of an experiment that you have performed. The purpose of the report is to add the analysis, results, and conclusions from your work to the collection of knowledge in the scientific community. It is important that your report/experiment invlolves experiments, analysis, and/or results that have not been presented previously. When publishing your report in a scientific journal, the journal will select referees to review your work and ensure that it is Your report should include a short explanation for each of the following topics:</p>
+<p>A scientific report is a detailed description of an experiment that you have performed. The purpose of the report is to add the analysis, results, and conclusions from your work to the collection of knowledge in the scientific community. It is important that your report/experiment involves experiments, analysis, and/or results that have not been presented previously. When publishing your report in a scientific journal, the journal will select referees to review your work and ensure that it is original and that no errors have been made in the experiment. Your report for the student-designed experiment should include a short explanation for each of the following topics:</p>
 <ol type="1">
 <li>Introduction
 <ul>
@@ -415,9 +427,9 @@ An example report can be found <a href="https://lancejnelson.github.io/PH150/fil
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform calculations and construct plots here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="activity-ii-student-designed-lab-proposal" class="level2">
-<h2 class="anchored" data-anchor-id="activity-ii-student-designed-lab-proposal">Activity II (Student-Designed Lab Proposal)</h2>
-<p>Work on your research proposal. They are due in <strong>one week</strong>.</p>
+<section id="activity-ii" class="level2">
+<h2 class="anchored" data-anchor-id="activity-ii">Activity II</h2>
+<p>Following the guidlines given above, write a short scientific report for the experiment that you just performed.</p>
 
 
 </section>

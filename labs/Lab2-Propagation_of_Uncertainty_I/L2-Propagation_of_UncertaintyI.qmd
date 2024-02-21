@@ -349,7 +349,7 @@ $$f(x,y) = 5 x y^2 + 8 x^2 y$$
 
 The partial derivatives of this function are
 
-$${\partial f \over \partial x} = 5 y^2 + 16 x^2 y$$
+$${\partial f \over \partial x} = 5 y^2 + 16 x y$$
 $${\partial f \over \partial y} = 10 xy + 8 x^2$$
 
 The uncertainty in the calculated values is calculated by first forming the product ${\partial f \over \partial x_i} \delta x_i$ for each independent variables and inserted into the equation below 

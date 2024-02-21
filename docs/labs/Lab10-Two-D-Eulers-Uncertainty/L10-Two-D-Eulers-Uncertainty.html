@@ -336,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The air pressure.</li>
 </ol></li>
 </ol>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libaries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
@@ -396,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A subteam should find a value (and uncertainty) for the drag coefficient (<span class="math inline">\(D\)</span>). A good way to do this is to use a high-speed camera (the one on your phone will probably do) and film the ball dropping. You should drop the ball from a height that give the ball enough time to reach terminal velocity well before it hits the floor. The drag constant can then be calculated using the following equation:</p>
 <p><span class="math display">\[D = {2 m g \over \rho A v_T^2}\]</span> Use <span class="math inline">\(g = (9.8004 \pm 0.00001)\)</span> m/s<span class="math inline">\(^2\)</span> and <span class="math inline">\(\rho = (1.23 \pm 0.01)\)</span> kg/m<span class="math inline">\(^3\)</span>.</p>
 <p>The rest of the values in the equation will need to be measured. Use the instructions in Appendix I to import your video into Logger Pro.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put calculations here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>A photogate shows the time that the laser was blocked,so to turn that into a speed, you’ll need to divide a distance by the time</li>
 <li>To get the uncertainty in time, make several measurements and find the average and standard deviation of your data.</li>
-<li>If the laser isn’t perfectly aligned with the center of the ball as it goes through, then the part of the ball that blocks the laser will be shorter than the diameter (i.e.&nbsp;less ball will travel through the laser beam). With a bit of geometry, you can show that <span class="math inline">\(d_\text{beam} =d_\text{ball}\sqrt{1 - \alpha^2}\)</span> where <span class="math inline">\(d_\text{beam}\)</span> is the amount of ball that went through the beam, <span class="math inline">\(d_\text{ball}\)</span> is the actual diameter of the ball, and <span class="math inline">\(\alpha\)</span> is how far from the center of the ball the beam is (as a ratio of the radius). Here’s an example on how to use this equation: If the diameter of the ball were <span class="math inline">\(2\)</span> cm, and I think that I can confidently keep the laser within <span class="math inline">\(0.5\)</span> cm of the center of the ball (50% of the radius), the smallest diameter that I would expect to pass through the beam would be: <span class="math display">\[ d_\text{beam} =(2\text{cm}) \sqrt{1 - 0.5^2} = (1.73 ~\text{cm}) \approx 1.7~ \text{cm}\]</span> Since I’d expect my diameter to be somewhere between that number and 2 cm, I’d quote the diameter that passes through the beam to be <span class="math inline">\(1.85 \pm 0.15\)</span> cm.</li>
+<li>If the laser isn’t perfectly aligned with the center of the ball as it goes through, then the part of the ball that blocks the laser will be shorter than the diameter (i.e.&nbsp;less ball will travel through the laser beam). With a bit of geometry, you can show that <span class="math inline">\(d_\text{beam} =d_\text{ball}\sqrt{1 - \alpha^2}\)</span> where <span class="math inline">\(d_\text{beam}\)</span> is the amount of ball that went through the beam, <span class="math inline">\(d_\text{ball}\)</span> is the actual diameter of the ball, and <span class="math inline">\(\alpha\)</span> is how far from the center of the ball the beam is (as a ratio of the radius). Here’s an example on how to use this equation: If the diameter of the ball were <span class="math inline">\(2\)</span> cm, and I think that I can confidently keep the laser within <span class="math inline">\(0.5\)</span> cm of the center of the ball (50% of the radius), the smallest diameter that I would expect to pass through the beam would be: <span class="math display">\[ d_\text{beam} =(2\text{cm}) \sqrt{1 - 0.5^2} = (1.73 ~\text{cm}) \approx 1.7~ \text{cm}\]</span> Since I’d expect my diameter to be somewhere between that number and 2 cm, I’d quote the diameter that passes through the beam to be <span class="math inline">\(1.8 \pm 0.2\)</span> cm.</li>
 </ol>
 </section>
 <section id="activity-iv-firing-the-cannon-and-testing-the-model" class="level1">
@@ -419,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>20 pts: Ball goes through the hoop on the second try</p></li>
 <li><p>15 pts: Ball goes through the hoop on the third (or more) try</p></li>
 </ul>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <p><img src="L10-Two-D-Eulers-Uncertainty_files/figure-html/cell-4-output-1.png" width="597" height="429"></p>
 </div>
