@@ -89,7 +89,6 @@ In this class we have used sympy to calculate uncertainties.  You should use sym
 Once you have done your analysis, you are ready to list the equipment you will need to carry out your experiment (that is, list the uncertainties you need to achieve). Final approval of the project and the ultimate success of your experiment depends on the equipment you choose or are granted. You want to do a good job analyzing so you know what you need, and a good job describing the experiment so you are likely to have the equipment you want available when you start.
 
 The rubric that will be used to grade your proposal can be found [here](https://lancejnelson.github.io/PH150/files/proposalrubric.pdf)  
-An example proposal can be found [here](https://lancejnelson.github.io/PH150/files/exampleproposal.pdf) 
 
 ## Activity I (standing waves)
 Design and carry out an experiment involving standing waves on a string.  Record your work below.

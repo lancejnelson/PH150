@@ -101,7 +101,6 @@ In this section you should present your results in a table and/or plot for easy 
 Explain why the results of your experiment verified or failed to verify your hypothesis.  Describe what the next step in this experiment might be.
 
 The rubric that will be used to grade the report for your student-designed project can be found [here](https://lancejnelson.github.io/PH150/files/reportrubric.pdf)  
-An example report can be found [here](https://lancejnelson.github.io/PH150/files/examplereport.pdf) 
 
 ## Activity I (Conservation of Energy)
 Design and carry out an experiment involving conservation of energy. You can choose an experiment involving a simple pendulum or a sphere rolling down an incline. Your goal is to prove that energy is conserved and calculate any relevant physical quantities with their uncertainties.  Record your work below.
