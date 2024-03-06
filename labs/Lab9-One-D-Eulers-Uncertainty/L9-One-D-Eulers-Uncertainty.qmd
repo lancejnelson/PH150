@@ -174,11 +174,7 @@ y0 = 70 # Initial height in m
 
 delta_t = 0.01 # Time step in seconds (should be small)
 t0 = 0 # Start time in seconds
-t_max = 7.0 #Final Time
 
-N = (t_max - t0)/delta_t # Calculate the number of time steps
-
-N = int(N) # Make sure N is an integer
 # Make lists to store your positions, velocities and times.
 y = [y0]
 v = [v0]

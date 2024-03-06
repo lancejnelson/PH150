@@ -412,28 +412,24 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>delta_t <span class="op">=</span> <span class="fl">0.01</span> <span class="co"># Time step in seconds (should be small)</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># Start time in seconds</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>t_max <span class="op">=</span> <span class="fl">7.0</span> <span class="co">#Final Time</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> (t_max <span class="op">-</span> t0)<span class="op">/</span>delta_t <span class="co"># Calculate the number of time steps</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="bu">int</span>(N) <span class="co"># Make sure N is an integer</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Make lists to store your positions, velocities and times.</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [y0]</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [v0]</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [t0]</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y[<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>   a <span class="op">=</span> <span class="op">-</span><span class="fl">9.8</span>  <span class="co"># Calculate the current acceleration</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position, velocity, and time in the lists</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>   v.append(v[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> a <span class="op">*</span> delta_t)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>   y.append(y[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> v[<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> delta_t)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>   t.append(t[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> delta_t)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.plot(t,y,linewidth <span class="op">=</span> <span class="dv">2</span>, color <span class="op">=</span> <span class="st">'red'</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"time (s)"</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Position (m)"</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Position vs. time for a ball in free fall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Make lists to store your positions, velocities and times.</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [y0]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [v0]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> [t0]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> y[<span class="op">-</span><span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>   a <span class="op">=</span> <span class="op">-</span><span class="fl">9.8</span>  <span class="co"># Calculate the current acceleration</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Store the new position, velocity, and time in the lists</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>   v.append(v[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> a <span class="op">*</span> delta_t)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>   y.append(y[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> v[<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> delta_t)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>   t.append(t[<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> delta_t)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.plot(t,y,linewidth <span class="op">=</span> <span class="dv">2</span>, color <span class="op">=</span> <span class="st">'red'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"time (s)"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Position (m)"</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Position vs. time for a ball in free fall"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>Text(0.5, 1.0, 'Position vs. time for a ball in free fall')</code></pre>
 </div>
@@ -450,7 +446,7 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <pre><code>Text(0.5, 0, 'g (m/s$^2$)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="L9-One-D-Eulers-Uncertainty_files/figure-html/cell-6-output-2.png" width="674" height="1128"></p>
+<p><img src="L9-One-D-Eulers-Uncertainty_files/figure-html/cell-6-output-2.png" width="672" height="1128"></p>
 </div>
 </div>
 <p>The top figures represent the distribution of the (L,T) pairs and the one-dimensional projections. The second figure shows the same data as the top figure but now the value of g for each (L,T) data pair is represented by the color of the plot point. Finally the final figure gives the histogram of g values. The standard deviation of this final data set could be used as the uncertainty on <span class="math inline">\(g\)</span>. So to propagate uncertainty in a numerical calculation we should <strong>run Euler’s method many times, each time starting with a different set of initial conditions.</strong> When selecting a value for the initial condition we should generate a random number from the appropriate distribution. This can be accomplished by placing your Euler’s loop from last week into <em>another loop</em>, called the outer loop.</p>
@@ -461,7 +457,7 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>randomNumber <span class="op">=</span> sp.norm.rvs(loc <span class="op">=</span> <span class="dv">5</span>,scale <span class="op">=</span> <span class="fl">0.5</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(randomNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5.160102361887256</code></pre>
+<pre><code>4.689516761848795</code></pre>
 </div>
 </div>
 <p>The <code>loc</code> keyword argument specifies the mean of the distribution (<span class="math inline">\(\mu\)</span>) and the <code>scale</code> keyword argument specifies the standard deviation of the distribution (<span class="math inline">\(\sigma\)</span>).</p>
