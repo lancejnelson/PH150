@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[F_D =  {1\over 2} \; C \rho A |v| v \;\;\;\;\;(1) \]</span></p>
 <p>and used this together with Euler’s method to predict the fall times for several objects. This week we will study the motion of a weather balloon and predict the time it will take for the weather balloon to rise a chosen distance. This means that we will need to add one more force into the analysis: the buoyant force.</p>
 <p>The balloon has a total of three forces acting on it: gravity, air drag, and a buoyant force from the surrounding air. The downward gravitational force has three contributions: the weight of the balloon itself, the weight of the helium gas inside the balloon, and the weight of the payload attached to the balloon.</p>
-<p>Let’s first discuss the buoyant force. In principles of physics II you’ll learn that the magnitude of the buoyant force is equal the the <strong>weight of the displaced fluid</strong>, which in this case is just air. The balloon is displacing a volume of air equal to the balloon’s volume.</p>
+<p>Let’s first discuss the buoyant force. In principles of physics II you’ll learn that the magnitude of the buoyant force is equal the <strong>weight of the displaced fluid</strong>, which in this case is just air. The balloon is displacing a volume of air equal to the balloon’s volume.</p>
 <p><span class="math display">\[
 F_b = m_\text{air} g = \rho_\text{air} V g
 \]</span></p>
@@ -457,7 +457,7 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>randomNumber <span class="op">=</span> sp.norm.rvs(loc <span class="op">=</span> <span class="dv">5</span>,scale <span class="op">=</span> <span class="fl">0.5</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(randomNumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>4.689516761848795</code></pre>
+<pre><code>4.802796220090337</code></pre>
 </div>
 </div>
 <p>The <code>loc</code> keyword argument specifies the mean of the distribution (<span class="math inline">\(\mu\)</span>) and the <code>scale</code> keyword argument specifies the standard deviation of the distribution (<span class="math inline">\(\sigma\)</span>).</p>
@@ -645,7 +645,7 @@ F_D = {1\over 2} \rho_\text{air} A_\text{balloon} C |v| v
 <span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>    ax2.plot(t,v,<span class="st">'g.'</span>)</span>
 <span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>    ax3.plot(t,y,<span class="st">'b.'</span>)</span>
 <span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>    times.append(t[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>ax4.histogram(times,bins <span class="op">=</span> <span class="dv">50</span>)</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>ax4.hist(times,bins <span class="op">=</span> <span class="dv">12</span>)</span>
 <span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.mean(times), np.std(times))</span>
 <span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

@@ -33,7 +33,7 @@ and used this together with Euler's method to predict the fall times for several
 
 The balloon has a total of three forces acting on it: gravity, air drag, and a buoyant force from the surrounding air.  The downward gravitational force has three contributions: the weight of the balloon itself, the weight of the helium gas inside the balloon, and the weight of the payload attached to the balloon.  
 
-Let's first discuss the buoyant force.  In principles of physics II you'll learn that the magnitude of the buoyant force is equal the the **weight of the displaced fluid**, which in this case is just air.  The balloon is displacing a volume of air equal to the balloon's volume.  
+Let's first discuss the buoyant force.  In principles of physics II you'll learn that the magnitude of the buoyant force is equal the **weight of the displaced fluid**, which in this case is just air.  The balloon is displacing a volume of air equal to the balloon's volume.  
 
 $$ 
 F_b = m_\text{air} g = \rho_\text{air} V g
@@ -440,7 +440,7 @@ for N in range(Ntrials):
     ax2.plot(t,v,'g.')
     ax3.plot(t,y,'b.')
     times.append(t[-1])
-ax4.histogram(times,bins = 50)
+ax4.hist(times,bins = 12)
 print(np.mean(times), np.std(times))
 plt.show()
         
