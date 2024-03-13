@@ -34,8 +34,8 @@ $$ v_{x,n+1} = v_{x,n} + a_x \cdot \Delta t  \;\;\;\;\;\;\;\;\;\;(5)$$
 
 $$ v_{y,n+1} = v_{y,n} + a_y\cdot \Delta t  \;\;\;\;\;\;\;(6)$$
 
-with the acceleration components given by $$a_y = -\frac{B}{m}\cdot v_{n} \cdot v_{y,n} \cdot \Delta t - g$$
-$$a_x = -\frac{B}{m}\cdot v_{n} \cdot v_{x,n} \cdot \Delta t $$
+with the acceleration components given by $$a_y = -\frac{B}{m}\cdot v_{n} \cdot v_{y,n} - g$$
+$$a_x = -\frac{B}{m}\cdot v_{n} \cdot v_{x,n} $$
 and 
 where $$B = {1 \over 2} C\cdot \rho \cdot A$$
 
