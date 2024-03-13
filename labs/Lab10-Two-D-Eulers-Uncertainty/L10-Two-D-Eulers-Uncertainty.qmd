@@ -121,7 +121,7 @@ plt.show()
 
 
 ## Activity II: Determination of Drag Constant
-A subteam should find a value (and uncertainty) for the drag coefficient  ($D$).  A good way to do this is to use a high-speed camera (the one on your phone will probably do) and film the ball dropping.  You should drop the ball from a height that give the ball enough time to reach terminal velocity well before it hits the floor.  The drag constant can then be calculated using the following equation:
+A subteam should find a value (and uncertainty) for the drag coefficient  ($D$).  A good way to do this is to use a high-speed camera (the one on your phone will probably do) and film the ball dropping.  Then use the LoggerPro software (free download or already installed on the lab computers) to plot the velocity vs. time graph and determine the terminal velocity $v_T$. You should drop the ball from a height that give the ball enough time to reach terminal velocity well before it hits the floor.  The drag constant can then be calculated using the following equation:
 
 $$D = {2 m g \over \rho A v_T^2}$$
 Use $g = (9.8004 \pm 0.00001)$ m/s$^2$ and $\rho = (1.23 \pm 0.01)$ kg/m$^3$.
@@ -138,12 +138,12 @@ To find the launch speed of the ball with its uncertainty, you'll need to use a 
 3. If the laser isn’t perfectly aligned with the center of the ball as it goes through, then the part of the ball that blocks the laser will be shorter than the diameter (i.e. less ball will travel through the laser beam). With a bit of geometry, you can show that $d_\text{beam} =d_\text{ball}\sqrt{1 - \alpha^2}$ where $d_\text{beam}$ is the amount of ball that went through the beam, $d_\text{ball}$ is the actual diameter of the ball, and $\alpha$ is how far from the center of the ball the beam is (as a ratio of the radius).
 Here’s an example on how to use this equation: If the diameter of the ball were $2$ cm, and I think that I can confidently keep the laser within $0.5$ cm of the center of the ball (50% of the radius), the smallest diameter that I would expect to pass through the beam would be:
 $$ d_\text{beam} =(2\text{cm}) \sqrt{1 - 0.5^2} = (1.73 ~\text{cm}) \approx 1.7~ \text{cm}$$
-Since I’d expect my diameter to be somewhere between that number and 2 cm, I’d quote the diameter that passes through the beam to be $1.85 \pm 0.15$ cm.
+Since I’d expect my diameter to be somewhere between that number and 2 cm, I’d quote the diameter that passes through the beam to be $1.8 \pm 0.2$ cm.
 
 
 # Activity IV  Firing the Cannon and Testing the Model  
 
-Use the model from Activity I with the values of initial velocity and drag coefficient from Activities II and III to predict the trajectory of the styrofoam ball.  You should get a family of trajectories as shown in the figure below. The instructor will give you an initial height . Using the third setting on the projectile launcher, you will need to predict the height of the projectile when $x = {1\over 2} R$,  where R is the range of the motion. A hoop with a $10$ cm diameter will be placed at the values of x and y that you specify.
+Use the model from Activity I with the values of initial velocity and drag coefficient from Activities II and III to predict the trajectory of the styrofoam ball with uncertainty.  You should get a family of trajectories similar to the figure below. The instructor will give you an initial height and the initial launch angle should be set to $\theta = 45^\circ$. Using the third setting on the projectile launcher, you will need to predict the height of the projectile when $x = {1\over 2} R$,  where R is the range of the motion. A hoop with a $10$ cm diameter will be placed at the values of x and y that you specify.
 
 Don't fire your styrofoam ball until the instructor or teaching assistant is there to observe.
 
@@ -241,14 +241,14 @@ plt.show()
 
 Logger Pro Movie Capture
 
-Tips
+Tips  
 1. Make sure that there is a meter stick in the field of view when the ball is fired.
 
-Logger Pro Procedure
-1. Use Insert>Movie to input the video clip.
-2. Click on “Enable/Disable Video Analysis” which is located in the bottom right hand corner of the video window.
-3. Click on “Set Scale.”  Then click and drag on the image of the meter stick.
-4. “Set Origin” to a position on the ground directly below where the ball is launched.
-5. Make sure that the video clip is set to the frame just before the ball starts moving.  Click on “Add Point” and then click on the ball.  The video will advance one frame at a time.
+Logger Pro Procedure  
+1. Use Insert>Movie to input the video clip.  
+2. Click on “Enable/Disable Video Analysis” which is located in the bottom right hand corner of the video window.  
+3. Click on “Set Scale.”  Then click and drag on the image of the meter stick.  
+4. “Set Origin” to a position on the ground directly below where the ball is launched.  
+5. Make sure that the video clip is set to the frame just before the ball starts moving.  Click on “Add Point” and then click on the ball.  The video will advance one frame at a time.  
 
 
