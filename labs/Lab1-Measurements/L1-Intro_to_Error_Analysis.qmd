@@ -4,9 +4,10 @@ jupyter: python3
 
 # Lab 1: Measurement and Uncertainty {-}
 
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L1-Intro_to_Error_Analysis.ipynb)
+
 # Introduction to Error Analysis
 
-[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L1-Intro_to_Error_Analysis.ipynb)
 
 Name:  
 
