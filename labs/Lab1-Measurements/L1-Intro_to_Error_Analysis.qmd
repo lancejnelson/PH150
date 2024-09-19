@@ -119,17 +119,10 @@ values that it falls within.
 
 
 ### Digital Measurements
-Measurements made from digital devices will carry uncertainty too.
-This uncertainty arises because the device must round the measurement
-so that it fits on the digital readout.  Uncertainty
-arises since you can never know what the next digit would have been.
+Measurements made from digital devices will carry uncertainty too.  Ideally, these devices should only display significant figures and thus it is usually safe to assume that the number of significant figures in a digital meausement is exactly the numbers displayed.
+Without a manual to tell you the uncertainty associated with the device it is tough to know for sure what it is.  A reasonable assumption is that uncertainty in the final digit is $\pm 1$.
 For example, suppose that you measure the mass of an object
-on a digital scale and it reads $10.55$ kg.  The actual value of the
-measurement could have been as low as $10.545$ kg or as high as
-$10.555$ kg. Anything in that range would have rounded to $10.55$ kg.
-Hence, the uncertainty on this measurement is $\pm 0.005$
-kg.  This measurement would be reported as $10.55 \pm .005$ kg.  Unless otherwise stated on the device, the uncertainty of a digital measurement is half of the value of the
-last decimal place shown.
+on a digital scale and it reads $10.5$ kg.  The implied uncertainty would be $\pm 0.1$. Hence, this measurement would be reported as $10.5 \pm .01$ kg.  
 
 ### Other Sources of Uncertainty
 Sometimes the biggest source of uncertainty in a measurement is not due to the instrument itself but the experimental setup.  For example, if a digital timer is used to time the drop of a tennis ball, the reaction time of the person operating the timer will be bigger than the explicit uncertainty in the timer itself. (For reference, the typical reaction time for auditory stimuli is $0.14 - 0.16$ s and $0.18 - 0.2$ for visual stimuli.)  The placement of a meter stick may vary from measurement to measurement due to human variability and this would introduce some variability in the subsequent measurements.   Fluctuations in the environmental conditions (temperature, pressure, etc) can cause variability in measurements.  All of these factors must be considered when assigning uncertainties to measured values. 
@@ -219,13 +212,8 @@ In this case, the measurement whose uncertainty window contains the accepted val
 
 At this point, you may be wondering about all of those numbers in your
 physics textbook that are given to you without any $\pm$ value
-attached to them.  In the absence of an explicitly-stated uncertainty,
-it is generally assumed that the uncertainty is $\pm 5$ on the digit
-that is one beyond the least significant digit. For example, if your
-homework problem states that a car was traveling with speed $25$ m/s, it is implied that
-the uncertainty on that length is $\pm 0.5$ m/s. After all, if the true
-value were anywhere in the range $(24.5 - 25.5)$, we would have
-rounded the final answer to $25$ m/s. 
+attached to them.  For example, if the speed of a car is reported to be $25$ m/s, that __may__ mean $25 \pm 0.5$ m/s, but it may also mean $25 \pm 1$ m/s or even $25 \pm 5$ m/s. In the absence of an explicitly-stated uncertainty,
+we will assume that the uncertainty is $\pm 1$ on the least significant digit. For the car traveling with speed $25$ m/s, we would assume  $25 \pm 1$ m/s. 
 
 The numbers used to communicate the precision of a measurement are
 called significant figures. The rules for tracking and reporting of
