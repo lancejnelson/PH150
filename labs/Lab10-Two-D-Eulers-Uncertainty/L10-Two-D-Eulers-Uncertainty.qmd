@@ -5,7 +5,8 @@ jupyter: python3
 
 # Lab 10 Projectile Motion with Drag and Uncertainty {-}
 
-Name: 
+Name:  
+[Jupyter Notebook](https://lancejnelson.github.io/PH150/jupyter/L10-Two-D-Eulers-Uncertainty.ipynb)
 
 
 ## Skills
